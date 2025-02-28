@@ -16,19 +16,19 @@ columns:
 
 We drop the tests column.
 
-We save the result in a format suitable for batched_lm_generation.
+We save the result in JSONL format.
 """
 
 # cspell:ignore starcoder codellama
 import argparse
+import json
 import datasets
 from transformers import AutoTokenizer
-from prl_ml.datasets.dataset_spec import DatasetSpec
 
 STYLE_TO_TOKENIZER_PATH = {
-    "codellama": "/home/arjun/models/CodeLlama-7b-hf/",
-    "starcoder1": "/home/arjun/models/starcoderbase",
-    "qwencoder": "/home/arjun/models/qwen2p5_coder_7b_base"
+    "codellama": "codellama/CodeLlama-7b-hf",
+    "starcoder1": "bigcode/starcoderbase",
+    "qwencoder": "Qwen/Qwen2.5-Coder-7B"
 }
 
 
@@ -96,13 +96,13 @@ def codellama_style():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fim-style", choices=STYLE_TO_TOKENIZER_PATH.keys())
-    parser.add_argument("--output-spec", type=str)
+    parser.add_argument("--fim-style", choices=STYLE_TO_TOKENIZER_PATH.keys(), required=True)
+    parser.add_argument("--output-file", type=str)
     args = parser.parse_args()
 
-    if args.output_spec is None:
-        args.output_spec = f"jsonl:{args.fim_style}_fim_task.jsonl"
-        print(f"No output spec provided; using default: {args.output_spec}")
+    if args.output_file is None:
+        args.output_file = f"{args.fim_style}_fim_task.jsonl"
+        print(f"No output file provided; using default: {args.output_file}")
 
     original_dataset = datasets.load_dataset(
         "bigcode/santacoder-fim-task", split="train"
@@ -113,7 +113,10 @@ def main():
         ["tests", "suffix"]
     )
 
-    DatasetSpec.from_string(args.output_spec).save(formatted_dataset)
+    # Save to JSONL format
+    with open(args.output_file, 'w') as f:
+        for item in formatted_dataset:
+            f.write(json.dumps(item) + '\n')
 
 
 if __name__ == "__main__":

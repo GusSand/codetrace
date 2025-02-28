@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from codetrace.utils import load_dataset
+from codetrace.utils import load_dataset, get_device
 import os
 import wandb
 from transformers import AutoModelForCausalLM, AutoTokenizer, get_scheduler
@@ -218,7 +218,8 @@ def main(args):
 
 
     if not args.max_steps:
-        args.max_steps = ((len(train_ds) // args.batch_size) // torch.cuda.device_count()) * args.num_epochs
+        device_count = torch.cuda.device_count() if args.device == "cuda" else 1  # Only CUDA supports multi-device
+        args.max_steps = ((len(train_ds) // args.batch_size) // device_count) * args.num_epochs
     accelerator.print(f"Approximate eval size {len(eval_ds)}, train size: {len(train_ds)}, max train steps {args.max_steps}")
         
     training_args = TrainingArgs(**args.__dict__)
@@ -232,8 +233,10 @@ if __name__=="__main__":
     parser.add_argument("--model", required=True)
     
     # torch and data load args
-    parser.add_argument("--device", default="cuda")
-    parser.add_argument("--dtype", type=str, choices=["float32","bfloat16"], default="bfloat16")
+    device = get_device()
+    parser.add_argument("--device", default=device)
+    parser.add_argument("--dtype", type=str, choices=["float32","bfloat16"], 
+                       default="bfloat16" if device == "cuda" else "float32")  # bfloat16 only supported on CUDA
     parser.add_argument("--max-n", type=int, default=-1)
     parser.add_argument("--max-steps", type=int, default=None)
     

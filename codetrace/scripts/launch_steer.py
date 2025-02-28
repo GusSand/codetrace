@@ -1,11 +1,12 @@
 from codetrace.steering import SteeringManager
-from codetrace.utils import load_dataset, print_color
+from codetrace.utils import load_dataset, print_color, get_device
 from argparse import ArgumentParser
 from nnsight import LanguageModel
 from typing import List,Dict,Optional
 import json
 import os
 from shutil import rmtree
+import torch
 
 def evaluate(results_ds) -> Dict:
     df = results_ds.to_pandas()
@@ -60,7 +61,9 @@ def main(
     if candidates:
         candidates = load_dataset(candidates, split=split,name=subset)
     
-    model = LanguageModel(model, torch_dtype=dtype,device_map="cuda",dispatch=True)
+    device = get_device()
+    print(f"Using device: {device}")
+    model = LanguageModel(model, torch_dtype=dtype, device_map=device, dispatch=True)
     smanager = SteeringManager(
         model,
         output_dir,

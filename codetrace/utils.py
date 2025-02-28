@@ -89,6 +89,8 @@ def get_lm_head(model):
         raise NotImplementedError("Model type not supported")
 
 def num_available_devices():
+    if "CUDA_VISIBLE_DEVICES" not in os.environ or os.environ["CUDA_VISIBLE_DEVICES"] == "":
+        return 1
     device_list = list(os.environ["CUDA_VISIBLE_DEVICES"])
     return len([i for i in device_list if i != ","])
 
@@ -269,3 +271,16 @@ def print_color(message:str, color:str):
     elif color == "yellow":
         color = '\033[93m'
     print(f"{color}{message}{reset}")
+
+def get_device() -> str:
+    """
+    Returns the best available device in order of preference:
+    1. CUDA if available
+    2. MPS if available
+    3. CPU as fallback
+    """
+    if torch.cuda.is_available():
+        return "cuda"
+    elif torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"

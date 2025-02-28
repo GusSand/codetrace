@@ -63,16 +63,22 @@ def main(
             blacklist.add(hex_encode(row["fim_program"]))
 
     # preprocess dataset
+    print("Filtering for 1-token types...")
     ds = ds.filter(lambda x: is_1tok(x["fim_type"], tokenizer))
     if len(blacklist) > 0:
-        ds = ds.filter(lambda x: hex_encode(x["fim_program"]) not in blacklist)
+        print(f"Filtering out {len(blacklist)} blacklisted examples...")
+        # Convert to list to avoid streaming dataset issues
+        ds = datasets.Dataset.from_list(list(ds)).filter(lambda x: hex_encode(x["fim_program"]) not in blacklist)
     
+    print("Preparing FIM prompts...")
     ds = ds.map(lambda x: {**x, "_prompt": prepare_fim_prompt(tokenizer, model_fim, x["fim_program"])})
 
     # generate                  
     # batch generations because of cpu ops in vllm
     num_completed = 0
+    print(f"\nStarting generations with batch_size={batch_size}, max_n={max_n}")
     for i,batch in tqdm(enumerate(ds.iter(batch_size)), desc="Batch generations"):
+        print(f"\nProcessing batch {i+1}...")
         batch_completions = asyncio.run(generate_completions(
                                         llm,
                                         batch,
@@ -84,9 +90,11 @@ def main(
                               "correct": x["_generated"] == x["fim_type"], 
                               "model_name": model_name} for x in batch_completions]
         num_completed += len(batch_completions)
+        print(f"Completed {num_completed} examples so far")
         # save every batch
-        _save(batch_completions, new_ds_path, f"Saving {i} batch")
+        _save(batch_completions, new_ds_path, f"Saving batch {i+1}")
         if max_n > 0 and num_completed >= max_n:
+            print(f"Reached max_n={max_n}, stopping...")
             break
 
 if __name__ == "__main__":
@@ -102,7 +110,7 @@ if __name__ == "__main__":
     parser.add_argument("--split",type=str,default="train")
     parser.add_argument("--batch-size", type=int, default=1000)
 
-    parser.add_argument("--dtype", choices=[torch.bfloat16, torch.float32], default=torch.bfloat16)
+    parser.add_argument("--dtype", choices=["bfloat16", "float32"], default="bfloat16")
     parser.add_argument("--model-name", default=None)
     parser.add_argument("--tokenizer", default=None)
 
@@ -118,10 +126,17 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
 
     datasets.disable_caching()
-    ds = datasets.load_dataset(args.prompt_ds, split=args.split, streaming=True).shuffle(
+    if os.path.exists(args.prompt_ds):
+        ds = datasets.load_from_disk(args.prompt_ds)
+        if args.split:
+            ds = ds[args.split]
+        ds = ds.to_iterable_dataset().shuffle(args.seed, buffer_size=2000)
+    else:
+        ds = datasets.load_dataset(args.prompt_ds, split=args.split, streaming=True).shuffle(
                                                                 args.seed, buffer_size=2000)
     
-    llm = load_vllm(args.model, args.dtype, num_available_devices(),
+    dtype = getattr(torch, args.dtype)
+    llm = load_vllm(args.model, dtype, num_available_devices(),
                     tokenizer=args.tokenizer, async_inference=True)
     model_fim = get_model_fim(args.model)
     
