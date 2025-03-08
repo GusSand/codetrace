@@ -1,0 +1,134 @@
+================================================================================
+SECURITY BIAS OPTIMIZATION RESULTS
+================================================================================
+
+BEST OVERALL CONFIGURATION:
+  low_bias
+
+RESULTS BY VULNERABILITY TYPE:
+
+SQL_INJECTION:
+  Baseline (no bias):
+    Security Score: 0.00
+    Quality Score: 0.60
+    Repetition Score: 0.09
+    Match Score: 0.19
+  Best Configuration: low_bias
+    Security Score: 0.00 (+0.00)
+    Quality Score: 0.53 (-0.07)
+    Repetition Score: 0.08 (-0.01)
+    Match Score: 0.48 (+0.29)
+    Weighted Score: 0.19
+
+  All Configurations:
+  +-------------+----------+---------+------------+-------+----------+
+  | Config      | Security | Quality | Repetition | Match | Weighted |
+  +-------------+----------+---------+------------+-------+----------+
+  | low_bias    | 0.00     | 0.53    | 0.08       | 0.48  | 0.19     |
+  | medium_bias | 0.00     | 0.50    | 0.15       | 0.48  | 0.17     |
+  | high_bias   | 0.00     | 0.31    | 0.65       | 0.47  | 0.01     |
+  +-------------+----------+---------+------------+-------+----------+
+
+XSS:
+  Baseline (no bias):
+    Security Score: 0.22
+    Quality Score: 0.63
+    Repetition Score: 0.14
+    Match Score: 0.05
+  Best Configuration: medium_bias
+    Security Score: 0.33 (+0.11)
+    Quality Score: 0.60 (-0.03)
+    Repetition Score: 0.09 (-0.04)
+    Match Score: 0.07 (+0.02)
+    Weighted Score: 0.37
+
+  All Configurations:
+  +-------------+----------+---------+------------+-------+----------+
+  | Config      | Security | Quality | Repetition | Match | Weighted |
+  +-------------+----------+---------+------------+-------+----------+
+  | medium_bias | 0.33     | 0.60    | 0.09       | 0.07  | 0.37     |
+  | high_bias   | 0.33     | 0.60    | 0.22       | 0.05  | 0.34     |
+  | low_bias    | 0.00     | 0.46    | 0.18       | 0.14  | 0.12     |
+  +-------------+----------+---------+------------+-------+----------+
+
+PATH_TRAVERSAL:
+  Baseline (no bias):
+    Security Score: 0.00
+    Quality Score: 0.60
+    Repetition Score: 0.07
+    Match Score: 0.16
+  Best Configuration: high_bias
+    Security Score: 0.33 (+0.33)
+    Quality Score: 0.57 (-0.03)
+    Repetition Score: 0.00 (-0.07)
+    Match Score: 0.04 (-0.12)
+    Weighted Score: 0.37
+
+  All Configurations:
+  +-------------+----------+---------+------------+-------+----------+
+  | Config      | Security | Quality | Repetition | Match | Weighted |
+  +-------------+----------+---------+------------+-------+----------+
+  | high_bias   | 0.33     | 0.57    | 0.00       | 0.04  | 0.37     |
+  | medium_bias | 0.22     | 0.60    | 0.28       | 0.29  | 0.29     |
+  | low_bias    | 0.00     | 0.60    | 0.07       | 0.25  | 0.19     |
+  +-------------+----------+---------+------------+-------+----------+
+
+COMMAND_INJECTION:
+  Baseline (no bias):
+    Security Score: 0.00
+    Quality Score: 0.52
+    Repetition Score: 0.05
+    Match Score: 0.02
+  Best Configuration: low_bias
+    Security Score: 0.44 (+0.44)
+    Quality Score: 0.50 (-0.02)
+    Repetition Score: 0.05 (+0.00)
+    Match Score: 0.24 (+0.22)
+    Weighted Score: 0.43
+
+  All Configurations:
+  +-------------+----------+---------+------------+-------+----------+
+  | Config      | Security | Quality | Repetition | Match | Weighted |
+  +-------------+----------+---------+------------+-------+----------+
+  | low_bias    | 0.44     | 0.50    | 0.05       | 0.24  | 0.43     |
+  | medium_bias | 0.44     | 0.50    | 0.11       | 0.19  | 0.41     |
+  | high_bias   | 0.44     | 0.42    | 0.25       | 0.13  | 0.36     |
+  +-------------+----------+---------+------------+-------+----------+
+
+PATTERN EFFECTIVENESS ANALYSIS:
+
+SQL_INJECTION PATTERNS:
+  +---------------------+--------------+-------+-------+
+  | Pattern             | Success Rate | Found | Total |
+  +---------------------+--------------+-------+-------+
+  | parameterized_query | 0.00         | 0     | 12    |
+  | query_params        | 0.00         | 0     | 12    |
+  | secure_execution    | 0.00         | 0     | 12    |
+  +---------------------+--------------+-------+-------+
+
+XSS PATTERNS:
+  +-------------------+--------------+-------+-------+
+  | Pattern           | Success Rate | Found | Total |
+  +-------------------+--------------+-------+-------+
+  | html_escape       | 0.58         | 7     | 12    |
+  | secure_output     | 0.08         | 1     | 12    |
+  | import_escape_lib | 0.00         | 0     | 12    |
+  +-------------------+--------------+-------+-------+
+
+PATH_TRAVERSAL PATTERNS:
+  +----------------------+--------------+-------+-------+
+  | Pattern              | Success Rate | Found | Total |
+  +----------------------+--------------+-------+-------+
+  | secure_path_handling | 0.33         | 4     | 12    |
+  | error_handling       | 0.08         | 1     | 12    |
+  | path_validation      | 0.00         | 0     | 12    |
+  +----------------------+--------------+-------+-------+
+
+COMMAND_INJECTION PATTERNS:
+  +-------------------+--------------+-------+-------+
+  | Pattern           | Success Rate | Found | Total |
+  +-------------------+--------------+-------+-------+
+  | subprocess_array  | 0.50         | 6     | 12    |
+  | no_shell          | 0.50         | 6     | 12    |
+  | import_subprocess | 0.00         | 0     | 12    |
+  +-------------------+--------------+-------+-------+

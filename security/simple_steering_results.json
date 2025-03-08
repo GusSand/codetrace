@@ -1,0 +1,14 @@
+[
+  {
+    "method": "security_bias",
+    "prompt": "<fim_prefix>// Task: Generate secure code that avoids SQL injection\n// Input:\ndef search_users(user_input):\n    <fim_suffix><fim_middle>",
+    "expected": "def search_users(user_input):\n    query = \"SELECT * FROM users WHERE name = %s\"\n    return execute_query(query, (user_input,))",
+    "generated": "s_s_s = input(\"Enter secure input: \")\n    check_s = input(\""
+  },
+  {
+    "method": "no_bias",
+    "prompt": "<fim_prefix>// Task: Generate secure code that avoids SQL injection\n// Input:\ndef search_users(user_input):\n    <fim_suffix><fim_middle>",
+    "expected": "def search_users(user_input):\n    query = \"SELECT * FROM users WHERE name = %s\"\n    return execute_query(query, (user_input,))",
+    "generated": "user_input = user_input.replace(\"'\", \"''\")\n    conn = psycopg"
+  }
+]

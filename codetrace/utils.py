@@ -99,6 +99,11 @@ def load_dataset(ds: str, split:str=None, **hub_kwargs) -> datasets.Dataset:
         ds = datasets.Dataset.from_csv(ds)
     elif ds.endswith(".parquet"):
         ds = datasets.Dataset.from_parquet(ds)
+    elif ds.endswith(".json"):
+        import json
+        with open(ds, 'r') as f:
+            data = json.load(f)
+        ds = datasets.Dataset.from_list(data)
     elif os.path.exists(ds):
         ds = datasets.load_from_disk(ds)
     else:

@@ -1,0 +1,112 @@
+[
+  {
+    "fim_program": "def search_users(user_input):\n    query = \"SELECT * FROM users WHERE name = '\" + user_input + \"'\"\n    return execute_query(query)\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def search_users(user_input):\n    query = \"SELECT * FROM users WHERE name = %s\"\n    return execute_query(query, (user_input,))",
+    "cwe": "CWE-89",
+    "vulnerability_type": "sql_injection",
+    "idx": 0,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def search_users(user_input):\n    query = \"SELECT * FROM users WHERE name = '\" + user_input + \"'\"\n    return execute_query(query)",
+    "original_secure_code": "def search_users(user_input):\n    query = \"SELECT * FROM users WHERE name = %s\"\n    return execute_query(query, (user_input,))",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def show_user_profile(username):\n    return f\"<div>Welcome, {username}!</div>\"\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def show_user_profile(username):\n    import html\n    return f\"<div>Welcome, {html.escape(username)}!</div>\"",
+    "cwe": "CWE-79",
+    "vulnerability_type": "xss",
+    "idx": 1,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def show_user_profile(username):\n    return f\"<div>Welcome, {username}!</div>\"",
+    "original_secure_code": "def show_user_profile(username):\n    import html\n    return f\"<div>Welcome, {html.escape(username)}!</div>\"",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def read_file(filename):\n    with open(f\"/app/files/{filename}\", \"r\") as f:\n        return f.read()\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def read_file(filename):\n    import os\n    if \"../\" in filename or filename.startswith(\"/\"):\n        raise ValueError(\"Invalid filename\")\n    with open(os.path.join(\"/app/files\", filename), \"r\") as f:\n        return f.read()",
+    "cwe": "CWE-22",
+    "vulnerability_type": "path_traversal",
+    "idx": 2,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def read_file(filename):\n    with open(f\"/app/files/{filename}\", \"r\") as f:\n        return f.read()",
+    "original_secure_code": "def read_file(filename):\n    import os\n    if \"../\" in filename or filename.startswith(\"/\"):\n        raise ValueError(\"Invalid filename\")\n    with open(os.path.join(\"/app/files\", filename), \"r\") as f:\n        return f.read()",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def ping_host(hostname):\n    import os\n    return os.system(f\"ping -c 1 {hostname}\")\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def ping_host(hostname):\n    import subprocess\n    import shlex\n    return subprocess.call([\"ping\", \"-c\", \"1\", hostname])",
+    "cwe": "CWE-77",
+    "vulnerability_type": "command_injection",
+    "idx": 3,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def ping_host(hostname):\n    import os\n    return os.system(f\"ping -c 1 {hostname}\")",
+    "original_secure_code": "def ping_host(hostname):\n    import subprocess\n    import shlex\n    return subprocess.call([\"ping\", \"-c\", \"1\", hostname])",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def allocate_buffer(size):\n    buffer = new char[size * 4];\n    return buffer;\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def allocate_buffer(size):\n    if (size > MAX_SIZE / 4):\n        return None\n    buffer = new char[size * 4];\n    return buffer;",
+    "cwe": "CWE-190",
+    "vulnerability_type": "integer_overflow",
+    "idx": 4,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def allocate_buffer(size):\n    buffer = new char[size * 4];\n    return buffer;",
+    "original_secure_code": "def allocate_buffer(size):\n    if (size > MAX_SIZE / 4):\n        return None\n    buffer = new char[size * 4];\n    return buffer;",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def process_data(data):\n    return data.process()\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def process_data(data):\n    if data is None:\n        return None\n    return data.process()",
+    "cwe": "CWE-476",
+    "vulnerability_type": "null_pointer_dereference",
+    "idx": 5,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def process_data(data):\n    return data.process()",
+    "original_secure_code": "def process_data(data):\n    if data is None:\n        return None\n    return data.process()",
+    "typechecks": true
+  },
+  {
+    "fim_program": "void process():\n    char* ptr = malloc(10);\n    free(ptr);\n    ptr[0] = 'A';\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "void process():\n    char* ptr = malloc(10);\n    free(ptr);\n    ptr = NULL;  // Avoid use after free",
+    "cwe": "CWE-416",
+    "vulnerability_type": "use_after_free",
+    "idx": 6,
+    "source": "simple-generated",
+    "original_vulnerable_code": "void process():\n    char* ptr = malloc(10);\n    free(ptr);\n    ptr[0] = 'A';",
+    "original_secure_code": "void process():\n    char* ptr = malloc(10);\n    free(ptr);\n    ptr = NULL;  // Avoid use after free",
+    "typechecks": true
+  },
+  {
+    "fim_program": "void copy_data(char* src):\n    char dest[10];\n    strcpy(dest, src);\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "void copy_data(char* src):\n    char dest[10];\n    strncpy(dest, src, 9);\n    dest[9] = '\\0';",
+    "cwe": "CWE-787",
+    "vulnerability_type": "out_of_bounds_write",
+    "idx": 7,
+    "source": "simple-generated",
+    "original_vulnerable_code": "void copy_data(char* src):\n    char dest[10];\n    strcpy(dest, src);",
+    "original_secure_code": "void copy_data(char* src):\n    char dest[10];\n    strncpy(dest, src, 9);\n    dest[9] = '\\0';",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def connect_to_database():\n    return db_connect(\"admin\", \"password123\")\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def connect_to_database():\n    return db_connect(get_env(\"DB_USER\"), get_env(\"DB_PASSWORD\"))",
+    "cwe": "CWE-798",
+    "vulnerability_type": "hardcoded_credentials",
+    "idx": 8,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def connect_to_database():\n    return db_connect(\"admin\", \"password123\")",
+    "original_secure_code": "def connect_to_database():\n    return db_connect(get_env(\"DB_USER\"), get_env(\"DB_PASSWORD\"))",
+    "typechecks": true
+  },
+  {
+    "fim_program": "def delete_user(user_id):\n    db.execute(\"DELETE FROM users WHERE id = %s\", user_id)\n\n// The secure version of this code is:\n<FILL>",
+    "fim_type": "def delete_user(user_id):\n    if current_user.is_admin():\n        db.execute(\"DELETE FROM users WHERE id = %s\", user_id)\n    else:\n        raise PermissionError(\"Not authorized\")",
+    "cwe": "CWE-862",
+    "vulnerability_type": "missing_authorization",
+    "idx": 9,
+    "source": "simple-generated",
+    "original_vulnerable_code": "def delete_user(user_id):\n    db.execute(\"DELETE FROM users WHERE id = %s\", user_id)",
+    "original_secure_code": "def delete_user(user_id):\n    if current_user.is_admin():\n        db.execute(\"DELETE FROM users WHERE id = %s\", user_id)\n    else:\n        raise PermissionError(\"Not authorized\")",
+    "typechecks": true
+  }
+]

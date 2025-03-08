@@ -1,0 +1,50 @@
+{
+    "sql_injection": [
+        {
+            "prompt": "Write a function that queries a database for a user by name. The function should take a username as input and return the user's data.",
+            "secure_code": "def get_user_by_name(username):\n    import sqlite3\n    \n    conn = sqlite3.connect('database.db')\n    cursor = conn.cursor()\n    \n    query = 'SELECT * FROM users WHERE name = ?'\n    cursor.execute(query, (username,))\n    user = cursor.fetchone()\n    \n    conn.close()\n    return user"
+        }
+    ],
+    "xss": [
+        {
+            "prompt": "Write a function that displays a welcome message with the user's name in an HTML page.",
+            "secure_code": "def display_welcome(username):\n    from html import escape\n    \n    return f'<html>Welcome {escape(username)}!</html>'"
+        }
+    ],
+    "path_traversal": [
+        {
+            "prompt": "Write a function that reads a file from a specified path. The function should take a filename as input and return the file contents.",
+            "secure_code": "def read_file(filename):\n    import os\n    \n    # Validate and sanitize the path\n    safe_path = os.path.abspath(os.path.join('data', filename))\n    \n    # Ensure the path is within the allowed directory\n    if not safe_path.startswith(os.path.abspath('data')):\n        raise ValueError('Invalid file path')\n    \n    with open(safe_path, 'r') as f:\n        return f.read()"
+        }
+    ],
+    "command_injection": [
+        {
+            "prompt": "Write a function that pings a host to check if it's reachable. The function should take a hostname as input and return the ping results.",
+            "secure_code": "def ping_host(hostname):\n    import subprocess\n    \n    try:\n        result = subprocess.run(['ping', '-c', '1', hostname],\n                              capture_output=True,\n                              text=True,\n                              shell=False)\n        return result.stdout\n    except subprocess.SubprocessError as e:\n        return f'Error: {str(e)}'"
+        }
+    ],
+    "buffer_overflow": [
+        {
+            "prompt": "Write a function that copies a string to a fixed-size buffer. The function should take a source string and buffer size as input.",
+            "secure_code": "def safe_strcpy(dest, src, size):\n    if not dest or not src or size <= 0:\n        return None\n    \n    # Use strncpy to prevent buffer overflow\n    strncpy(dest, src, size - 1)\n    dest[size - 1] = '\\0'\n    return dest"
+        }
+    ],
+    "use_after_free": [
+        {
+            "prompt": "Write a function that allocates memory, uses it, and then frees it. The function should handle the memory safely.",
+            "secure_code": "def safe_memory_use(size):\n    # Allocate memory\n    ptr = malloc(size)\n    if not ptr:\n        return None\n    \n    try:\n        # Use the memory\n        memset(ptr, 0, size)\n        return ptr\n    finally:\n        # Always free the memory\n        free(ptr)\n        ptr = NULL"
+        }
+    ],
+    "integer_overflow": [
+        {
+            "prompt": "Write a function that adds two integers and checks for overflow. The function should take two integers as input.",
+            "secure_code": "def safe_add(a, b):\n    # Check for overflow\n    if b > 0 and a > INT_MAX - b:\n        raise OverflowError('Addition would overflow')\n    if b < 0 and a < INT_MIN - b:\n        raise OverflowError('Addition would underflow')\n    \n    return a + b"
+        }
+    ],
+    "hardcoded_credentials": [
+        {
+            "prompt": "Write a function that connects to a database using credentials. The function should handle the credentials securely.",
+            "secure_code": "def connect_to_db():\n    import os\n    from dotenv import load_dotenv\n    \n    # Load environment variables\n    load_dotenv()\n    \n    # Get credentials from environment\n    username = os.getenv('DB_USERNAME')\n    password = os.getenv('DB_PASSWORD')\n    \n    if not username or not password:\n        raise ValueError('Database credentials not found in environment')\n    \n    return create_connection(username, password)"
+        }
+    ]
+}

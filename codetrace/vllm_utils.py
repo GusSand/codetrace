@@ -3,6 +3,7 @@ import os
 from tqdm import tqdm
 from vllm import AsyncLLMEngine, SamplingParams, AsyncEngineArgs, LLM
 from vllm.outputs import RequestOutput
+import asyncio
 
 def load_vllm(
     model:str,
@@ -85,22 +86,30 @@ async def generate_completions(
     params = SamplingParams(temperature=0, max_tokens=max_tokens, n=1)
     completions = []
     seen = set()
-    for id,prompt in tqdm(
-        enumerate(batch.pop("_prompt")), 
+    
+    # Process one prompt at a time - the simple way that works
+    for idx, prompt in tqdm(
+        enumerate(batch.pop("_prompt")),
         desc="Generating",
         disable=not use_tqdm,
         total=batch_size
     ):
-        generated_promise = request_vllm_completions(llm, prompt, params, request_id=id, **kwargs)
-        async for output_promise in generated_promise:
-            _id = output_promise.request_id
-            if not _id in seen and len(output_promise.outputs[0].text.strip()) > 0:
-                row = {k:batch[k][_id] for k in batch.keys()}
-                generated_text = output_promise.outputs[0].text.strip()
+        try:
+            # Generate for a single prompt
+            generated_promise = request_vllm_completions(llm, [prompt], params, request_id=idx)
+            async for output_promise in generated_promise:
+                output_text = output_promise.outputs[0].text.strip()
+                print(f"Generated text for prompt {idx}: '{output_text}'")
+                
+                row = {k: batch[k][idx] for k in batch.keys()}
                 completions.append({
-                        **row, 
-                        "_generated": generated_text,
-                    })
-                seen.add(_id)
+                    **row,
+                    "_generated": output_text,
+                })
+                break  # We only want the first completion
+        except Exception as e:
+            print(f"Error processing prompt {idx}: {str(e)}")
+            continue
 
+    print(f"Successfully generated {len(completions)} completions")
     return completions

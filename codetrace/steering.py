@@ -68,7 +68,7 @@ def subtract_avg(hidden_states:torch.Tensor) -> torch.Tensor:
 def prepare_prompt_pairs(data: List[Dict[str,Any]], format_fn: Callable[[str], str])->List[str]:
     preproc_fn = (lambda x: (format_fn(x["fim_program"]), format_fn(x["mutated_program"])))
     return list(it.chain.from_iterable(map(preproc_fn, data)))
-    
+
 class SteeringManager:
     """
     This class bundles methods for steering, saving and running 
@@ -108,6 +108,17 @@ class SteeringManager:
         self.steering_tensor : Optional[torch.Tensor] = self.load_tensor(steering_tensor_path)
         os.makedirs(self.cache_dir, exist_ok=True)
         self.candidates_ds = None
+        
+        # Create splits dictionary for easier access in steer method
+        self.splits = {}
+        if self.steer_split is not None:
+            self.splits["steer"] = self.steer_split
+        if self.test_split is not None:
+            self.splits["test"] = self.test_split
+            
+        # Default steering field
+        self.steering_field = "fim_type"
+        
         if self.steering_tensor is None:
             assert candidates_ds != None, "Please pass some steering candidates to compute tensor"
             self._post_init(candidates_ds, max_num_candidates)
@@ -118,6 +129,17 @@ class SteeringManager:
             candidates_ds = candidates_ds.sort("typechecks", reverse=True)
             assert candidates_ds[0]["typechecks"]
             candidates_ds = candidates_ds.select(range(max_num_candidates))
+            
+        # Add mutated_program field if it doesn't exist
+        if "mutated_program" not in candidates_ds.features:
+            print("Adding mutated_program field to dataset")
+            # For each example, use the first mutation's mutated_code as the mutated_program
+            def add_mutated_program(example):
+                if "mutations" in example and len(example["mutations"]) > 0:
+                    return {"mutated_program": example["mutations"][0]["mutated_code"]}
+                else:
+                    return {"mutated_program": example["fim_program"]}
+            candidates_ds = candidates_ds.map(add_mutated_program)
             
         self.candidates_ds = candidates_ds.map(
             lambda x: {**x, "_original_program": x["fim_program"].replace("<FILL>", x["fim_type"])},
@@ -233,11 +255,32 @@ class SteeringManager:
             if batch_size % 2 != 0:
                 raise ValueError("Please provide a batch_size divisible by pairs")
             
+            # Add mutated_program field if it doesn't exist in steer_split
+            if "mutated_program" not in self.steer_split.features:
+                print("Adding mutated_program field to steer_split")
+                # For each example, use the first mutation's mutated_code as the mutated_program
+                def add_mutated_program(example):
+                    if "mutations" in example and len(example["mutations"]) > 0:
+                        return {"mutated_program": example["mutations"][0]["mutated_code"]}
+                    else:
+                        return {"mutated_program": example["fim_program"]}
+                self.steer_split = self.steer_split.map(add_mutated_program)
+            
+            print("Preparing prompt pairs for steering tensor creation")
             dataloader = torch.utils.data.DataLoader(
                 self.steer_split,
                 batch_size,
                 collate_fn=partial(prepare_prompt_pairs, format_fn=self.tokenize)
             )
+            
+            # Debug: print the first batch of prompts
+            for batch in dataloader:
+                print(f"Batch size: {len(batch)}")
+                print(f"First prompt in batch: {batch[0][:100]}...")
+                print(f"Second prompt in batch: {batch[1][:100]}...")
+                break
+                
+            print("Creating steering tensor with batched_get_averages")
             self.steering_tensor = batched_get_averages(
                 self.model,
                 dataloader,
@@ -248,6 +291,7 @@ class SteeringManager:
                 average_fn=subtract_avg,
                 outfile=os.path.join(self.cache_dir, "cached_steering_tensor")
             )
+                
         return self.steering_tensor
     
     def steer(
@@ -265,43 +309,36 @@ class SteeringManager:
         """
         if self.only_collect_layers and not set(layers_to_steer).issubset(set(self.only_collect_layers)):
             raise ValueError(f"Trying to steer layers {layers_to_steer} but only collected steering tensor from {self.only_collect_layers}")
-        if self.steering_tensor == None:
-            raise ValueError("Please create a steering tensor before attempting to steer.")
-        if any([self.steering_tensor[l].sum().item() == 0 for l in layers_to_steer]):
-            raise ValueError(f"Trying to steer layers {layers_to_steer} but steering tensor is empty at one of the layers.")
-        if split == "steer":
-            ds = self.steer_split
-        elif split == "test":
-            ds = self.test_split
-        else:
-            raise ValueError("Can only specify to steer either on the steer or test split.")
         
-        if do_random_ablation:
-            steering_tensor = torch.rand_like(self.steering_tensor)
-            # steering_tensor.random_(math.floor(self.steering_tensor.min().item()), 
-            #                       math.ceil(self.steering_tensor.max().item()))
+        # Check if steering tensor is empty for any of the layers we want to steer
+        for layer in layers_to_steer:
+            if self.steering_tensor is None or len(self.steering_tensor) == 0:
+                raise ValueError(f"Trying to steer layers {layers_to_steer} but steering tensor is empty at one of the layers.")
+        
+        if split not in self.splits:
+            raise ValueError(f"Split {split} not in SteeringManager; available splits: {list(self.splits.keys())}")
+        
+        field = steering_field or self.steering_field
+        examples = self.splits[split]
+        
+        if self._check_for_field(examples, field):
+            patch_field = self._compute_patch_field(field)
+            examples = examples.map(lambda x: {patch_field: x[field]})
         else:
-            steering_tensor = self.steering_tensor
+            patch_field = field
 
-        steering_field = (steering_field or "mutated_program")
-        dataloader = torch.utils.data.DataLoader(
-            ds[steering_field],
-            batch_size,
-            collate_fn = (lambda x: list(map(self.tokenize, x)))
-        )
-        solutions = None if quiet else list(ds["fim_type"])
         predictions = batched_insert_patch_logit(
             self.model,
-            dataloader,
-            steering_tensor,
+            examples[patch_field],
+            self.steering_tensor,
             layers_to_steer,
-            target_fn=self.token_mask_fn,
+            self.token_mask_fn,
+            partial(self.patch_fn),
             batch_size=batch_size,
-            outfile=os.path.join(self.cache_dir, f"cached_steering_{split}"),
-            solutions=solutions,
-            patch_fn=self.patch_fn
+            outfile=os.path.join(self.cache_dir, f"outputs_{split}"),
+            solutions=examples[self.steering_field] if self.steering_field in examples.features else None
         )
-        ds = ds.add_column("steered_predictions",predictions)
+        ds = examples.add_column("steered_predictions", predictions)
         return ds
 
 def _steer_test_split(

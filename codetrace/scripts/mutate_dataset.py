@@ -38,18 +38,18 @@ def get_mutations(key: str) -> str:
 def _save(data: List[Dict[str,Any]], path:str, message:str):
     print(message)
     temp_path = Path(str(path) + f"_temp_{uuid.uuid4()}")
-    new_ds = datasets.Dataset.from_list(data)
+    new_ds = datasets.Dataset.from_dict({k: [d[k] for d in data] for k in data[0].keys()})
     if os.path.exists(path):
-        existing_completions = datasets.load_from_disk(path)  
+        existing_completions = datasets.load_from_disk(str(path))  
         new_ds = datasets.concatenate_datasets([new_ds, existing_completions])
 
     # workaround huggingface save_to_disk permissions
     retries, max_retries = 0,4
     while retries < max_retries:
         try:
-            new_ds.save_to_disk(temp_path)
+            new_ds.save_to_disk(str(temp_path))
             if Path(path).exists():
-                shutil.rmtree(path, ignore_errors=True)
+                shutil.rmtree(str(path), ignore_errors=True)
             temp_path.rename(path)
             break
         except Exception as e:
@@ -58,7 +58,7 @@ def _save(data: List[Dict[str,Any]], path:str, message:str):
                 print(f"Error in saving: {e}")
 
     if temp_path.exists():
-        shutil.rmtree(temp_path, ignore_errors=True)
+        shutil.rmtree(str(temp_path), ignore_errors=True)
     
     print(f"Collected {len(new_ds)} candidates")
 
@@ -153,9 +153,9 @@ def main(
             correct = item["_generated"] == item["fim_type"]
             if not correct and len(item["_generated"]) > 0:
                 breaking_mutations.append({**item, 
-                                        "mutated_generated_text": item["_generated"], 
-                                        "correct": False,
-                                        "model_name": model_name})
+                                    "mutated_generated_text": item["_generated"], 
+                                    "correct": False,
+                                    "model_name": model_name})
         num_completed += len(breaking_mutations)
         # save every batch
         if len(breaking_mutations) > 0:
