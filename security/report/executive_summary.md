@@ -24,7 +24,7 @@ This study evaluates the effectiveness of different language models in generatin
 ### Data Collection and Preparation
 
 1. **Data Source**:
-   - Curated a dataset of security-relevant code examples from the project [SecLLMHolmes](https://github.com/ai4cloudops/SecLLMHolmes/tree/main/datasets)
+   - Curated a dataset of security-relevant code examples from the project SecLLMHolmes from [Ullah et al. 2024][1]
    - Focused on common vulnerability types in Python code
    - Included both vulnerable and secure implementations for each pattern
 
@@ -210,9 +210,12 @@ Our analysis revealed that some vulnerability types (particularly Hardcoded Cred
 
 ## Recommendations
 
-1. Consider vulnerability-specific steering approaches rather than general security steering
-2. Apply different steering intensities for different vulnerability types
-3. Monitor for security regressions when applying steering techniques
-4. Develop specialized steering vectors for vulnerabilities that showed regressions, especially Hardcoded Credentials (CWE-798)
-5. Consider using separate, specialized models for different security aspects rather than trying to steer a single model for all vulnerability types
-6. When focusing on Hardcoded Credentials (CWE-798), use no steering or extremely light steering 
+1. Consider using something else (research) instead of just frequency of tokens for building the steering vectors. 
+2. Use vulnerability-specific steering approaches rather than general security steering
+3. Apply different steering intensities for different vulnerability types
+4. Monitor for security regressions when applying steering techniques
+5. Develop specialized steering vectors for vulnerabilities that showed regressions, especially Hardcoded Credentials (CWE-798)
+6. Consider using separate, specialized models for different security aspects rather than trying to steer a single model for all vulnerability types
+7. When focusing on Hardcoded Credentials (CWE-798), use no steering or extremely light steering 
+
+[1]: https://arxiv.org/html/2312.12575v2 "LLMs Cannot Reliably Identify and Reason About Security Vulnerabilities"
