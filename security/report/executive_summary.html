@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>executive_summary.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="executive-summary-security-code-generation-with-language-models">Executive Summary: Security Code Generation with Language Models</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In an era where AI code generation is increasingly integrated into software development workflows, ensuring the security of AI-generated code has become a critical concern. Our study presents a novel approach to enhancing security in large language model (LLM) code generation by employing steering vectors to guide models toward secure coding patterns.</p>
+<p><img src="visualizations/all_models_high_steering.png" alt="Security Score Improvements with High Steering"></p>
+<p>Our findings reveal a nuanced relationship between steering techniques and security outcomes. While some vulnerability types show consistent improvement across models with steering, others unexpectedly deteriorate. Most notably, we discovered that Hardcoded Credentials (CWE-798) vulnerabilities significantly regressed in CodeLlama-7B (-0.44) and StarCoderBase-1B (-0.22) when high steering was applied, suggesting that steering vectors optimized for certain security patterns may inadvertently compromise others.</p>
+<p><img src="visualizations/all_models_low_steering.png" alt="Security Score Improvements with Low Steering"></p>
+<p>Intriguingly, our analysis shows that lower steering intensities often produce more balanced security improvements with fewer regressions. For instance, StarCoder-7B showed improvement for Integer Overflow (CWE-190) with low steering, while other vulnerability types like Buffer Overflow (CWE-120) saw modest improvements across multiple models. This challenges the intuitive assumption that stronger guidance always leads to better security outcomes.</p>
+<p>Perhaps most surprising is that StarCoderBase-1B, despite being significantly smaller than its counterparts, demonstrated competitive security improvements, suggesting that model size may not be the determining factor in security-aware code generation capabilities.</p>
+<p>This study offers valuable insights into the complex interplay between model architectures, steering intensities, and diverse security vulnerabilities—findings that have significant implications for the deployment of AI assistants in secure software development.</p>
+<h2 id="overview">Overview</h2>
+<p>This study evaluates the effectiveness of different language models in generating secure code through steering vectors. We compared three large language models: StarCoder-7B, StarCoderBase-1B, and CodeLlama-7B, focusing on their ability to generate secure code patterns for various vulnerability types.</p>
+<h2 id="methodology">Methodology</h2>
+<h3 id="data-collection-and-preparation">Data Collection and Preparation</h3>
+<ol>
+<li>
+<p><strong>Data Source</strong>:</p>
+<ul>
+<li>Curated a dataset of security-relevant code examples from the project SecLLMHolmes from <a href="https://arxiv.org/html/2312.12575v2" title="LLMs Cannot Reliably Identify and Reason About Security Vulnerabilities">Ullah et al. 2024</a></li>
+<li>Focused on common vulnerability types in Python code</li>
+<li>Included both vulnerable and secure implementations for each pattern</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Formatting</strong>:</p>
+<ul>
+<li>Standardized code examples into a consistent format</li>
+<li>Each example includes:
+<ul>
+<li>Vulnerability type</li>
+<li>Prompt (insecure code)</li>
+<li>Expected secure implementation</li>
+<li>Security patterns to detect</li>
+</ul>
+</li>
+<li>Normalized code style and formatting for consistency</li>
+</ul>
+</li>
+<li>
+<p><strong>Steering Vector Construction</strong>:</p>
+<ul>
+<li>Analyzed secure code patterns to identify key tokens and patterns</li>
+<li>Created steering vectors for each vulnerability type</li>
+<li>Vectors were constructed based on:
+<ul>
+<li>Token frequency analysis in secure implementations</li>
+<li>Semantic relationships between tokens</li>
+<li>Common security patterns and best practices</li>
+</ul>
+</li>
+<li>Each steering vector represents the direction of movement in the model's hidden state space</li>
+</ul>
+<p><strong>Example: SQL Injection (CWE-89) Steering Vector Construction</strong></p>
+<p>For SQL Injection vulnerabilities, we constructed steering vectors by:</p>
+<ol>
+<li>
+<p><strong>Token Analysis</strong>: We compared the frequency of tokens in secure vs. insecure code examples:</p>
+<pre class="hljs"><code><div># Tokens that appeared more frequently in secure implementations:
+&quot;parameterized&quot;, &quot;prepare&quot;, &quot;execute&quot;, &quot;placeholder&quot;, &quot;bind_param&quot;
+
+# Tokens that appeared more frequently in vulnerable implementations:
+&quot;format&quot;, &quot;+&quot; (string concatenation), &quot;%s&quot;, &quot;f\&quot;&quot;, &quot;.format(&quot;
+</div></code></pre>
+</li>
+<li>
+<p><strong>Vector Construction</strong>: We created an embedding vector that increased probability of secure patterns:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Simplified representation of vector components</span>
+sql_injection_vector = {
+    <span class="hljs-string">"parameterized_queries"</span>: +<span class="hljs-number">0.8</span>,    <span class="hljs-comment"># Strongly encourage parameterized queries</span>
+    <span class="hljs-string">"input_validation"</span>: +<span class="hljs-number">0.6</span>,         <span class="hljs-comment"># Encourage input validation</span>
+    <span class="hljs-string">"string_concatenation"</span>: <span class="hljs-number">-0.7</span>,     <span class="hljs-comment"># Discourage string concatenation with user input</span>
+    <span class="hljs-string">"raw_string_formatting"</span>: <span class="hljs-number">-0.5</span>     <span class="hljs-comment"># Discourage format strings with user input</span>
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>Application During Generation</strong>: During code generation, we calculate the dot product between this vector and the model's hidden states, then add this value to the logits (token probabilities) before sampling. This shifts generation away from vulnerable patterns and toward secure implementations:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Simplified pseudocode for applying steering during generation</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_with_steering</span><span class="hljs-params">(prompt, steering_vector, strength=<span class="hljs-number">1.0</span>)</span>:</span>
+    tokens = tokenize(prompt)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(max_length):
+        <span class="hljs-comment"># Get model's hidden states and logits</span>
+        hidden_states, logits = model(tokens)
+        
+        <span class="hljs-comment"># Apply steering vector with specified strength</span>
+        steering = dot_product(hidden_states, steering_vector) * strength
+        adjusted_logits = logits + steering
+        
+        <span class="hljs-comment"># Sample next token with adjusted probabilities</span>
+        next_token = sample(adjusted_logits)
+        tokens.append(next_token)
+    
+    <span class="hljs-keyword">return</span> detokenize(tokens)
+</div></code></pre>
+</li>
+</ol>
+<p>This example illustrates how we transform qualitative security patterns into quantitative steering vectors that guide model generation toward more secure code patterns.</p>
+</li>
+<li>
+<p><strong>Steering Implementation</strong>:</p>
+<ul>
+<li>Applied steering vectors during generation to guide the model's hidden states</li>
+<li>Three steering configurations:
+<ul>
+<li>No steering (baseline): Standard generation without intervention</li>
+<li>Low steering (1.0, temperature 0.6): Gentle guidance towards secure patterns</li>
+<li>High steering (3.0, temperature 0.4): Strong guidance towards secure patterns</li>
+</ul>
+</li>
+<li>Steering affects the model's hidden state dynamics during generation</li>
+</ul>
+<p><strong>Application Layer</strong></p>
+<p>We applied steering vectors at the final hidden layer of the model architecture:</p>
+<ul>
+<li>Steering was applied before the final projection to logits/vocabularies</li>
+<li>This approach targets the high-level semantic representations formed in the final layer</li>
+<li>We experimented with applying steering at different layers and found the final layer to be most effective</li>
+<li>The final layer contains the most abstract representations of the code being generated, capturing semantic rather than syntactic patterns</li>
+</ul>
+<p><strong>Vulnerability-Specific Steering Approach</strong></p>
+<p>We created and applied separate steering vectors for each vulnerability type:</p>
+<ul>
+<li>Each vulnerability category (SQL Injection, XSS, etc.) had its own specialized vector</li>
+<li>Experiments were conducted separately for each vulnerability type using its corresponding vector</li>
+<li>This targeted approach allows for precise steering toward secure patterns specific to each vulnerability</li>
+<li>Results were analyzed per vulnerability type to assess the effectiveness of each specialized vector</li>
+</ul>
+<p>This approach differs from using a single generic &quot;security vector&quot; and ensures that the steering is optimized for the specific patterns and tokens relevant to each vulnerability category.</p>
+</li>
+</ol>
+<h3 id="experimental-setup">Experimental Setup</h3>
+<ul>
+<li><strong>Models</strong>: StarCoder-7B, StarCoderBase-1B, and CodeLlama-7B</li>
+<li><strong>Vulnerability Types</strong>:
+<ul>
+<li>SQL Injection (CWE-89)</li>
+<li>Cross-Site Scripting/XSS (CWE-79)</li>
+<li>Path Traversal (CWE-22)</li>
+<li>Command Injection (CWE-78)</li>
+<li>Buffer Overflow (CWE-120)</li>
+<li>Use After Free (CWE-416)</li>
+<li>Integer Overflow (CWE-190)</li>
+<li>Hardcoded Credentials (CWE-798)</li>
+</ul>
+</li>
+<li><strong>Evaluation Metrics</strong>:
+<ul>
+<li>Security Score: Measures adherence to secure coding practices</li>
+<li>Quality Score: Evaluates code quality and maintainability</li>
+<li>Match Score: Compares generated code with expected secure implementation</li>
+</ul>
+</li>
+</ul>
+<h2 id="key-findings">Key Findings</h2>
+<h3 id="overall-performance">Overall Performance</h3>
+<p>Our comparative analysis of StarCoder-7B, StarCoderBase-1B, and CodeLlama-7B reveals distinct patterns in how different models respond to steering vectors:</p>
+<ol>
+<li>
+<p><strong>Overall Improvements</strong>:</p>
+<ul>
+<li>CodeLlama-7B showed the most dramatic changes, with both significant improvements and regressions</li>
+<li>StarCoderBase-1B showed moderate improvements for some vulnerabilities</li>
+<li>StarCoder-7B showed modest improvements across several vulnerability types</li>
+</ul>
+</li>
+<li>
+<p><strong>Vulnerability-Specific Results</strong>:</p>
+<ul>
+<li>
+<p><strong>Most Effective Improvements</strong>:</p>
+<ul>
+<li>Buffer Overflow (CWE-120): Modest improvements with both steering configurations across multiple models</li>
+<li>Command Injection (CWE-78): Mixed results, with some improvements in StarCoder models</li>
+<li>Integer Overflow (CWE-190): Improvement in StarCoder-7B with low steering (0.1)</li>
+</ul>
+</li>
+<li>
+<p><strong>Least Effective/Negative Results</strong>:</p>
+<ul>
+<li>Hardcoded Credentials (CWE-798): Significant regression in CodeLlama-7B (-0.44) and StarCoderBase-1B (-0.22)</li>
+<li>Use After Free (CWE-416): Mixed results, with some regressions in high steering configurations</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Steering Intensity Comparison</strong>:</p>
+<ul>
+<li>High steering produced more extreme effects (both positive and negative)</li>
+<li>Low steering showed more moderate improvements with fewer regressions</li>
+<li>Some vulnerabilities showed similar patterns across both steering intensities</li>
+</ul>
+</li>
+</ol>
+<h3 id="understanding-security-regressions">Understanding Security Regressions</h3>
+<p>Our analysis revealed that some vulnerability types (particularly Hardcoded Credentials (CWE-798)) actually got worse with steering. We hypothesize several potential explanations:</p>
+<ol>
+<li>
+<p><strong>Interference with Security Patterns</strong>: Steering vectors may inadvertently interfere with security patterns related to credential handling. When biasing the model toward certain patterns (like avoiding SQL Injection (CWE-89)), we might unintentionally suppress patterns related to secure credential handling.</p>
+</li>
+<li>
+<p><strong>Feature Correlation</strong>: Security features in the model's learned representations might be correlated. Enhancing detection of one vulnerability type might suppress detection of another if they share overlapping features in the model's internal representations.</p>
+</li>
+<li>
+<p><strong>Balance Shifts in Token Distributions</strong>: Steering alters token probability distributions, and this might shift the balance away from tokens associated with secure credential handling patterns like environment variables or secret management APIs.</p>
+</li>
+<li>
+<p><strong>Overfitting to Other Vulnerabilities</strong>: The steering vectors might be overoptimized for certain vulnerability types, causing the model to focus less on other security concerns.</p>
+</li>
+</ol>
+<h3 id="configuration-analysis">Configuration Analysis</h3>
+<ol>
+<li>
+<p><strong>High Steering Configuration</strong> (3.0 steering, 0.4 temperature):</p>
+<ul>
+<li>Produced dramatic improvements for some vulnerability types</li>
+<li>Generated more repetitive code patterns</li>
+<li>Caused significant regressions in certain security areas, particularly Hardcoded Credentials (CWE-798)</li>
+</ul>
+</li>
+<li>
+<p><strong>Low Steering Configuration</strong> (1.0 steering, 0.6 temperature):</p>
+<ul>
+<li>More balanced effectiveness across vulnerability types</li>
+<li>Fewer extreme regressions</li>
+<li>Particularly effective for Integer Overflow (CWE-190) vulnerabilities</li>
+</ul>
+</li>
+</ol>
+<h2 id="conclusions">Conclusions</h2>
+<ol>
+<li>
+<p><strong>Model Performance</strong>:</p>
+<ul>
+<li>Different models respond differently to steering vectors</li>
+<li>StarCoderBase-1B performed surprisingly well despite its smaller size</li>
+<li>No single model was universally superior across all vulnerability types</li>
+</ul>
+</li>
+<li>
+<p><strong>Steering Effectiveness</strong>:</p>
+<ul>
+<li>Steering shows promise but has significant limitations</li>
+<li>The technique creates trade-offs between different security concerns</li>
+<li>Vulnerability-specific steering vectors may be needed</li>
+</ul>
+</li>
+<li>
+<p><strong>Vulnerability Type Impact</strong>:</p>
+<ul>
+<li>Some vulnerabilities respond well to steering in specific models (Integer Overflow (CWE-190) in StarCoder-7B, Command Injection (CWE-78) in some models)</li>
+<li>Others show consistent regressions (Hardcoded Credentials (CWE-798))</li>
+<li>Memory safety vulnerabilities (Buffer Overflow (CWE-120), Use After Free (CWE-416)) show mixed results</li>
+</ul>
+</li>
+<li>
+<p><strong>Steering Intensity</strong>:</p>
+<ul>
+<li>Low steering may be preferable for balanced improvements</li>
+<li>High steering produces more extreme effects that may be counterproductive for some vulnerability types</li>
+</ul>
+</li>
+</ol>
+<h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>Consider using something else (research) instead of just frequency of tokens for building the steering vectors.</li>
+<li>Use vulnerability-specific steering approaches rather than general security steering</li>
+<li>Apply different steering intensities for different vulnerability types</li>
+<li>Monitor for security regressions when applying steering techniques</li>
+<li>Develop specialized steering vectors for vulnerabilities that showed regressions, especially Hardcoded Credentials (CWE-798)</li>
+<li>Consider using separate, specialized models for different security aspects rather than trying to steer a single model for all vulnerability types</li>
+<li>When focusing on Hardcoded Credentials (CWE-798), use no steering or extremely light steering</li>
+</ol>
+
+</body>
+</html>

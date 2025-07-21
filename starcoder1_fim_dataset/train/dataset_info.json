@@ -1,0 +1,50 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "json",
+  "dataset_size": 5699130,
+  "description": "",
+  "download_checksums": {
+    "/Users/gussand/github/codetrace/starcoder1_fim_task.jsonl": {
+      "num_bytes": 6152681,
+      "checksum": null
+    }
+  },
+  "download_size": 6152681,
+  "features": {
+    "name": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "language": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prompt": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "canonical_solution": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 11851811,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 5699130,
+      "num_examples": 4792,
+      "dataset_name": "json"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

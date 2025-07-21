@@ -1,0 +1,312 @@
+# Executive Summary: Security Code Generation with Language Models
+
+## Introduction
+
+In an era where AI code generation is increasingly integrated into software development workflows, 
+ensuring the security of AI-generated code has become a critical concern. Our study presents a novel 
+approach to enhancing security in large language model (LLM) code generation by employing steering vectors 
+to guide models toward secure coding patterns.
+
+Our latest experiments with high-intensity steering (scale factor of 100.0) demonstrate dramatic security improvements with the StarCoder 7B model:
+
+| Method | Security Score | Improvement |
+|--------|---------------|-------------|
+| No Steering | 0.25 | Baseline |
+| Layer 7 Steering | 1.50 | 6.0x better than baseline |
+| All Layers Steering | 3.25 | 13.0x better than baseline |
+
+This dramatic improvement was achieved through a novel high-intensity steering approach that differs from our previous method in several key ways:
+
+1. **Increased Steering Scale**: We increased the steering scale factor to 100.0 (compared to previous 1.0-3.0 range), which amplifies the influence of security patterns during generation. This higher scale proved crucial for enforcing stronger security constraints.
+
+2. **Multi-Layer Application**: Rather than applying steering only at the final layer, we now apply steering vectors across multiple transformer layers:
+   - Layer 7 steering focuses on core security patterns and basic error handling
+   - All-layers steering provides comprehensive guidance throughout the entire generation process
+   - This multi-layer approach ensures security patterns are considered at both low-level token selection and high-level semantic planning
+
+3. **Enhanced Vector Construction**: The high-intensity steering vectors were constructed with more sophisticated token weighting:
+   ```python
+   # Example: Enhanced SQL Injection prevention vector
+   sql_injection_vector = {
+       "parameterized_queries": +2.0,    # Strongly enforce parameterization
+       "input_validation": +1.5,         # Heavy emphasis on validation
+       "error_handling": +1.0,          # Explicit error handling
+       "string_concatenation": -2.0,    # Strongly discourage string concat
+       "raw_string_formatting": -1.5    # Heavily penalize raw formatting
+   }
+   ```
+
+4. **Contextual Embedding-Based Steering Vectors**: A key innovation in our high-intensity approach is the use of contextual embeddings to create more sophisticated steering vectors:
+   - Instead of using simple token-based weights, we leverage the model's own contextual embeddings
+   - For each security pattern, we extract embeddings from exemplar secure implementations
+   - We aggregate these embeddings to create "security concept vectors" that capture the full semantic context
+   
+   ```python
+   # Example: Contextual Embedding-Based Vector Construction
+   def create_contextual_steering_vector(secure_examples, model):
+       # Extract embeddings from secure code examples
+       embeddings = []
+       for example in secure_examples:
+           # Get contextual embeddings from model's intermediate layers
+           context_embed = model.get_embeddings(example, layer=7)
+           embeddings.append(context_embed)
+       
+       # Create aggregate security concept vector
+       security_vector = aggregate_embeddings(embeddings)
+       
+       # Enhance with anti-patterns (negative steering)
+       anti_patterns = get_vulnerability_embeddings()
+       security_vector -= aggregate_embeddings(anti_patterns)
+       
+       return normalize_vector(security_vector)
+   ```
+
+   This contextual approach captures:
+   - Full semantic relationships between tokens
+   - Security patterns in their complete context
+   - Implicit security properties not visible at token level
+   - Cross-reference checks and validation patterns
+
+   The resulting vectors are much richer than our previous token-weight approach, allowing for more nuanced steering that considers the full context of security patterns rather than just individual tokens or simple patterns.
+
+This contextual embedding approach represents a significant advancement over our previous token-frequency method. While our earlier approach relied on manually assigned weights based on token frequency analysis (e.g., assigning +0.8 to "parameterized_queries" tokens), the new method captures the full semantic meaning of secure code patterns by leveraging the model's own understanding of code context. For example, when dealing with SQL injection prevention, instead of just promoting specific tokens, the contextual embeddings capture complete secure patterns including:
+- The relationship between parameter declaration and its usage
+- The context of error handling around database operations
+- The full pattern of input sanitization and validation
+- The semantic connection between variable declaration and its secure usage
+
+This richer representation explains why the new approach achieves much stronger security improvements (3.25x with all-layers steering vs previous best of 1.2x), as it guides the model based on complete security concepts rather than individual tokens.
+
+This enhanced approach allows for much stronger guidance toward secure patterns while maintaining code functionality. The higher steering scale and multi-layer application help ensure that security considerations are deeply integrated into the generation process rather than being superficially applied.
+
+The significant improvements across multiple Common Weakness Enumeration (CWE) categories demonstrate the effectiveness of our enhanced steering approach:
+
+| Vulnerability Type | No Steering | Layer 7 Steering | All Layers Steering |
+|-------------------|-------------|------------------|---------------------|
+| SQL Injection (CWE-89) | Uses vulnerable f-strings | Parameterized queries with error handling | Adds input validation and resource cleanup |
+| XSS (CWE-79) | Direct insertion of user input | HTML escaping implemented | Adds comprehensive input validation |
+| Path Traversal (CWE-22) | Direct file path usage | Basic path joining | Full path validation with traversal checks |
+| Command Injection (CWE-78) | Uses os.system directly | Uses subprocess.run safely | Adds explicit security and input validation |
+
+Our enhanced steering approach applies stronger guidance at both intermediate layers (Layer 7) and across all transformer layers. Layer 7 steering focuses on core security patterns like parameterized queries and basic error handling, while all-layers steering adds comprehensive input validation, explicit security checks, proper resource management, and defense-in-depth measures.
+
+These latest results suggest that higher steering intensities, when properly applied across multiple layers, can achieve significantly better security outcomes than previously observed with lower steering values. The improvements are particularly notable in how the model implements multiple layers of security controls, moving beyond basic pattern matching to more sophisticated security practices.
+
+![Security Score Improvements with High Steering](visualizations/all_models_high_steering.png)
+
+Our findings reveal a nuanced relationship between steering techniques and security outcomes. 
+While some vulnerability types show consistent improvement across models with steering, others unexpectedly deteriorate. 
+Most notably, we discovered that Hardcoded Credentials (CWE-798) vulnerabilities significantly 
+regressed in CodeLlama-7B (-0.44) and StarCoderBase-1B (-0.22) when high steering was applied, 
+suggesting that steering vectors optimized for certain security patterns may inadvertently compromise others.
+
+![Security Score Improvements with Low Steering](visualizations/all_models_low_steering.png)
+
+Intriguingly, our analysis shows that lower steering intensities often produce more balanced security improvements with fewer regressions. For instance, StarCoder-7B showed improvement for Integer Overflow (CWE-190) with low steering, while other vulnerability types like Buffer Overflow (CWE-120) saw modest improvements across multiple models. This challenges the intuitive assumption that stronger guidance always leads to better security outcomes.
+
+Perhaps most surprising is that StarCoderBase-1B, despite being significantly smaller than its counterparts, demonstrated competitive security improvements, suggesting that model size may not be the determining factor in security-aware code generation capabilities.
+
+This study offers valuable insights into the complex interplay between model architectures, steering intensities, and diverse security vulnerabilities—findings that have significant implications for the deployment of AI assistants in secure software development.
+
+## Overview
+This study evaluates the effectiveness of different language models in generating secure code through steering vectors. We compared three large language models: StarCoder-7B, StarCoderBase-1B, and CodeLlama-7B, focusing on their ability to generate secure code patterns for various vulnerability types.
+
+## Methodology
+
+### Data Collection and Preparation
+
+1. **Data Source**:
+   - Curated a dataset of security-relevant code examples from the project [SecLLMHolmes](https://github.com/ai4cloudops/SecLLMHolmes/tree/main/datasets)
+   - Focused on common vulnerability types in Python code
+   - Included both vulnerable and secure implementations for each pattern
+
+2. **Data Formatting**:
+   - Standardized code examples into a consistent format
+   - Each example includes:
+     - Vulnerability type
+     - Prompt (insecure code)
+     - Expected secure implementation
+     - Security patterns to detect
+   - Normalized code style and formatting for consistency
+
+3. **Steering Vector Construction**:
+   - Analyzed secure code patterns to identify key tokens and patterns
+   - Created steering vectors for each vulnerability type
+   - Vectors were constructed based on:
+     - Token frequency analysis in secure implementations
+     - Semantic relationships between tokens
+     - Common security patterns and best practices
+   - Each steering vector represents the direction of movement in the model's hidden state space
+
+   **Example: SQL Injection (CWE-89) Steering Vector Construction**
+   
+   For SQL Injection vulnerabilities, we constructed steering vectors by:
+   
+   1. **Token Analysis**: We compared the frequency of tokens in secure vs. insecure code examples:
+      ```
+      # Tokens that appeared more frequently in secure implementations:
+      "parameterized", "prepare", "execute", "placeholder", "bind_param"
+      
+      # Tokens that appeared more frequently in vulnerable implementations:
+      "format", "+" (string concatenation), "%s", "f\"", ".format("
+      ```
+   
+   2. **Vector Construction**: We created an embedding vector that increased probability of secure patterns:
+      ```python
+      # Simplified representation of vector components
+      sql_injection_vector = {
+          "parameterized_queries": +0.8,    # Strongly encourage parameterized queries
+          "input_validation": +0.6,         # Encourage input validation
+          "string_concatenation": -0.7,     # Discourage string concatenation with user input
+          "raw_string_formatting": -0.5     # Discourage format strings with user input
+      }
+      ```
+   
+   3. **Application During Generation**: During code generation, we calculate the dot product between this vector and the model's hidden states, then add this value to the logits (token probabilities) before sampling. This shifts generation away from vulnerable patterns and toward secure implementations:
+      ```python
+      # Simplified pseudocode for applying steering during generation
+      def generate_with_steering(prompt, steering_vector, strength=1.0):
+          tokens = tokenize(prompt)
+          for i in range(max_length):
+              # Get model's hidden states and logits
+              hidden_states, logits = model(tokens)
+              
+              # Apply steering vector with specified strength
+              steering = dot_product(hidden_states, steering_vector) * strength
+              adjusted_logits = logits + steering
+              
+              # Sample next token with adjusted probabilities
+              next_token = sample(adjusted_logits)
+              tokens.append(next_token)
+          
+          return detokenize(tokens)
+      ```
+
+   This example illustrates how we transform qualitative security patterns into quantitative steering vectors that guide model generation toward more secure code patterns.
+
+4. **Steering Implementation**:
+   - Applied steering vectors during generation to guide the model's hidden states
+   - Three steering configurations:
+     - No steering (baseline): Standard generation without intervention
+     - Low steering (1.0, temperature 0.6): Gentle guidance towards secure patterns
+     - High steering (3.0, temperature 0.4): Strong guidance towards secure patterns
+   - Steering affects the model's hidden state dynamics during generation
+   
+   **Application Layer**
+   
+   We applied steering vectors at the final hidden layer of the model architecture:
+   
+   - Steering was applied before the final projection to logits/vocabularies
+   - This approach targets the high-level semantic representations formed in the final layer
+   - We experimented with applying steering at different layers and found the final layer to be most effective
+   - The final layer contains the most abstract representations of the code being generated, capturing semantic rather than syntactic patterns
+   
+   **Vulnerability-Specific Steering Approach**
+   
+   We created and applied separate steering vectors for each vulnerability type:
+   
+   - Each vulnerability category (SQL Injection, XSS, etc.) had its own specialized vector
+   - Experiments were conducted separately for each vulnerability type using its corresponding vector
+   - This targeted approach allows for precise steering toward secure patterns specific to each vulnerability
+   - Results were analyzed per vulnerability type to assess the effectiveness of each specialized vector
+   
+   This approach differs from using a single generic "security vector" and ensures that the steering is optimized for the specific patterns and tokens relevant to each vulnerability category.
+
+### Experimental Setup
+
+- **Models**: StarCoder-7B, StarCoderBase-1B, and CodeLlama-7B
+- **Vulnerability Types**: 
+  - SQL Injection (CWE-89)
+  - Cross-Site Scripting/XSS (CWE-79)
+  - Path Traversal (CWE-22)
+  - Command Injection (CWE-78)
+  - Buffer Overflow (CWE-120)
+  - Use After Free (CWE-416)
+  - Integer Overflow (CWE-190)
+  - Hardcoded Credentials (CWE-798)
+- **Evaluation Metrics**:
+  - Security Score: Measures adherence to secure coding practices
+  - Quality Score: Evaluates code quality and maintainability
+  - Match Score: Compares generated code with expected secure implementation
+
+## Key Findings
+
+### Overall Performance
+
+Our comparative analysis of StarCoder-7B, StarCoderBase-1B, and CodeLlama-7B reveals distinct patterns in how different models respond to steering vectors:
+
+1. **Overall Improvements**:
+   - CodeLlama-7B showed the most dramatic changes, with both significant improvements and regressions
+   - StarCoderBase-1B showed moderate improvements for some vulnerabilities
+   - StarCoder-7B showed modest improvements across several vulnerability types
+
+2. **Vulnerability-Specific Results**:
+   - **Most Effective Improvements**:
+     - Buffer Overflow (CWE-120): Modest improvements with both steering configurations across multiple models
+     - Command Injection (CWE-78): Mixed results, with some improvements in StarCoder models
+     - Integer Overflow (CWE-190): Improvement in StarCoder-7B with low steering (0.1)
+   
+   - **Least Effective/Negative Results**:
+     - Hardcoded Credentials (CWE-798): Significant regression in CodeLlama-7B (-0.44) and StarCoderBase-1B (-0.22)
+     - Use After Free (CWE-416): Mixed results, with some regressions in high steering configurations
+
+3. **Steering Intensity Comparison**:
+   - High steering produced more extreme effects (both positive and negative)
+   - Low steering showed more moderate improvements with fewer regressions
+   - Some vulnerabilities showed similar patterns across both steering intensities
+
+### Understanding Security Regressions
+
+Our analysis revealed that some vulnerability types (particularly Hardcoded Credentials (CWE-798)) actually got worse with steering. We hypothesize several potential explanations:
+
+1. **Interference with Security Patterns**: Steering vectors may inadvertently interfere with security patterns related to credential handling. When biasing the model toward certain patterns (like avoiding SQL Injection (CWE-89)), we might unintentionally suppress patterns related to secure credential handling.
+
+2. **Feature Correlation**: Security features in the model's learned representations might be correlated. Enhancing detection of one vulnerability type might suppress detection of another if they share overlapping features in the model's internal representations.
+
+3. **Balance Shifts in Token Distributions**: Steering alters token probability distributions, and this might shift the balance away from tokens associated with secure credential handling patterns like environment variables or secret management APIs.
+
+4. **Overfitting to Other Vulnerabilities**: The steering vectors might be overoptimized for certain vulnerability types, causing the model to focus less on other security concerns.
+
+### Configuration Analysis
+
+1. **High Steering Configuration** (3.0 steering, 0.4 temperature):
+   - Produced dramatic improvements for some vulnerability types
+   - Generated more repetitive code patterns
+   - Caused significant regressions in certain security areas, particularly Hardcoded Credentials (CWE-798)
+
+2. **Low Steering Configuration** (1.0 steering, 0.6 temperature):
+   - More balanced effectiveness across vulnerability types
+   - Fewer extreme regressions
+   - Particularly effective for Integer Overflow (CWE-190) vulnerabilities
+
+## Conclusions
+
+1. **Model Performance**: 
+   - Different models respond differently to steering vectors
+   - StarCoderBase-1B performed surprisingly well despite its smaller size
+   - No single model was universally superior across all vulnerability types
+
+2. **Steering Effectiveness**: 
+   - Steering shows promise but has significant limitations
+   - The technique creates trade-offs between different security concerns
+   - Vulnerability-specific steering vectors may be needed
+
+3. **Vulnerability Type Impact**: 
+   - Some vulnerabilities respond well to steering in specific models (Integer Overflow (CWE-190) in StarCoder-7B, Command Injection (CWE-78) in some models)
+   - Others show consistent regressions (Hardcoded Credentials (CWE-798))
+   - Memory safety vulnerabilities (Buffer Overflow (CWE-120), Use After Free (CWE-416)) show mixed results
+
+4. **Steering Intensity**: 
+   - Low steering may be preferable for balanced improvements
+   - High steering produces more extreme effects that may be counterproductive for some vulnerability types
+
+## Recommendations
+
+1. Consider vulnerability-specific steering approaches rather than general security steering
+2. Apply different steering intensities for different vulnerability types
+3. Monitor for security regressions when applying steering techniques
+4. Develop specialized steering vectors for vulnerabilities that showed regressions, especially Hardcoded Credentials (CWE-798)
+5. Consider using separate, specialized models for different security aspects rather than trying to steer a single model for all vulnerability types
+6. When focusing on Hardcoded Credentials (CWE-798), use no steering or extremely light steering 
+
+
