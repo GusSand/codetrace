@@ -9,6 +9,8 @@ import itertools as it
 from typing import List, Dict, Any, Callable
 import datasets
 from pathlib import Path
+from nnsight import LanguageModel
+from codetrace.batched_utils import batched_get_averages
 
 # Add the parent directory to the path so we can import from codetrace
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -32,17 +34,15 @@ def modified_tokenize(tokenizer, fim_obj, prompt: str) -> str:
         print(f"Error in modified_tokenize: {e}")
         return prompt
 
-def modified_prepare_prompt_pairs(data: List[Dict[str, Any]], format_fn: Callable[[str], str]) -> List[str]:
-    """Modified prepare_prompt_pairs that handles prompts without placeholders."""
+def modified_prepare_prompt_pairs(data, format_fn):
+    """
+    Prepare prompt pairs from the data using the provided format function.
+    """
     result = []
     for x in data:
-        # Process fim_program
-        fim_program_formatted = format_fn(x["fim_program"])
-        result.append(fim_program_formatted)
-        
-        # Process mutated_program
-        mutated_program_formatted = format_fn(x["mutated_program"])
-        result.append(mutated_program_formatted)
+        # Process prompt and secure_code
+        formatted = format_fn(x)
+        result.append(formatted)
     
     return result
 
@@ -52,88 +52,71 @@ class SimpleModelWrapper:
         self.model = model
         self.tokenizer = tokenizer
         self.config = model.config
-        self.config.name_or_path = "bigcode/starcoderbase-1b"
+        self.config.name_or_path = "bigcode/starcoderbase-7b"
 
 def main():
-    # Load the security examples
-    with open("security/security_steering_examples.json", "r") as f:
-        examples = json.load(f)
+    # Load security examples
+    with open("security/simplified_security_examples.json", "r") as f:
+        security_examples = json.load(f)
     
-    # Initialize tokenizer and model
-    model_name = "bigcode/starcoderbase-1b"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model_hf = AutoModelForCausalLM.from_pretrained(model_name)
+    # Flatten the examples into a list of prompt-completion pairs
+    examples = []
+    for category in security_examples.values():
+        for example in category:
+            examples.append({
+                "prompt": example["prompt"],
+                "completion": example["secure_code"]
+            })
     
-    # Create a simple wrapper for the model
-    model = SimpleModelWrapper(model_hf, tokenizer)
-    
-    # Create a dataset from the examples
-    dataset = datasets.Dataset.from_list(examples)
-    
-    # Add the _original_program field
-    dataset = dataset.map(
-        lambda x: {"_original_program": x["fim_program"].replace("<FILL>", x["fim_type"])},
-        desc="Adding column for original unfimmed program"
+    # Initialize model with proper device settings
+    model_name = "bigcode/starcoderbase-7b"
+    model = LanguageModel(
+        model_name,
+        torch_dtype=torch.float16,
+        device_map="auto",
+        use_auth_token=True
     )
     
-    # Split the dataset into steer and test splits
-    steer_size = len(dataset) // 2
-    test_size = len(dataset) - steer_size
+    # Create dataset from examples
+    dataset = datasets.Dataset.from_list(examples)
     
-    indices = list(range(len(dataset)))
-    steer_indices = indices[:steer_size]
-    test_indices = indices[steer_size:]
-    
-    steer_split = dataset.select(steer_indices)
-    test_split = dataset.select(test_indices)
+    # Split into steer and test
+    dataset = dataset.train_test_split(test_size=0.5, seed=42)
+    steer_split = dataset["train"]
+    test_split = dataset["test"]
     
     print(f"Steer split size: {len(steer_split)}")
     print(f"Test split size: {len(test_split)}")
     
-    # Create the steering tensor
+    # Prepare prompt pairs
     print("Preparing prompt pairs for steering tensor creation")
     
-    # Create a format function that mimics the tokenize method
-    format_fn = partial(modified_tokenize, tokenizer, STARCODER_FIM)
+    # Create a format function that combines prompt and completion
+    def format_fn(x):
+        return f"{x['prompt']}\n{x['completion']}"
     
-    dataloader = torch.utils.data.DataLoader(
-        steer_split,
-        batch_size=2,
-        collate_fn=partial(modified_prepare_prompt_pairs, format_fn=format_fn)
-    )
+    prompt_pairs = modified_prepare_prompt_pairs(steer_split, format_fn)
     
-    # Debug: print the first batch of prompts
-    for batch in dataloader:
-        print(f"Batch size: {len(batch)}")
-        print(f"First prompt in batch: {batch[0][:100]}...")
-        print(f"Second prompt in batch: {batch[1][:100]}...")
-        break
-    
-    # Create a simple token mask function
-    def token_mask_fn(hidden_states, tokens):
-        # Just return the last token
-        return hidden_states[:, -1]
-    
-    # Import batched_get_averages here to avoid circular imports
-    from codetrace.batched_utils import batched_get_averages
-    
+    # Create steering tensor
     print("Creating steering tensor with batched_get_averages")
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
-    # Move the model to the device
-    model.model.to(device)
+    # Tokenize and pad all prompts to the same length
+    tokenizer = model.tokenizer
+    encoded = tokenizer(prompt_pairs, padding=True, truncation=True, max_length=512, return_tensors="pt")
+    padded_prompts = tokenizer.batch_decode(encoded["input_ids"])
     
     steering_tensor = batched_get_averages(
-        model.model,
-        dataloader,
-        batch_size=2,
-        target_fn=token_mask_fn,
-        reduction="sum",
-        layers=[10]
+        model=model,
+        prompts=padded_prompts,
+        target_fn=lambda x: torch.ones_like(x),  # Use all tokens
+        batch_size=1,
+        layers=list(range(model.config.num_hidden_layers)),
+        reduction=None
     )
     
     # Check if the steering tensor is empty
-    for layer in [10]:
+    for layer in range(model.config.num_hidden_layers):
         if steering_tensor[layer].sum() == 0:
             print(f"Warning: Steering tensor is empty for layer {layer}")
     

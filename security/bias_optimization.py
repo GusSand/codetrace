@@ -354,6 +354,11 @@ def analyze_security_patterns(generated_text: str, vulnerability_type: str) -> D
             "subprocess_array": ["subprocess.call", "subprocess.run", "[\"ping\"", "check_output"],
             "import_subprocess": ["import subprocess", "from subprocess import"],
             "no_shell": ["shell=False", ", hostname", "[\"ping\", \"-c\", \"1\", hostname"]
+        },
+        "use_after_free": {
+            "null_check": ["if (ptr == NULL)", "if (!ptr)", "ptr == nullptr"],
+            "free_check": ["free(ptr)", "ptr = NULL", "ptr = nullptr"],
+            "memory_management": ["malloc", "calloc", "realloc"]
         }
     }
     
