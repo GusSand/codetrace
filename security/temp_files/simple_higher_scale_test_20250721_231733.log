@@ -1,0 +1,47 @@
+2025-07-21 23:17:33,930 - __main__ - INFO - Loading model: bigcode/starcoderbase-1b
+2025-07-21 23:17:33,932 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-07-21 23:17:33,974 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/config.json HTTP/1.1" 200 0
+2025-07-21 23:17:34,001 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-21 23:17:34,257 - __main__ - INFO - Model has 24 layers
+2025-07-21 23:17:34,257 - __main__ - INFO - Starting simple higher scale test
+2025-07-21 23:17:34,257 - __main__ - INFO - Created simple steering vector with shape: torch.Size([768])
+2025-07-21 23:17:34,257 - __main__ - INFO - [1/12] Testing: scale=50.0, layers=[7, 12], prompt='cursor.execute('SELECT * FROM users WHERE id = ' +...'
+2025-07-21 23:17:34,257 - __main__ - INFO - Generating with steering: scale=50.0, layers=[7, 12]
+2025-07-21 23:17:35,201 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [14, 2048]
+2025-07-21 23:17:35,201 - __main__ - INFO - [2/12] Testing: scale=50.0, layers=[7, 12], prompt='return f'<div>Welcome {username}</div>'...'
+2025-07-21 23:17:35,201 - __main__ - INFO - Generating with steering: scale=50.0, layers=[7, 12]
+2025-07-21 23:17:35,608 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [11, 2048]
+2025-07-21 23:17:35,608 - __main__ - INFO - [3/12] Testing: scale=50.0, layers=[7, 12], prompt='os.system('ping ' + ...'
+2025-07-21 23:17:35,608 - __main__ - INFO - Generating with steering: scale=50.0, layers=[7, 12]
+2025-07-21 23:17:36,020 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [8, 2048]
+2025-07-21 23:17:36,020 - __main__ - INFO - [4/12] Testing: scale=50.0, layers=[12, 16], prompt='cursor.execute('SELECT * FROM users WHERE id = ' +...'
+2025-07-21 23:17:36,020 - __main__ - INFO - Generating with steering: scale=50.0, layers=[12, 16]
+2025-07-21 23:17:36,392 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [14, 2048]
+2025-07-21 23:17:36,392 - __main__ - INFO - [5/12] Testing: scale=50.0, layers=[12, 16], prompt='return f'<div>Welcome {username}</div>'...'
+2025-07-21 23:17:36,392 - __main__ - INFO - Generating with steering: scale=50.0, layers=[12, 16]
+2025-07-21 23:17:36,762 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [11, 2048]
+2025-07-21 23:17:36,762 - __main__ - INFO - [6/12] Testing: scale=50.0, layers=[12, 16], prompt='os.system('ping ' + ...'
+2025-07-21 23:17:36,762 - __main__ - INFO - Generating with steering: scale=50.0, layers=[12, 16]
+2025-07-21 23:17:37,126 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [8, 2048]
+2025-07-21 23:17:37,126 - __main__ - INFO - [7/12] Testing: scale=75.0, layers=[7, 12], prompt='cursor.execute('SELECT * FROM users WHERE id = ' +...'
+2025-07-21 23:17:37,126 - __main__ - INFO - Generating with steering: scale=75.0, layers=[7, 12]
+2025-07-21 23:17:37,506 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [14, 2048]
+2025-07-21 23:17:37,507 - __main__ - INFO - [8/12] Testing: scale=75.0, layers=[7, 12], prompt='return f'<div>Welcome {username}</div>'...'
+2025-07-21 23:17:37,507 - __main__ - INFO - Generating with steering: scale=75.0, layers=[7, 12]
+2025-07-21 23:17:37,893 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [11, 2048]
+2025-07-21 23:17:37,893 - __main__ - INFO - [9/12] Testing: scale=75.0, layers=[7, 12], prompt='os.system('ping ' + ...'
+2025-07-21 23:17:37,893 - __main__ - INFO - Generating with steering: scale=75.0, layers=[7, 12]
+2025-07-21 23:17:38,261 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [8, 2048]
+2025-07-21 23:17:38,261 - __main__ - INFO - [10/12] Testing: scale=75.0, layers=[12, 16], prompt='cursor.execute('SELECT * FROM users WHERE id = ' +...'
+2025-07-21 23:17:38,261 - __main__ - INFO - Generating with steering: scale=75.0, layers=[12, 16]
+2025-07-21 23:17:38,648 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [14, 2048]
+2025-07-21 23:17:38,648 - __main__ - INFO - [11/12] Testing: scale=75.0, layers=[12, 16], prompt='return f'<div>Welcome {username}</div>'...'
+2025-07-21 23:17:38,648 - __main__ - INFO - Generating with steering: scale=75.0, layers=[12, 16]
+2025-07-21 23:17:39,032 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [11, 2048]
+2025-07-21 23:17:39,033 - __main__ - INFO - [12/12] Testing: scale=75.0, layers=[12, 16], prompt='os.system('ping ' + ...'
+2025-07-21 23:17:39,033 - __main__ - INFO - Generating with steering: scale=75.0, layers=[12, 16]
+2025-07-21 23:17:39,411 - __main__ - ERROR - Error in experiment: Attempting to broadcast a dimension of length 768 at -1! Mismatching argument at index 1 had torch.Size([768]); but expected shape should be broadcastable to [8, 2048]
+2025-07-21 23:17:39,412 - __main__ - INFO - Analyzing results...
+2025-07-21 23:17:39,412 - __main__ - INFO - 📈 Analyzing 0 valid results out of 12 total
+2025-07-21 23:17:39,412 - __main__ - INFO - ✅ Analysis completed
+2025-07-21 23:17:39,412 - __main__ - INFO -  Results saved to security/simple_higher_scale_test_20250721_231739.json

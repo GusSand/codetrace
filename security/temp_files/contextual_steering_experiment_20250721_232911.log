@@ -1,0 +1,49 @@
+2025-07-21 23:29:11,031 - __main__ - INFO - Loading model: bigcode/starcoderbase-1b
+2025-07-21 23:29:11,033 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-07-21 23:29:11,086 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/config.json HTTP/1.1" 200 0
+2025-07-21 23:29:11,148 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-21 23:29:11,415 - __main__ - INFO - Model has 24 layers
+2025-07-21 23:29:11,415 - __main__ - INFO - Starting contextual steering experiment
+2025-07-21 23:29:11,415 - __main__ - INFO - Created 20 secure and 20 insecure examples
+2025-07-21 23:29:11,415 - __main__ - INFO - Creating contextual steering vectors for layers: [7, 12, 16]
+2025-07-21 23:29:12,339 - __main__ - WARNING - Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-21 23:29:12,746 - __main__ - WARNING - Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-21 23:29:13,134 - __main__ - WARNING - Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-21 23:29:13,552 - __main__ - WARNING - Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-21 23:29:13,979 - __main__ - WARNING - Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-21 23:29:14,386 - __main__ - WARNING - Error processing secure example 5: Accessing Proxy value before it's been set.
+2025-07-21 23:29:14,794 - __main__ - WARNING - Error processing secure example 6: Accessing Proxy value before it's been set.
+2025-07-21 23:29:15,215 - __main__ - WARNING - Error processing secure example 7: Accessing Proxy value before it's been set.
+2025-07-21 23:29:15,606 - __main__ - WARNING - Error processing secure example 8: Accessing Proxy value before it's been set.
+2025-07-21 23:29:15,998 - __main__ - WARNING - Error processing secure example 9: Accessing Proxy value before it's been set.
+2025-07-21 23:29:16,428 - __main__ - WARNING - Error processing secure example 10: Accessing Proxy value before it's been set.
+2025-07-21 23:29:16,989 - __main__ - WARNING - Error processing secure example 11: Accessing Proxy value before it's been set.
+2025-07-21 23:29:17,397 - __main__ - WARNING - Error processing secure example 12: Accessing Proxy value before it's been set.
+2025-07-21 23:29:17,797 - __main__ - WARNING - Error processing secure example 13: Accessing Proxy value before it's been set.
+2025-07-21 23:29:18,199 - __main__ - WARNING - Error processing secure example 14: Accessing Proxy value before it's been set.
+2025-07-21 23:29:18,590 - __main__ - WARNING - Error processing secure example 15: Accessing Proxy value before it's been set.
+2025-07-21 23:29:18,970 - __main__ - WARNING - Error processing secure example 16: Accessing Proxy value before it's been set.
+2025-07-21 23:29:19,347 - __main__ - WARNING - Error processing secure example 17: Accessing Proxy value before it's been set.
+2025-07-21 23:29:19,726 - __main__ - WARNING - Error processing secure example 18: Accessing Proxy value before it's been set.
+2025-07-21 23:29:20,115 - __main__ - WARNING - Error processing secure example 19: Accessing Proxy value before it's been set.
+2025-07-21 23:29:20,500 - __main__ - WARNING - Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-21 23:29:20,884 - __main__ - WARNING - Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-21 23:29:21,259 - __main__ - WARNING - Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-21 23:29:21,655 - __main__ - WARNING - Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-21 23:29:22,036 - __main__ - WARNING - Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-21 23:29:22,441 - __main__ - WARNING - Error processing insecure example 5: Accessing Proxy value before it's been set.
+2025-07-21 23:29:22,825 - __main__ - WARNING - Error processing insecure example 6: Accessing Proxy value before it's been set.
+2025-07-21 23:29:23,236 - __main__ - WARNING - Error processing insecure example 7: Accessing Proxy value before it's been set.
+2025-07-21 23:29:23,632 - __main__ - WARNING - Error processing insecure example 8: Accessing Proxy value before it's been set.
+2025-07-21 23:29:24,019 - __main__ - WARNING - Error processing insecure example 9: Accessing Proxy value before it's been set.
+2025-07-21 23:29:24,410 - __main__ - WARNING - Error processing insecure example 10: Accessing Proxy value before it's been set.
+2025-07-21 23:29:24,801 - __main__ - WARNING - Error processing insecure example 11: Accessing Proxy value before it's been set.
+2025-07-21 23:29:25,387 - __main__ - WARNING - Error processing insecure example 12: Accessing Proxy value before it's been set.
+2025-07-21 23:29:25,768 - __main__ - WARNING - Error processing insecure example 13: Accessing Proxy value before it's been set.
+2025-07-21 23:29:26,142 - __main__ - WARNING - Error processing insecure example 14: Accessing Proxy value before it's been set.
+2025-07-21 23:29:26,517 - __main__ - WARNING - Error processing insecure example 15: Accessing Proxy value before it's been set.
+2025-07-21 23:29:26,895 - __main__ - WARNING - Error processing insecure example 16: Accessing Proxy value before it's been set.
+2025-07-21 23:29:27,274 - __main__ - WARNING - Error processing insecure example 17: Accessing Proxy value before it's been set.
+2025-07-21 23:29:27,664 - __main__ - WARNING - Error processing insecure example 18: Accessing Proxy value before it's been set.
+2025-07-21 23:29:28,046 - __main__ - WARNING - Error processing insecure example 19: Accessing Proxy value before it's been set.
+2025-07-21 23:29:28,047 - __main__ - WARNING - No valid states for layer 7, using zero vector

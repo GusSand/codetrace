@@ -1,0 +1,90 @@
+2025-07-21 23:16:21,991 - __main__ - INFO - Loading model: bigcode/starcoderbase-1b
+2025-07-21 23:16:21,993 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-07-21 23:16:22,041 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/config.json HTTP/1.1" 200 0
+2025-07-21 23:16:22,067 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-21 23:16:22,343 - __main__ - INFO - Model has 24 layers
+2025-07-21 23:16:22,343 - __main__ - INFO - Starting higher scale steering experiment
+2025-07-21 23:16:22,343 - __main__ - INFO - Creating steering vectors for layers: [4, 6, 8]
+2025-07-21 23:16:23,282 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:23,292 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:23,302 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:23,328 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/config.json HTTP/1.1" 200 0
+2025-07-21 23:16:23,461 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-21 23:16:24,426 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-07-21 23:16:24,969 - tensorflow - DEBUG - Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-07-21 23:16:25,206 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2025-07-21 23:16:25,206 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2025-07-21 23:16:25,206 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2025-07-21 23:16:25,206 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2025-07-21 23:16:25,412 - jaxlib.mlir._mlir_libs - DEBUG - Initializing MLIR with module: _site_initialize_0
+2025-07-21 23:16:25,413 - jaxlib.mlir._mlir_libs - DEBUG - Registering dialects from initializer <module 'jaxlib.mlir._mlir_libs._site_initialize_0' from '/home/paperspace/.local/lib/python3.9/site-packages/jaxlib/mlir/_mlir_libs/_site_initialize_0.so'>
+2025-07-21 23:16:25,473 - jax._src.path - DEBUG - etils.epath was not found. Using pathlib for file I/O.
+2025-07-21 23:16:26,687 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:26,697 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:26,707 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:27,301 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:27,311 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:27,322 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:27,731 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:27,741 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:27,751 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,136 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,146 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,156 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,543 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,554 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,564 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,948 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,959 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:28,969 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:29,347 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:29,358 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:29,368 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:29,739 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:29,750 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:29,760 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,147 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,157 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,167 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,547 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,557 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,567 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,974 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,984 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:30,994 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:31,392 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:31,402 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:31,413 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:31,798 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:31,808 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:31,818 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:32,211 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:32,221 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:32,231 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:32,632 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:32,643 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:32,653 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,038 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,049 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,059 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,468 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,478 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,488 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,875 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,885 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:33,895 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:34,272 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:34,283 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:34,293 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:34,665 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:34,675 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:34,685 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,076 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,086 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,096 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,487 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,497 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,507 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,891 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,901 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.
+2025-07-21 23:16:35,912 - __main__ - WARNING - Failed to get layer output value: Accessing Proxy value before it's been set.

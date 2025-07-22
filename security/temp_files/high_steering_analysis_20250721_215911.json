@@ -1,0 +1,11 @@
+{
+  "baseline_avg": 0.12,
+  "layer7_avg": 0.0,
+  "all_layers_avg": 0.0,
+  "layer7_improvement": 0.0,
+  "all_layers_improvement": 0.0,
+  "target_improvements": {
+    "layer7_target": 6.0,
+    "all_layers_target": 13.0
+  }
+}

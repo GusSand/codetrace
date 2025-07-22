@@ -1,0 +1,12 @@
+[
+  {
+    "prompt": "def get_user_data(username):",
+    "without_steering": "\n    \"\"\"\n    Get the data for a user\n    :param username: The",
+    "with_steering": "\n    \"\"\"\n    Get user specific data so it can be used in templates\n   "
+  },
+  {
+    "prompt": "def query_database(user_input):",
+    "without_steering": "\n    # Use a database on a server to get the latest version of the",
+    "with_steering": "\n    if user_input.lower() == \"exit\":\n        return True"
+  }
+]
