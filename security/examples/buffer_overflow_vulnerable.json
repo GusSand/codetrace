@@ -1,0 +1,4 @@
+[
+  "def copy_data(source, dest, size):\n    for i in range(len(source)):\n        dest[i] = source[i]",
+  "def write_string(buffer, text, max_size):\n    buffer.write(text)"
+]

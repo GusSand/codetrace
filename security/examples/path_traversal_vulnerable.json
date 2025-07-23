@@ -1,0 +1,4 @@
+[
+  "def read_file(filename):\n    with open(filename) as f:\n        return f.read()",
+  "def get_user_file(username, filename):\n    return open(f'/home/users/{username}/{filename}').read()"
+]

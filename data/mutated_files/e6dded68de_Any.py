@@ -1,0 +1,72 @@
+from typing import TypeAlias
+__typ0 : TypeAlias = "ViewFuncT"
+__typ2 : TypeAlias = "HttpResponse"
+__typ1 : TypeAlias = "HttpRequest"
+# Webhooks for external integrations.
+
+import base64
+from functools import wraps
+from typing import Any, Callable, Dict, Optional, TypeVar
+
+from django.http import HttpRequest, HttpResponse
+
+from zerver.decorator import authenticated_rest_api_view
+from zerver.lib.types import ViewFuncT
+from zerver.lib.request import REQ, has_request_variables
+from zerver.lib.response import json_success
+from zerver.lib.webhooks.common import check_send_webhook_message
+from zerver.lib.validator import check_dict
+from zerver.models import UserProfile, get_client
+from zerver.webhooks.github_legacy.view import build_message_from_gitlog
+
+# Beanstalk's web hook UI rejects url with a @ in the username section of a url
+# So we ask the user to replace them with %40
+# We manually fix the username here before passing it along to @authenticated_rest_api_view
+def __tmp0(__tmp1: __typ0) :
+    @wraps(__tmp1)
+    def __tmp3(request: __typ1, *args: <FILL>, **kwargs: Any) :
+        auth_type, encoded_value = request.META['HTTP_AUTHORIZATION'].split()  # type: str, str
+        if auth_type.lower() == "basic":
+            email, api_key = base64.b64decode(encoded_value).decode('utf-8').split(":")
+            email = email.replace('%40', '@')
+            credentials = u"%s:%s" % (email, api_key)
+            encoded_credentials = base64.b64encode(credentials.encode('utf-8')).decode('utf8')  # type: str
+            request.META['HTTP_AUTHORIZATION'] = "Basic " + encoded_credentials
+
+        return __tmp1(request, *args, **kwargs)
+
+    return __tmp3  # type: ignore # https://github.com/python/mypy/issues/1927
+
+@__tmp0
+@authenticated_rest_api_view(webhook_client_name="Beanstalk")
+@has_request_variables
+def api_beanstalk_webhook(request: __typ1, __tmp2,
+                          payload: Dict[str, Any]=REQ(validator=check_dict([])),
+                          branches: Optional[str]=REQ(default=None)) -> __typ2:
+    # Beanstalk supports both SVN and git repositories
+    # We distinguish between the two by checking for a
+    # 'uri' key that is only present for git repos
+    git_repo = 'uri' in payload
+    if git_repo:
+        if branches is not None and branches.find(payload['branch']) == -1:
+            return json_success()
+        # To get a linkable url,
+        for commit in payload['commits']:
+            commit['author'] = {'username': commit['author']['name']}
+
+        subject, content = build_message_from_gitlog(__tmp2, payload['repository']['name'],
+                                                     payload['ref'], payload['commits'],
+                                                     payload['before'], payload['after'],
+                                                     payload['repository']['url'],
+                                                     payload['pusher_name'])
+    else:
+        author = payload.get('author_full_name')
+        url = payload.get('changeset_url')
+        revision = payload.get('revision')
+        (short_commit_msg, _, _) = payload['message'].partition("\n")
+
+        subject = "svn r%s" % (revision,)
+        content = "%s pushed [revision %s](%s):\n\n> %s" % (author, revision, url, short_commit_msg)
+
+    check_send_webhook_message(request, __tmp2, subject, content)
+    return json_success()

@@ -1,0 +1,4 @@
+[
+  "def multiply(a: int, b: int) -> int:\n    import sys\n    if a > 0 and b > sys.maxsize // a:\n        raise ValueError('Integer overflow')\n    if a < 0 and b < sys.maxsize // a:\n        raise ValueError('Integer overflow')\n    return a * b",
+  "def add_positive(a: int, b: int) -> int:\n    import sys\n    if a > sys.maxsize - b:\n        raise ValueError('Integer overflow')\n    return a + b"
+]

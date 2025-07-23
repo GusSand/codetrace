@@ -1,0 +1,4 @@
+[
+  "def get_user(username):\n    import sqlite3\n    conn = sqlite3.connect('users.db')\n    cursor = conn.cursor()\n    cursor.execute('SELECT * FROM users WHERE username = ?', (username,))\n    return cursor.fetchone()",
+  "def query_user(user_id):\n    import psycopg2\n    conn = psycopg2.connect(database='mydb')\n    cur = conn.cursor()\n    cur.execute('SELECT name FROM users WHERE id = %s', (user_id,))\n    return cur.fetchone()"
+]

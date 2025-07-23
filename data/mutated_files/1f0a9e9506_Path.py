@@ -1,0 +1,126 @@
+from typing import TypeAlias
+__typ0 : TypeAlias = "str"
+# Copyright 2020 The Cirq Developers
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+import os
+import shutil
+import sys
+import tempfile
+import uuid
+from pathlib import Path
+from typing import Tuple
+
+import pytest
+from filelock import FileLock
+
+from dev_tools import shell_tools
+from dev_tools.env_tools import create_virtual_env
+
+
+def __tmp1(__tmp6):
+    __tmp6.addinivalue_line("markers", "slow: mark tests as slow")
+
+
+def pytest_collection_modifyitems(__tmp6, __tmp2):
+    keywordexpr = __tmp6.option.keyword
+    markexpr = __tmp6.option.markexpr
+    if keywordexpr or markexpr:
+        return  # let pytest handle this
+
+    skip_slow_marker = pytest.mark.skip(reason='slow marker not selected')
+    for item in __tmp2:
+        if 'slow' in item.keywords:
+            item.add_marker(skip_slow_marker)
+
+
+@pytest.fixture(scope="session")
+def cloned_env(testrun_uid, worker_id):
+    """Fixture to allow tests to run in a clean virtual env.
+
+    It de-duplicates installation of base packages. Assuming `virtualenv-clone` exists on the PATH,
+    it creates first a prototype environment and then clones for each new request the same env.
+    This fixture is safe to use with parallel execution, i.e. pytest-xdist. The workers synchronize
+    via a file lock, the first worker will (re)create the prototype environment, the others will
+    reuse it via cloning.
+
+    A group of tests that share the same base environment is identified by a name, `env_dir`,
+    which will become the directory within the temporary directory to hold the virtualenv.
+
+    Usage:
+
+    >>> def test_something_in_clean_env(cloned_env):
+            # base_env will point to a pathlib.Path containing the virtual env which will
+            # have quimb, jinja and whatever reqs.txt contained.
+            base_env = cloned_env("some_tests", "quimb", "jinja", "-r", "reqs.txt")
+
+            # To install new packages (that are potentially different for each test instance)
+            # just run pip install from the virtual env
+            subprocess.run(f"{base_env}/bin/pip install something".split(" "))
+            ...
+
+    Returns:
+        a function to create the cloned base environment with signature
+        `def base_env_creator(env_dir: str, *pip_install_args: str) -> Path`.
+        Use `env_dir` to specify the directory name per shared base packages.
+        Use `pip_install_args` varargs to pass arguments to `pip install`, these
+        can be requirements files, e.g. `'-r','dev_tools/.../something.txt'` or
+        actual packages as well, e.g.`'quimb'`.
+    """
+    __tmp0 = None
+
+    def __tmp7(__tmp8, *__tmp5) :
+        """The function to create a cloned base environment."""
+        # get/create a temp directory shared by all workers
+        base_temp_path = Path(tempfile.gettempdir()) / "cirq-pytest"
+        os.makedirs(name=base_temp_path, exist_ok=True)
+        nonlocal __tmp0
+        __tmp0 = base_temp_path / __tmp8
+        with FileLock(__typ0(__tmp0) + ".lock"):
+            if __tmp3(__tmp0):
+                print(f"Pytest worker [{worker_id}] is reusing {__tmp0} for '{__tmp8}'.")
+            else:
+                print(f"Pytest worker [{worker_id}] is creating {__tmp0} for '{__tmp8}'.")
+                __tmp4(__tmp0, __tmp5)
+
+        clone_dir = base_temp_path / __typ0(uuid.uuid4())
+        shell_tools.run_cmd("virtualenv-clone", __typ0(__tmp0), __typ0(clone_dir))
+        return clone_dir
+
+    def __tmp3(env_dir: <FILL>):
+        reuse = False
+        if env_dir.is_dir() and (env_dir / "testrun.uid").is_file():
+            uid = open(env_dir / "testrun.uid").readlines()[0]
+            # if the dir is from this test session, let's reuse it
+            if uid == testrun_uid:
+                reuse = True
+            else:
+                # if we have a dir from a previous test session, recreate it
+                shutil.rmtree(env_dir)
+        return reuse
+
+    def __tmp4(__tmp0, __tmp5):
+        try:
+            create_virtual_env(__typ0(__tmp0), [], sys.executable, True)
+            with open(__tmp0 / "testrun.uid", mode="w") as f:
+                f.write(testrun_uid)
+            if __tmp5:
+                shell_tools.run_cmd(f"{__tmp0}/bin/pip", "install", *__tmp5)
+        except BaseException as ex:
+            # cleanup on failure
+            if __tmp0.is_dir():
+                print(f"Removing {__tmp0}, due to error: {ex}")
+                shutil.rmtree(__tmp0)
+            raise
+
+    return __tmp7

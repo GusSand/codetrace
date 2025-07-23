@@ -1,0 +1,4 @@
+[
+  "def read_file(filename):\n    import os\n    base_dir = '/app/files'\n    filepath = os.path.normpath(os.path.join(base_dir, filename))\n    if not filepath.startswith(base_dir):\n        raise ValueError('Invalid path')\n    with open(filepath) as f:\n        return f.read()",
+  "def get_user_file(username, filename):\n    import os\n    user_dir = f'/home/users/{username}'\n    safe_path = os.path.abspath(os.path.join(user_dir, filename))\n    if not safe_path.startswith(user_dir):\n        raise ValueError('Access denied')\n    return open(safe_path).read()"
+]

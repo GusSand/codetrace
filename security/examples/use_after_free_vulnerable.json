@@ -1,0 +1,4 @@
+[
+  "class Resource:\n    def __init__(self):\n        self.data = None\n    \n    def free(self):\n        self.data = None\n    \n    def use(self):\n        return self.data",
+  "def process_data(data):\n    resource = allocate_resource()\n    result = process(resource, data)\n    free_resource(resource)\n    return resource.data"
+]

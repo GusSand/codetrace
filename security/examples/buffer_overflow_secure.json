@@ -1,0 +1,4 @@
+[
+  "def copy_data(source, dest, size):\n    if len(source) >= size:\n        raise ValueError('Source too large')\n    dest[:len(source)] = source",
+  "def write_string(buffer, text, max_size):\n    if len(text) >= max_size:\n        text = text[:max_size-1]\n    buffer.write(text + '\\0')"
+]

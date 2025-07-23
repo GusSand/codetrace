@@ -1,0 +1,138 @@
+from typing import TypeAlias
+__typ0 : TypeAlias = "str"
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template import loader
+from django.utils.timezone import now as timezone_now
+from django.template.exceptions import TemplateDoesNotExist
+from zerver.models import UserProfile, ScheduledEmail, get_user_profile_by_id, \
+    EMAIL_TYPES, Realm
+
+import datetime
+from email.utils import parseaddr, formataddr
+import logging
+import ujson
+
+import os
+from typing import Any, Dict, Iterable, List, Mapping, Optional
+
+from zerver.lib.logging_util import log_to_file
+from confirmation.models import generate_key
+
+## Logging setup ##
+
+logger = logging.getLogger('zulip.send_email')
+log_to_file(logger, settings.EMAIL_LOG_PATH)
+
+class FromAddress:
+    SUPPORT = parseaddr(settings.ZULIP_ADMINISTRATOR)[1]
+    NOREPLY = parseaddr(settings.NOREPLY_EMAIL_ADDRESS)[1]
+
+    # Generates an unpredictable noreply address.
+    @staticmethod
+    def __tmp3() :
+        if settings.ADD_TOKENS_TO_NOREPLY_ADDRESS:
+            return parseaddr(settings.TOKENIZED_NOREPLY_EMAIL_ADDRESS)[1].format(token=generate_key())
+        return FromAddress.NOREPLY
+
+def __tmp7(__tmp0, to_user_id: Optional[int]=None,
+                to_email: Optional[__typ0]=None, from_name: Optional[__typ0]=None,
+                from_address: Optional[__typ0]=None, reply_to_email: Optional[__typ0]=None,
+                context: Optional[Dict[__typ0, Any]]=None) -> EmailMultiAlternatives:
+    # Callers should pass exactly one of to_user_id and to_email.
+    assert (to_user_id is None) ^ (to_email is None)
+    if to_user_id is not None:
+        to_user = get_user_profile_by_id(to_user_id)
+        # Change to formataddr((to_user.full_name, to_user.email)) once
+        # https://github.com/zulip/zulip/issues/4676 is resolved
+        to_email = to_user.delivery_email
+
+    if context is None:
+        context = {}
+
+    context.update({
+        'support_email': FromAddress.SUPPORT,
+        'email_images_base_uri': settings.ROOT_DOMAIN_URI + '/static/images/emails',
+        'physical_address': settings.PHYSICAL_ADDRESS,
+    })
+    subject = loader.render_to_string(__tmp0 + '.subject',
+                                      context=context,
+                                      using='Jinja2_plaintext').strip().replace('\n', '')
+    message = loader.render_to_string(__tmp0 + '.txt',
+                                      context=context, using='Jinja2_plaintext')
+
+    try:
+        html_message = loader.render_to_string(__tmp0 + '.html', context)
+    except TemplateDoesNotExist:
+        emails_dir = os.path.dirname(__tmp0)
+        template = os.path.basename(__tmp0)
+        compiled_template_prefix = os.path.join(emails_dir, "compiled", template)
+        html_message = loader.render_to_string(compiled_template_prefix + '.html', context)
+
+    if from_name is None:
+        from_name = "Zulip"
+    if from_address is None:
+        from_address = FromAddress.NOREPLY
+    from_email = formataddr((from_name, from_address))
+    reply_to = None
+    if reply_to_email is not None:
+        reply_to = [reply_to_email]
+    # Remove the from_name in the reply-to for noreply emails, so that users
+    # see "noreply@..." rather than "Zulip" or whatever the from_name is
+    # when they reply in their email client.
+    elif from_address == FromAddress.NOREPLY:
+        reply_to = [FromAddress.NOREPLY]
+
+    mail = EmailMultiAlternatives(subject, message, from_email, [to_email], reply_to=reply_to)
+    if html_message is not None:
+        mail.attach_alternative(html_message, 'text/html')
+    return mail
+
+class EmailNotDeliveredException(Exception):
+    pass
+
+# When changing the arguments to this function, you may need to write a
+# migration to change or remove any emails in ScheduledEmail.
+def __tmp1(__tmp0, to_user_id: Optional[int]=None, to_email: Optional[__typ0]=None,
+               from_name: Optional[__typ0]=None, from_address: Optional[__typ0]=None,
+               reply_to_email: Optional[__typ0]=None, context: Dict[__typ0, Any]={}) :
+    mail = __tmp7(__tmp0, to_user_id=to_user_id, to_email=to_email, from_name=from_name,
+                       from_address=from_address, reply_to_email=reply_to_email, context=context)
+    template = __tmp0.split("/")[-1]
+    logger.info("Sending %s email to %s" % (template, mail.to))
+
+    if mail.send() == 0:
+        logger.error("Error sending %s email to %s" % (template, mail.to))
+        raise EmailNotDeliveredException
+
+def __tmp6(__tmp5) -> None:
+    __tmp1(**dict(__tmp5))
+
+def __tmp2(__tmp0, __tmp4: <FILL>, to_user_id: Optional[int]=None,
+                      to_email: Optional[__typ0]=None, from_name: Optional[__typ0]=None,
+                      from_address: Optional[__typ0]=None, context: Dict[__typ0, Any]={},
+                      delay: datetime.timedelta=datetime.timedelta(0)) :
+    template_name = __tmp0.split('/')[-1]
+    email_fields = {'template_prefix': __tmp0, 'to_user_id': to_user_id, 'to_email': to_email,
+                    'from_name': from_name, 'from_address': from_address, 'context': context}
+
+    if settings.DEVELOPMENT and not settings.TEST_SUITE:
+        __tmp1(__tmp0, to_user_id=to_user_id, to_email=to_email, from_name=from_name,
+                   from_address=from_address, context=context)
+        # For logging the email
+
+    assert (to_user_id is None) ^ (to_email is None)
+    if to_user_id is not None:
+        # The realm is redundant if we have a to_user_id; this assert just
+        # expresses that fact
+        assert(UserProfile.objects.filter(id=to_user_id, __tmp4=__tmp4).exists())
+        to_field = {'user_id': to_user_id}  # type: Dict[str, Any]
+    else:
+        to_field = {'address': parseaddr(to_email)[1]}
+
+    ScheduledEmail.objects.create(
+        type=EMAIL_TYPES[template_name],
+        scheduled_timestamp=timezone_now() + delay,
+        __tmp4=__tmp4,
+        data=ujson.dumps(email_fields),
+        **to_field)

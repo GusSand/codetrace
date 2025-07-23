@@ -1,0 +1,91 @@
+from typing import TypeAlias
+__typ3 : TypeAlias = "JsonType"
+# pyre-strict
+from typing import List, TYPE_CHECKING
+
+from lowerpines.endpoints.request import Request, JsonType
+from lowerpines.endpoints.message import Message
+
+if TYPE_CHECKING:  # pragma: no cover
+    from lowerpines.gmi import GMI
+
+
+class __typ1:
+    def __init__(__tmp1, gmi, group_id) -> None:
+        __tmp1.gmi = gmi
+        __tmp1.group_id = group_id
+
+    def _for_period(__tmp1, period) :
+        return __typ0(__tmp1.gmi, __tmp1.group_id, period).result
+
+    def __tmp2(__tmp1) -> List[Message]:
+        return __tmp1._for_period("day")
+
+    def __tmp0(__tmp1) :
+        return __tmp1._for_period("week")
+
+    def for_month(__tmp1) -> List[Message]:
+        return __tmp1._for_period("month")
+
+    def my_likes(__tmp1) -> List[Message]:
+        return __typ2(__tmp1.gmi, __tmp1.group_id).result
+
+    def __tmp6(__tmp1) :
+        return LeaderboardMyHitsRequest(__tmp1.gmi, __tmp1.group_id).result
+
+
+class __typ0(Request[List[Message]]):
+    def __init__(__tmp1, gmi: "GMI", group_id, period: str) -> None:
+        __tmp1.group_id = group_id
+        if period not in ["day", "week", "month"]:
+            raise ValueError("Period must be one of: day, week, or month")
+        __tmp1.period = period
+        super().__init__(gmi)
+
+    def parse(__tmp1, __tmp5) :
+        messages = []
+        for message_json in __tmp5["messages"]:
+            messages.append(Message.from_json(__tmp1.gmi, message_json))
+        return messages
+
+    def __tmp4(__tmp1) -> str:
+        return __tmp1.base_url + "/groups/" + __tmp1.group_id + "/likes"
+
+    def __tmp3(__tmp1) -> str:
+        return "GET"
+
+
+class __typ2(Request[List[Message]]):
+    def __init__(__tmp1, gmi, group_id: str) :
+        __tmp1.group_id = group_id
+        super().__init__(gmi)
+
+    def parse(__tmp1, __tmp5: __typ3) -> List[Message]:
+        messages = []
+        for message_json in __tmp5["messages"]:
+            messages.append(Message.from_json(__tmp1.gmi, message_json))
+        return messages
+
+    def __tmp4(__tmp1) :
+        return __tmp1.base_url + "/groups/" + __tmp1.group_id + "/likes/mine"
+
+    def __tmp3(__tmp1) :
+        return "GET"
+
+
+class LeaderboardMyHitsRequest(Request[List[Message]]):
+    def __init__(__tmp1, gmi, group_id: <FILL>) -> None:
+        __tmp1.group_id = group_id
+        super().__init__(gmi)
+
+    def parse(__tmp1, __tmp5: __typ3) -> List[Message]:
+        messages = []
+        for message_json in __tmp5["messages"]:
+            messages.append(Message.from_json(__tmp1.gmi, message_json))
+        return messages
+
+    def __tmp4(__tmp1) :
+        return __tmp1.base_url + "/groups/" + __tmp1.group_id + "/likes/for_me"
+
+    def __tmp3(__tmp1) :
+        return "GET"

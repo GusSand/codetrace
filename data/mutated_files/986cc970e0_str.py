@@ -1,0 +1,160 @@
+# Copyright 2018-2020 Chris Cummins <chrisc.101@gmail.com>.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""Unit tests for //datasets/github/scrape_repos/github_repo.py."""
+import multiprocessing
+import pathlib
+
+import pytest
+
+from datasets.github.scrape_repos import github_repo
+from datasets.github.scrape_repos.proto import scrape_repos_pb2
+from labm8.py import app
+from labm8.py import fs
+from labm8.py import pbutil
+from labm8.py import test
+
+FLAGS = app.FLAGS
+
+# Test fixtures.
+
+
+def _CreateTestRepo(
+  __tmp2: pathlib.Path, owner: <FILL>, name
+) -> github_repo.GitHubRepo:
+  """Create an empty repo for testing indexers."""
+  owner_name = f"{owner}_{name}"
+  (__tmp2 / owner_name / ".git").mkdir(parents=True)
+  (__tmp2 / owner_name / "src").mkdir(parents=True)
+  pbutil.ToFile(
+    scrape_repos_pb2.GitHubRepoMetadata(owner=owner, name=name),
+    __tmp2 / f"{owner_name}.pbtxt",
+  )
+  return github_repo.GitHubRepo(__tmp2 / f"{owner_name}.pbtxt")
+
+
+@test.Fixture(scope="function")
+def test_repo(__tmp0) :
+  (__tmp0 / "src").mkdir()
+  yield _CreateTestRepo(__tmp0 / "src", "Foo", "Bar")
+
+
+# GitHubRepo tests.
+
+
+def test_GitHubRepo_IsCloned(test_repo: github_repo.GitHubRepo):
+  """Test for IsCloned()."""
+  assert test_repo.IsCloned()
+  fs.rm(test_repo.clone_dir)
+  assert not test_repo.IsCloned()
+
+
+def test_GitHubRepo_IsIndexed(test_repo: github_repo.GitHubRepo):
+  """Test for IsIndexed()."""
+  assert not test_repo.IsIndexed()
+  test_repo.index_dir.mkdir(parents=True)
+  (test_repo.index_dir / "DONE.txt").touch()
+  assert test_repo.IsIndexed()
+
+
+def test_GitHubRepo_Index_not_cloned(test_repo: github_repo.GitHubRepo):
+  """Indexing a repo which is not cloned does nothing."""
+  fs.rm(test_repo.clone_dir)
+  assert not test_repo.IsIndexed()
+  test_repo.Index(
+    [
+      scrape_repos_pb2.ContentFilesImporterConfig(
+        source_code_pattern=".*\\.java",
+        preprocessor=[
+          "datasets.github.scrape_repos.preprocessors." "extractors:JavaMethods"
+        ],
+      ),
+    ],
+    multiprocessing.Pool(1),
+  )
+  assert not test_repo.IsIndexed()
+
+
+def test_GitHubRepo_Index_Java_repo(test_repo):
+  """An end-to-end test of a Java indexer."""
+  (test_repo.clone_dir / "src").mkdir(exist_ok=True)
+  with open(test_repo.clone_dir / "src" / "A.java", "w") as f:
+    f.write(
+      """
+public class A {
+  public static void helloWorld() {
+    System.out.println("Hello, world!");
+  }
+}
+"""
+    )
+  with open(test_repo.clone_dir / "src" / "B.java", "w") as f:
+    f.write(
+      """
+public class B {
+  private static int foo() {return 5;}
+}
+"""
+    )
+  with open(test_repo.clone_dir / "README.txt", "w") as f:
+    f.write("Hello, world!")
+
+  assert not test_repo.index_dir.is_dir()
+  assert not list(test_repo.ContentFiles())
+  test_repo.Index(
+    [
+      scrape_repos_pb2.ContentFilesImporterConfig(
+        source_code_pattern=".*\\.java",
+        preprocessor=[
+          "datasets.github.scrape_repos.preprocessors." "extractors:JavaMethods"
+        ],
+      ),
+    ],
+    multiprocessing.Pool(1),
+  )
+  assert test_repo.index_dir.is_dir()
+
+  assert (test_repo.index_dir / "DONE.txt").is_file()
+  assert len(list(test_repo.index_dir.iterdir())) == 3
+  contentfiles = list(test_repo.ContentFiles())
+  assert len(contentfiles) == 2
+
+  assert set([cf.text for cf in contentfiles]) == {
+    (
+      "public static void helloWorld(){\n"
+      '  System.out.println("Hello, world!");\n}\n'
+    ),
+    "private static int foo(){\n  return 5;\n}\n",
+  }
+
+
+def __tmp1(__tmp0):
+  """Test that index directories are produced in the correct location."""
+  repo = _CreateTestRepo(__tmp0 / "java", "Foo", "Bar")
+  repo.Index(
+    [
+      scrape_repos_pb2.ContentFilesImporterConfig(
+        source_code_pattern=".*\\.java",
+        preprocessor=[
+          "datasets.github.scrape_repos.preprocessors." "extractors:JavaMethods"
+        ],
+      ),
+    ],
+    multiprocessing.Pool(1),
+  )
+  assert (__tmp0 / "java.index").is_dir()
+  assert (__tmp0 / "java.index" / "Foo_Bar").is_dir()
+
+
+if __name__ == "__main__":
+  test.Main()

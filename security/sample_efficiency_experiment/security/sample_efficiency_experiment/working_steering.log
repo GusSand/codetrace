@@ -1,0 +1,416 @@
+2025-07-23 16:08:03,931 - __main__ - INFO - 🚀 Loading model: bigcode/starcoderbase-1b
+2025-07-23 16:08:04,312 - __main__ - INFO - ✅ Model loaded successfully
+2025-07-23 16:08:04,312 - __main__ - INFO - 📊 Model has 24 layers
+2025-07-23 16:08:04,312 - __main__ - INFO - 🔒 Creating security examples...
+2025-07-23 16:08:04,312 - __main__ - INFO - ✅ Created 4 vulnerability types with examples
+2025-07-23 16:08:04,313 - __main__ - INFO - 🔧 Initialized working steering experiment
+2025-07-23 16:08:04,313 - __main__ - INFO - 📁 Output directory: security/sample_efficiency_experiment
+2025-07-23 16:08:04,313 - __main__ - INFO - 🧪 Sample counts to test: [0, 1, 3, 5, 10]
+2025-07-23 16:08:04,313 - __main__ - INFO - ⚡ Steering scales to test: [20.0]
+2025-07-23 16:08:04,313 - __main__ - INFO - 🏗️ Layer configs to test: [[4, 12, 20]]
+2025-07-23 16:08:04,313 - __main__ - INFO - 🚀 Starting working steering sample efficiency experiment
+2025-07-23 16:08:04,313 - __main__ - INFO - 
+==================================================
+2025-07-23 16:08:04,313 - __main__ - INFO - Testing with 0 samples per CVE
+2025-07-23 16:08:04,313 - __main__ - INFO - ==================================================
+2025-07-23 16:08:04,313 - __main__ - INFO - 🎯 Creating working steering vectors with 0 samples per type
+2025-07-23 16:08:04,313 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:08:04,313 - __main__ - INFO - 🎲 Using random steering vectors
+2025-07-23 16:08:04,314 - __main__ - INFO - 🧪 Experiment 1: 0 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:08:05,516 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-23 16:08:08,264 - __main__ - ERROR - ❌ Error in generation step 1: Cannot copy out of meta tensor; no data!
+2025-07-23 16:08:08,269 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "/home/paperspace/dev/codetrace/security/sample_efficiency_experiment/working_steering_experiment.py", line 477, in generate_with_working_steering
+    logits_saved = logits[:, -1, :].save()
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/contexts/Runner.py", line 49, in __exit__
+    super().__exit__(exc_type, exc_val, exc_tb)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/contexts/Tracer.py", line 71, in __exit__
+    output = self._model.interleave(
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/models/NNsightModel.py", line 253, in interleave
+    output = fn(*inputs, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/intervention.py", line 452, in __exit__
+    raise exc_val
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/models/NNsightModel.py", line 253, in interleave
+    output = fn(*inputs, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/models/mixins/Generation.py", line 21, in _execute
+    return self._execute_forward(prepared_inputs, *args, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/models/LanguageModel.py", line 306, in _execute_forward
+    return self._model(
+  File "/home/paperspace/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1603, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/transformers/models/gpt_bigcode/modeling_gpt_bigcode.py", line 1159, in forward
+    transformer_outputs = self.transformer(
+  File "/home/paperspace/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1603, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/transformers/models/gpt_bigcode/modeling_gpt_bigcode.py", line 994, in forward
+    outputs = block(
+  File "/home/paperspace/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1616, in _call_impl
+    hook_result = hook(self, args, result)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/intervention.py", line 439, in output_hook
+    return self.output_hook(output, module_path)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/models/NNsightModel.py", line 249, in <lambda>
+    output_hook=lambda activations, module_path: intervene(
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/intervention.py", line 353, in intervene
+    node.set_value(value)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/tracing/Node.py", line 301, in set_value
+    listener.execute()
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/tracing/Node.py", line 283, in execute
+    self.set_value(output)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/tracing/Node.py", line 301, in set_value
+    listener.execute()
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/tracing/Node.py", line 231, in execute
+    args, kwargs = Node.prepare_inputs((self.args, self.kwargs))
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/tracing/Node.py", line 220, in prepare_inputs
+    inputs = util.apply(inputs, _to, torch.Tensor, inplace=not proxy)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/util.py", line 35, in apply
+    return tuple([apply(_data, fn, cls, inplace=inplace) for _data in data])
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/util.py", line 35, in <listcomp>
+    return tuple([apply(_data, fn, cls, inplace=inplace) for _data in data])
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/util.py", line 30, in apply
+    data[idx] = apply(_data, fn, cls, inplace=inplace)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/util.py", line 23, in apply
+    return fn(data)
+  File "/home/paperspace/.local/lib/python3.9/site-packages/nnsight/tracing/Node.py", line 218, in _to
+    return value.to(device)
+NotImplementedError: Cannot copy out of meta tensor; no data!
+
+2025-07-23 16:08:08,269 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.000
+2025-07-23 16:08:08,269 - __main__ - INFO - 🎯 Creating working steering vectors with 0 samples per type
+2025-07-23 16:08:08,269 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:08:08,269 - __main__ - INFO - 🎲 Using random steering vectors
+2025-07-23 16:08:08,269 - __main__ - INFO - 🧪 Experiment 2: 0 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:08:22,486 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.300
+2025-07-23 16:08:22,487 - __main__ - INFO - 🎯 Creating working steering vectors with 0 samples per type
+2025-07-23 16:08:22,487 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:08:22,487 - __main__ - INFO - 🎲 Using random steering vectors
+2025-07-23 16:08:22,487 - __main__ - INFO - 🧪 Experiment 3: 0 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:08:35,780 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.300
+2025-07-23 16:08:35,781 - __main__ - INFO - 🎯 Creating working steering vectors with 0 samples per type
+2025-07-23 16:08:35,781 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:08:35,781 - __main__ - INFO - 🎲 Using random steering vectors
+2025-07-23 16:08:35,781 - __main__ - INFO - 🧪 Experiment 4: 0 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:08:49,258 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.500
+2025-07-23 16:08:49,259 - __main__ - INFO - 
+==================================================
+2025-07-23 16:08:49,259 - __main__ - INFO - Testing with 1 samples per CVE
+2025-07-23 16:08:49,259 - __main__ - INFO - ==================================================
+2025-07-23 16:08:49,259 - __main__ - INFO - 🎯 Creating working steering vectors with 1 samples per type
+2025-07-23 16:08:49,259 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:08:49,259 - __main__ - INFO - 📊 Using 1 secure and 1 insecure examples
+2025-07-23 16:08:49,623 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:08:49,983 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:08:49,983 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:08:49,983 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:08:49,983 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:08:49,984 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:08:49,984 - __main__ - INFO - 🧪 Experiment 5: 1 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:09:03,320 - __main__ - INFO - ✅ Security score: 0.000, Quality: 1.000
+2025-07-23 16:09:03,321 - __main__ - INFO - 🎯 Creating working steering vectors with 1 samples per type
+2025-07-23 16:09:03,321 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:09:03,321 - __main__ - INFO - 📊 Using 1 secure and 1 insecure examples
+2025-07-23 16:09:03,683 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:04,040 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:04,041 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:09:04,041 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:09:04,041 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:09:04,041 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:09:04,041 - __main__ - INFO - 🧪 Experiment 6: 1 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:09:17,418 - __main__ - INFO - ✅ Security score: 0.000, Quality: 1.000
+2025-07-23 16:09:17,418 - __main__ - INFO - 🎯 Creating working steering vectors with 1 samples per type
+2025-07-23 16:09:17,418 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:09:17,418 - __main__ - INFO - 📊 Using 1 secure and 1 insecure examples
+2025-07-23 16:09:17,788 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:18,155 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:18,156 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:09:18,156 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:09:18,156 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:09:18,156 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:09:18,156 - __main__ - INFO - 🧪 Experiment 7: 1 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:09:31,373 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.700
+2025-07-23 16:09:31,373 - __main__ - INFO - 🎯 Creating working steering vectors with 1 samples per type
+2025-07-23 16:09:31,373 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:09:31,373 - __main__ - INFO - 📊 Using 1 secure and 1 insecure examples
+2025-07-23 16:09:31,741 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:32,107 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:32,107 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:09:32,108 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:09:32,108 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:09:32,108 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:09:32,108 - __main__ - INFO - 🧪 Experiment 8: 1 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:09:45,385 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.500
+2025-07-23 16:09:45,385 - __main__ - INFO - 
+==================================================
+2025-07-23 16:09:45,385 - __main__ - INFO - Testing with 3 samples per CVE
+2025-07-23 16:09:45,386 - __main__ - INFO - ==================================================
+2025-07-23 16:09:45,386 - __main__ - INFO - 🎯 Creating working steering vectors with 3 samples per type
+2025-07-23 16:09:45,386 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:09:45,386 - __main__ - INFO - 📊 Using 3 secure and 3 insecure examples
+2025-07-23 16:09:45,759 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:46,122 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:09:46,492 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:09:46,858 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:09:47,222 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:09:47,928 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:09:47,929 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:09:47,929 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:09:47,929 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:09:47,929 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:09:47,929 - __main__ - INFO - 🧪 Experiment 9: 3 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:10:01,090 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.700
+2025-07-23 16:10:01,091 - __main__ - INFO - 🎯 Creating working steering vectors with 3 samples per type
+2025-07-23 16:10:01,091 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:10:01,091 - __main__ - INFO - 📊 Using 3 secure and 3 insecure examples
+2025-07-23 16:10:01,453 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:01,813 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:02,171 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:02,529 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:02,884 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:03,246 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:03,246 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:10:03,246 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:10:03,246 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:10:03,247 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:10:03,247 - __main__ - INFO - 🧪 Experiment 10: 3 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:10:16,438 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.300
+2025-07-23 16:10:16,438 - __main__ - INFO - 🎯 Creating working steering vectors with 3 samples per type
+2025-07-23 16:10:16,439 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:10:16,439 - __main__ - INFO - 📊 Using 3 secure and 3 insecure examples
+2025-07-23 16:10:16,799 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:17,157 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:17,514 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:17,869 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:18,227 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:18,582 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:18,583 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:10:18,583 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:10:18,583 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:10:18,583 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:10:18,583 - __main__ - INFO - 🧪 Experiment 11: 3 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:10:32,055 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.300
+2025-07-23 16:10:32,055 - __main__ - INFO - 🎯 Creating working steering vectors with 3 samples per type
+2025-07-23 16:10:32,055 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:10:32,056 - __main__ - INFO - 📊 Using 3 secure and 3 insecure examples
+2025-07-23 16:10:32,428 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:32,799 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:33,181 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:33,558 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:33,927 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:34,302 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:34,303 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:10:34,303 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:10:34,303 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:10:34,303 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:10:34,303 - __main__ - INFO - 🧪 Experiment 12: 3 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:10:47,552 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.700
+2025-07-23 16:10:47,552 - __main__ - INFO - 
+==================================================
+2025-07-23 16:10:47,552 - __main__ - INFO - Testing with 5 samples per CVE
+2025-07-23 16:10:47,552 - __main__ - INFO - ==================================================
+2025-07-23 16:10:47,552 - __main__ - INFO - 🎯 Creating working steering vectors with 5 samples per type
+2025-07-23 16:10:47,552 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:10:47,553 - __main__ - INFO - 📊 Using 5 secure and 5 insecure examples
+2025-07-23 16:10:47,910 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:48,265 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:48,622 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:48,978 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:10:49,362 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:10:49,731 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:10:50,083 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:10:50,449 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:10:51,106 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:10:51,467 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:10:51,467 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:10:51,467 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:10:51,468 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:10:51,468 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:10:51,468 - __main__ - INFO - 🧪 Experiment 13: 5 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:11:04,814 - __main__ - INFO - ✅ Security score: 0.125, Quality: 0.700
+2025-07-23 16:11:04,814 - __main__ - INFO - 🎯 Creating working steering vectors with 5 samples per type
+2025-07-23 16:11:04,814 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:11:04,814 - __main__ - INFO - 📊 Using 5 secure and 5 insecure examples
+2025-07-23 16:11:05,187 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:05,557 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:05,925 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:06,296 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:06,665 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:07,035 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:07,404 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:07,775 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:08,142 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:08,510 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:08,510 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:11:08,510 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:11:08,511 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:11:08,511 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:11:08,511 - __main__ - INFO - 🧪 Experiment 14: 5 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:11:21,916 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.000
+2025-07-23 16:11:21,916 - __main__ - INFO - 🎯 Creating working steering vectors with 5 samples per type
+2025-07-23 16:11:21,917 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:11:21,917 - __main__ - INFO - 📊 Using 5 secure and 5 insecure examples
+2025-07-23 16:11:22,291 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:22,662 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:23,041 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:23,711 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:24,076 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:24,450 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:24,819 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:25,184 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:25,549 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:25,916 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:25,916 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:11:25,916 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:11:25,917 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:11:25,917 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:11:25,917 - __main__ - INFO - 🧪 Experiment 15: 5 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:11:39,168 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.700
+2025-07-23 16:11:39,168 - __main__ - INFO - 🎯 Creating working steering vectors with 5 samples per type
+2025-07-23 16:11:39,168 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:11:39,168 - __main__ - INFO - 📊 Using 5 secure and 5 insecure examples
+2025-07-23 16:11:39,541 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:39,911 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:40,279 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:40,647 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:41,022 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:41,396 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:41,766 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:42,133 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:42,501 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:42,868 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:42,868 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:11:42,868 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:11:42,869 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:11:42,869 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:11:42,869 - __main__ - INFO - 🧪 Experiment 16: 5 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:11:56,507 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.000
+2025-07-23 16:11:56,507 - __main__ - INFO - 
+==================================================
+2025-07-23 16:11:56,507 - __main__ - INFO - Testing with 10 samples per CVE
+2025-07-23 16:11:56,508 - __main__ - INFO - ==================================================
+2025-07-23 16:11:56,508 - __main__ - INFO - 🎯 Creating working steering vectors with 10 samples per type
+2025-07-23 16:11:56,508 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:11:56,508 - __main__ - INFO - 📊 Using 10 secure and 10 insecure examples
+2025-07-23 16:11:56,892 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:11:57,267 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:11:57,633 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:11:57,989 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:11:58,350 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:11:58,706 - __main__ - ERROR - ❌ Error processing secure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:11:59,060 - __main__ - ERROR - ❌ Error processing secure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:11:59,420 - __main__ - ERROR - ❌ Error processing secure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:11:59,773 - __main__ - ERROR - ❌ Error processing secure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:12:00,141 - __main__ - ERROR - ❌ Error processing secure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:12:00,499 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:12:00,854 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:12:01,209 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:12:01,571 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:12:01,923 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:12:02,287 - __main__ - ERROR - ❌ Error processing insecure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:12:02,653 - __main__ - ERROR - ❌ Error processing insecure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:12:03,019 - __main__ - ERROR - ❌ Error processing insecure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:12:03,388 - __main__ - ERROR - ❌ Error processing insecure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:12:03,752 - __main__ - ERROR - ❌ Error processing insecure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:12:03,753 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:12:03,753 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:12:03,753 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:12:03,753 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:12:03,753 - __main__ - INFO - 🧪 Experiment 17: 10 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:12:17,108 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.300
+2025-07-23 16:12:17,108 - __main__ - INFO - 🎯 Creating working steering vectors with 10 samples per type
+2025-07-23 16:12:17,108 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:12:17,108 - __main__ - INFO - 📊 Using 10 secure and 10 insecure examples
+2025-07-23 16:12:17,762 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:12:18,136 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:12:18,504 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:12:18,880 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:12:19,252 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:12:19,616 - __main__ - ERROR - ❌ Error processing secure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:12:19,982 - __main__ - ERROR - ❌ Error processing secure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:12:20,372 - __main__ - ERROR - ❌ Error processing secure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:12:20,742 - __main__ - ERROR - ❌ Error processing secure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:12:21,107 - __main__ - ERROR - ❌ Error processing secure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:12:21,473 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:12:21,839 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:12:22,207 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:12:22,575 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:12:22,934 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:12:23,291 - __main__ - ERROR - ❌ Error processing insecure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:12:23,649 - __main__ - ERROR - ❌ Error processing insecure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:12:24,004 - __main__ - ERROR - ❌ Error processing insecure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:12:24,374 - __main__ - ERROR - ❌ Error processing insecure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:12:24,737 - __main__ - ERROR - ❌ Error processing insecure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:12:24,738 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:12:24,738 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:12:24,738 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:12:24,739 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:12:24,739 - __main__ - INFO - 🧪 Experiment 18: 10 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:12:38,014 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.500
+2025-07-23 16:12:38,015 - __main__ - INFO - 🎯 Creating working steering vectors with 10 samples per type
+2025-07-23 16:12:38,015 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:12:38,015 - __main__ - INFO - 📊 Using 10 secure and 10 insecure examples
+2025-07-23 16:12:38,390 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:12:38,764 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:12:39,134 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:12:39,502 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:12:40,187 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:12:40,556 - __main__ - ERROR - ❌ Error processing secure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:12:40,926 - __main__ - ERROR - ❌ Error processing secure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:12:41,291 - __main__ - ERROR - ❌ Error processing secure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:12:41,658 - __main__ - ERROR - ❌ Error processing secure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:12:42,021 - __main__ - ERROR - ❌ Error processing secure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:12:42,388 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:12:42,753 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:12:43,117 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:12:43,481 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:12:43,846 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:12:44,210 - __main__ - ERROR - ❌ Error processing insecure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:12:44,575 - __main__ - ERROR - ❌ Error processing insecure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:12:44,940 - __main__ - ERROR - ❌ Error processing insecure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:12:45,303 - __main__ - ERROR - ❌ Error processing insecure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:12:45,668 - __main__ - ERROR - ❌ Error processing insecure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:12:45,669 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:12:45,669 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:12:45,669 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:12:45,669 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:12:45,669 - __main__ - INFO - 🧪 Experiment 19: 10 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:12:58,998 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.500
+2025-07-23 16:12:58,999 - __main__ - INFO - 🎯 Creating working steering vectors with 10 samples per type
+2025-07-23 16:12:58,999 - __main__ - INFO - 🔍 Detected hidden dimension: 2048
+2025-07-23 16:12:58,999 - __main__ - INFO - 📊 Using 10 secure and 10 insecure examples
+2025-07-23 16:12:59,373 - __main__ - ERROR - ❌ Error processing secure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:12:59,740 - __main__ - ERROR - ❌ Error processing secure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:13:00,107 - __main__ - ERROR - ❌ Error processing secure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:13:00,473 - __main__ - ERROR - ❌ Error processing secure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:13:00,838 - __main__ - ERROR - ❌ Error processing secure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:13:01,204 - __main__ - ERROR - ❌ Error processing secure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:13:01,570 - __main__ - ERROR - ❌ Error processing secure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:13:01,934 - __main__ - ERROR - ❌ Error processing secure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:13:02,303 - __main__ - ERROR - ❌ Error processing secure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:13:02,988 - __main__ - ERROR - ❌ Error processing secure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:13:03,360 - __main__ - ERROR - ❌ Error processing insecure example 0: Accessing Proxy value before it's been set.
+2025-07-23 16:13:03,718 - __main__ - ERROR - ❌ Error processing insecure example 1: Accessing Proxy value before it's been set.
+2025-07-23 16:13:04,074 - __main__ - ERROR - ❌ Error processing insecure example 2: Accessing Proxy value before it's been set.
+2025-07-23 16:13:04,431 - __main__ - ERROR - ❌ Error processing insecure example 3: Accessing Proxy value before it's been set.
+2025-07-23 16:13:04,787 - __main__ - ERROR - ❌ Error processing insecure example 4: Accessing Proxy value before it's been set.
+2025-07-23 16:13:05,144 - __main__ - ERROR - ❌ Error processing insecure example 5: Accessing Proxy value before it's been set.
+2025-07-23 16:13:05,503 - __main__ - ERROR - ❌ Error processing insecure example 6: Accessing Proxy value before it's been set.
+2025-07-23 16:13:05,856 - __main__ - ERROR - ❌ Error processing insecure example 7: Accessing Proxy value before it's been set.
+2025-07-23 16:13:06,212 - __main__ - ERROR - ❌ Error processing insecure example 8: Accessing Proxy value before it's been set.
+2025-07-23 16:13:06,568 - __main__ - ERROR - ❌ Error processing insecure example 9: Accessing Proxy value before it's been set.
+2025-07-23 16:13:06,569 - __main__ - WARNING - ⚠️ No valid states for layer 4, using zero vector
+2025-07-23 16:13:06,569 - __main__ - WARNING - ⚠️ No valid states for layer 12, using zero vector
+2025-07-23 16:13:06,569 - __main__ - WARNING - ⚠️ No valid states for layer 20, using zero vector
+2025-07-23 16:13:06,569 - __main__ - INFO - ✅ Created working steering tensor with shape: torch.Size([3, 2048])
+2025-07-23 16:13:06,569 - __main__ - INFO - 🧪 Experiment 20: 10 samples, scale 20.0, layers [4, 12, 20]
+2025-07-23 16:13:19,876 - __main__ - INFO - ✅ Security score: 0.000, Quality: 0.300
+2025-07-23 16:13:19,877 - __main__ - INFO - ✅ Completed 20 experiments
+2025-07-23 16:13:19,877 - __main__ - INFO - 📊 Analyzing working steering sample efficiency results...
+2025-07-23 16:13:19,878 - __main__ - INFO - ✅ Analysis completed
+2025-07-23 16:13:19,879 - __main__ - INFO - 💾 Saved results to security/sample_efficiency_experiment/working_steering_results_20250723_161319.json
+2025-07-23 16:13:19,879 - __main__ - INFO - 📊 Saved analysis to security/sample_efficiency_experiment/working_steering_results_20250723_161319_analysis.json
+2025-07-23 16:13:19,879 - __main__ - INFO - 📝 Saved report to security/sample_efficiency_experiment/working_steering_results_20250723_161319_report.md

@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "original_accuracy": 0.6091127098321343,
+    "mutated_accuracy": 0.6091127098321343,
+    "accuracy_drop": 0.0,
+    "drop_percentage": 0.0
+  },
+  "by_category": [
+    {
+      "category": "other",
+      "original_accuracy": 0.6091127098321343,
+      "mutated_accuracy": 0.6091127098321343,
+      "accuracy_drop": 0.0,
+      "drop_percentage": 0.0,
+      "original_correct": 508,
+      "original_total": 834,
+      "mutated_correct": 508,
+      "mutated_total": 834
+    }
+  ]
+}

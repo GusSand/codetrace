@@ -1,0 +1,91 @@
+"""
+Support for RitAssist Platform.
+
+For more details about this platform, please refer to the documentation at
+https://home-assistant.io/components/device_tracker.ritassist/
+"""
+import logging
+
+import requests
+import voluptuous as vol
+
+import homeassistant.helpers.config_validation as cv
+from homeassistant.components.device_tracker import PLATFORM_SCHEMA
+from homeassistant.const import CONF_USERNAME, CONF_PASSWORD
+from homeassistant.helpers.event import track_utc_time_change
+
+REQUIREMENTS = ['ritassist==0.9.2']
+
+_LOGGER = logging.getLogger(__name__)
+
+CONF_CLIENT_ID = 'client_id'
+CONF_CLIENT_SECRET = 'client_secret'
+CONF_INCLUDE = 'include'
+
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+    vol.Required(CONF_USERNAME): cv.string,
+    vol.Required(CONF_PASSWORD): cv.string,
+    vol.Required(CONF_CLIENT_ID): cv.string,
+    vol.Required(CONF_CLIENT_SECRET): cv.string,
+    vol.Optional(CONF_INCLUDE, default=[]):
+        vol.All(cv.ensure_list, [cv.string])
+})
+
+
+def setup_scanner(__tmp1, config: <FILL>, __tmp0, discovery_info=None):
+    """Set up the DeviceScanner and check if login is valid."""
+    scanner = RitAssistDeviceScanner(config, __tmp0)
+    if not scanner.login(__tmp1):
+        _LOGGER.error('RitAssist authentication failed')
+        return False
+    return True
+
+
+class RitAssistDeviceScanner:
+    """Define a scanner for the RitAssist platform."""
+
+    def __tmp3(__tmp2, config, __tmp0):
+        """Initialize RitAssistDeviceScanner."""
+        from ritassist import API
+
+        __tmp2._include = config.get(CONF_INCLUDE)
+        __tmp2._see = __tmp0
+
+        __tmp2._api = API(config.get(CONF_CLIENT_ID),
+                        config.get(CONF_CLIENT_SECRET),
+                        config.get(CONF_USERNAME),
+                        config.get(CONF_PASSWORD))
+
+    def setup(__tmp2, __tmp1):
+        """Set up a timer and start gathering devices."""
+        __tmp2._refresh()
+        track_utc_time_change(__tmp1,
+                              lambda now: __tmp2._refresh(),
+                              second=range(0, 60, 30))
+
+    def login(__tmp2, __tmp1):
+        """Perform a login on the RitAssist API."""
+        if __tmp2._api.login():
+            __tmp2.setup(__tmp1)
+            return True
+        return False
+
+    def _refresh(__tmp2) :
+        """Refresh device information from the platform."""
+        try:
+            devices = __tmp2._api.get_devices()
+
+            for device in devices:
+                if (not __tmp2._include or
+                        device.license_plate in __tmp2._include):
+
+                    if device.active or device.current_address is None:
+                        device.get_map_details()
+
+                    __tmp2._see(dev_id=device.plate_as_id,
+                              gps=(device.latitude, device.longitude),
+                              attributes=device.state_attributes,
+                              icon='mdi:car')
+
+        except requests.exceptions.ConnectionError:
+            _LOGGER.error('ConnectionError: Could not connect to RitAssist')

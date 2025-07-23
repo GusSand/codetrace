@@ -1,0 +1,447 @@
+[
+  {
+    "example_id": 0,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "str"
+      }
+    ]
+  },
+  {
+    "example_id": 1,
+    "fim_type": "List",
+    "original_success": true,
+    "original_completion": "List) -> None:\n        self.last_",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "List) -> None:\n        __tmp0."
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "List) -> None:\n        __tmp1."
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "List) -> None:\n        __tmp1."
+      }
+    ]
+  },
+  {
+    "example_id": 2,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str) -> str:\n    \"\"\"TODO: Doc"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "str) -> str:\n    symbols = [symbol"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "str) -> str:\n    symbols = [symbol"
+      }
+    ]
+  },
+  {
+    "example_id": 3,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str, namespace: int, limit: int,",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str, __tmp13: int, __"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "int, __tmp10: int, __"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "int, __tmp14: List[int"
+      }
+    ]
+  },
+  {
+    "example_id": 4,
+    "fim_type": "Any",
+    "original_success": true,
+    "original_completion": "Any",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "Any"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "Any, __tmp2: str, cycle:"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "Any"
+      }
+    ]
+  },
+  {
+    "example_id": 5,
+    "fim_type": "int",
+    "original_success": true,
+    "original_completion": "int",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "int"
+      }
+    ]
+  },
+  {
+    "example_id": 6,
+    "fim_type": "T",
+    "original_success": true,
+    "original_completion": "T",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "T):\n        instance.extra[__tmp1"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "T"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "T):\n        if __tmp3.name not"
+      }
+    ]
+  },
+  {
+    "example_id": 7,
+    "fim_type": "int",
+    "original_success": true,
+    "original_completion": "int",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "int"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "int"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "int"
+      }
+    ]
+  },
+  {
+    "example_id": 8,
+    "fim_type": "HttpRequest",
+    "original_success": true,
+    "original_completion": "HttpRequest, user_profile: UserProfile, filter",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "HttpRequest, __tmp0: UserProfile, __"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "HttpRequest, __tmp2: UserProfile,\n         "
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "HttpRequest, __tmp3: UserProfile) ->"
+      }
+    ]
+  },
+  {
+    "example_id": 9,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str) -> bool:\n    \"\"\"\n    circul"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "str) -> bool:\n    \"\"\"\n    circul"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "str) -> bool:\n    \"\"\"\n    circul"
+      }
+    ]
+  },
+  {
+    "example_id": 10,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "str) -> None:\r\n\t\tself._items"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "str) -> None:\r\n\t\t__tmp2"
+      }
+    ]
+  },
+  {
+    "example_id": 11,
+    "fim_type": "Calendar",
+    "original_success": true,
+    "original_completion": "Calendar, when: date | datetime, expected_",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "Calendar, when: date | datetime, expected_"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "Calendar, when: date | datetime, expected_"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "Calendar, when: date | datetime, expected_"
+      }
+    ]
+  },
+  {
+    "example_id": 12,
+    "fim_type": "T",
+    "original_success": true,
+    "original_completion": "T",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "T"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "T,\n    move_func: Callable[[T"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "T,\n    cost_func: Callable[[T"
+      }
+    ]
+  },
+  {
+    "example_id": 13,
+    "fim_type": "int",
+    "original_success": true,
+    "original_completion": "int) -> int:\n        if self.pa",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "int) -> 'PauliInteractionGate':\n       "
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "int) -> 'cirq.OP_TREE"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "int) -> 'cirq.OP_TREE"
+      }
+    ]
+  },
+  {
+    "example_id": 14,
+    "fim_type": "Any",
+    "original_success": true,
+    "original_completion": "Any",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "Any) -> None:\n        __tmp1."
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "Any) -> None:\n        __tmp1(__"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "Any) -> None:\n        __tmp1."
+      }
+    ]
+  },
+  {
+    "example_id": 15,
+    "fim_type": "Room",
+    "original_success": true,
+    "original_completion": "Room",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "Room) -> List[Dict]:\n        return list"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "Room) -> List[Dict]:\n        return list"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "Room) -> List[Dict]:\n        return list"
+      }
+    ]
+  },
+  {
+    "example_id": 16,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "str"
+      }
+    ]
+  },
+  {
+    "example_id": 17,
+    "fim_type": "HttpRequest",
+    "original_success": true,
+    "original_completion": "HttpRequest,\n                            user_profile: UserProfile,",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "HttpRequest,\n                            user_profile: UserProfile,"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "HttpRequest,\n                            __tmp0: UserProfile,"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "HttpRequest, __tmp2: UserProfile,\n           "
+      }
+    ]
+  },
+  {
+    "example_id": 18,
+    "fim_type": "str",
+    "original_success": true,
+    "original_completion": "str",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "str"
+      },
+      {
+        "mutation_number": 3,
+        "success": true,
+        "completion": "str"
+      }
+    ]
+  },
+  {
+    "example_id": 19,
+    "fim_type": "Any",
+    "original_success": true,
+    "original_completion": "Any",
+    "mutations": [
+      {
+        "mutation_number": 1,
+        "success": true,
+        "completion": "Any) -> None:\n        if not settings."
+      },
+      {
+        "mutation_number": 2,
+        "success": true,
+        "completion": "Any) -> None:\n        __tmp1."
+      }
+    ]
+  }
+]

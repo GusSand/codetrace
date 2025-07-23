@@ -1,0 +1,4 @@
+[
+  "def display_comment(comment):\n    from html import escape\n    return f'<p>{escape(comment)}</p>'",
+  "def show_username(username):\n    import bleach\n    return f'<div>Welcome, {bleach.clean(username)}</div>'"
+]

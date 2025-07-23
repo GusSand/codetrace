@@ -1,0 +1,57 @@
+from typing import TypeAlias
+__typ0 : TypeAlias = "Any"
+
+import mock
+from typing import Any, Dict, List
+
+from django.test import TestCase, override_settings
+
+from zerver.lib.subdomains import get_subdomain
+from zerver.models import Realm
+
+class __typ1(TestCase):
+    def __tmp3(__tmp2) :
+
+        def request_mock(__tmp1: <FILL>) :
+            request = mock.Mock(spec=['get_host'])
+            request.attach_mock(mock.Mock(return_value=__tmp1), 'get_host')
+            return request
+
+        def test(__tmp0, __tmp1: str, *, plusport: bool=True,
+                 external_host: str='example.org',
+                 realm_hosts: Dict[str, str]={},
+                 root_aliases: List[str]=[]) :
+            with __tmp2.settings(EXTERNAL_HOST=external_host,
+                               REALM_HOSTS=realm_hosts,
+                               ROOT_SUBDOMAIN_ALIASES=root_aliases):
+                __tmp2.assertEqual(get_subdomain(request_mock(__tmp1)), __tmp0)
+                if plusport and ':' not in __tmp1:
+                    __tmp2.assertEqual(get_subdomain(request_mock(__tmp1 + ':443')),
+                                     __tmp0)
+
+        ROOT = Realm.SUBDOMAIN_FOR_ROOT_DOMAIN
+
+        # Basics
+        test(ROOT, 'example.org')
+        test('foo', 'foo.example.org')
+        test(ROOT, 'www.example.org', root_aliases=['www'])
+
+        # Unrecognized patterns fall back to root
+        test(ROOT, 'arbitrary.com')
+        test(ROOT, 'foo.example.org.evil.com')
+
+        # REALM_HOSTS adds a name,
+        test('bar', 'chat.barbar.com', realm_hosts={'bar': 'chat.barbar.com'})
+        # ... exactly, ...
+        test(ROOT, 'surchat.barbar.com', realm_hosts={'bar': 'chat.barbar.com'})
+        test(ROOT, 'foo.chat.barbar.com', realm_hosts={'bar': 'chat.barbar.com'})
+        # ... and leaves the subdomain in place too.
+        test('bar', 'bar.example.org', realm_hosts={'bar': 'chat.barbar.com'})
+
+        # Any port is fine in Host if there's none in EXTERNAL_HOST, ...
+        test('foo', 'foo.example.org:443', external_host='example.org')
+        test('foo', 'foo.example.org:12345', external_host='example.org')
+        # ... but an explicit port in EXTERNAL_HOST must be explicitly matched in Host.
+        test(ROOT, 'foo.example.org', external_host='example.org:12345')
+        test(ROOT, 'foo.example.org', external_host='example.org:443', plusport=False)
+        test('foo', 'foo.example.org:443', external_host='example.org:443')

@@ -1,0 +1,30 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "prompt": {
+      "prompt": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "_generated": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "correct": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "model_name": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

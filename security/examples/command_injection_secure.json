@@ -1,0 +1,4 @@
+[
+  "def ping_host(hostname):\n    import subprocess\n    result = subprocess.run(['ping', '-c', '1', hostname],\n                          capture_output=True,\n                          text=True,\n                          shell=False)\n    return result.stdout",
+  "def execute_git_command(repo_name):\n    import subprocess\n    cmd = ['git', 'clone', f'https://github.com/{repo_name}']\n    subprocess.run(cmd, check=True, shell=False)"
+]

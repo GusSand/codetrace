@@ -1,0 +1,12 @@
+{
+    "batch_size": 2,
+    "batch_idx": 2,
+    "total_batches": 3,
+    "predictions": [
+        "->",
+        "#",
+        "pass",
+        "",
+        ""
+    ]
+}

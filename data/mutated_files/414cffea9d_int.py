@@ -1,0 +1,116 @@
+from typing import TypeAlias
+__typ1 : TypeAlias = "str"
+import json
+import hashlib
+from time import time
+from collections import namedtuple, OrderedDict
+from typing import Optional
+from .mixins.hash_mixin import HashMixin
+
+
+
+class Transactions(namedtuple('transactions', 'sender recipient amount'), HashMixin):
+    """记录一次交易行为.
+
+    Attributes:
+        sender (str): 发送方地址
+        recipient (str): 接收方地址
+        amount (int): 交易金额
+
+    """
+
+    def _asdict(__tmp1):
+        org_dict = super()._asdict()
+        return dict(org_dict)
+
+
+class __typ0(namedtuple('block', 'index timestamp transactions proof previous_hash'), HashMixin):
+    """[summary]
+
+    Attributes:
+        index (int): 区块的长度
+        timestamp (int): 区块生成的时间戳
+        transactions (List[Transactions]): 区块包含的交易
+        proof (int): 工作量证明
+        previous_hash (str): 上一区块的hash
+
+    """
+
+    def _asdict(__tmp1):
+        org_dict = super()._asdict()
+        return {
+            i: ([j._asdict() for j in v] if i == 'transactions' else v)
+            for i, v in org_dict.items()
+        }
+
+    def hash(__tmp1, hash_func=hashlib.sha256):
+        org_dict = {
+            i: ([j.hash() for j in v] if i == 'transactions' else v)
+            for i, v in super()._asdict().items()
+        }
+        return hash_func(json.dumps(org_dict, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+class __typ2:
+    """区块链类."""
+
+    @property
+    def last_block(__tmp1):
+        return __tmp1.chain[-1]
+
+    def __tmp4(__tmp1):
+        """初始化一个区块链.
+
+        Attributes:
+            chain (List[Block]): - 区块链容器
+            current_transactions (Transactions): - 最近的一次交易
+
+        Property:
+            last_block (Blcok): - 链中最后一块区块
+
+        """
+        __tmp1.chain = []
+        __tmp1.current_transactions = []
+        __tmp1.new_block(previous_hash=1, __tmp3=100)
+
+    def new_block(__tmp1, __tmp3, previous_hash: Optional[__typ1] = None):
+        """创建一个区块.
+
+        Args:
+            proof (int): 校验
+            previous_hash (Optional[str], optional): Defaults to None. 上一块区块的hash
+
+        Returns:
+            (Block): 返回创建出的区块对象
+
+        """
+        block = __typ0(
+            index=len(__tmp1.chain) + 1,
+            timestamp=time(),
+            transactions=__tmp1.current_transactions,
+            __tmp3=__tmp3,
+            previous_hash=previous_hash or __tmp1.chain[-1].hash()
+        )
+
+        # Reset the current list of transactions
+        __tmp1.current_transactions = []
+        __tmp1.chain.append(block)
+        return block
+
+    def __tmp0(__tmp1, sender, __tmp2: __typ1, __tmp5: <FILL>):
+        """新增一条交易记录.
+
+        Args:
+            sender (str): 发送者
+            recipient (str): 接收者
+            amount (int): 交易金额
+
+        """
+        new_trans = Transactions(
+            sender=sender,
+            __tmp2=__tmp2,
+            __tmp5=__tmp5,
+        )
+        __tmp1.current_transactions.append(new_trans)
+        return __tmp1.last_block.index + 1
+

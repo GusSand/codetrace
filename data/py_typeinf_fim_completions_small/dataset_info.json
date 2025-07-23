@@ -1,0 +1,60 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "prompt": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "key": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prefix": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "suffix": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "middle": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "correct": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "model": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "fim_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "fim_program": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "hexsha": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "_generated": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "model_name": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

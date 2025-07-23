@@ -1,0 +1,4 @@
+[
+  "def display_comment(comment):\n    return f'<p>{comment}</p>'",
+  "def show_username(username):\n    return f'<div>Welcome, {username}</div>'"
+]

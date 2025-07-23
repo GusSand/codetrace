@@ -1,0 +1,105 @@
+{
+  "timestamp": "2025-07-23T21:37:01.342102",
+  "topic": "Neural Steering Security Experiments",
+  "key_learnings": [
+    "Neural steering experiments successfully improved security scores from baseline to 0.125 with 5 samples",
+    "Real nnsight steering vectors work better than synthetic ones for security improvements",
+    "Layer configurations [4,12,20] with steering scale 20.0 achieved best results in original experiments",
+    "Sample efficiency experiments showed diminishing returns with more training examples",
+    "Steering vectors need proper dimension matching and context handling",
+    "Memory usage and generation time increase with steering scale and number of layers",
+    "Different vulnerability types (SQL injection, XSS, path traversal) respond differently to steering",
+    "Optimal steering scale varies by vulnerability type and layer configuration",
+    "Real-time monitoring and visualization are crucial for steering experiment success",
+    "Chat management system provides structured way to save and reference conversations"
+  ],
+  "important_files": [
+    {
+      "path": "security/sample_efficiency_experiment/real_steering_experiment.py",
+      "description": "Working steering experiment with real nnsight vectors",
+      "type": "experiment"
+    },
+    {
+      "path": "security/visualize_steering_strength.py",
+      "description": "Comprehensive visualization and analysis tool",
+      "type": "analysis"
+    },
+    {
+      "path": "chats/chat_manager.py",
+      "description": "Chat management system for saving conversations",
+      "type": "utility"
+    },
+    {
+      "path": "steering_strength_results_20250721_212641.json",
+      "description": "Latest steering strength experiment results",
+      "type": "data"
+    },
+    {
+      "path": "security/security_patterns.py",
+      "description": "Security pattern definitions for evaluation",
+      "type": "evaluation"
+    }
+  ],
+  "experiment_results": [
+    {
+      "experiment": "Original NNSight Steering",
+      "best_security_score": 0.222,
+      "training_examples": 26,
+      "layer_config": [
+        4,
+        12,
+        20
+      ],
+      "steering_scale": 20.0,
+      "notes": "Baseline performance with real steering vectors"
+    },
+    {
+      "experiment": "Sample Efficiency Study",
+      "best_security_score": 0.125,
+      "training_examples": 5,
+      "layer_config": [
+        4,
+        12,
+        20
+      ],
+      "steering_scale": 20.0,
+      "notes": "Achieved better results with fewer examples"
+    },
+    {
+      "experiment": "Steering Strength Analysis",
+      "key_findings": [
+        "Optimal steering scale varies by vulnerability type",
+        "Layer configurations significantly impact performance",
+        "Memory usage scales with steering parameters",
+        "Quality scores trade off with security improvements"
+      ]
+    }
+  ],
+  "code_snippets": [
+    {
+      "name": "Steering Vector Application",
+      "description": "How to apply steering vectors during generation",
+      "code": "\n# Key pattern for applying steering vectors\nwith model.generate(max_new_tokens=100, pad_token_id=tokenizer.eos_token_id) as generator:\n    with generator.invoke(prompt) as invoker:\n        # Apply steering vectors to specific layers\n        for layer_idx in layer_config:\n            hidden_states = invoker.model.layers[layer_idx].output[0]\n            hidden_states += steering_vectors[layer_idx] * steering_scale\n        output = invoker.next()\n",
+      "type": "steering"
+    },
+    {
+      "name": "Security Evaluation",
+      "description": "Pattern-based security scoring",
+      "code": "\ndef evaluate_security(generated_code, vulnerability_type):\n    secure_patterns = SECURITY_PATTERNS[vulnerability_type]['secure']\n    vulnerable_patterns = SECURITY_PATTERNS[vulnerability_type]['vulnerable']\n    \n    secure_count = sum(1 for pattern in secure_patterns if pattern in generated_code)\n    vulnerable_count = sum(1 for pattern in vulnerable_patterns if pattern in generated_code)\n    \n    security_score = secure_count / (secure_count + vulnerable_count + 1)\n    return security_score\n",
+      "type": "evaluation"
+    }
+  ],
+  "next_steps": [
+    "Run comprehensive steering strength analysis with more vulnerability types",
+    "Investigate optimal layer selection strategies for different models",
+    "Develop automated hyperparameter optimization for steering parameters",
+    "Create real-time steering vector quality assessment",
+    "Extend experiments to larger language models (7B+ parameters)",
+    "Investigate steering vector transferability across different tasks",
+    "Develop steering vector compression techniques for efficiency",
+    "Create interactive visualization dashboard for steering experiments",
+    "Implement steering vector versioning and A/B testing framework",
+    "Investigate steering vector interpretability and explainability"
+  ],
+  "context_for_new_conversation": "## Neural Steering Security Experiments - Context Summary\n\n### Key Achievements\n- Successfully implemented real nnsight steering vectors for security improvement\n- Achieved security score of 0.125 with only 5 training examples\n- Developed comprehensive visualization and analysis tools\n- Created chat management system for conversation persistence\n\n### Technical Learnings\n- Real steering vectors outperform synthetic ones for security tasks\n- Layer configurations [4,12,20] with scale 20.0 work well for security\n- Proper dimension matching and context handling are crucial\n- Memory usage scales with steering parameters\n\n### Important Files\n- `security/sample_efficiency_experiment/real_steering_experiment.py` - Working experiment\n- `security/visualize_steering_strength.py` - Analysis and visualization\n- `chats/chat_manager.py` - Conversation management\n- `steering_strength_results_*.json` - Experiment results\n\n### Next Steps\n- Extend to more vulnerability types and models\n- Optimize steering parameters automatically\n- Develop real-time quality assessment\n- Create interactive visualization dashboard\n\n### Code Patterns\n- Use nnsight's invoke context for steering vector application\n- Apply steering vectors to specific transformer layers\n- Use pattern-based security evaluation\n- Monitor memory usage and generation time\n\nThis context can be referenced for continuing neural steering research and development."
+}

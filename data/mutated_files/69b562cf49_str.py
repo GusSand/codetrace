@@ -1,0 +1,137 @@
+# Copyright 2018 The Cirq Developers
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import sys
+from typing import List, Optional
+
+import os
+import requests
+
+from dev_tools import shell_tools, github_repository
+
+
+class PreparedEnv:
+    """Details of a local environment that has been prepared for use."""
+
+    def __tmp6(
+        __tmp1,
+        github_repo: Optional[github_repository.GithubRepository],
+        actual_commit_id,
+        compare_commit_id: str,
+        destination_directory,
+        virtual_env_path: Optional[str],
+    ) -> None:
+        """Initializes a description of a prepared (or desired) environment.
+
+        Args:
+            github_repo: The github repository that the local environment
+                corresponds to. Use None if the actual_commit_id corresponds
+                to a commit that isn't actually on github.
+            actual_commit_id: Identifies the commit that has been checked out
+                for testing purposes. Use None for 'local uncommitted changes'.
+            compare_commit_id: Identifies a commit that the actual commit can
+                be compared against, e.g. when diffing for incremental checks.
+            destination_directory: The location where the environment has been
+                prepared. If the directory isn't prepared yet, this should be
+                None.
+            virtual_env_path: The location of the python virtual environment
+                that has been prepared for use when testing. If the virtual
+                environment is not prepared yet, this should be None.
+        """
+        __tmp1.repository = github_repo
+        __tmp1.actual_commit_id = actual_commit_id
+        __tmp1.compare_commit_id = compare_commit_id
+        if __tmp1.compare_commit_id == __tmp1.actual_commit_id:
+            __tmp1.compare_commit_id += '~1'
+
+        __tmp1.destination_directory = destination_directory
+        __tmp1.virtual_env_path = virtual_env_path
+
+    def bin(__tmp1, __tmp4) :
+        if __tmp1.virtual_env_path is None:
+            return __tmp4
+        return os.path.join(__tmp1.virtual_env_path, 'bin', __tmp4)
+
+    def __tmp2(
+        __tmp1, __tmp5: str, __tmp7: str, __tmp0: <FILL>, target_url: Optional[str] = None
+    ):
+        """Sets a commit status indicator on github.
+
+        If not running from a pull request (i.e. repository is None), then this
+        just prints to stderr.
+
+        Args:
+            state: The state of the status indicator.
+                Must be 'error', 'failure', 'pending', or 'success'.
+            description: A summary of why the state is what it is,
+                e.g. '5 lint errors' or 'tests passed!'.
+            context: The name of the status indicator, e.g. 'pytest' or 'lint'.
+            target_url: Optional location where additional details about the
+                status can be found, e.g. an online test results page.
+
+        Raises:
+            ValueError: Not one of the allowed states.
+            OSError: The HTTP post request failed, or the response didn't have
+                a 201 code indicating success in the expected way. This is actually
+                an IOError, which is equal to an OSError.
+        """
+        if __tmp5 not in ['error', 'failure', 'pending', 'success']:
+            raise ValueError(f'Unrecognized state: {__tmp5!r}')
+
+        if __tmp1.repository is None or __tmp1.repository.access_token is None:
+            return
+
+        print(repr(('report_status', __tmp0, __tmp5, __tmp7, target_url)), file=sys.stderr)
+
+        payload = {
+            'state': __tmp5,
+            'description': __tmp7,
+            'context': __tmp0,
+        }
+        if target_url is not None:
+            payload['target_url'] = target_url
+
+        url = "https://api.github.com/repos/{}/{}/statuses/{}?access_token={}".format(
+            __tmp1.repository.organization,
+            __tmp1.repository.name,
+            __tmp1.actual_commit_id,
+            __tmp1.repository.access_token,
+        )
+
+        response = requests.post(url, json=payload)
+
+        if response.status_code != 201:
+            raise IOError(
+                'Request failed. Code: {}. Content: {!r}.'.format(
+                    response.status_code, response.content
+                )
+            )
+
+    def __tmp3(__tmp1) :
+        """Get the files changed on one git branch vs another.
+
+        Returns:
+            List[str]: File paths of changed files, relative to the git repo
+                root.
+        """
+        out = shell_tools.output_of(
+            'git',
+            'diff',
+            '--name-only',
+            __tmp1.compare_commit_id,
+            __tmp1.actual_commit_id,
+            '--',
+            cwd=__tmp1.destination_directory,
+        )
+        return [e for e in out.split('\n') if e.strip()]

@@ -1,0 +1,16 @@
+from typing import List
+from abc import ABC, abstractmethod
+
+from movies.models import Movie
+
+
+class __typ0(ABC):
+    @staticmethod
+    @abstractmethod
+    def get_challenge(n: int) -> List[Movie]:
+        pass  # pragma: no cover
+
+    @staticmethod
+    @abstractmethod
+    def get_recommendation(n: <FILL>) :
+        pass  # pragma: no cover

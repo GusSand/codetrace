@@ -1,0 +1,155 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "example_id": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "fim_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "original_success": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "original_completion": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "original_completion_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "mutations": [
+      {
+        "completion": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "completion_fim_type": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "expected_fim_type": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "fim_program": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "fim_type": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "middle": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "mutated_code": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "mutation_number": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "original_code": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "prefix": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "prompt": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "success": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "suffix": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "typechecks": {
+          "dtype": "bool",
+          "_type": "Value"
+        }
+      }
+    ],
+    "failed_mutations": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "total_mutations_attempted": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "total_mutations_succeeded": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "key": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prefix": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "suffix": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "middle": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "fim_program": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "hexsha": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "_generated": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generated_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "model_name": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "typechecks": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "_original_program": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "mutated_program": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "steered_predictions": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

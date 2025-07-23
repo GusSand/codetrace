@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "original_accuracy": 0.54,
+    "mutated_accuracy": 0.43,
+    "accuracy_drop": 0.11000000000000004,
+    "drop_percentage": 20.370370370370377
+  },
+  "by_category": [
+    {
+      "category": "other",
+      "original_accuracy": 0.54,
+      "mutated_accuracy": 0.43,
+      "accuracy_drop": 0.11000000000000004,
+      "drop_percentage": 20.370370370370377,
+      "original_correct": 54,
+      "original_total": 100,
+      "mutated_correct": 43,
+      "mutated_total": 100
+    }
+  ]
+}

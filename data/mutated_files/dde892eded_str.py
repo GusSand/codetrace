@@ -1,0 +1,129 @@
+import re
+import warnings
+from typing import Iterable, Iterator, Type
+
+from ics.types import ContextDict, EmptyContext, EmptyParams, ExtraParams
+from ics.utils import next_after_str_escape
+from ics.valuetype.base import ValueConverter
+
+__all__ = ["TextConverter", "RawTextConverter"]
+
+
+class __typ0(ValueConverter[str]):
+    @property
+    def __tmp4(__tmp0) -> str:
+        return "RAWTEXT"
+
+    @property
+    def __tmp8(__tmp0) :
+        return str
+
+    def __tmp9(
+        __tmp0,
+        value,
+        params: ExtraParams = EmptyParams,
+        context: ContextDict = EmptyContext,
+    ) :
+        return value
+
+    def __tmp7(
+        __tmp0,
+        value,
+        params: ExtraParams = EmptyParams,
+        context: ContextDict = EmptyContext,
+    ) -> str:
+        return value
+
+
+RawTextConverter = __typ0()
+
+
+class TextConverterClass(ValueConverter[str]):
+    @property
+    def __tmp4(__tmp0) :
+        return "TEXT"
+
+    @property
+    def __tmp8(__tmp0) -> Type[str]:
+        return str
+
+    def __tmp9(
+        __tmp0,
+        value: <FILL>,
+        params: ExtraParams = EmptyParams,
+        context: ContextDict = EmptyContext,
+    ) :
+        return __tmp0.unescape_text(value)
+
+    def __tmp7(
+        __tmp0,
+        value,
+        params: ExtraParams = EmptyParams,
+        context: ContextDict = EmptyContext,
+    ) :
+        return __tmp0.escape_text(value)
+
+    def __tmp1(__tmp0, __tmp6) :
+        it = iter(__tmp6.split(","))
+        for val in it:
+            while True:
+                m = re.search(r"\\+$", val)  # find any trailing backslash
+                if m and (m.end() - m.start()) % 2 == 1:
+                    # odd number of trailing backslashes => comma was escaped, include next segment
+                    val += "," + next_after_str_escape(it, full_str=__tmp6)
+                else:
+                    break
+            yield val
+
+    def __tmp2(__tmp0, __tmp6) -> str:
+        def __tmp3():
+            for value in __tmp6:
+                m = re.search(r"\\[;,]|" + "[\n\r]", value)
+                if m:
+                    warnings.warn(f"TEXT value in list may not contain {m}: {value}")
+                yield value
+
+        return ",".join(__tmp3())
+
+    @classmethod
+    def escape_text(cls, __tmp5: str) :
+        return __tmp5.translate(
+            {
+                ord("\\"): "\\\\",
+                ord(";"): "\\;",
+                ord(","): "\\,",
+                ord("\n"): "\\n",
+                ord("\r"): "\\r",
+            }
+        )
+
+    @classmethod
+    def unescape_text(cls, __tmp5: str) :
+        return "".join(cls.unescape_text_iter(__tmp5))
+
+    @classmethod
+    def unescape_text_iter(cls, __tmp5) -> Iterator[str]:
+        it = iter(__tmp5)
+        for c1 in it:
+            if c1 == "\\":
+                c2 = next_after_str_escape(it, full_str=__tmp5)
+                if c2 == ";":
+                    yield ";"
+                elif c2 == ",":
+                    yield ","
+                elif c2 == "n" or c2 == "N":
+                    yield "\n"
+                elif c2 == "r" or c2 == "R":
+                    yield "\r"
+                elif c2 == "\\":
+                    yield "\\"
+                else:
+                    raise ValueError(f"can't handle escaped character '{c2}'")
+            elif c1 in ";,\n\r":
+                raise ValueError(f"unescaped character '{c1}' in TEXT value")
+            else:
+                yield c1
+
+
+TextConverter = TextConverterClass()
+ValueConverter.BY_TYPE[str] = TextConverter

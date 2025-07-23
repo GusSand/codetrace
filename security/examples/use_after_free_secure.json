@@ -1,0 +1,4 @@
+[
+  "class SafeResource:\n    def __init__(self):\n        self.data = None\n        self.is_freed = False\n    \n    def free(self):\n        self.data = None\n        self.is_freed = True\n    \n    def use(self):\n        if self.is_freed:\n            raise ValueError('Resource already freed')\n        return self.data",
+  "def process_data(data):\n    resource = allocate_resource()\n    try:\n        return process(resource, data)\n    finally:\n        free_resource(resource)\n        resource = None"
+]

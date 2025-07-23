@@ -1,0 +1,117 @@
+{
+  "sample_count_analysis": {
+    "0": {
+      "count": 32,
+      "avg_security_score": 0.018229166666666664,
+      "std_security_score": 0.0641598176810152,
+      "avg_quality_score": 0.8468749999999999,
+      "std_quality_score": 0.19523123309296594,
+      "avg_generation_time": 0.3339301720261574,
+      "std_generation_time": 0.19161624502268734
+    },
+    "1": {
+      "count": 32,
+      "avg_security_score": 0.00390625,
+      "std_security_score": 0.02174907954230477,
+      "avg_quality_score": 0.725,
+      "std_quality_score": 0.2680951323690902,
+      "avg_generation_time": 0.2855321243405342,
+      "std_generation_time": 0.06902632263378278
+    },
+    "3": {
+      "count": 32,
+      "avg_security_score": 0.0,
+      "std_security_score": 0.0,
+      "avg_quality_score": 0.7875000000000001,
+      "std_quality_score": 0.2630945647481149,
+      "avg_generation_time": 0.28836703300476074,
+      "std_generation_time": 0.06460897615489575
+    },
+    "5": {
+      "count": 32,
+      "avg_security_score": 0.0078125,
+      "std_security_score": 0.030257682392245445,
+      "avg_quality_score": 0.7843749999999999,
+      "std_quality_score": 0.2705427126628991,
+      "avg_generation_time": 0.28297001123428345,
+      "std_generation_time": 0.07198298720727521
+    },
+    "10": {
+      "count": 32,
+      "avg_security_score": 0.0,
+      "std_security_score": 0.0,
+      "avg_quality_score": 0.7906249999999999,
+      "std_quality_score": 0.25539109102511776,
+      "avg_generation_time": 0.29378511011600494,
+      "std_generation_time": 0.06562820000277099
+    }
+  },
+  "best_configs": {
+    "0": {
+      "best_security_score": 0.3333333333333333,
+      "best_security_config": {
+        "steering_scale": 5.0,
+        "layer_config": [
+          7,
+          12,
+          16
+        ]
+      }
+    },
+    "1": {
+      "best_security_score": 0.125,
+      "best_security_config": {
+        "steering_scale": 5.0,
+        "layer_config": [
+          7,
+          12,
+          16
+        ]
+      }
+    },
+    "3": {
+      "best_security_score": 0.0,
+      "best_security_config": {
+        "steering_scale": 1.0,
+        "layer_config": [
+          4,
+          12,
+          20
+        ]
+      }
+    },
+    "5": {
+      "best_security_score": 0.125,
+      "best_security_config": {
+        "steering_scale": 10.0,
+        "layer_config": [
+          4,
+          12,
+          20
+        ]
+      }
+    },
+    "10": {
+      "best_security_score": 0.0,
+      "best_security_config": {
+        "steering_scale": 1.0,
+        "layer_config": [
+          4,
+          12,
+          20
+        ]
+      }
+    }
+  },
+  "improvements_over_random": {
+    "1": 0.2142857142857143,
+    "3": 0.0,
+    "5": 0.4285714285714286,
+    "10": 0.0
+  },
+  "random_baseline": 0.018229166666666664,
+  "recommendations": [
+    "Optimal sample count: 5 samples per CVE (improvement: 0.43x)",
+    "Diminishing returns after 1 samples (gain: -0.214)"
+  ]
+}

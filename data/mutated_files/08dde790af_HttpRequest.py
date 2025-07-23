@@ -1,0 +1,59 @@
+from typing import TypeAlias
+__typ1 : TypeAlias = "UserProfile"
+__typ2 : TypeAlias = "HttpResponse"
+__typ0 : TypeAlias = "str"
+from django.core.exceptions import ValidationError
+from django.http import HttpRequest, HttpResponse
+from django.utils.translation import ugettext as _
+
+from zerver.decorator import require_realm_admin
+from zerver.lib.actions import do_add_realm_domain, do_change_realm_domain, \
+    do_remove_realm_domain
+from zerver.lib.domains import validate_domain
+from zerver.lib.request import has_request_variables, REQ
+from zerver.lib.response import json_error, json_success
+from zerver.lib.validator import check_bool, check_string
+from zerver.models import RealmDomain, UserProfile, get_realm_domains
+
+
+def __tmp1(request: <FILL>, __tmp2) -> __typ2:
+    domains = get_realm_domains(__tmp2.realm)
+    return json_success({'domains': domains})
+
+@require_realm_admin
+@has_request_variables
+def __tmp3(request: HttpRequest, __tmp2,
+                        domain: __typ0=REQ(validator=check_string),
+                        allow_subdomains: bool=REQ(validator=check_bool)) -> __typ2:
+    domain = domain.strip().lower()
+    try:
+        validate_domain(domain)
+    except ValidationError as e:
+        return json_error(_('Invalid domain: {}').format(e.messages[0]))
+    if RealmDomain.objects.filter(realm=__tmp2.realm, domain=domain).exists():
+        return json_error(_("The domain %(domain)s is already"
+                            " a part of your organization.") % {'domain': domain})
+    realm_domain = do_add_realm_domain(__tmp2.realm, domain, allow_subdomains)
+    return json_success({'new_domain': [realm_domain.id, realm_domain.domain]})
+
+@require_realm_admin
+@has_request_variables
+def __tmp0(request: HttpRequest, __tmp2, domain: __typ0,
+                       allow_subdomains: bool=REQ(validator=check_bool)) :
+    try:
+        realm_domain = RealmDomain.objects.get(realm=__tmp2.realm, domain=domain)
+        do_change_realm_domain(realm_domain, allow_subdomains)
+    except RealmDomain.DoesNotExist:
+        return json_error(_('No entry found for domain %(domain)s.' % {'domain': domain}))
+    return json_success()
+
+@require_realm_admin
+@has_request_variables
+def __tmp4(request: HttpRequest, __tmp2,
+                        domain) -> __typ2:
+    try:
+        realm_domain = RealmDomain.objects.get(realm=__tmp2.realm, domain=domain)
+        do_remove_realm_domain(realm_domain)
+    except RealmDomain.DoesNotExist:
+        return json_error(_('No entry found for domain %(domain)s.' % {'domain': domain}))
+    return json_success()

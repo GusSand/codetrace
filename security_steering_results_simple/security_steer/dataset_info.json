@@ -1,0 +1,52 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "fim_program": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "fim_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "cwe": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "vulnerability_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "idx": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "source": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "original_vulnerable_code": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "original_secure_code": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "typechecks": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "mutated_program": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "_original_program": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

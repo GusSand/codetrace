@@ -1,0 +1,4 @@
+[
+  "def ping_host(hostname):\n    import os\n    return os.system(f'ping -c 1 {hostname}')",
+  "def execute_git_command(repo_name):\n    import os\n    os.system(f'git clone {repo_name}')"
+]

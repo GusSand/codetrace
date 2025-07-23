@@ -1,0 +1,102 @@
+from typing import TypeAlias
+__typ0 : TypeAlias = "bytes"
+"""Functions for initializing or adding a new drop"""
+import os
+from typing import Dict
+from typing import List
+from typing import Optional  # noqa
+from typing import Tuple
+
+from syncr_backend.constants import DEFAULT_DROP_METADATA_LOCATION
+from syncr_backend.constants import DEFAULT_FILE_METADATA_LOCATION
+from syncr_backend.init import node_init
+from syncr_backend.metadata import drop_metadata
+from syncr_backend.metadata import file_metadata
+from syncr_backend.metadata.drop_metadata import DropMetadata
+from syncr_backend.metadata.drop_metadata import save_drop_location
+from syncr_backend.metadata.file_metadata import FileMetadata
+from syncr_backend.util import crypto_util
+from syncr_backend.util import fileio_util
+from syncr_backend.util.log_util import get_logger
+
+
+logger = get_logger(__name__)
+
+
+async def __tmp3(__tmp0: str) -> __typ0:
+    """
+    Initialize a drop from a directory. Generates the necesssary drop and
+    file metadata files and writes the drop location to the central config dif
+
+    :param directory: The directory to initialize a drop from
+    :return: The b64 encoded id of the created drop
+    """
+    logger.info("initializing drop in dir %s", __tmp0)
+    priv_key = await node_init.load_private_key_from_disk()
+    node_id = await crypto_util.node_id_from_public_key(priv_key.public_key())
+    (drop_m, files_m) = await __tmp4(
+        path=__tmp0,
+        __tmp2=os.path.basename(__tmp0),
+        __tmp1=node_id,
+    )
+    await drop_m.write_file(
+        is_latest=True,
+        metadata_location=os.path.join(
+            __tmp0, DEFAULT_DROP_METADATA_LOCATION,
+        ),
+    )
+    for f_m in files_m.values():
+        await f_m.write_file(
+            os.path.join(__tmp0, DEFAULT_FILE_METADATA_LOCATION),
+        )
+    await save_drop_location(drop_m.id, __tmp0)
+    logger.info("drop initialized with %s files", len(files_m))
+
+    return crypto_util.b64encode(drop_m.id)
+
+
+async def __tmp4(
+    path: str,
+    __tmp2: <FILL>,
+    __tmp1,
+    other_owners: Dict[__typ0, int]={},
+    ignore: List[str]=[],
+    drop_id: Optional[__typ0]=None
+) :
+    """
+    Makes drop metadata and file metadatas from a directory
+
+    :param path: The directory to make metadata from
+    :param name: The name of the drop to create
+    :param drop_id: The drop id of the drop metadata, must match the owner
+    :param owner: The owner, must match the drop id
+    :param other_owners: Other owners, may be empty
+    :return: A tuple of the drop metadata, and a dict from file names to file \
+             metadata
+    """
+    logger.info("creating drop metadata for drop name %s", __tmp2)
+    if drop_id is None:
+        drop_id = drop_metadata.gen_drop_id(__tmp1)
+    files = {}
+    for (dirpath, filename) in fileio_util.walk_with_ignore(path, ignore):
+        full_name = os.path.join(dirpath, filename)
+        files[full_name] = await file_metadata.make_file_metadata(
+            full_name, drop_id,
+        )
+
+    file_hashes = {
+        os.path.relpath(name, path): m.file_id for (name, m) in files.items()
+    }
+    dm = DropMetadata(
+        drop_id=drop_id,
+        name=__tmp2,
+        version=drop_metadata.DropVersion(1, crypto_util.random_int()),
+        previous_versions=[],
+        primary_owner=__tmp1,
+        other_owners=other_owners,
+        signed_by=__tmp1,
+        files=file_hashes,
+    )
+
+    logger.debug("metadata generated with %s files", len(files))
+    return (dm, files)
