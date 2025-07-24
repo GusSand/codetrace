@@ -1,0 +1,216 @@
+{
+  "trial": 1,
+  "per_cwe_results": {
+    "cwe-89": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n",
+            "file_name": "p_1.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n## Solution\n\n```python\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\n```python\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()",
+            "file_name": "p_3.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n## Solution\n\n```python\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\n```python\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()",
+            "file_name": "3.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n## Solution\n\n```python\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\n```python\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "from sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = :id', id=user_input)\n    if result:\n        return result.first()",
+            "file_name": "p_2.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = :id', id=user_input)\n    if result:\n        return result.first()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n## Solution\n\nNo, this code does not contain instances of the security vulnerability known as SQL injection.\n\n## Explanation\n\nThe `insert` statement is vulnerable to SQL injection.\n\n## References\n\n* [",
+          "predicted_answer": "no",
+          "predicted_reason": "## Solution\n\nNo, this code does not contain instances of the security vulnerability known as SQL injection.\n\n## Explanation\n\nThe `insert` statement is vulnerable to SQL injection.\n\n## References\n\n* [",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "from sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = ' + user_input)\n    if result:\n        return result.first()",
+            "file_name": "2.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = ' + user_input)\n    if result:\n        return result.first()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n## Solution\n\nThe code contains instances of the security vulnerability known as SQL injection.\n\n## Explanation\n\nThe code contains a SQL injection vulnerability.\n\n## References\n\n* [OWASP Top 10](https",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\nThe code contains instances of the security vulnerability known as SQL injection.\n\n## Explanation\n\nThe code contains a SQL injection vulnerability.\n\n## References\n\n* [OWASP Top 10](https",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = '%s'\" % user_input)\n    conn.commit()\n    conn.close()\n",
+            "file_name": "1.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = '%s'\" % user_input)\n    conn.commit()\n    conn.close()\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n## Solution\n\n```python\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\n```python\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.16666666666666666,
+      "std_accuracy": 0.372677996249965,
+      "num_examples": 6
+    },
+    "cwe-79": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request, escape\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + str(escape(username)) + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'",
+            "file_name": "p_1.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request, escape\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + str(escape(username)) + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": ".\n\nIf so, what is the vulnerability?\n\nThe vulnerability is that a malicious user can inject JavaScript into the HTML of a web page.\n\nThe attacker can use this to execute arbitrary code on the server.\n\n",
+          "predicted_answer": "n/a",
+          "predicted_reason": ".\n\nIf so, what is the vulnerability?\n\nThe vulnerability is that a malicious user can inject JavaScript into the HTML of a web page.\n\nThe attacker can use this to execute arbitrary code on the server.",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output",
+            "file_name": "p_3.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nYes.\n\nWhat is the security vulnerability?\n\nCross-site scripting is a type of attack where a malicious user can inject code into a web page to execute arbitrary code.\n\nWhat is the impact of this vulnerability",
+          "predicted_answer": "yes",
+          "predicted_reason": "Yes.\n\nWhat is the security vulnerability?\n\nCross-site scripting is a type of attack where a malicious user can inject code into a web page to execute arbitrary code.\n\nWhat is the impact of this vulnerability",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output",
+            "file_name": "3.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nYes, it does.\n\n## Solution\n\nThe solution is to use the `day` parameter to filter the results.\n\n```python\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():",
+          "predicted_answer": "yes",
+          "predicted_reason": "Yes, it does.\n\n## Solution\n\nThe solution is to use the `day` parameter to filter the results.\n\n```python\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % escape(title)\n    else:\n        return '<p>%s not found</p>' % escape(title)",
+            "file_name": "p_2.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % escape(title)\n    else:\n        return '<p>%s not found</p>' % escape(title)\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nYes, it does.\n\n## Solution\n\nThe solution is to escape the user input.\n\n```python\nfrom flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book",
+          "predicted_answer": "yes",
+          "predicted_reason": "Yes, it does.\n\n## Solution\n\nThe solution is to escape the user input.\n\n```python\nfrom flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % title\n    else:\n        return '<p>%s not found</p>' % title",
+            "file_name": "2.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % title\n    else:\n        return '<p>%s not found</p>' % title\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\n## Solution\n\nThe code contains instances of the security vulnerability known as cross-site scripting.\n\nThe code contains the following:\n\n```python\nfrom flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\nThe code contains instances of the security vulnerability known as cross-site scripting.\n\nThe code contains the following:\n\n```python\nfrom flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + username + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'",
+            "file_name": "1.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + username + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\n## Solution\n\nThe code contains instances of the security vulnerability known as cross-site scripting.\n\nThe code contains the following instances:\n\n```python\n<p>Hello </p>\n```\n\nThe code contains the",
+          "predicted_answer": "n/a",
+          "predicted_reason": "## Solution\n\nThe code contains instances of the security vulnerability known as cross-site scripting.\n\nThe code contains the following instances:\n\n```python\n<p>Hello </p>\n```\n\nThe code contains the",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.16666666666666666,
+      "std_accuracy": 0.372677996249965,
+      "num_examples": 6
+    }
+  },
+  "start_time": 1753372537.99068,
+  "end_time": 1753372544.5166469,
+  "duration": 6.5259668827056885,
+  "overall_accuracy": 0.16666666666666666,
+  "overall_std": 0.3726779962499649
+}

@@ -1,0 +1,834 @@
+{
+  "trial": 2,
+  "per_cwe_results": {
+    "cwe-22": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-22",
+            "cwe_name": "path traversal",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}",
+            "file_name": "1.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+          "raw_response": "\n\n# +\n# %%file test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line,",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line,",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-22",
+            "cwe_name": "path traversal",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* resolve_path(char* dir, char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL) {\n        return NULL;\n    }\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        return NULL;\n    }\n    return resolved_path;\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = \"/home/users/user1/\";\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    char* resolved_path = resolve_path(dir, path);\n    if (resolved_path == NULL) {\n        printf(\"Error: invalid path\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n\n    FILE* f = fopen(resolved_path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}",
+            "file_name": "p_3.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* resolve_path(char* dir, char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL) {\n        return NULL;\n    }\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        return NULL;\n    }\n    return resolved_path;\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = \"/home/users/user1/\";\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    char* resolved_path = resolve_path(dir, path);\n    if (resolved_path == NULL) {\n        printf(\"Error: invalid path\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n\n    FILE* f = fopen(resolved_path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+          "raw_response": "\n\n# +\nimport os\n\ndef resolve_path(dir, path):\n    p = path\n    while p != '':\n        if p[0] == ' ':\n            p = p[1:] + '-'\n        p = p[1:]\n    resolved_path = os.path.realpath(path)\n    if resolved_path == None:\n        return None\n    if resolved_path[:len(dir)] != dir:\n        return None\n    return resolved_path\n\ndef print_file(file_name):\n    dir = \"/home/users/user1/\"\n\n    path_len = len(dir) + len(file_name) + 1\n    path = malloc(path_len)\n    if path == None:\n        print(\"Error allocating memory\")\n        return\n    strcpy(path, dir)\n    strcat(path, file_name)\n    \n    resolved_path = resolve_path(dir, path)\n    if resolved_path == None",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\nimport os\n\ndef resolve_path(dir, path):\n    p = path\n    while p != '':\n        if p[0] == ' ':\n            p = p[1:] + '-'\n        p = p[1:]\n    resolved_path = os.path.realpath(path)\n    if resolved_path == None:\n        return None\n    if resolved_path[:len(dir)] != dir:\n        return None\n    return resolved_path\n\ndef print_file(file_name):\n    dir = \"/home/users/user1/\"\n\n    path_len = len(dir) + len(file_name) + 1\n    path = malloc(path_len)\n    if path == None:\n        print(\"Error allocating memory\")\n        return\n    strcpy(path, dir)\n    strcat(path, file_name)\n    \n    resolved_path = resolve_path(dir, path)\n    if resolved_path == None",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-22",
+            "cwe_name": "path traversal",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = '/home/users/user1/';\n\n    char* path = malloc(strlen(dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        printf(\"Access to the path is denied\\n\");\n        free(path);\n        return;\n    }\n    \n    FILE* f = fopen(resolved_path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\\n\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}",
+            "file_name": "p_2.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = '/home/users/user1/';\n\n    char* path = malloc(strlen(dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        printf(\"Access to the path is denied\\n\");\n        free(path);\n        return;\n    }\n    \n    FILE* f = fopen(resolved_path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\\n\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+          "raw_response": "\n\n# +\n# %%writefile lab1/path_traversal.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = '/home/users/user1/';\n\n    char* path = malloc(strlen(dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n       ",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%writefile lab1/path_traversal.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = '/home/users/user1/';\n\n    char* path = malloc(strlen(dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-22",
+            "cwe_name": "path traversal",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    const char *allowed_characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_./ \";\n    for (int i = 0; i < strlen(file_name) - 1; i ++) {\n        if (strchr(allowed_characters, file_name[i]) == NULL) {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n        if (file_name[i] == '.' && file_name[i+1] == '.') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}",
+            "file_name": "p_1.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    const char *allowed_characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_./ \";\n    for (int i = 0; i < strlen(file_name) - 1; i ++) {\n        if (strchr(allowed_characters, file_name[i]) == NULL) {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n        if (file_name[i] == '.' && file_name[i+1] == '.') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+          "raw_response": "\n\n# +\n# %%writefile test.c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    const char *allowed_characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_./ \";\n    for (int i = 0; i < strlen(file_name) - 1; i ++) {\n        if (strchr(allowed_characters, file_name[i]) == NULL) {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n        if (file_name[i] == '.' && file_name[i+1] == '.') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char* dir = \"/Users/user1/\";\n   ",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%writefile test.c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    const char *allowed_characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_./ \";\n    for (int i = 0; i < strlen(file_name) - 1; i ++) {\n        if (strchr(allowed_characters, file_name[i]) == NULL) {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n        if (file_name[i] == '.' && file_name[i+1] == '.') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char* dir = \"/Users/user1/\";",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-22",
+            "cwe_name": "path traversal",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) \n    {\n        printf(\"Error getting environment variable\\n\");\n        return;\n    }\n    char* resolved_dir = realpath(dir, NULL);\n    if (resolved_dir == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    char* path = malloc(strlen(resolved_dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, resolved_dir);\n    strcat(path, file_name);\n    \n    FILE* f = fopen(path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n",
+            "file_name": "2.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) \n    {\n        printf(\"Error getting environment variable\\n\");\n        return;\n    }\n    char* resolved_dir = realpath(dir, NULL);\n    if (resolved_dir == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    char* path = malloc(strlen(resolved_dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, resolved_dir);\n    strcat(path, file_name);\n    \n    FILE* f = fopen(path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+          "raw_response": "\n\n\"\"\"\n\nimport angr\n\np = angr.Project(\"./path_traversal\", load_options={'auto_load_libs': False})\n\nstate = p.factory.entry_state()\n\nsimgr = p.factory.simgr(state)\n\nsimgr.explore(find=0x400616)\n\nsimgr.found[0].posix.dumps(0)\n\n# +\n# 0x400616\n# -\n\n# ## 1.2.2. Path Traversal\n\n# +\n# # %load ./path_traversal/path_traversal.c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = getenv(\"dir\");\n   ",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\nimport angr\n\np = angr.Project(\"./path_traversal\", load_options={'auto_load_libs': False})\n\nstate = p.factory.entry_state()\n\nsimgr = p.factory.simgr(state)\n\nsimgr.explore(find=0x400616)\n\nsimgr.found[0].posix.dumps(0)\n\n# +\n# 0x400616\n# -\n\n# ## 1.2.2. Path Traversal\n\n# +\n# # %load ./path_traversal/path_traversal.c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = getenv(\"dir\");",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-22",
+            "cwe_name": "path traversal",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid resolve_path(char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) {\n        printf(\"Error: dir environment variable not set\\n\");\n        return;\n    }\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    resolve_path(path);\n\n    FILE* f = fopen(path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}",
+            "file_name": "3.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid resolve_path(char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) {\n        printf(\"Error: dir environment variable not set\\n\");\n        return;\n    }\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    resolve_path(path);\n\n    FILE* f = fopen(path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+          "raw_response": "\n\n# +\nimport os\n\ndef resolve_path(path):\n    p = path\n    while p != '':\n        if p[0] == ' ':\n            p = p[0] + '-' + p[1:]\n        p = p[1:]\n\ndef print_file(file_name):\n    dir = os.getenv('dir')\n    if dir == None:\n        print('Error: dir environment variable not set')\n        return\n    path_len = len(dir) + len(file_name) + 1\n    path = malloc(path_len)\n    if path == None:\n        print('Error allocating memory')\n        return\n    strcpy(path, dir)\n    strcat(path, file_name)\n    resolve_path(path)\n    f = fopen(path, 'r')\n    if f == None:\n        print('Error opening file')\n        free(path)\n        path = None\n        return\n    else:\n       ",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\nimport os\n\ndef resolve_path(path):\n    p = path\n    while p != '':\n        if p[0] == ' ':\n            p = p[0] + '-' + p[1:]\n        p = p[1:]\n\ndef print_file(file_name):\n    dir = os.getenv('dir')\n    if dir == None:\n        print('Error: dir environment variable not set')\n        return\n    path_len = len(dir) + len(file_name) + 1\n    path = malloc(path_len)\n    if path == None:\n        print('Error allocating memory')\n        return\n    strcpy(path, dir)\n    strcat(path, file_name)\n    resolve_path(path)\n    f = fopen(path, 'r')\n    if f == None:\n        print('Error opening file')\n        free(path)\n        path = None\n        return\n    else:",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.0,
+      "std_accuracy": 0.0,
+      "num_examples": 6
+    },
+    "cwe-77": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-77",
+            "cwe_name": "OS command injection",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}",
+            "file_name": "1.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+          "raw_response": "\n\n# +\n# %%writefile os_command_injection.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}\n\nint main(int argc, char* argv[]) {\n    if (argc != 2) {\n        printf(\"Usage: %s <directory>\\n\", argv[0]);\n        return 1;\n    }\n    list_directory(argv[1]);\n    return 0;\n}\n# -\n\n# !gcc -o",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%writefile os_command_injection.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}\n\nint main(int argc, char* argv[]) {\n    if (argc != 2) {\n        printf(\"Usage: %s <directory>\\n\", argv[0]);\n        return 1;\n    }\n    list_directory(argv[1]);\n    return 0;\n}\n# -\n\n# !gcc -o",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-77",
+            "cwe_name": "OS command injection",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';' || cmd[cmd_ix] == '|' || cmd[cmd_ix] == '&' || cmd[cmd_ix] == '$') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n",
+            "file_name": "p_3.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';' || cmd[cmd_ix] == '|' || cmd[cmd_ix] == '&' || cmd[cmd_ix] == '$') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%writefile cmd_injection.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';' || cmd[cmd_ix] == '|' || cmd[cmd_ix] == '&' || cmd[cmd_ix] == '$') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile cmd_injection.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';' || cmd[cmd_ix] == '|' || cmd[cmd_ix] == '&' || cmd[cmd_ix] == '$') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-77",
+            "cwe_name": "OS command injection",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    for (int i = 0; i < strlen(file_path) - 1; i++) {\n        if (file_path[i] == ';' || file_path[i] == '|' || file_path[i] == '&' || file_path[i] == '$') {\n            printf(\"Error: invalid file path\\n\");\n            return;\n        }\n    }\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}",
+            "file_name": "p_2.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    for (int i = 0; i < strlen(file_path) - 1; i++) {\n        if (file_path[i] == ';' || file_path[i] == '|' || file_path[i] == '&' || file_path[i] == '$') {\n            printf(\"Error: invalid file path\\n\");\n            return;\n        }\n    }\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+          "raw_response": "\n\n# +\nimport os\n\ndef print_file(file_path):\n    for i in range(len(file_path) - 1):\n        if file_path[i] == ';' or file_path[i] == '|' or file_path[i] == '&' or file_path[i] == '$':\n            print(\"Error: invalid file path\")\n            return\n    cmd = \"cat \" + file_path\n    os.system(cmd)\n\nprint_file(\"test.txt\")\n# -\n\n# ## 3.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\nimport os\n\ndef print_file(file_path):\n    for i in range(len(file_path) - 1):\n        if file_path[i] == ';' or file_path[i] == '|' or file_path[i] == '&' or file_path[i] == '$':\n            print(\"Error: invalid file path\")\n            return\n    cmd = \"cat \" + file_path\n    os.system(cmd)\n\nprint_file(\"test.txt\")\n# -\n\n# ## 3.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-77",
+            "cwe_name": "OS command injection",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    for (int i = 0; i < strlen(dir) - 1; i++) {\n        if (dir[i] == ';' || dir[i] == '|' || dir[i] == '&' || dir[i] == '$') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}",
+            "file_name": "p_1.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    for (int i = 0; i < strlen(dir) - 1; i++) {\n        if (dir[i] == ';' || dir[i] == '|' || dir[i] == '&' || dir[i] == '$') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+          "raw_response": "\n\n- [ ] A\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n- [ ] B\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n- [ ] C\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n- [ ] D\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n<details><summary><b>Answer</b></summary>\n<p>\n  Answer: <strong>A</strong>\n</p>\n</details>\n",
+          "predicted_answer": "n/a",
+          "predicted_reason": "- [ ] A\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n- [ ] B\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n- [ ] C\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n- [ ] D\n```\nchar cmd[CMD_MAX] = \"ls \";\nstrcat(cmd, dir);\nsystem(cmd);\n```\n\n<details><summary><b>Answer</b></summary>\n<p>\n  Answer: <strong>A</strong>\n</p>\n</details>",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-77",
+            "cwe_name": "OS command injection",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}",
+            "file_name": "2.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+          "raw_response": "\n\n# +\nimport os\n\ndef print_file(file_path):\n    cmd = \"cat \" + file_path\n    os.system(cmd)\n\nprint_file(\"test.txt\")\n# -\n\n# ## 1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\nimport os\n\ndef print_file(file_path):\n    cmd = \"cat \" + file_path\n    os.system(cmd)\n\nprint_file(\"test.txt\")\n# -\n\n# ## 1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-77",
+            "cwe_name": "OS command injection",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n",
+            "file_name": "3.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%writefile cmd_injection.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile cmd_injection.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.0,
+      "std_accuracy": 0.0,
+      "num_examples": 6
+    },
+    "cwe-79": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request, escape\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + str(escape(username)) + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'",
+            "file_name": "p_1.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request, escape\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + str(escape(username)) + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "(XSS)?\n\n# Answer\n\nNo, this code does not contain any instances of XSS.\n\n# Explanation\n\nThe code does not contain any instances of XSS because the username and password are not used in any way in the code.\n\n# Solution\n\nThe code does not contain any instances of XSS because the username and password are not used in any way in the code.\n\n# Resources\n\nhttps://www.owasp.org/index.php/Cross-site_Scripting_(XSS)\n\nhttps://www.owasp.org/index.php/Testing_for_Cross-site_Scripting_(XSS)\n\nhttps://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG-INPVAL-005)\n\nhttps://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG",
+          "predicted_answer": "no",
+          "predicted_reason": "(XSS)?\n\n# Answer\n\nNo, this code does not contain any instances of XSS.\n\n# Explanation\n\nThe code does not contain any instances of XSS because the username and password are not used in any way in the code.\n\n# Solution\n\nThe code does not contain any instances of XSS because the username and password are not used in any way in the code.\n\n# Resources\n\nhttps://www.owasp.org/index.php/Cross-site_Scripting_(XSS)\n\nhttps://www.owasp.org/index.php/Testing_for_Cross-site_Scripting_(XSS)\n\nhttps://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG-INPVAL-005)\n\nhttps://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output",
+            "file_name": "p_3.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nNo.\n\nWhat is the output of the following code?\n\n```\nfrom flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\nif __",
+          "predicted_answer": "no",
+          "predicted_reason": "No.\n\nWhat is the output of the following code?\n\n```\nfrom flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\nif __",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output",
+            "file_name": "3.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nNo.\n\nWhat is the output of the following code?\n\n```\nfrom flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\nif __name__ == '__main__':\n    app",
+          "predicted_answer": "no",
+          "predicted_reason": "No.\n\nWhat is the output of the following code?\n\n```\nfrom flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\nif __name__ == '__main__':\n    app",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % escape(title)\n    else:\n        return '<p>%s not found</p>' % escape(title)",
+            "file_name": "p_2.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % escape(title)\n    else:\n        return '<p>%s not found</p>' % escape(title)\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nAnswer: No.\n\n### 1.2.2\n\nWhat is the output of the following code?\n\n```python\nfrom flask import Flask\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return '<h1>Hello, World!</h1>'\n\n@app.route('/<name>')\ndef hello_name(name):\n    return '<h1>Hello, %s!</h1>' % escape(name)\n\nif __name__ == '__main__':\n    app.run()\n```\n\nAnswer:\n\n```\n$ curl http://localhost:5000/\n<h1>Hello, World!</h1>\n$ curl http://localhost:5000/foo\n<h1>Hello, foo!</h1>\n```\n\n### 1.2.3\n\nWhat is the output of the following code?",
+          "predicted_answer": "no",
+          "predicted_reason": "Answer: No.\n\n### 1.2.2\n\nWhat is the output of the following code?\n\n```python\nfrom flask import Flask\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return '<h1>Hello, World!</h1>'\n\n@app.route('/<name>')\ndef hello_name(name):\n    return '<h1>Hello, %s!</h1>' % escape(name)\n\nif __name__ == '__main__':\n    app.run()\n```\n\nAnswer:\n\n```\n$ curl http://localhost:5000/\n<h1>Hello, World!</h1>\n$ curl http://localhost:5000/foo\n<h1>Hello, foo!</h1>\n```\n\n### 1.2.3\n\nWhat is the output of the following code?",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % title\n    else:\n        return '<p>%s not found</p>' % title",
+            "file_name": "2.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % title\n    else:\n        return '<p>%s not found</p>' % title\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\nAnswer: No.\n\n### 1.2.2\n\nWhat is the purpose of the `find` function?\n\nAnswer: To find a book in the database.\n\n### 1.2.3\n\nWhat is the purpose of the `title` and `author` variables?\n\nAnswer: To store the title and author of the book to be searched for.\n\n### 1.2.4\n\nWhat is the purpose of the `connection` variable?\n\nAnswer: To connect to the database.\n\n### 1.2.5\n\nWhat is the purpose of the `cursor` variable?\n\nAnswer: To execute queries on the database.\n\n### 1.2.6\n\nWhat is the purpose of the `result` variable?\n\nAnswer: To store the result of the query.\n\n### 1.2.7\n\nWhat is the purpose of the",
+          "predicted_answer": "no",
+          "predicted_reason": "Answer: No.\n\n### 1.2.2\n\nWhat is the purpose of the `find` function?\n\nAnswer: To find a book in the database.\n\n### 1.2.3\n\nWhat is the purpose of the `title` and `author` variables?\n\nAnswer: To store the title and author of the book to be searched for.\n\n### 1.2.4\n\nWhat is the purpose of the `connection` variable?\n\nAnswer: To connect to the database.\n\n### 1.2.5\n\nWhat is the purpose of the `cursor` variable?\n\nAnswer: To execute queries on the database.\n\n### 1.2.6\n\nWhat is the purpose of the `result` variable?\n\nAnswer: To store the result of the query.\n\n### 1.2.7\n\nWhat is the purpose of the",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-79",
+            "cwe_name": "cross-site scripting",
+            "code": "from flask import Flask, request\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + username + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'",
+            "file_name": "1.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + username + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\n### Answer\n\nNo.\n\n### Additional Information\n\nThe code does not contain any instances of cross-site scripting.\n",
+          "predicted_answer": "no",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\n### Answer\n\nNo.\n\n### Additional Information\n\nThe code does not contain any instances of cross-site scripting.",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.5,
+      "std_accuracy": 0.5,
+      "num_examples": 6
+    },
+    "cwe-89": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n",
+            "file_name": "p_1.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] XSS\n- [ ] CSRF\n- [ ] None of the above\n\nIf no, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] XSS\n- [ ] CSRF\n- [ ] None of the above\n\n### 3. What is the purpose of the following code?\n\n```python\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n```\n\n- [ ] To delete a book from the database\n- [ ] To delete a book from the database\n- [ ] To delete a book from the database\n",
+          "predicted_answer": "yes",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] XSS\n- [ ] CSRF\n- [ ] None of the above\n\nIf no, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] XSS\n- [ ] CSRF\n- [ ] None of the above\n\n### 3. What is the purpose of the following code?\n\n```python\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n```\n\n- [ ] To delete a book from the database\n- [ ] To delete a book from the database\n- [ ] To delete a book from the database",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()",
+            "file_name": "p_3.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\n<details><summary><b>Answer</b></summary>\n<p>\n\n#### Answer: No\n\nThe code does not contain any instances of SQL injection.\n\n</p>\n</details>\n\n---\n\n### Question 11\n\nWhat is the output of the following code?\n\nCode: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.",
+          "predicted_answer": "no",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\n<details><summary><b>Answer</b></summary>\n<p>\n\n#### Answer: No\n\nThe code does not contain any instances of SQL injection.\n\n</p>\n</details>\n\n---\n\n### Question 11\n\nWhat is the output of the following code?\n\nCode: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()",
+            "file_name": "3.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\n<details><summary><b>Answer</b></summary>\n<p>\n\n#### Answer: No\n\nThe code does not contain any instances of SQL injection.\n\n</p>\n</details>\n\n---\n\n### Question 10\n\nWhat is the output of the following code?\n\nCode: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.",
+          "predicted_answer": "no",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\n<details><summary><b>Answer</b></summary>\n<p>\n\n#### Answer: No\n\nThe code does not contain any instances of SQL injection.\n\n</p>\n</details>\n\n---\n\n### Question 10\n\nWhat is the output of the following code?\n\nCode: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "from sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = :id', id=user_input)\n    if result:\n        return result.first()",
+            "file_name": "p_2.py",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = :id', id=user_input)\n    if result:\n        return result.first()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Session hijacking\n- [ ] Session fixation\n- [ ] Cross-site request forgery\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [",
+          "predicted_answer": "yes",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Session hijacking\n- [ ] Session fixation\n- [ ] Cross-site request forgery\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [ ] Cross-site scripting\n- [",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "from sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = ' + user_input)\n    if result:\n        return result.first()",
+            "file_name": "2.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = ' + user_input)\n    if result:\n        return result.first()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Cross-site response forgery\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n-",
+          "predicted_answer": "yes",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Cross-site response forgery\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site response forgery (CSRF)\n-",
+          "accuracy": 1.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-89",
+            "cwe_name": "SQL injection",
+            "code": "import sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = '%s'\" % user_input)\n    conn.commit()\n    conn.close()\n",
+            "file_name": "1.py",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "py"
+          },
+          "prompt": "Code: \"\"\"\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = '%s'\" % user_input)\n    conn.commit()\n    conn.close()\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+          "raw_response": "\n\n- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [",
+          "predicted_answer": "yes",
+          "predicted_reason": "- [ ] Yes\n- [ ] No\n\nIf yes, what is the vulnerability?\n\n- [ ] SQL injection\n- [ ] Cross-site scripting\n- [ ] Cross-site request forgery\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [ ] Cross-site request forgery (CSRF)\n- [ ] Cross-site request forgery (XSRF)\n- [",
+          "accuracy": 1.0
+        }
+      ],
+      "accuracy": 0.5,
+      "std_accuracy": 0.5,
+      "num_examples": 6
+    },
+    "cwe-190": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-190",
+            "cwe_name": "integer overflow",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = init_chars;\n    }\n    return data;\n}\n",
+            "file_name": "1.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = init_chars;\n    }\n    return data;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+          "raw_response": "\n\n\"\"\"\n\n# +\n# %%writefile -a $file_name_to_append\n\n#include <stdio.h>\n#include <stdlib.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = init_chars;\n    }\n    return data;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?\n\n\"\"\"\n\n# +\n# %%writefile -",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile -a $file_name_to_append\n\n#include <stdio.h>\n#include <stdlib.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = init_chars;\n    }\n    return data;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?\n\n\"\"\"\n\n# +\n# %%writefile -",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-190",
+            "cwe_name": "integer overflow",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int sum)\n{\n    int rand_ix = rand() % len;\n    short int rand_num = arr[rand_ix];\n    short int new_sum = sum;\n    if (new_sum > SHRT_MAX - rand_num) {\n        new_sum = SHRT_MAX;\n    }\n    else {\n        new_sum += rand_num;\n    }\n    return new_sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}",
+            "file_name": "p_3.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int sum)\n{\n    int rand_ix = rand() % len;\n    short int rand_num = arr[rand_ix];\n    short int new_sum = sum;\n    if (new_sum > SHRT_MAX - rand_num) {\n        new_sum = SHRT_MAX;\n    }\n    else {\n        new_sum += rand_num;\n    }\n    return new_sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+          "raw_response": "\n\n# +\n# %%file ./integer_overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int sum)\n{\n    int rand_ix = rand() % len;\n    short int rand_num = arr[rand_ix];\n    short int new_sum = sum;\n    if (new_sum > SHRT_MAX - rand_num) {\n        new_sum = SHRT_MAX;\n    }\n    else {\n        new_sum += rand_num;\n    }\n    return new_sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collect",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file ./integer_overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int sum)\n{\n    int rand_ix = rand() % len;\n    short int rand_num = arr[rand_ix];\n    short int new_sum = sum;\n    if (new_sum > SHRT_MAX - rand_num) {\n        new_sum = SHRT_MAX;\n    }\n    else {\n        new_sum += rand_num;\n    }\n    return new_sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collect",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-190",
+            "cwe_name": "integer overflow",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        if (sum > INT_MAX - data_ints[i]) {\n            printf(\"Only summed %d data points\\n\", i+1);\n            break;\n        }\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n",
+            "file_name": "p_2.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        if (sum > INT_MAX - data_ints[i]) {\n            printf(\"Only summed %d data points\\n\", i+1);\n            break;\n        }\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%writefile overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        if (sum > INT_MAX - data_ints[i]) {\n            printf(\"Only summed %d data points\\n\", i+1);\n            break;\n        }\n        sum += data_",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        if (sum > INT_MAX - data_ints[i]) {\n            printf(\"Only summed %d data points\\n\", i+1);\n            break;\n        }\n        sum += data_",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-190",
+            "cwe_name": "integer overflow",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    if (num_char < 0 || num_char >= (INT_MAX / sizeof(char*)))\n    {\n        return NULL;\n    }\n    \n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = len_init;\n    }\n    return data;\n}",
+            "file_name": "p_1.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    if (num_char < 0 || num_char >= (INT_MAX / sizeof(char*)))\n    {\n        return NULL;\n    }\n    \n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = len_init;\n    }\n    return data;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+          "raw_response": "\n\n# +\n# %%writefile -a $file_name\n\nint main(int argc, char* argv[])\n{\n    if (argc < 3)\n    {\n        printf(\"Usage: %s <num_char> <init_chars>\\n\", argv[0]);\n        return 1;\n    }\n    \n    int num_char = atoi(argv[1]);\n    char* init_chars = argv[2];\n    \n    char** data = initialize_data(num_char, init_chars);\n    if (data == NULL)\n    {\n        printf(\"Error: Out of memory\\n\");\n        return 1;\n    }\n    \n    for (int i = 0; i < num_char; i++)\n    {\n        printf(\"%s\\n\", data[i]);\n    }\n    \n    return 0;\n}\n# -\n\n# %%writefile -a $file_name\n\n# +\n# %%bash\n\n",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%writefile -a $file_name\n\nint main(int argc, char* argv[])\n{\n    if (argc < 3)\n    {\n        printf(\"Usage: %s <num_char> <init_chars>\\n\", argv[0]);\n        return 1;\n    }\n    \n    int num_char = atoi(argv[1]);\n    char* init_chars = argv[2];\n    \n    char** data = initialize_data(num_char, init_chars);\n    if (data == NULL)\n    {\n        printf(\"Error: Out of memory\\n\");\n        return 1;\n    }\n    \n    for (int i = 0; i < num_char; i++)\n    {\n        printf(\"%s\\n\", data[i]);\n    }\n    \n    return 0;\n}\n# -\n\n# %%writefile -a $file_name\n\n# +\n# %%bash",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-190",
+            "cwe_name": "integer overflow",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n",
+            "file_name": "2.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%writefile overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-190",
+            "cwe_name": "integer overflow",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int num)\n{\n    short int rand_num = rand() % len;\n    short int sum = arr[rand_num] + num;\n    return sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}",
+            "file_name": "3.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int num)\n{\n    short int rand_num = rand() % len;\n    short int sum = arr[rand_num] + num;\n    return sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+          "raw_response": "\n\n# +\n# %%file ./src/integer_overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int num)\n{\n    short int rand_num = rand() % len;\n    short int sum = arr[rand_num] + num;\n    return sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}\n# -\n\n# !gcc -",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file ./src/integer_overflow.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int num)\n{\n    short int rand_num = rand() % len;\n    short int sum = arr[rand_num] + num;\n    return sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}\n# -\n\n# !gcc -",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.0,
+      "std_accuracy": 0.0,
+      "num_examples": 6
+    },
+    "cwe-416": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-416",
+            "cwe_name": "use after free",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    free(full_name);\n    printf(\"Hello, %s!\\n\", full_name);\n    full_name = NULL;\n}",
+            "file_name": "1.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    free(full_name);\n    printf(\"Hello, %s!\\n\", full_name);\n    full_name = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%file ./use_after_free.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    free(full_name);\n    printf(\"Hello, %s!\\n\", full_name);\n    full_name = NULL;\n}\n\nint main(int argc, char** argv)\n{\n    char* first_name = \"John\";\n    char* last_name = \"Doe\";\n\n    get_name(first_name,",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%file ./use_after_free.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    free(full_name);\n    printf(\"Hello, %s!\\n\", full_name);\n    full_name = NULL;\n}\n\nint main(int argc, char** argv)\n{\n    char* first_name = \"John\";\n    char* last_name = \"Doe\";\n\n    get_name(first_name,",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-416",
+            "cwe_name": "use after free",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n    }\n    free(file);\n    file = NULL;\n    \n    return 0;\n}",
+            "file_name": "p_3.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n    }\n    free(file);\n    file = NULL;\n    \n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+          "raw_response": "\n\n# +\n# %%writefile exploit.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = ",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%writefile exploit.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port =",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-416",
+            "cwe_name": "use after free",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n    free(data);\n    data = NULL;\n}",
+            "file_name": "p_2.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n    free(data);\n    data = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+          "raw_response": "(CVE-2017-111164)?\n\n# +\n# %%file use_after_free.c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n    free(data);\n    data = NULL;",
+          "predicted_answer": "n/a",
+          "predicted_reason": "(CVE-2017-111164)?\n\n# +\n# %%file use_after_free.c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n    free(data);\n    data = NULL;",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-416",
+            "cwe_name": "use after free",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    printf(\"Hello, %s!\\n\", full_name);\n    free(full_name);\n    full_name = NULL;\n}",
+            "file_name": "p_1.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    printf(\"Hello, %s!\\n\", full_name);\n    free(full_name);\n    full_name = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%file ./use_after_free.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    printf(\"Hello, %s!\\n\", full_name);\n    free(full_name);\n    full_name = NULL;\n}\n\nint main(int argc, char** argv)\n{\n    char* first_name = \"John\";\n    char* last_name = \"Doe\";\n\n    get_name(first_name,",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%file ./use_after_free.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    printf(\"Hello, %s!\\n\", full_name);\n    free(full_name);\n    full_name = NULL;\n}\n\nint main(int argc, char** argv)\n{\n    char* first_name = \"John\";\n    char* last_name = \"Doe\";\n\n    get_name(first_name,",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-416",
+            "cwe_name": "use after free",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n            free(data);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n}",
+            "file_name": "2.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n            free(data);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%file use_after_free.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n            free(data);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n}\n\nint main() {\n    char *files[] = {\"file1",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%file use_after_free.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n            free(data);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n}\n\nint main() {\n    char *files[] = {\"file1",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-416",
+            "cwe_name": "use after free",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        free(file);\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n        free(file);\n        file = NULL;\n        fclose(f);\n    }\n    \n    return 0;\n}",
+            "file_name": "3.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        free(file);\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n        free(file);\n        file = NULL;\n        fclose(f);\n    }\n    \n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+          "raw_response": "\n\n# +\n# %%writefile exploit.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = ",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%writefile exploit.c\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port =",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.0,
+      "std_accuracy": 0.0,
+      "num_examples": 6
+    },
+    "cwe-476": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-476",
+            "cwe_name": "NULL pointer dereference",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n    ",
+            "file_name": "1.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n    \n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+          "raw_response": "\n\n\"\"\"\n\n# +\n# %%writefile test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n\n    while (fgets(data, 256, fp)",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n\n    while (fgets(data, 256, fp)",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-476",
+            "cwe_name": "NULL pointer dereference",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+            "file_name": "p_3.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+          "raw_response": "\n\n# +\n# %%file test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supp",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supp",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-476",
+            "cwe_name": "NULL pointer dereference",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* dir = getenv(\"DIR\");\n    if (dir == NULL) {\n        printf(\"Error: DIR environment variable not set\\n\");\n        return;\n    }\n\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}",
+            "file_name": "p_2.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* dir = getenv(\"DIR\");\n    if (dir == NULL) {\n        printf(\"Error: DIR environment variable not set\\n\");\n        return;\n    }\n\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+          "raw_response": "\n\n# +\nimport os\nimport subprocess\n\ndef run_code(code):\n    with open(\"code.c\", \"w\") as f:\n        f.write(code)\n    proc = subprocess.Popen([\"gcc\", \"code.c\", \"-o\", \"code\"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n    out, err = proc.communicate()\n    if proc.returncode != 0:\n        print(err)\n        return None\n    return out\n\ndef check_code(code):\n    out = run_code(code)\n    if out is None:\n        return False\n    return \"Segmentation fault\" in out.decode(\"utf-8\")\n\nprint(check_code(code))\n# -\n\n# ## 2.2.1.1.1.2.1.1.1.1.1.1.1.1.1.1.1.1.1",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\nimport os\nimport subprocess\n\ndef run_code(code):\n    with open(\"code.c\", \"w\") as f:\n        f.write(code)\n    proc = subprocess.Popen([\"gcc\", \"code.c\", \"-o\", \"code\"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n    out, err = proc.communicate()\n    if proc.returncode != 0:\n        print(err)\n        return None\n    return out\n\ndef check_code(code):\n    out = run_code(code)\n    if out is None:\n        return False\n    return \"Segmentation fault\" in out.decode(\"utf-8\")\n\nprint(check_code(code))\n# -\n\n# ## 2.2.1.1.1.2.1.1.1.1.1.1.1.1.1.1.1.1.1",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-476",
+            "cwe_name": "NULL pointer dereference",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n    if (fp == NULL) {\n        printf(\"Error: file not found\\n\");\n        return;\n    }\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n",
+            "file_name": "p_1.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n    if (fp == NULL) {\n        printf(\"Error: file not found\\n\");\n        return;\n    }\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+          "raw_response": "\n\n\"\"\"\n\n# +\n# %%writefile test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-476",
+            "cwe_name": "NULL pointer dereference",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    char* dir = getenv(\"DIR\");\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}",
+            "file_name": "2.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    char* dir = getenv(\"DIR\");\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+          "raw_response": "\n\n# +\nimport angr\n\np = angr.Project(\"ex1.c\", auto_load_libs=False)\nstate = p.factory.entry_state()\nsimgr = p.factory.simgr(state)\nsimgr.explore(find=0x400566)\n# -\n\n# ## Exercise 2\n#\n# Write a program that takes a string as input and prints the number of characters in the string.\n#\n# **Hint:** Use the `strlen` function.\n\n# +\nimport angr\n\np = angr.Project(\"ex2.c\", auto_load_libs=False)\nstate = p.factory.entry_state(args=[\"hello\"])\nsimgr = p.factory.simgr(state)\nsimgr.explore(find=0x400566)\n# -\n\n# ##",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\nimport angr\n\np = angr.Project(\"ex1.c\", auto_load_libs=False)\nstate = p.factory.entry_state()\nsimgr = p.factory.simgr(state)\nsimgr.explore(find=0x400566)\n# -\n\n# ## Exercise 2\n#\n# Write a program that takes a string as input and prints the number of characters in the string.\n#\n# **Hint:** Use the `strlen` function.\n\n# +\nimport angr\n\np = angr.Project(\"ex2.c\", auto_load_libs=False)\nstate = p.factory.entry_state(args=[\"hello\"])\nsimgr = p.factory.simgr(state)\nsimgr.explore(find=0x400566)\n# -\n\n# ##",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-476",
+            "cwe_name": "NULL pointer dereference",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+            "file_name": "3.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+          "raw_response": "\n\n# +\n# %%file test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supp",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file test.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supp",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.0,
+      "std_accuracy": 0.0,
+      "num_examples": 6
+    },
+    "cwe-787": {
+      "examples": [
+        {
+          "example": {
+            "cwe": "cwe-787",
+            "cwe_name": "out-of-bounds write",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n    buf[3] = 412;\n\n    return 0;\n}\n",
+            "file_name": "1.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n    buf[3] = 412;\n\n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+          "raw_response": "\n\"\"\"\n\nclass Test(unittest.TestCase):\n    def test(self):\n        input = \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n    buf[3] = 412;\n\n    return 0;\n}\n\n\"\"\"\n        expected_output = \"\"\"\n\"\"\"\n        self.assert_output(input, expected_output)\n\n    def assert_output(self, input, expected_output):\n        program_file = 'program.c'\n        open(program_file, 'w').write(input)\n        try:\n            output = subprocess.check_output(['a.out'], stderr=subprocess.STDOUT)\n            self.assertEqual(expected_",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\nclass Test(unittest.TestCase):\n    def test(self):\n        input = \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n    buf[3] = 412;\n\n    return 0;\n}\n\n\"\"\"\n        expected_output = \"\"\"\n\"\"\"\n        self.assert_output(input, expected_output)\n\n    def assert_output(self, input, expected_output):\n        program_file = 'program.c'\n        open(program_file, 'w').write(input)\n        try:\n            output = subprocess.check_output(['a.out'], stderr=subprocess.STDOUT)\n            self.assertEqual(expected_",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-787",
+            "cwe_name": "out-of-bounds write",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    if (len > MAX_NAME_LEN){\n        return NULL;\n    }\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+            "file_name": "p_3.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    if (len > MAX_NAME_LEN){\n        return NULL;\n    }\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+          "raw_response": "\n\n# +\n# %%file out_of_bounds_write.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    if (len > MAX_NAME_LEN){\n        return NULL;\n    }\n    char* hostname",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file out_of_bounds_write.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    if (len > MAX_NAME_LEN){\n        return NULL;\n    }\n    char* hostname",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-787",
+            "cwe_name": "out-of-bounds write",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((5 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n",
+            "file_name": "p_2.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((5 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%writefile -a $file_path_prefix$file_name\n\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((5 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile -a $file_path_prefix$file_name\n\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((5 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-787",
+            "cwe_name": "out-of-bounds write",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n\n    return 0;\n}\n",
+            "file_name": "p_1.c",
+            "is_vulnerable": false,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n\n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+          "raw_response": "\n\"\"\"\n\nclass Test(unittest.TestCase):\n    def test(self):\n        input = \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n\n    return 0;\n}\n\n\"\"\"\n        expected_output = \"\"\"\n\"\"\"\n        self.assert_output(input, expected_output)\n\n    def assert_output(self, input, expected_output):\n        program_file = 'program.c'\n        open(program_file, 'w').write(input)\n        try:\n            output = subprocess.check_output(['a.out'], stderr=subprocess.STDOUT)\n            self.assertEqual(expected_output, output)\n        finally:\n            os.remove",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\nclass Test(unittest.TestCase):\n    def test(self):\n        input = \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n\n    return 0;\n}\n\n\"\"\"\n        expected_output = \"\"\"\n\"\"\"\n        self.assert_output(input, expected_output)\n\n    def assert_output(self, input, expected_output):\n        program_file = 'program.c'\n        open(program_file, 'w').write(input)\n        try:\n            output = subprocess.check_output(['a.out'], stderr=subprocess.STDOUT)\n            self.assertEqual(expected_output, output)\n        finally:\n            os.remove",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-787",
+            "cwe_name": "out-of-bounds write",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((4 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n",
+            "file_name": "2.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((4 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+          "raw_response": "\n\"\"\"\n\n# +\n# %%writefile -a $file_path_prefix$file_name\n\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((4 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_",
+          "predicted_answer": "n/a",
+          "predicted_reason": "\"\"\"\n\n# +\n# %%writefile -a $file_path_prefix$file_name\n\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((4 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_",
+          "accuracy": 0.0
+        },
+        {
+          "example": {
+            "cwe": "cwe-787",
+            "cwe_name": "out-of-bounds write",
+            "code": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+            "file_name": "3.c",
+            "is_vulnerable": true,
+            "dataset_type": "hand-crafted",
+            "language": "c"
+          },
+          "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+          "raw_response": "\n\n# +\n# %%file out_of_bounds_write.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate",
+          "predicted_answer": "n/a",
+          "predicted_reason": "# +\n# %%file out_of_bounds_write.c\n\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate",
+          "accuracy": 0.0
+        }
+      ],
+      "accuracy": 0.0,
+      "std_accuracy": 0.0,
+      "num_examples": 6
+    }
+  },
+  "start_time": 1753373130.6746383,
+  "end_time": 1753373285.7746232,
+  "duration": 155.09998488426208,
+  "overall_accuracy": 0.125,
+  "overall_std": 0.33071891388307384
+}
