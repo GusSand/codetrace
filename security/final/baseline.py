@@ -39,7 +39,7 @@ class BaselineConfig:
     
     # Dataset paths
     secllmholmes_base: str = "../SecLLMHolmes/datasets"
-    output_dir: str = "security/final/baseline_results"
+    output_dir: str = "baseline_results"
     
     # CWE mappings from SecLLMHolmes
     cwe_list: List[str] = None

@@ -18,7 +18,7 @@ def monitor_extended_experiment():
     print("⚠️  Large models - expect long runtime and high memory usage")
     print("")
     
-    results_dir = Path("security/final/extended_results")
+    results_dir = Path("extended_results")
     
     # Expected models
     expected_models = [

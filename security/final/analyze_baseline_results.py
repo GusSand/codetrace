@@ -267,7 +267,7 @@ def generate_summary_report(results: Dict[str, Any], df: pd.DataFrame, output_di
 def main():
     """Main analysis function."""
     # Find the most recent results file
-    results_dir = Path("security/final/baseline_results")
+    results_dir = Path("baseline_results")
     if not results_dir.exists():
         print("❌ Results directory not found. Please run the baseline experiment first.")
         return

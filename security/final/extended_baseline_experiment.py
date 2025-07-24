@@ -241,7 +241,7 @@ def main():
         temperature=0.0,
         top_p=1.0,
         max_new_tokens=200,
-        output_dir="security/final/extended_results"
+        output_dir="extended_results"
     )
     
     # Create extended experiment

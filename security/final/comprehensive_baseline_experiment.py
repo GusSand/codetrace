@@ -48,7 +48,7 @@ class ExperimentConfig:
     
     # Dataset paths
     secllmholmes_base: str = "../SecLLMHolmes/datasets"
-    output_dir: str = "security/final/comprehensive_results"
+    output_dir: str = "comprehensive_results"
     
     # CWE list
     cwe_list: List[str] = None

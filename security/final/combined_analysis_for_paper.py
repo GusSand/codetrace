@@ -19,7 +19,7 @@ def load_all_results() -> Dict[str, Any]:
     all_results = {}
     
     # Load comprehensive results (first 3 models)
-    comprehensive_files = glob.glob("security/final/comprehensive_results/comprehensive_results_*.json")
+    comprehensive_files = glob.glob("comprehensive_results/comprehensive_results_*.json")
     for file_path in comprehensive_files:
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -27,7 +27,7 @@ def load_all_results() -> Dict[str, Any]:
                 all_results[model_name] = results
     
     # Load extended results (additional 5 models)
-    extended_files = glob.glob("security/final/extended_results/comprehensive_results_*.json")
+    extended_files = glob.glob("extended_results/comprehensive_results_*.json")
     for file_path in extended_files:
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -359,7 +359,7 @@ def main():
         print(f"   - {model_name}")
     
     # Create output directory
-    output_dir = Path("security/final/paper_analysis")
+    output_dir = Path("paper_analysis")
     output_dir.mkdir(exist_ok=True)
     
     print(f"\n📊 Generating publication-ready charts...")

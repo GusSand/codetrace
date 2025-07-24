@@ -15,7 +15,7 @@ def monitor_experiment():
     print("🔍 Monitoring Comprehensive Baseline Experiment")
     print("=" * 60)
     
-    results_dir = Path("security/final/comprehensive_results")
+    results_dir = Path("comprehensive_results")
     
     while True:
         # Check for intermediate trial results
