@@ -12,5 +12,21 @@
       "experiments"
     ],
     "size": 5140
+  },
+  "secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md": {
+    "title": "SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis",
+    "filename": "secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md",
+    "created": "2025-07-24T21:29:24.270640",
+    "category": "experiments",
+    "tags": [
+      "secllmholmes",
+      "baseline",
+      "experiments",
+      "vulnerability-detection",
+      "llm-evaluation",
+      "paper-analysis",
+      "timing-analysis"
+    ],
+    "size": 6775
   }
 }

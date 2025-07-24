@@ -1,14 +1,23 @@
 # Chat Conversations Index
 
-**Generated on:** 2025-07-23 17:12:38
-**Total Conversations:** 1
+**Generated on:** 2025-07-24 21:29:24
+**Total Conversations:** 2
 
 ## Quick Stats
-- **Categories:** 1
-- **Total Size:** 5140 bytes
-- **Date Range:** 2025-07-23 to 2025-07-23
+- **Categories:** 2
+- **Total Size:** 11915 bytes
+- **Date Range:** 2025-07-23 to 2025-07-24
 
 ## Categories
+
+### Experiments
+
+#### 1. SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+- **File:** `secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md`
+- **Created:** 2025-07-24 21:29
+- **Size:** 6775 bytes
+- **Tags:** secllmholmes, baseline, experiments, vulnerability-detection, llm-evaluation, paper-analysis, timing-analysis
+- **Path:** `chats/secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md`
 
 ### Research
 
@@ -21,11 +30,18 @@
 
 ## Tag Index
 
+### baseline
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
 ### code-generation
 - Neural Steering Chat 20250723 170911
 
 ### experiments
 - Neural Steering Chat 20250723 170911
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
+### llm-evaluation
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
 ### neural-steering
 - Neural Steering Chat 20250723 170911
@@ -33,9 +49,22 @@
 ### nnsight
 - Neural Steering Chat 20250723 170911
 
+### paper-analysis
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
+### secllmholmes
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
 ### security
 - Neural Steering Chat 20250723 170911
 
+### timing-analysis
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
+### vulnerability-detection
+- SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
 ## Recent Conversations
 
+- **SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis** (2025-07-24 21:29) - `secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md`
 - **Neural Steering Chat 20250723 170911** (2025-07-23 17:12) - `neural-steering-chat-20250723-170911_20250723_171238.md`
