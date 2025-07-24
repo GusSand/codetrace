@@ -1,6 +1,6 @@
 # SecLLMHolmes Baseline Results - Complete Analysis
 
-**Generated:** 2025-07-24 20:55:10
+**Generated:** 2025-07-24 21:14:20
 **Models Tested:** 8
 **Parameters:** Temperature=0.0, Top-p=1.0, Max Tokens=200, Trials=3
 
@@ -50,4 +50,4 @@
 - **Cross-Model Learning**: Transfer knowledge between specialized models
 - **Size-Specific Strategies**: Tailor steering approaches by model scale
 
-*Analysis generated on 2025-07-24 20:55:10*
+*Analysis generated on 2025-07-24 21:14:20*

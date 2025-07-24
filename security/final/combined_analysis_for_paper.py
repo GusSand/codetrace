@@ -208,7 +208,7 @@ def create_detailed_cwe_chart(df: pd.DataFrame, output_dir: Path):
     
     ax.set_xlabel('Vulnerability Type (CWE)', fontsize=14, fontweight='bold')
     ax.set_ylabel('Accuracy', fontsize=14, fontweight='bold')
-    ax.set_title('Detailed Per-CWE Performance Comparison Across All Models', 
+    ax.set_title('Baseline Per-CWE Performance Comparison (Pre-Steering Results)', 
                  fontsize=16, fontweight='bold')
     ax.set_xticks(x + width * (len(models)-1) / 2)
     ax.set_xticklabels(cwes, rotation=45, ha='right')
@@ -254,7 +254,7 @@ def create_model_size_analysis(df: pd.DataFrame, output_dir: Path):
     
     plt.xlabel('Model Size (Billions of Parameters)', fontsize=14, fontweight='bold')
     plt.ylabel('Overall Accuracy', fontsize=14, fontweight='bold')
-    plt.title('Model Size vs Performance Analysis', fontsize=16, fontweight='bold')
+    plt.title('Baseline Model Performance vs Size (No Modifications/Pre-Steering)', fontsize=16, fontweight='bold')
     plt.grid(True, alpha=0.3)
     
     # Add trend line
