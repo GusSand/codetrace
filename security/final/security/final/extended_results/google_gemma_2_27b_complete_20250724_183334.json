@@ -1,0 +1,10 @@
+{
+  "model_name": "google/gemma-2-27b",
+  "error": "You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/google/gemma-2-27b.\n403 Client Error. (Request ID: Root=1-68828768-6526bbec43dabe6a445ecb81;285ccf86-e569-4ad3-8992-5abf0d8e4a0a)\n\nCannot access gated repo for url https://huggingface.co/google/gemma-2-27b/resolve/main/config.json.\nAccess to model google/gemma-2-27b is restricted and you are not in the authorized list. Visit https://huggingface.co/google/gemma-2-27b to ask for access.",
+  "trials": [],
+  "aggregated_metrics": {
+    "overall_metrics": {
+      "mean_accuracy": 0.0
+    }
+  }
+}

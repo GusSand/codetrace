@@ -1,0 +1,10 @@
+{
+  "model_name": "microsoft/Phi-3-medium-14b-instruct",
+  "error": "microsoft/Phi-3-medium-14b-instruct is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `huggingface-cli login` or by passing `token=<your_token>`",
+  "trials": [],
+  "aggregated_metrics": {
+    "overall_metrics": {
+      "mean_accuracy": 0.0
+    }
+  }
+}
