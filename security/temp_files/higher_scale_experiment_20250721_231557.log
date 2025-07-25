@@ -1,7 +1,0 @@
-2025-07-21 23:15:57,506 - __main__ - INFO - Loading model: bigcode/starcoderbase-1b
-2025-07-21 23:15:57,508 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
-2025-07-21 23:15:57,544 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/config.json HTTP/1.1" 200 0
-2025-07-21 23:15:57,569 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bigcode/starcoderbase-1b/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2025-07-21 23:15:57,828 - __main__ - INFO - Model has 24 layers
-2025-07-21 23:15:57,828 - __main__ - INFO - Starting higher scale steering experiment
-2025-07-21 23:15:57,828 - __main__ - INFO - Creating steering vectors for layers: [4, 6, 8]
