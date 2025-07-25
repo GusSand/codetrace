@@ -10,29 +10,72 @@ performance by actually modifying the model's hidden states during inference.
 import os
 import sys
 import json
-import torch
-import logging
 import time
+import torch
+import gc
+import psutil
+import logging
 import argparse
-import re
-from pathlib import Path
-from typing import List, Dict, Tuple, Optional
-from dataclasses import dataclass
-from datetime import datetime
 import numpy as np
+from typing import Dict, List, Any, Optional, Tuple
+from pathlib import Path
+from datetime import datetime
+from dataclasses import dataclass
+from collections import defaultdict
 from tqdm import tqdm
 
-# Add parent directory for imports
-sys.path.append(str(Path(__file__).parent.parent))
+# Add current directory to path
+sys.path.append(str(Path(__file__).parent))
 
-# Import NNSight and transformers
-from transformers import AutoModelForCausalLM, AutoTokenizer
+# Imports for model and data handling
 from nnsight import LanguageModel
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from qwen_steering_integration import QwenNNSightSteering, QwenSteeringConfig
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+
+def get_memory_usage() -> Dict[str, float]:
+    """Get current memory usage in MB."""
+    process = psutil.Process(os.getpid())
+    memory_info = process.memory_info()
+    gpu_memory = 0.0
+    
+    if torch.cuda.is_available():
+        gpu_memory = torch.cuda.memory_allocated() / 1024**2  # MB
+    
+    return {
+        "ram_mb": memory_info.rss / 1024**2,
+        "gpu_mb": gpu_memory
+    }
+
+def log_memory_usage(stage: str):
+    """Log memory usage at a specific stage."""
+    memory = get_memory_usage()
+    logger.info(f"🔍 Memory Usage ({stage}): RAM: {memory['ram_mb']:.1f}MB, GPU: {memory['gpu_mb']:.1f}MB")
+    return memory
+
+def clear_gpu_memory():
+    """Aggressively clear GPU memory."""
+    logger.info("🧹 Clearing GPU memory...")
+    
+    # Force garbage collection
+    gc.collect()
+    
+    # Clear PyTorch cache
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
+        
+        # Get current memory usage for monitoring
+        allocated = torch.cuda.memory_allocated() / 1024**3  # GB
+        cached = torch.cuda.memory_reserved() / 1024**3     # GB
+        logger.info(f"GPU Memory - Allocated: {allocated:.2f}GB, Cached: {cached:.2f}GB")
+        
+    log_memory_usage("after_cleanup")
+
 
 @dataclass
 class WorkingSteeringConfig:
@@ -227,7 +270,7 @@ class WorkingSteeringTester:
             return None
     
     def evaluate_example_baseline(self, model, tokenizer, example: Dict) -> Dict:
-        """Evaluate a single example without steering."""
+        """Evaluate a single example without steering using regular transformers model."""
         prompt = self.create_prompt(example["content"])
         
         # Tokenize input
@@ -238,7 +281,7 @@ class WorkingSteeringTester:
             if torch.cuda.is_available():
                 inputs = {k: v.cuda() for k, v in inputs.items()}
             
-            # Standard generation without steering
+            # Use regular transformers model for baseline - should work normally
             with torch.no_grad():
                 outputs = model.generate(
                     **inputs,
@@ -249,7 +292,7 @@ class WorkingSteeringTester:
                     pad_token_id=tokenizer.eos_token_id
                 )
             
-            # Get the generated tokens
+            # Regular model should return actual tensors
             generated_tokens = outputs[0][inputs['input_ids'].shape[1]:]
             
             # Decode response
@@ -276,6 +319,10 @@ class WorkingSteeringTester:
             
         except Exception as e:
             logger.error(f"❌ Error evaluating example {example['file']}: {e}")
+            logger.error(f"❌ Error type: {type(e).__name__}")
+            import traceback
+            logger.error(f"❌ Traceback: {traceback.format_exc()}")
+            
             return {
                 "cwe": example["cwe"],
                 "file": example["file"],
@@ -288,47 +335,83 @@ class WorkingSteeringTester:
             }
     
     def evaluate_example_with_steering(self, model, tokenizer, example: Dict, steering_vectors: Dict) -> Dict:
-        """Evaluate a single example with actual steering vector application."""
+        """Evaluate a single example with steering using correct NNSight 0.4.x pattern."""
         prompt = self.create_prompt(example["content"])
         
-        # Tokenize input
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048)
-        
         try:
-            # Move inputs to model device
+            # Define hook functions for steering
+            def create_steering_hook(layer_idx, steering_vector, steering_strength):
+                def apply_steering(hidden_states):
+                    """Apply steering to hidden states."""
+                    # Handle tuple format (NNSight 0.4.x)
+                    if isinstance(hidden_states, tuple):
+                        states = hidden_states[0]
+                    else:
+                        states = hidden_states
+                    
+                    # Clone to avoid in-place modification issues
+                    modified_states = states.clone()
+                    
+                    # CRITICAL FIX: Flip steering direction!
+                    # Vector points vulnerable→secure, but we want better vulnerability detection
+                    # So we steer in the OPPOSITE direction (secure→vulnerable detection)
+                    steering_vector_device = steering_vector.to(states.device)
+                    modified_states[:, -1, :] -= steering_strength * steering_vector_device  # FLIPPED SIGN!
+                    
+                    # Return in the same format as input
+                    if isinstance(hidden_states, tuple):
+                        return (modified_states,) + hidden_states[1:]
+                    else:
+                        return modified_states
+                
+                return apply_steering
+            
+            # NNSight 0.4.x: Execute trace completely, then access results - CORRECTED PATTERN
+            inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048)
             if torch.cuda.is_available():
                 inputs = {k: v.cuda() for k, v in inputs.items()}
             
-            # Apply steering vectors using NNSight
             with model.trace() as tracer:
-                with tracer.invoke(inputs['input_ids']) as invoker:
-                    # Apply steering vectors to target layers
-                    for layer_idx in self.config.target_layers:
-                        if str(layer_idx) in steering_vectors:
-                            steering_vector = steering_vectors[str(layer_idx)]
-                            
-                            # Get the layer's hidden states
-                            layer_output = model.model.layers[layer_idx].output
-                            
-                            # Apply steering vector
-                            if layer_output is not None:
-                                # Add steering vector to hidden states
-                                layer_output.value = layer_output.value + self.config.steering_strength * steering_vector.to(layer_output.value.device)
-                    
-                    # Generate response with steering applied
+                # Register hooks for target layers that have steering vectors
+                for layer_idx in self.config.target_layers:
+                    if str(layer_idx) in steering_vectors:
+                        steering_vector = steering_vectors[str(layer_idx)]
+                        hook_fn = create_steering_hook(layer_idx, steering_vector, self.config.steering_strength)
+                        tracer.hooks.modify_at(f"model.layers.{layer_idx}.output", hook_fn)
+                
+                # Use PROVEN WORKING pattern from debug examples
+                with tracer.invoke(inputs['input_ids']):
                     outputs = model.generate(
+                        **inputs,
                         max_new_tokens=self.config.max_new_tokens,
-                        temperature=self.config.temperature,
-                        top_p=self.config.top_p,
-                        do_sample=False,
+                        temperature=0.7,
+                        do_sample=True,
+                        top_p=0.9,
                         pad_token_id=tokenizer.eos_token_id
                     )
             
-            # Get the generated tokens
-            generated_tokens = outputs[0][inputs['input_ids'].shape[1]:]
+            # After trace execution, try to access results - CORRECTED EXTRACTION
+            logger.info("🔍 Trace executed, attempting to extract results...")
             
-            # Decode response
-            response = tokenizer.decode(generated_tokens, skip_special_tokens=True)
+            try:
+                # Use the PROVEN WORKING pattern from successful examples
+                if hasattr(outputs, 'value') and outputs.value is not None:
+                    logger.info("✅ Found outputs.value")
+                    generated_ids = outputs.value[0].tolist()
+                    
+                    # Extract only the newly generated tokens
+                    prompt_length = inputs['input_ids'].shape[1]
+                    new_token_ids = generated_ids[prompt_length:]
+                    response = tokenizer.decode(new_token_ids, skip_special_tokens=True)
+                    logger.info(f"✅ Successfully extracted steered response: {len(response)} chars")
+                    
+                else:
+                    logger.warning("⚠️ No outputs.value available - NNSight extraction failed")
+                    response = "NNSight extraction failed - no outputs.value"
+                        
+            except Exception as extract_error:
+                logger.error(f"❌ Result extraction failed: {extract_error}")
+                response = f"Result extraction failed: {str(extract_error)}"
             
             # Parse response
             predicted_answer, reasoning = self.parse_response(response)
@@ -352,6 +435,10 @@ class WorkingSteeringTester:
             
         except Exception as e:
             logger.error(f"❌ Error evaluating example {example['file']} with steering: {e}")
+            logger.error(f"❌ Error type: {type(e).__name__}")
+            import traceback
+            logger.error(f"❌ Traceback: {traceback.format_exc()}")
+            
             return {
                 "cwe": example["cwe"],
                 "file": example["file"],
@@ -400,9 +487,10 @@ class WorkingSteeringExperiment:
         self.results_dir = Path(config.results_dir)
         self.results_dir.mkdir(exist_ok=True)
         
-    def load_model(self):
-        """Load model using NNSight for steering."""
-        logger.info(f"🚀 Loading model with NNSight: {self.config.model_name}")
+    def load_baseline_model(self):
+        """Load regular model for baseline only."""
+        logger.info(f"📦 Loading regular model for baseline: {self.config.model_name}")
+        log_memory_usage("before_baseline_loading")
         
         try:
             # Load tokenizer
@@ -414,15 +502,63 @@ class WorkingSteeringExperiment:
             if tokenizer.pad_token is None:
                 tokenizer.pad_token = tokenizer.eos_token
             
-            # Load model with NNSight
-            model = LanguageModel(self.config.model_name, device_map=self.config.device_map)
+            # Load regular model for baseline with memory optimizations
+            baseline_model = AutoModelForCausalLM.from_pretrained(
+                self.config.model_name,
+                torch_dtype=self.config.model_dtype,
+                device_map=self.config.device_map,
+                trust_remote_code=True,
+                low_cpu_mem_usage=True
+            )
             
-            logger.info(f"✅ Model loaded successfully with NNSight")
-            return model, tokenizer
+            logger.info(f"✅ Baseline model loaded: {type(baseline_model)}")
+            log_memory_usage("after_baseline_loading")
+            return baseline_model, tokenizer
             
         except Exception as e:
-            logger.error(f"❌ Failed to load model: {e}")
+            logger.error(f"❌ Failed to load baseline model: {e}")
             raise
+    
+    def load_steering_model(self, tokenizer):
+        """Load NNSight model for steering only."""
+        logger.info(f"🎯 Loading NNSight model for steering: {self.config.model_name}")
+        log_memory_usage("before_steering_loading")
+        
+        try:
+            # Load NNSight model for steering
+            steering_model = LanguageModel(self.config.model_name, device_map=self.config.device_map)
+            
+            logger.info(f"✅ Steering model loaded: {type(steering_model)}")
+            log_memory_usage("after_steering_loading")
+            return steering_model
+            
+        except Exception as e:
+            logger.error(f"❌ Failed to load steering model: {e}")
+            raise
+    
+    def unload_model(self, model):
+        """Unload model from memory with comprehensive cleanup."""
+        try:
+            logger.info("🗑️ Unloading model from memory...")
+            log_memory_usage("before_model_unload")
+            
+            # Delete the model
+            del model
+            
+            # Comprehensive memory cleanup
+            clear_gpu_memory()
+            
+            logger.info("✅ Model unloaded and memory cleared")
+            
+        except Exception as e:
+            logger.warning(f"⚠️ Error unloading model: {e}")
+            # Still try to clear memory even if model deletion failed
+            clear_gpu_memory()
+    
+    def load_model(self):
+        """Legacy method - now redirects to sequential loading."""
+        # This method is kept for compatibility but won't be used in the new approach
+        raise NotImplementedError("Use sequential loading approach instead")
     
     def run_baseline_test(self, model, tokenizer) -> Dict:
         """Run baseline test without steering vectors."""
@@ -641,8 +777,11 @@ class WorkingSteeringExperiment:
         start_time = time.time()
         
         try:
-            # Load model
-            model, tokenizer = self.load_model()
+            # Initial memory check
+            log_memory_usage("experiment_start")
+            
+            # Load models sequentially
+            baseline_model, tokenizer = self.load_baseline_model()
             
             all_results = {}
             
@@ -651,16 +790,27 @@ class WorkingSteeringExperiment:
             logger.info("🔬 PHASE 1: BASELINE TEST")
             logger.info("="*60)
             
-            baseline_results = self.run_baseline_test(model, tokenizer)
+            baseline_results = self.run_baseline_test(baseline_model, tokenizer)
             all_results.update(baseline_results)
             
-            # 2. Run steering tests
+            # Unload baseline model to free memory
+            self.unload_model(baseline_model)
+            
+            # Wait a moment for memory to clear
+            time.sleep(2)
+            
+            # 2. Load steering model and run steering tests
+            steering_model = self.load_steering_model(tokenizer)
+            
             logger.info("\n" + "="*60)
             logger.info("🎯 PHASE 2: STEERING TESTS")
             logger.info("="*60)
             
-            steering_results = self.run_steering_tests(model, tokenizer)
+            steering_results = self.run_steering_tests(steering_model, tokenizer)
             all_results.update(steering_results)
+            
+            # Unload steering model to free memory
+            self.unload_model(steering_model)
             
             # 3. Analyze results
             logger.info("\n" + "="*60)
