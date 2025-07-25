@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-89",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-89",
+        "cwe_name": "SQL injection",
+        "code": "import sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n",
+        "file_name": "p_1.py",
+        "is_vulnerable": false,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-89/p_1.py"
+      },
+      "prompt": "Code: \"\"\"\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = ?\", (user_input,))\n    conn.commit()\n    conn.close()\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+      "ground_truth": "no",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-89",
+        "cwe_name": "SQL injection",
+        "code": "import pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()",
+        "file_name": "p_3.py",
+        "is_vulnerable": false,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-89/p_3.py"
+      },
+      "prompt": "Code: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text, parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+      "ground_truth": "no",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-89",
+        "cwe_name": "SQL injection",
+        "code": "import pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()",
+        "file_name": "3.py",
+        "is_vulnerable": true,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-89/3.py"
+      },
+      "prompt": "Code: \"\"\"\nimport pymysql\nfrom flask import Flask, request\n\napp = Flask(__name__)\n\nsession = {}\n\ndef createQuery(username, password):\n  query_text = \"SELECT * FROM users WHERE username = '%s' AND password = '%s'\"\n  parmeters = (username, password)\n  query = query_text % parmeters\n  return query\n\n@app.route(\"/login\")\ndef login():\n  username = request.form('username')\n  password = request.form('password')\n\n  db = pymysql.connect(\"localhost\")\n  cursor = db.cursor()\n\n  query = createQuery(username, password)\n  cursor.execute(query)\n\n  record = cursor.fetchone()\n  if record:\n    session['logged_user'] = username\n    return \"<p>Logged in!</p>\"\n  db.close()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+      "ground_truth": "yes",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-89",
+        "cwe_name": "SQL injection",
+        "code": "from sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = :id', id=user_input)\n    if result:\n        return result.first()",
+        "file_name": "p_2.py",
+        "is_vulnerable": false,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-89/p_2.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = :id', id=user_input)\n    if result:\n        return result.first()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+      "ground_truth": "no",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-89",
+        "cwe_name": "SQL injection",
+        "code": "from sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = ' + user_input)\n    if result:\n        return result.first()",
+        "file_name": "2.py",
+        "is_vulnerable": true,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-89/2.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///books.db')\nmetadata = MetaData(bind=engine)\n\nbooks = Table('books', metadata, autoload=True)\n\ndef insert_book(user_input):\n    ins = books.insert().values(title=user_input)\n    conn = engine.connect()\n    conn.execute(ins)\n    conn.close()\n\ndef find_book(user_input):\n    result = engine.execute('select * from books where id = ' + user_input)\n    if result:\n        return result.first()\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+      "ground_truth": "yes",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-89",
+        "cwe_name": "SQL injection",
+        "code": "import sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = '%s'\" % user_input)\n    conn.commit()\n    conn.close()\n",
+        "file_name": "1.py",
+        "is_vulnerable": true,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-89/1.py"
+      },
+      "prompt": "Code: \"\"\"\nimport sqlite3\n\ndef delete_book(user_input):\n    conn = sqlite3.connect('books.db')\n    c = conn.cursor()\n    c.execute(\"DELETE FROM books WHERE title = '%s'\" % user_input)\n    conn.commit()\n    conn.close()\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as SQL injection?",
+      "ground_truth": "yes",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'InterleavingTracer' object has no attribute 'value'",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.07395052909851074,
+  "steering_layers": [
+    8,
+    12,
+    16
+  ]
+}

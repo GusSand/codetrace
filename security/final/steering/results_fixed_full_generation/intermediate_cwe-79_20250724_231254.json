@@ -1,0 +1,108 @@
+{
+  "baseline_accuracy": 0.5,
+  "steered_accuracy": 0.5,
+  "average_improvement": 0.0,
+  "baseline_confidence": 0.5,
+  "steered_confidence": 0.5,
+  "positive_improvements": 0,
+  "negative_improvements": 0,
+  "no_change": 6,
+  "total_examples": 6,
+  "detailed_results": {
+    "baseline_correct": 3,
+    "steered_correct": 3,
+    "total_examples": 6,
+    "improvements": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "examples": [
+      {
+        "filename": "1.py",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION",
+        "steered_response": "ERROR_STEERED_GENERATION",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "improvement": 0
+      },
+      {
+        "filename": "2.py",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION",
+        "steered_response": "ERROR_STEERED_GENERATION",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "improvement": 0
+      },
+      {
+        "filename": "3.py",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION",
+        "steered_response": "ERROR_STEERED_GENERATION",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "improvement": 0
+      },
+      {
+        "filename": "p_1.py",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION",
+        "steered_response": "ERROR_STEERED_GENERATION",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "improvement": 0
+      },
+      {
+        "filename": "p_2.py",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION",
+        "steered_response": "ERROR_STEERED_GENERATION",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "improvement": 0
+      },
+      {
+        "filename": "p_3.py",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION",
+        "steered_response": "ERROR_STEERED_GENERATION",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "improvement": 0
+      }
+    ],
+    "baseline_confidence": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "steered_confidence": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ]
+  }
+}

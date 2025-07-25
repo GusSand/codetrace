@@ -1,0 +1,58 @@
+{
+  "baseline_accuracy": 0.5,
+  "steered_accuracy": 0.5,
+  "average_improvement": 0.0,
+  "positive_improvements": 0,
+  "negative_improvements": 0,
+  "no_change": 4,
+  "total_examples": 4,
+  "detailed_results": {
+    "baseline_correct": 2,
+    "steered_correct": 2,
+    "total_examples": 4,
+    "improvements": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "examples": [
+      {
+        "filename": "1.c",
+        "expected_vulnerable": true,
+        "baseline_response": " Why",
+        "steered_response": "ERROR",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "improvement": 0
+      },
+      {
+        "filename": "2.c",
+        "expected_vulnerable": true,
+        "baseline_response": " Why",
+        "steered_response": "ERROR",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "improvement": 0
+      },
+      {
+        "filename": "p_2.c",
+        "expected_vulnerable": false,
+        "baseline_response": " If",
+        "steered_response": "ERROR",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "improvement": 0
+      },
+      {
+        "filename": "p_3.c",
+        "expected_vulnerable": false,
+        "baseline_response": " Why",
+        "steered_response": "ERROR",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "improvement": 0
+      }
+    ]
+  }
+}

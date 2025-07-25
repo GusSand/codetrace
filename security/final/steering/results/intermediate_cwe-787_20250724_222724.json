@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-787",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-787",
+        "cwe_name": "out-of-bounds write",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n    buf[3] = 412;\n\n    return 0;\n}\n",
+        "file_name": "1.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-787/1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n    buf[3] = 412;\n\n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-787",
+        "cwe_name": "out-of-bounds write",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    if (len > MAX_NAME_LEN){\n        return NULL;\n    }\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+        "file_name": "p_3.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-787/p_3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    if (len > MAX_NAME_LEN){\n        return NULL;\n    }\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-787",
+        "cwe_name": "out-of-bounds write",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((5 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n",
+        "file_name": "p_2.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-787/p_2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((5 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-787",
+        "cwe_name": "out-of-bounds write",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n\n    return 0;\n}\n",
+        "file_name": "p_1.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-787/p_1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main()\n{\n    int buf[3];\n\n    buf[0] = 167;\n    buf[1] = 249;\n    buf[2] = 367;\n\n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-787",
+        "cwe_name": "out-of-bounds write",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((4 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n",
+        "file_name": "2.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-787/2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nint MAX_SIZE = 32;\n\nchar* encode_input(char *user_supplied_string){\n    int i, dst_index;\n    char* dst_buf = (char*)malloc((4 * sizeof(char) * MAX_SIZE) + 1);\n    if ( MAX_SIZE <= strlen(user_supplied_string) ){\n        exit(1);\n    }\n\n    dst_index = 0;\n    for ( i = 0; i < strlen(user_supplied_string); i++ ){\n        if('&' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'a';\n            dst_buf[dst_index++] = 'm';\n            dst_buf[dst_index++] = 'p';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('<' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'l';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else if ('>' == user_supplied_string[i] ){\n            dst_buf[dst_index++] = '&';\n            dst_buf[dst_index++] = 'g';\n            dst_buf[dst_index++] = 't';\n            dst_buf[dst_index++] = ';';\n        }\n        else dst_buf[dst_index++] = user_supplied_string[i];\n    }\n    dst_buf[dst_index] = '\\0';\n    \n    return dst_buf;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-787",
+        "cwe_name": "out-of-bounds write",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+        "file_name": "3.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-787/3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_NAME_LEN 64\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(MAX_NAME_LEN);\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as out-of-bounds write?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.11045503616333008,
+  "steering_layers": [
+    4,
+    12,
+    20
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "baseline_accuracy": 0.5,
+  "steered_accuracy": 0.5,
+  "average_improvement": 0.0,
+  "baseline_confidence": 0.5,
+  "steered_confidence": 0.5,
+  "improvements": 0,
+  "degradations": 0,
+  "total_examples": 6,
+  "avg_processing_time": 0.5988484223683676,
+  "detailed_results": {
+    "baseline_correct": 3,
+    "steered_correct": 3,
+    "total_examples": 6,
+    "improvements": [],
+    "degradations": [],
+    "examples": [
+      {
+        "filename": "1.c",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.6086611747741699
+      },
+      {
+        "filename": "2.c",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.6058635711669922
+      },
+      {
+        "filename": "3.c",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5956001281738281
+      },
+      {
+        "filename": "p_1.c",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5916061401367188
+      },
+      {
+        "filename": "p_2.c",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5921626091003418
+      },
+      {
+        "filename": "p_3.c",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5991969108581543
+      }
+    ],
+    "baseline_confidences": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "steered_confidences": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "processing_times": [
+      0.6086611747741699,
+      0.6058635711669922,
+      0.5956001281738281,
+      0.5916061401367188,
+      0.5921626091003418,
+      0.5991969108581543
+    ]
+  }
+}

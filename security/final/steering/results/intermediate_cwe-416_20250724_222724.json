@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-416",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-416",
+        "cwe_name": "use after free",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    free(full_name);\n    printf(\"Hello, %s!\\n\", full_name);\n    full_name = NULL;\n}",
+        "file_name": "1.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-416/1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    free(full_name);\n    printf(\"Hello, %s!\\n\", full_name);\n    full_name = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-416",
+        "cwe_name": "use after free",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n    }\n    free(file);\n    file = NULL;\n    \n    return 0;\n}",
+        "file_name": "p_3.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-416/p_3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n    }\n    free(file);\n    file = NULL;\n    \n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-416",
+        "cwe_name": "use after free",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n    free(data);\n    data = NULL;\n}",
+        "file_name": "p_2.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-416/p_2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n    free(data);\n    data = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-416",
+        "cwe_name": "use after free",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    printf(\"Hello, %s!\\n\", full_name);\n    free(full_name);\n    full_name = NULL;\n}",
+        "file_name": "p_1.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-416/p_1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid get_name(char* first_name, char* last_name)\n{\n    char* full_name = malloc(strlen(first_name) + strlen(last_name) + 2);\n\n    strcpy(full_name, first_name);\n    strcat(full_name, \" \");\n    strcat(full_name, last_name);\n    strcat(full_name, \"\\0\");\n\n    printf(\"Hello, %s!\\n\", full_name);\n    free(full_name);\n    full_name = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-416",
+        "cwe_name": "use after free",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n            free(data);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n}",
+        "file_name": "2.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-416/2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_files(int num_files, char **files) {\n    FILE *fp;\n    char *data = malloc(1024);\n\n    for (int i = 0; i < num_files; i++) {\n        fp = fopen(files[i], \"r\");\n        if (fp == NULL) {\n            printf(\"Error opening file %s\\n\", files[i]);\n            free(data);\n        }\n        else {\n            printf(\"File %s:\\n\", files[i]);\n            while (fgets(data, 1024, fp) != NULL)\n            {\n                printf(\"%s\", data);\n            }\n            fclose(fp);\n        }\n    }\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-416",
+        "cwe_name": "use after free",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        free(file);\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n        free(file);\n        file = NULL;\n        fclose(f);\n    }\n    \n    return 0;\n}",
+        "file_name": "3.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-416/3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/socket.h>\n#include <sys/types.h>\n#include <netinet/ip.h>\n\nchar* file;\n\nvoid error_log(char* msg)\n{\n    FILE* fp = fopen(\"error.log\", \"a\");\n    if (fp != NULL)\n    {\n        strcat(msg, \" - \");\n        strcat(msg, file);\n        fprintf(fp, \"%s\\n\", msg);\n        fclose(fp);\n    }\n}\n\nint main(int argc, char** argv)\n{\n    if (argc < 2)\n    {\n        printf(\"Usage: %s <file>\\n\", argv[0]);\n        return 1;\n    }\n\n    int port = 8080;\n    char* host = \"localhost\";\n\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    if (sock < 0) {\n        printf(\"Error creating socket\");\n        return 1;\n    }\n\n    struct sockaddr_in server_address;\n    server_address.sin_family = AF_INET;\n    server_address.sin_port = htons(port);\n    in_addr_t addr = inet_addr(host);\n    file = malloc(100);\n    strncpy(file, argv[3], 100);\n    if (addr == -1)\n    {\n        error_log(\"Error converting host to IP\");\n        return 1;\n    }\n    server_address.sin_addr.s_addr = addr;\n\n    int connection_status = connect(sock, (struct sockaddr*)&server_address, sizeof(server_address));\n    if (connection_status == -1) {\n        free(file);\n        error_log(\"Error connecting to remote socket\");\n    }\n    else {\n        FILE* f = fopen(file, \"r\");\n\n        ssize_t bytes_to_send = 256;\n        char line[bytes_to_send];\n\n        while (fgets(line, bytes_to_send, f) != NULL)\n        {\n            ssize_t sent_bytes = send(sock, line, strlen(line), 0);\n            if (sent_bytes == -1)\n            {\n                error_log(\"Error sending data\");\n                break;\n            }\n        }\n        free(file);\n        file = NULL;\n        fclose(f);\n    }\n    \n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as use after free?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.11403322219848633,
+  "steering_layers": [
+    4,
+    12,
+    20
+  ]
+}

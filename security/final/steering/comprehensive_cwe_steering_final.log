@@ -1,0 +1,1014 @@
+2025-07-24 23:35:10,015 - __main__ - INFO - 🚀 Starting Comprehensive CWE Neural Steering Experiment
+2025-07-24 23:35:10,015 - __main__ - INFO - 📊 Configuration: {'model_name': 'bigcode/starcoderbase-1b', 'device': 'auto', 'max_new_tokens': 150, 'temperature': 0.1, 'steering_strength': 20.0, 'steering_layers': [4, 12, 20], 'results_dir': 'results_comprehensive_final', 'max_examples_per_type': 4, 'max_test_examples': 8}
+2025-07-24 23:35:10,016 - __main__ - INFO - 🧪 Experiment ID: 20250724_233510
+2025-07-24 23:35:10,016 - __main__ - INFO - 🚀 Loading model: bigcode/starcoderbase-1b
+2025-07-24 23:35:10,682 - __main__ - INFO - ✅ Model loaded successfully
+2025-07-24 23:35:10,682 - __main__ - INFO - 📊 Model layers: 24
+2025-07-24 23:35:10,682 - __main__ - INFO - 📚 Loading comprehensive SecLLMHolmes dataset...
+2025-07-24 23:35:10,683 - __main__ - INFO - 🔍 Processing 6 CWE directories for comprehensive experiment
+2025-07-24 23:35:10,683 - __main__ - INFO - 📖 Loaded 6 examples for CWE-190
+2025-07-24 23:35:10,683 - __main__ - INFO - 📖 Loaded 6 examples for CWE-22
+2025-07-24 23:35:10,683 - __main__ - INFO - 📖 Loaded 6 examples for CWE-416
+2025-07-24 23:35:10,683 - __main__ - INFO - 📖 Loaded 6 examples for CWE-77
+2025-07-24 23:35:10,684 - __main__ - INFO - 📖 Loaded 6 examples for CWE-79
+2025-07-24 23:35:10,684 - __main__ - INFO - 📖 Loaded 6 examples for CWE-89
+2025-07-24 23:35:10,684 - __main__ - INFO - 📊 Loaded 36 total examples across 6 CWEs
+2025-07-24 23:35:10,684 - __main__ - INFO - 🎯 Processing CWE comprehensively: CWE-190
+2025-07-24 23:35:10,684 - __main__ - INFO - 🔧 Creating comprehensive steering vectors for CWE-190
+2025-07-24 23:35:10,684 - __main__ - INFO - 🎯 Creating comprehensive steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:35:10,684 - __main__ - INFO - 🔧 Processing layer 4 with corrected NNSight 0.4.x API
+2025-07-24 23:35:10,684 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:10,972 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 23:35:12,347 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 186, 2048])
+2025-07-24 23:35:12,364 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:12,603 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:12,857 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 225, 2048])
+2025-07-24 23:35:12,890 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:13,127 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:13,387 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 214, 2048])
+2025-07-24 23:35:13,419 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:13,655 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:13,937 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:14,174 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:14,456 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:14,693 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:14,974 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:15,210 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:15,240 - __main__ - INFO - ✅ Created normalized steering vector for layer 4 with shape torch.Size([2048]), original norm: 3.0596
+2025-07-24 23:35:15,476 - __main__ - INFO - 🔧 Processing layer 12 with corrected NNSight 0.4.x API
+2025-07-24 23:35:15,476 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:15,727 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 186, 2048])
+2025-07-24 23:35:15,746 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:15,982 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:16,236 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 225, 2048])
+2025-07-24 23:35:16,269 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:16,506 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:16,759 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 214, 2048])
+2025-07-24 23:35:16,791 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:17,030 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:17,311 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:17,549 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:17,829 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:18,067 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:18,353 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:18,590 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:18,590 - __main__ - INFO - ✅ Created normalized steering vector for layer 12 with shape torch.Size([2048]), original norm: 4.7996
+2025-07-24 23:35:18,823 - __main__ - INFO - 🔧 Processing layer 20 with corrected NNSight 0.4.x API
+2025-07-24 23:35:18,823 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:19,076 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 186, 2048])
+2025-07-24 23:35:19,095 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:19,350 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:19,601 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 225, 2048])
+2025-07-24 23:35:19,635 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:19,871 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:20,127 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 214, 2048])
+2025-07-24 23:35:20,159 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:20,396 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:20,676 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:20,913 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:21,194 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:21,437 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:21,719 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:21,963 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:21,964 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), original norm: 10.4088
+2025-07-24 23:35:22,205 - __main__ - INFO - 💾 Saved steering vectors to: results_comprehensive_final/steering_vectors/cwe-190_comprehensive_steering.pt
+2025-07-24 23:35:22,205 - __main__ - INFO - 🧪 Evaluating comprehensive steering effectiveness for CWE-190
+2025-07-24 23:35:22,205 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:35:22,444 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:23,746 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:23,746 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:23,746 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:24,050 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:24,050 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:24,054 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:24,055 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:24,055 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:24,057 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:24,057 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:24,057 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:24,057 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:24,057 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:24,057 - __main__ - INFO -   ⏱️ Processing time: 1.9s
+2025-07-24 23:35:24,057 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:35:24,370 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:24,373 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:24,373 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:24,373 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:24,682 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:24,682 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:24,686 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:24,687 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:24,687 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:24,689 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:24,689 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:24,689 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:24,689 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:24,689 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:24,689 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:24,689 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:35:24,986 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:24,988 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:24,989 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:24,989 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:25,286 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:25,286 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:25,289 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:25,290 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:25,290 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:25,292 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:25,292 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:25,292 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:25,292 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:25,292 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:25,292 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:25,292 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:35:25,592 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:25,594 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:25,595 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:25,595 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:25,890 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:25,890 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:25,894 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:25,894 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:25,894 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:25,896 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:25,896 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:25,897 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:25,897 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:25,897 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:25,897 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:25,897 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:35:26,198 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:26,201 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:26,201 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:26,201 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:26,501 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:26,501 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:26,505 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:26,506 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:26,506 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:26,508 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:26,508 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:26,508 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:26,508 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:26,508 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:26,508 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:26,508 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:35:26,808 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:26,810 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:26,810 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:26,810 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:27,132 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:27,132 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:27,135 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:27,136 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:27,136 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:27,138 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:27,138 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:27,138 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:27,138 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:27,138 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:27,138 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:27,138 - __main__ - INFO - 📊 CWE-190 Comprehensive Results:
+2025-07-24 23:35:27,138 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:35:27,138 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:35:27,139 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:35:27,139 - __main__ - INFO -   Improvements: 0, Degradations: 0
+2025-07-24 23:35:27,139 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:35:27,139 - __main__ - INFO -   Average Processing Time: 0.8s
+2025-07-24 23:35:27,139 - __main__ - INFO - 💾 Saved intermediate results: results_comprehensive_final/intermediate_comprehensive_cwe-190_20250724_233510.json
+2025-07-24 23:35:27,139 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:35:27,454 - __main__ - INFO - 🎯 Processing CWE comprehensively: CWE-22
+2025-07-24 23:35:27,454 - __main__ - INFO - 🔧 Creating comprehensive steering vectors for CWE-22
+2025-07-24 23:35:27,454 - __main__ - INFO - 🎯 Creating comprehensive steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:35:27,454 - __main__ - INFO - 🔧 Processing layer 4 with corrected NNSight 0.4.x API
+2025-07-24 23:35:27,454 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:27,772 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 242, 2048])
+2025-07-24 23:35:27,799 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:28,097 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:28,414 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 216, 2048])
+2025-07-24 23:35:28,447 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:28,746 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:29,065 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 230, 2048])
+2025-07-24 23:35:29,091 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:29,393 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:29,734 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:30,038 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:30,381 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:30,679 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:31,024 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:31,323 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:31,324 - __main__ - INFO - ✅ Created normalized steering vector for layer 4 with shape torch.Size([2048]), original norm: 1.3701
+2025-07-24 23:35:31,619 - __main__ - INFO - 🔧 Processing layer 12 with corrected NNSight 0.4.x API
+2025-07-24 23:35:31,619 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:31,937 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 242, 2048])
+2025-07-24 23:35:31,964 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:32,267 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:32,582 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 216, 2048])
+2025-07-24 23:35:32,615 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:32,913 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:33,230 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 230, 2048])
+2025-07-24 23:35:33,256 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:33,555 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:33,898 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:34,197 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:34,539 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:34,837 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:35,181 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:35,480 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:35,481 - __main__ - INFO - ✅ Created normalized steering vector for layer 12 with shape torch.Size([2048]), original norm: 4.4895
+2025-07-24 23:35:35,776 - __main__ - INFO - 🔧 Processing layer 20 with corrected NNSight 0.4.x API
+2025-07-24 23:35:35,776 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:36,096 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 242, 2048])
+2025-07-24 23:35:36,123 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:36,423 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:36,738 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 216, 2048])
+2025-07-24 23:35:36,770 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:37,069 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:37,386 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 230, 2048])
+2025-07-24 23:35:37,413 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:37,711 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:38,054 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:38,381 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:38,723 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:39,035 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:39,378 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:39,681 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:39,682 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), original norm: 9.5750
+2025-07-24 23:35:39,986 - __main__ - INFO - 💾 Saved steering vectors to: results_comprehensive_final/steering_vectors/cwe-22_comprehensive_steering.pt
+2025-07-24 23:35:39,986 - __main__ - INFO - 🧪 Evaluating comprehensive steering effectiveness for CWE-22
+2025-07-24 23:35:39,987 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:35:40,288 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:40,290 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:40,291 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:40,291 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:40,587 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:40,587 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:40,591 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:40,591 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:40,591 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:40,593 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:40,593 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:40,593 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:40,593 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:40,593 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:40,594 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:40,594 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:35:40,890 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:40,893 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:40,893 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:40,893 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:41,189 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:41,189 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:41,193 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:41,194 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:41,194 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:41,196 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:41,196 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:41,196 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:41,196 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:41,196 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:41,196 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:41,196 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:35:41,501 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:41,504 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:41,504 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:41,504 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:41,799 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:41,800 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:41,803 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:41,804 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:41,804 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:41,806 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:41,806 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:41,806 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:41,806 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:41,806 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:41,806 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:41,806 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:35:42,104 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:42,106 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:42,107 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:42,107 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:42,413 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:42,413 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:42,417 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:42,418 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:42,418 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:42,420 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:42,420 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:42,420 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:42,420 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:42,420 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:42,420 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:42,420 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:35:42,716 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:42,718 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:42,719 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:42,719 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:43,014 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:43,014 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:43,018 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:43,019 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:43,019 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:43,021 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:43,021 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:43,021 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:43,021 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:43,021 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:43,021 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:43,021 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:35:43,313 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:43,315 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:43,316 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:43,316 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:43,607 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:43,607 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:43,611 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:43,611 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:43,611 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:43,613 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:43,613 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:43,613 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:43,613 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:43,614 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:43,614 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:43,614 - __main__ - INFO - 📊 CWE-22 Comprehensive Results:
+2025-07-24 23:35:43,614 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:35:43,614 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:35:43,614 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:35:43,614 - __main__ - INFO -   Improvements: 0, Degradations: 0
+2025-07-24 23:35:43,614 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:35:43,614 - __main__ - INFO -   Average Processing Time: 0.6s
+2025-07-24 23:35:43,614 - __main__ - INFO - 💾 Saved intermediate results: results_comprehensive_final/intermediate_comprehensive_cwe-22_20250724_233510.json
+2025-07-24 23:35:43,614 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:35:43,905 - __main__ - INFO - 🎯 Processing CWE comprehensively: CWE-416
+2025-07-24 23:35:43,905 - __main__ - INFO - 🔧 Creating comprehensive steering vectors for CWE-416
+2025-07-24 23:35:43,905 - __main__ - INFO - 🎯 Creating comprehensive steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:35:43,905 - __main__ - INFO - 🔧 Processing layer 4 with corrected NNSight 0.4.x API
+2025-07-24 23:35:43,905 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:44,214 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 177, 2048])
+2025-07-24 23:35:44,234 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:44,526 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:44,836 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 207, 2048])
+2025-07-24 23:35:44,869 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:45,162 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:45,474 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 262, 2048])
+2025-07-24 23:35:45,509 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:45,803 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:46,132 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:46,425 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:46,768 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:47,066 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:47,417 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:47,711 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:47,712 - __main__ - INFO - ✅ Created normalized steering vector for layer 4 with shape torch.Size([2048]), original norm: 0.3628
+2025-07-24 23:35:48,004 - __main__ - INFO - 🔧 Processing layer 12 with corrected NNSight 0.4.x API
+2025-07-24 23:35:48,004 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:48,317 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 177, 2048])
+2025-07-24 23:35:48,335 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:48,630 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:48,939 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 207, 2048])
+2025-07-24 23:35:48,972 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:49,264 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:49,577 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 262, 2048])
+2025-07-24 23:35:49,613 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:49,912 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:50,240 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:50,534 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:50,875 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:51,167 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:51,515 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:51,807 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:51,808 - __main__ - INFO - ✅ Created normalized steering vector for layer 12 with shape torch.Size([2048]), original norm: 0.4230
+2025-07-24 23:35:52,098 - __main__ - INFO - 🔧 Processing layer 20 with corrected NNSight 0.4.x API
+2025-07-24 23:35:52,099 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:35:52,408 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 177, 2048])
+2025-07-24 23:35:52,428 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:52,719 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:35:53,033 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 207, 2048])
+2025-07-24 23:35:53,067 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:53,363 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:35:53,675 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 262, 2048])
+2025-07-24 23:35:53,713 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:54,007 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:35:54,338 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:54,630 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:35:54,974 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:55,265 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:35:55,612 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:35:55,911 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:35:55,911 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), original norm: 0.7042
+2025-07-24 23:35:56,209 - __main__ - INFO - 💾 Saved steering vectors to: results_comprehensive_final/steering_vectors/cwe-416_comprehensive_steering.pt
+2025-07-24 23:35:56,209 - __main__ - INFO - 🧪 Evaluating comprehensive steering effectiveness for CWE-416
+2025-07-24 23:35:56,209 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:35:56,511 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:56,514 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:56,514 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:56,514 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:56,811 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:56,811 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:56,815 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:56,816 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:56,816 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:56,818 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:56,818 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:56,818 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:56,818 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:56,818 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:56,818 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:56,818 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:35:57,115 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:57,118 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:57,118 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:57,118 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:57,417 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:57,417 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:57,421 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:57,422 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:57,422 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:57,424 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:57,424 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:57,424 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:57,424 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:57,424 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:57,424 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:57,424 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:35:57,717 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:57,719 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:57,720 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:35:57,720 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:58,013 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:58,013 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:58,017 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:58,017 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:58,017 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:58,019 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:58,020 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:35:58,020 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:58,020 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:35:58,020 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:35:58,020 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:58,020 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:35:58,310 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:58,312 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:58,313 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:58,313 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:58,605 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:58,605 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:58,609 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:58,609 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:58,609 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:58,611 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:58,611 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:58,611 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:58,611 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:58,611 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:58,611 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:58,612 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:35:58,903 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:58,905 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:58,906 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:58,906 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:59,197 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:59,197 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:59,201 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:59,201 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:59,202 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:59,203 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:59,204 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:59,204 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:59,204 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:59,204 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:59,204 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:59,204 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:35:59,496 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:35:59,499 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:59,499 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:35:59,499 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:59,796 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:35:59,796 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:35:59,800 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:59,801 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:35:59,801 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:35:59,803 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:35:59,803 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:35:59,803 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:35:59,803 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:35:59,803 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:35:59,803 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:35:59,803 - __main__ - INFO - 📊 CWE-416 Comprehensive Results:
+2025-07-24 23:35:59,803 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:35:59,803 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:35:59,803 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:35:59,803 - __main__ - INFO -   Improvements: 0, Degradations: 0
+2025-07-24 23:35:59,803 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:35:59,803 - __main__ - INFO -   Average Processing Time: 0.6s
+2025-07-24 23:35:59,804 - __main__ - INFO - 💾 Saved intermediate results: results_comprehensive_final/intermediate_comprehensive_cwe-416_20250724_233510.json
+2025-07-24 23:35:59,804 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:36:00,094 - __main__ - INFO - 🎯 Processing CWE comprehensively: CWE-77
+2025-07-24 23:36:00,094 - __main__ - INFO - 🔧 Creating comprehensive steering vectors for CWE-77
+2025-07-24 23:36:00,094 - __main__ - INFO - 🎯 Creating comprehensive steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:36:00,094 - __main__ - INFO - 🔧 Processing layer 4 with corrected NNSight 0.4.x API
+2025-07-24 23:36:00,094 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:00,401 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 152, 2048])
+2025-07-24 23:36:00,419 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:00,710 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:01,020 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 175, 2048])
+2025-07-24 23:36:01,039 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:01,330 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:01,648 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 261, 2048])
+2025-07-24 23:36:01,684 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:01,979 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:02,329 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:02,627 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:02,970 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:03,274 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:03,627 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:03,924 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:03,924 - __main__ - INFO - ✅ Created normalized steering vector for layer 4 with shape torch.Size([2048]), original norm: 2.2355
+2025-07-24 23:36:04,219 - __main__ - INFO - 🔧 Processing layer 12 with corrected NNSight 0.4.x API
+2025-07-24 23:36:04,220 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:04,534 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 152, 2048])
+2025-07-24 23:36:04,551 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:04,848 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:05,160 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 175, 2048])
+2025-07-24 23:36:05,179 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:05,475 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:05,786 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 261, 2048])
+2025-07-24 23:36:05,823 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:06,118 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:06,465 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:06,760 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:07,103 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:07,405 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:07,767 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:08,083 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:08,084 - __main__ - INFO - ✅ Created normalized steering vector for layer 12 with shape torch.Size([2048]), original norm: 3.4948
+2025-07-24 23:36:08,378 - __main__ - INFO - 🔧 Processing layer 20 with corrected NNSight 0.4.x API
+2025-07-24 23:36:08,378 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:08,691 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 152, 2048])
+2025-07-24 23:36:08,707 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:09,003 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:09,314 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 175, 2048])
+2025-07-24 23:36:09,334 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:09,629 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:09,946 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 261, 2048])
+2025-07-24 23:36:09,983 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:10,281 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:10,627 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:10,923 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:11,262 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:11,559 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:11,908 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:12,203 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:12,204 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), original norm: 8.8763
+2025-07-24 23:36:12,499 - __main__ - INFO - 💾 Saved steering vectors to: results_comprehensive_final/steering_vectors/cwe-77_comprehensive_steering.pt
+2025-07-24 23:36:12,499 - __main__ - INFO - 🧪 Evaluating comprehensive steering effectiveness for CWE-77
+2025-07-24 23:36:12,499 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:36:12,799 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:12,802 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:12,802 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:12,802 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:13,096 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:13,096 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:13,100 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:13,100 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:13,100 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:13,102 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:13,102 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:13,102 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:13,102 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:13,102 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:13,102 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:13,102 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:36:13,396 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:13,399 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:13,399 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:13,399 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:13,692 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:13,693 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:13,696 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:13,697 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:13,697 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:13,699 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:13,699 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:13,699 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:13,699 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:13,699 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:13,699 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:13,699 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:36:13,993 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:13,996 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:13,996 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:13,996 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:14,289 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:14,289 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:14,293 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:14,293 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:14,293 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:14,295 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:14,295 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:14,295 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:14,296 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:14,296 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:14,296 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:14,296 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:36:14,588 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:14,591 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:14,591 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:14,591 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:14,884 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:14,884 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:14,888 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:14,888 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:14,888 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:14,890 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:14,890 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:14,890 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:14,890 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:14,891 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:14,891 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:14,891 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:36:15,184 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:15,186 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:15,187 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:15,187 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:15,479 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:15,479 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:15,483 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:15,483 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:15,483 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:15,485 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:15,486 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:15,486 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:15,486 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:15,486 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:15,486 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:15,486 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:36:15,778 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:15,780 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:15,781 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:15,781 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:16,074 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:16,074 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:16,077 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:16,078 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:16,078 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:16,080 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:16,080 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:16,080 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:16,080 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:16,080 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:16,080 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:16,081 - __main__ - INFO - 📊 CWE-77 Comprehensive Results:
+2025-07-24 23:36:16,081 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:36:16,081 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:36:16,081 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:36:16,081 - __main__ - INFO -   Improvements: 0, Degradations: 0
+2025-07-24 23:36:16,081 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:36:16,081 - __main__ - INFO -   Average Processing Time: 0.6s
+2025-07-24 23:36:16,081 - __main__ - INFO - 💾 Saved intermediate results: results_comprehensive_final/intermediate_comprehensive_cwe-77_20250724_233510.json
+2025-07-24 23:36:16,081 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:36:16,374 - __main__ - INFO - 🎯 Processing CWE comprehensively: CWE-79
+2025-07-24 23:36:16,374 - __main__ - INFO - 🔧 Creating comprehensive steering vectors for CWE-79
+2025-07-24 23:36:16,374 - __main__ - INFO - 🎯 Creating comprehensive steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:36:16,375 - __main__ - INFO - 🔧 Processing layer 4 with corrected NNSight 0.4.x API
+2025-07-24 23:36:16,375 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:16,686 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 194, 2048])
+2025-07-24 23:36:16,719 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:17,013 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:17,326 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 179, 2048])
+2025-07-24 23:36:17,344 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:17,638 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:17,952 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 207, 2048])
+2025-07-24 23:36:17,985 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:18,279 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:18,624 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:18,919 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:19,249 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:19,543 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:19,887 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:20,182 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:20,183 - __main__ - INFO - ✅ Created normalized steering vector for layer 4 with shape torch.Size([2048]), original norm: 0.7860
+2025-07-24 23:36:20,475 - __main__ - INFO - 🔧 Processing layer 12 with corrected NNSight 0.4.x API
+2025-07-24 23:36:20,475 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:20,786 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 194, 2048])
+2025-07-24 23:36:20,819 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:21,113 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:21,425 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 179, 2048])
+2025-07-24 23:36:21,444 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:21,739 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:22,050 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 207, 2048])
+2025-07-24 23:36:22,083 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:22,377 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:22,721 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:23,017 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:23,347 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:23,642 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:23,988 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:24,283 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:24,284 - __main__ - INFO - ✅ Created normalized steering vector for layer 12 with shape torch.Size([2048]), original norm: 1.9161
+2025-07-24 23:36:24,577 - __main__ - INFO - 🔧 Processing layer 20 with corrected NNSight 0.4.x API
+2025-07-24 23:36:24,577 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:24,887 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 194, 2048])
+2025-07-24 23:36:24,920 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:25,214 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:25,525 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 179, 2048])
+2025-07-24 23:36:25,544 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:25,836 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:26,145 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 207, 2048])
+2025-07-24 23:36:26,179 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:26,471 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:26,814 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:27,107 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:27,436 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:27,728 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:28,074 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:28,369 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:28,370 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), original norm: 5.1587
+2025-07-24 23:36:28,666 - __main__ - INFO - 💾 Saved steering vectors to: results_comprehensive_final/steering_vectors/cwe-79_comprehensive_steering.pt
+2025-07-24 23:36:28,666 - __main__ - INFO - 🧪 Evaluating comprehensive steering effectiveness for CWE-79
+2025-07-24 23:36:28,666 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.py
+2025-07-24 23:36:28,965 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:28,967 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:28,968 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:28,968 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:29,259 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:29,260 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:29,264 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:29,265 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:29,265 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:29,267 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:29,267 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:29,267 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:29,267 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:29,267 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:29,267 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:29,267 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.py
+2025-07-24 23:36:29,558 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:29,560 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:29,560 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:29,561 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:29,851 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:29,851 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:29,855 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:29,856 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:29,856 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:29,858 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:29,858 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:29,858 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:29,858 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:29,858 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:29,858 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:29,858 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.py
+2025-07-24 23:36:30,151 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:30,154 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:30,154 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:30,154 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:30,448 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:30,449 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:30,452 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:30,453 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:30,453 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:30,455 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:30,455 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:30,455 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:30,455 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:30,455 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:30,455 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:30,455 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.py
+2025-07-24 23:36:30,761 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:30,763 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:30,763 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:30,763 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:31,055 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:31,055 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:31,058 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:31,059 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:31,059 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:31,061 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:31,061 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:31,061 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:31,061 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:31,061 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:31,061 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:31,061 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.py
+2025-07-24 23:36:31,380 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:31,382 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:31,382 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:31,382 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:31,681 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:31,681 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:31,685 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:31,686 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:31,686 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:31,688 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:31,688 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:31,688 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:31,688 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:31,688 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:31,688 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:31,688 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.py
+2025-07-24 23:36:31,982 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:31,985 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:31,985 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:31,985 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:32,276 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:32,276 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:32,280 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:32,281 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:32,281 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:32,283 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:32,283 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:32,283 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:32,283 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:32,283 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:32,283 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:32,283 - __main__ - INFO - 📊 CWE-79 Comprehensive Results:
+2025-07-24 23:36:32,283 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:36:32,283 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:36:32,283 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:36:32,283 - __main__ - INFO -   Improvements: 0, Degradations: 0
+2025-07-24 23:36:32,283 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:36:32,283 - __main__ - INFO -   Average Processing Time: 0.6s
+2025-07-24 23:36:32,284 - __main__ - INFO - 💾 Saved intermediate results: results_comprehensive_final/intermediate_comprehensive_cwe-79_20250724_233510.json
+2025-07-24 23:36:32,284 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:36:32,577 - __main__ - INFO - 🎯 Processing CWE comprehensively: CWE-89
+2025-07-24 23:36:32,577 - __main__ - INFO - 🔧 Creating comprehensive steering vectors for CWE-89
+2025-07-24 23:36:32,577 - __main__ - INFO - 🎯 Creating comprehensive steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:36:32,577 - __main__ - INFO - 🔧 Processing layer 4 with corrected NNSight 0.4.x API
+2025-07-24 23:36:32,577 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:32,892 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 103, 2048])
+2025-07-24 23:36:32,901 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:33,207 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:33,519 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 177, 2048])
+2025-07-24 23:36:33,538 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:33,831 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:34,142 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 206, 2048])
+2025-07-24 23:36:34,174 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:34,469 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:34,792 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:35,086 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:35,414 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:35,707 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:36,050 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:36,344 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:36,345 - __main__ - INFO - ✅ Created normalized steering vector for layer 4 with shape torch.Size([2048]), original norm: 0.4412
+2025-07-24 23:36:36,636 - __main__ - INFO - 🔧 Processing layer 12 with corrected NNSight 0.4.x API
+2025-07-24 23:36:36,636 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:36,951 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 103, 2048])
+2025-07-24 23:36:36,960 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:37,253 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:37,578 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 177, 2048])
+2025-07-24 23:36:37,597 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:37,890 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:38,208 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 206, 2048])
+2025-07-24 23:36:38,241 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:38,538 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:38,879 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:39,173 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:39,510 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:39,801 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:40,143 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:40,444 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:40,445 - __main__ - INFO - ✅ Created normalized steering vector for layer 12 with shape torch.Size([2048]), original norm: 0.8098
+2025-07-24 23:36:40,735 - __main__ - INFO - 🔧 Processing layer 20 with corrected NNSight 0.4.x API
+2025-07-24 23:36:40,735 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:36:41,053 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 103, 2048])
+2025-07-24 23:36:41,064 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:41,355 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:36:41,668 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 177, 2048])
+2025-07-24 23:36:41,687 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:41,987 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:36:42,297 - __main__ - INFO -     ✅ Hidden states shape: torch.Size([1, 206, 2048])
+2025-07-24 23:36:42,330 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:42,626 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:36:42,953 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:43,248 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:36:43,580 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:43,871 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:36:44,221 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:36:44,517 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:36:44,518 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), original norm: 1.7661
+2025-07-24 23:36:44,811 - __main__ - INFO - 💾 Saved steering vectors to: results_comprehensive_final/steering_vectors/cwe-89_comprehensive_steering.pt
+2025-07-24 23:36:44,811 - __main__ - INFO - 🧪 Evaluating comprehensive steering effectiveness for CWE-89
+2025-07-24 23:36:44,811 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.py
+2025-07-24 23:36:45,109 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:45,112 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:45,112 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:45,112 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:45,404 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:45,405 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:45,409 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:45,410 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:45,410 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:45,412 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:45,412 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:45,412 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:45,412 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:45,412 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:45,412 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:45,412 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.py
+2025-07-24 23:36:45,709 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:45,712 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:45,712 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:45,712 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:46,003 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:46,004 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:46,007 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:46,008 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:46,008 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:46,010 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:46,010 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:46,010 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:46,010 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:46,010 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:46,010 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:46,010 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.py
+2025-07-24 23:36:46,300 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:46,302 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:46,302 - __main__ - INFO -   📊 Baseline: ❌ (confidence: 0.500)
+2025-07-24 23:36:46,302 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:46,592 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:46,593 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:46,596 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:46,597 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:46,597 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:46,599 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:46,599 - __main__ - INFO -   🎯 Steered: ❌ (confidence: 0.500)
+2025-07-24 23:36:46,599 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:46,599 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:36:46,599 - __main__ - INFO -   📊 Result: Baseline ❌ | Steered ❌ | Change: 0
+2025-07-24 23:36:46,599 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:46,599 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.py
+2025-07-24 23:36:46,897 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:46,899 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:46,899 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:46,899 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:47,187 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:47,187 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:47,190 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:47,191 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:47,191 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:47,193 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:47,193 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:47,193 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:47,193 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:47,193 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:47,193 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:47,193 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.py
+2025-07-24 23:36:47,486 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:47,489 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:47,489 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:47,489 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:47,779 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:47,779 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:47,783 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:47,783 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:47,783 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:47,785 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:47,785 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:47,785 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:47,785 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:47,785 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:47,785 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:47,785 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.py
+2025-07-24 23:36:48,080 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:36:48,082 - __main__ - ERROR - ❌ Baseline generation failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:48,083 - __main__ - INFO -   📊 Baseline: ✅ (confidence: 0.500)
+2025-07-24 23:36:48,083 - __main__ - INFO -   📊 Baseline reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:48,382 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:36:48,382 - __main__ - INFO - 🎯 Attempting NNSight steered generation...
+2025-07-24 23:36:48,386 - __main__ - WARNING - ⚠️ NNSight generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:48,386 - __main__ - WARNING - ⚠️ NNSight steered generation failed: 'Invoker' object has no attribute 'input'
+2025-07-24 23:36:48,386 - __main__ - INFO - 🔄 Falling back to traditional generation with conceptual steering...
+2025-07-24 23:36:48,388 - __main__ - ERROR - ❌ Fallback generation also failed: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:36:48,388 - __main__ - INFO -   🎯 Steered: ✅ (confidence: 0.500)
+2025-07-24 23:36:48,389 - __main__ - INFO -   🎯 Steered reasoning: Unclear response, defaulting to secure
+2025-07-24 23:36:48,389 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:36:48,389 - __main__ - INFO -   📊 Result: Baseline ✅ | Steered ✅ | Change: 0
+2025-07-24 23:36:48,389 - __main__ - INFO -   ⏱️ Processing time: 0.6s
+2025-07-24 23:36:48,389 - __main__ - INFO - 📊 CWE-89 Comprehensive Results:
+2025-07-24 23:36:48,389 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:36:48,389 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:36:48,389 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:36:48,389 - __main__ - INFO -   Improvements: 0, Degradations: 0
+2025-07-24 23:36:48,389 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:36:48,389 - __main__ - INFO -   Average Processing Time: 0.6s
+2025-07-24 23:36:48,389 - __main__ - INFO - 💾 Saved intermediate results: results_comprehensive_final/intermediate_comprehensive_cwe-89_20250724_233510.json
+2025-07-24 23:36:48,389 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:36:48,682 - __main__ - INFO - 
+🎉 Comprehensive CWE Steering Experiment Complete!
+2025-07-24 23:36:48,682 - __main__ - INFO - 📁 Results saved to: results_comprehensive_final
+2025-07-24 23:36:48,682 - __main__ - INFO - ⏱️ Total Duration: 98.7 seconds
+2025-07-24 23:36:48,682 - __main__ - INFO - 📊 COMPREHENSIVE RESULTS:
+2025-07-24 23:36:48,682 - __main__ - INFO -    CWEs Successfully Processed: 6/6
+2025-07-24 23:36:48,682 - __main__ - INFO -    Total Examples Evaluated: 36
+2025-07-24 23:36:48,682 - __main__ - INFO -    Overall Baseline Accuracy: 0.500
+2025-07-24 23:36:48,682 - __main__ - INFO -    Overall Steered Accuracy: 0.500
+2025-07-24 23:36:48,682 - __main__ - INFO -    Overall Improvement: 0.000
+2025-07-24 23:36:48,682 - __main__ - INFO -    Individual Improvements: 0
+2025-07-24 23:36:48,682 - __main__ - INFO -    Individual Degradations: 0
+2025-07-24 23:36:48,682 - __main__ - INFO -    Net Improvement Rate: 0.000
+2025-07-24 23:36:48,682 - __main__ - INFO - 📊 Creating comprehensive results visualizations...

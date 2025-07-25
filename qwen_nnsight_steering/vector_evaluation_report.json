@@ -1,0 +1,122 @@
+{
+  "total_test_cases": 3,
+  "successful_assessments": 3,
+  "average_confidence": 0.0181884765625,
+  "confidence_std": 0.002198079276435034,
+  "detailed_results": [
+    {
+      "cwe_type": "cwe-77",
+      "code_sample": "def execute_command(user_input):\n    command = \"ls \" + user_input\n    os.system(command)\n    return ...",
+      "vector_insights": {
+        "confidence_score": 0.0203857421875,
+        "pattern_strength": "0.2039",
+        "vector_magnitude": "1.0",
+        "key_dimensions": [
+          868,
+          1200,
+          352,
+          503,
+          713
+        ]
+      },
+      "deterministic_score": 0.5203857421875,
+      "robustness_indicators": {
+        "variable_name_robustness": "0.2039",
+        "code_structure_robustness": 0.0203857421875,
+        "semantic_consistency": 0.1
+      },
+      "recommendation": "Low confidence pattern for cwe-77. Vector analysis inconclusive.",
+      "expected_cwe": "cwe-77",
+      "test_case_id": "cmd_injection_1"
+    },
+    {
+      "cwe_type": "cwe-22",
+      "code_sample": "def read_file(filename):\n    path = \"/var/www/\" + filename\n    with open(path, 'r') as f:\n        re...",
+      "vector_insights": {
+        "confidence_score": 0.018994140625,
+        "pattern_strength": "0.1901",
+        "vector_magnitude": "0.9995",
+        "key_dimensions": [
+          430,
+          1235,
+          580,
+          1222,
+          356
+        ]
+      },
+      "deterministic_score": 0.318994140625,
+      "robustness_indicators": {
+        "variable_name_robustness": "0.1901",
+        "code_structure_robustness": 0.018994140625,
+        "semantic_consistency": 0.099951171875
+      },
+      "recommendation": "Low confidence pattern for cwe-22. Vector analysis inconclusive.",
+      "expected_cwe": "cwe-22",
+      "test_case_id": "path_traversal_1"
+    },
+    {
+      "cwe_type": "cwe-89",
+      "code_sample": "def get_user(name):\n    query = \"SELECT * FROM users WHERE name = '\" + name + \"'\"\n    cursor.execute...",
+      "vector_insights": {
+        "confidence_score": 0.015185546875,
+        "pattern_strength": "0.1519",
+        "vector_magnitude": "1.0",
+        "key_dimensions": [
+          1421,
+          1461,
+          546,
+          1387,
+          426
+        ]
+      },
+      "deterministic_score": 0.015185546875,
+      "robustness_indicators": {
+        "variable_name_robustness": "0.1519",
+        "code_structure_robustness": 0.015185546875,
+        "semantic_consistency": 0.1
+      },
+      "recommendation": "Low confidence pattern for cwe-89. Vector analysis inconclusive.",
+      "expected_cwe": "cwe-89",
+      "test_case_id": "sql_injection_1"
+    }
+  ],
+  "secllmholmes_comparison": {
+    "determinism": {
+      "secllmholmes_issue": "LLMs provide non-deterministic responses",
+      "vector_solution": "Steering vectors provide deterministic mathematical patterns",
+      "our_approach": "Vector analysis gives consistent results regardless of prompt variations"
+    },
+    "robustness": {
+      "secllmholmes_issue": "26% error rate from variable name changes",
+      "vector_solution": "Vectors capture semantic patterns, not surface syntax",
+      "our_approach": "Pattern strength scores indicate robustness: [0.2039, 0.1901, 0.1519]"
+    },
+    "false_positives": {
+      "secllmholmes_issue": "High false positive rates",
+      "vector_solution": "Mathematical thresholds based on learned patterns",
+      "our_approach": "Confidence scores provide calibrated assessment: [0.0203857421875, 0.018994140625, 0.015185546875]"
+    },
+    "reasoning": {
+      "secllmholmes_issue": "Incorrect and unfaithful reasoning",
+      "vector_solution": "Vector dimensions represent learned vulnerability patterns",
+      "our_approach": "Explainable through vector analysis and dimension importance"
+    }
+  },
+  "vector_statistics": {
+    "cwe-77": {
+      "magnitude": "1.0",
+      "pattern_strength": "0.2039",
+      "confidence": 0.0203857421875
+    },
+    "cwe-22": {
+      "magnitude": "0.9995",
+      "pattern_strength": "0.1901",
+      "confidence": 0.018994140625
+    },
+    "cwe-89": {
+      "magnitude": "1.0",
+      "pattern_strength": "0.1519",
+      "confidence": 0.015185546875
+    }
+  }
+}

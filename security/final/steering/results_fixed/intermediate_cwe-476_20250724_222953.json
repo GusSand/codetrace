@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-476",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-476",
+        "cwe_name": "NULL pointer dereference",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n    ",
+        "file_name": "1.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-476/1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n    \n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+      "ground_truth": "yes",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-476",
+        "cwe_name": "NULL pointer dereference",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+        "file_name": "p_3.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-476/p_3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    if (valid_hostname == NULL){\n        return NULL;\n    }\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+      "ground_truth": "no",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-476",
+        "cwe_name": "NULL pointer dereference",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* dir = getenv(\"DIR\");\n    if (dir == NULL) {\n        printf(\"Error: DIR environment variable not set\\n\");\n        return;\n    }\n\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}",
+        "file_name": "p_2.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-476/p_2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* dir = getenv(\"DIR\");\n    if (dir == NULL) {\n        printf(\"Error: DIR environment variable not set\\n\");\n        return;\n    }\n\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+      "ground_truth": "no",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-476",
+        "cwe_name": "NULL pointer dereference",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n    if (fp == NULL) {\n        printf(\"Error: file not found\\n\");\n        return;\n    }\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n",
+        "file_name": "p_1.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-476/p_1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid read_file(char* file_path) {\n    if (file_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n    char* resolved_path = realpath(file_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(resolved_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    \n    FILE *fp;\n    char *data = malloc(256);\n    fp = fopen(full_path, \"r\");\n    if (fp == NULL) {\n        printf(\"Error: file not found\\n\");\n        return;\n    }\n\n    while (fgets(data, 256, fp) != NULL) {\n        printf(\"%s\", data);\n    }\n\n    fclose(fp);\n    free(data);\n    data = NULL;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+      "ground_truth": "no",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-476",
+        "cwe_name": "NULL pointer dereference",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    char* dir = getenv(\"DIR\");\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}",
+        "file_name": "2.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-476/2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid print_files(char* file_path)\n{\n    char* dir = getenv(\"DIR\");\n    int file_path_len = strlen(dir) + strlen(file_path) + 1;\n    char* full_path = malloc(file_path_len);\n    strcpy(full_path, dir);\n    strcat(full_path, file_path);\n    strcat(full_path, \"\\0\");\n\n    char* resolved_path = realpath(full_path, NULL);\n    if (resolved_path == NULL) {\n        printf(\"Error: Invalid Path\\n\");\n        return;\n    }\n\n    FILE* file = fopen(resolved_path, \"r\");\n    if (file == NULL) {\n        printf(\"Error opening file: %s\\n\", resolved_path);\n        return;\n    }\n\n    char line[256];\n    while(fgets(line, sizeof(line), file) != NULL) {\n        printf(\"%s\", line);\n    }\n\n    fclose(file);\n    free(full_path);\n    full_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+      "ground_truth": "yes",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-476",
+        "cwe_name": "NULL pointer dereference",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}",
+        "file_name": "3.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-476/3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nchar* validate_hostname(char *hostname, int len){\n    if (hostname == NULL){\n        return NULL;\n    }\n    char* valid_hostname = malloc(len + 1);\n    for (int i = 0; i < len; i++){\n        if (hostname[i] == '-' || hostname[i] == '.'){\n            valid_hostname[i] = ' ';\n        }\n        else {\n            valid_hostname[i] = hostname[i];\n        }\n    }\n    return valid_hostname;\n}\n\nchar* get_hostname(char *user_supplied_name, int len){\n    char* hostname = malloc(64);\n    if (len > 64){\n        return NULL;\n    }\n\n    char* valid_hostname = validate_hostname(user_supplied_name, len);\n    strcpy(hostname, valid_hostname);\n    free(valid_hostname);\n    valid_hostname = NULL;\n    \n    return hostname;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as NULL pointer dereference?",
+      "ground_truth": "yes",
+      "scale_1.0": {
+        "steering_scale": 1.0,
+        "baseline_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: unknown device type for autocast in get_autocast_dispatch_key_from_device_type",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.15262579917907715,
+  "steering_layers": [
+    8,
+    12,
+    16
+  ]
+}

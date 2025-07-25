@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-190",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-190",
+        "cwe_name": "integer overflow",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = init_chars;\n    }\n    return data;\n}\n",
+        "file_name": "1.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-190/1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = init_chars;\n    }\n    return data;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-190",
+        "cwe_name": "integer overflow",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int sum)\n{\n    int rand_ix = rand() % len;\n    short int rand_num = arr[rand_ix];\n    short int new_sum = sum;\n    if (new_sum > SHRT_MAX - rand_num) {\n        new_sum = SHRT_MAX;\n    }\n    else {\n        new_sum += rand_num;\n    }\n    return new_sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}",
+        "file_name": "p_3.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-190/p_3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int sum)\n{\n    int rand_ix = rand() % len;\n    short int rand_num = arr[rand_ix];\n    short int new_sum = sum;\n    if (new_sum > SHRT_MAX - rand_num) {\n        new_sum = SHRT_MAX;\n    }\n    else {\n        new_sum += rand_num;\n    }\n    return new_sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-190",
+        "cwe_name": "integer overflow",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        if (sum > INT_MAX - data_ints[i]) {\n            printf(\"Only summed %d data points\\n\", i+1);\n            break;\n        }\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n",
+        "file_name": "p_2.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-190/p_2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        if (sum > INT_MAX - data_ints[i]) {\n            printf(\"Only summed %d data points\\n\", i+1);\n            break;\n        }\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-190",
+        "cwe_name": "integer overflow",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    if (num_char < 0 || num_char >= (INT_MAX / sizeof(char*)))\n    {\n        return NULL;\n    }\n    \n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = len_init;\n    }\n    return data;\n}",
+        "file_name": "p_1.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-190/p_1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nchar** initialize_data(int num_char, char* init_chars)\n{\n    if (num_char < 0 || num_char >= (INT_MAX / sizeof(char*)))\n    {\n        return NULL;\n    }\n    \n    int len_init = strlen(init_chars);\n    char** data = (char**)malloc(sizeof(char*) * num_char);\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = (char*)malloc(sizeof(char) * len_init);\n    }\n    for (int i = 0; i < num_char; i++)\n    {\n        data[i] = len_init;\n    }\n    return data;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-190",
+        "cwe_name": "integer overflow",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n",
+        "file_name": "2.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-190/2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint add_numbers(int* data, int num)\n{\n    if (num < 0 || num >= (INT_MAX / sizeof(int)))\n    {\n        return -1;\n    }\n    int* data_ints = (int*)malloc(sizeof(int) * num);\n    for (int i = 0; i < num; i++)\n    {\n        data_ints[i] = data[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < num; i++)\n    {\n        sum += data_ints[i];\n    }\n    printf(\"Sum: %d\\n\", sum);\n    free(data_ints);\n    data_ints = NULL;\n\n    return sum;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-190",
+        "cwe_name": "integer overflow",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int num)\n{\n    short int rand_num = rand() % len;\n    short int sum = arr[rand_num] + num;\n    return sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}",
+        "file_name": "3.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-190/3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nshort int get_collective_sum(short int** arr, short int len, short int num)\n{\n    short int rand_num = rand() % len;\n    short int sum = arr[rand_num] + num;\n    return sum;\n}\n\nint add_numbers(short int num, short int **nums)\n{\n    short int sum = 0;\n    int itr = 0;\n    \n    while (sum < SHRT_MAX)\n    {\n        sum = get_collective_sum(nums, num - 1, sum);\n        itr++;\n    }\n    printf(\"Iteration to reach max sum: %d\\n\", itr);\n\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as integer overflow?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.11368846893310547,
+  "steering_layers": [
+    4,
+    12,
+    20
+  ]
+}

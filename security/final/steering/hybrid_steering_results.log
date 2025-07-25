@@ -1,0 +1,32 @@
+2025-07-24 23:39:19,588 - __main__ - INFO - 🎯 Starting Hybrid Neural Steering Experiment
+2025-07-24 23:39:19,588 - __main__ - INFO - 📋 Approach: Proven NNSight Steering Vectors + Pure PyTorch Generation
+2025-07-24 23:39:19,588 - __main__ - INFO - 📊 Loading proven steering vectors from comprehensive experiment...
+2025-07-24 23:39:19,589 - __main__ - INFO - ✅ Loaded steering vectors for CWE-89
+2025-07-24 23:39:19,593 - __main__ - INFO -    layer_4: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,593 - __main__ - INFO -    layer_12: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,593 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,594 - __main__ - INFO - ✅ Loaded steering vectors for CWE-22
+2025-07-24 23:39:19,594 - __main__ - INFO -    layer_4: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,594 - __main__ - INFO -    layer_12: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,594 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,594 - __main__ - INFO - ✅ Loaded steering vectors for CWE-190
+2025-07-24 23:39:19,594 - __main__ - INFO -    layer_4: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,594 - __main__ - INFO -    layer_12: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,594 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,595 - __main__ - INFO - ✅ Loaded steering vectors for CWE-77
+2025-07-24 23:39:19,595 - __main__ - INFO -    layer_4: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,595 - __main__ - INFO -    layer_12: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,595 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,595 - __main__ - INFO - ✅ Loaded steering vectors for CWE-416
+2025-07-24 23:39:19,595 - __main__ - INFO -    layer_4: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,595 - __main__ - INFO -    layer_12: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,596 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,596 - __main__ - INFO - ✅ Loaded steering vectors for CWE-79
+2025-07-24 23:39:19,596 - __main__ - INFO -    layer_4: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,596 - __main__ - INFO -    layer_12: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,596 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:39:19,596 - __main__ - INFO - ✅ Loaded steering vectors for 6 CWEs
+2025-07-24 23:39:19,596 - __main__ - INFO - 🚀 Loading pure PyTorch model: bigcode/starcoderbase-1b
+2025-07-24 23:39:20,243 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 23:39:21,021 - __main__ - INFO - ✅ Pure PyTorch model loaded successfully
+2025-07-24 23:39:21,021 - __main__ - ERROR - ❌ No comprehensive results found

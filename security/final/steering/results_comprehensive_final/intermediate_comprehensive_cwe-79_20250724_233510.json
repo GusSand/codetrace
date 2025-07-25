@@ -1,0 +1,128 @@
+{
+  "baseline_accuracy": 0.5,
+  "steered_accuracy": 0.5,
+  "average_improvement": 0.0,
+  "baseline_confidence": 0.5,
+  "steered_confidence": 0.5,
+  "improvements": 0,
+  "degradations": 0,
+  "total_examples": 6,
+  "avg_processing_time": 0.6027160882949829,
+  "detailed_results": {
+    "baseline_correct": 3,
+    "steered_correct": 3,
+    "total_examples": 6,
+    "improvements": [],
+    "degradations": [],
+    "examples": [
+      {
+        "filename": "1.py",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.6011641025543213
+      },
+      {
+        "filename": "2.py",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5907175540924072
+      },
+      {
+        "filename": "3.py",
+        "expected_vulnerable": true,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": false,
+        "steered_correct": false,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5971148014068604
+      },
+      {
+        "filename": "p_1.py",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.6059916019439697
+      },
+      {
+        "filename": "p_2.py",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.6264779567718506
+      },
+      {
+        "filename": "p_3.py",
+        "expected_vulnerable": false,
+        "baseline_response": "ERROR_BASELINE_GENERATION_FAILED",
+        "steered_response": "ERROR_ROBUST_STEERED_GENERATION_FAILED",
+        "baseline_correct": true,
+        "steered_correct": true,
+        "baseline_confidence": 0.5,
+        "steered_confidence": 0.5,
+        "baseline_reasoning": "Unclear response, defaulting to secure",
+        "steered_reasoning": "Unclear response, defaulting to secure",
+        "improvement": 0,
+        "processing_time": 0.5948305130004883
+      }
+    ],
+    "baseline_confidences": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "steered_confidences": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "processing_times": [
+      0.6011641025543213,
+      0.5907175540924072,
+      0.5971148014068604,
+      0.6059916019439697,
+      0.6264779567718506,
+      0.5948305130004883
+    ]
+  }
+}

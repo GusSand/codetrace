@@ -1,0 +1,384 @@
+2025-07-24 22:47:17,986 - __main__ - INFO - 🚀 Starting FINAL WORKING CWE Steering Experiment (NNSight 0.4.x + Qwen2.5)
+2025-07-24 22:47:17,986 - __main__ - INFO - 🧪 Experiment ID: 20250724_224717
+2025-07-24 22:47:17,986 - __main__ - INFO - 🚀 Loading model: Qwen/Qwen2.5-14B-Instruct
+2025-07-24 22:47:18,956 - __main__ - INFO - ✅ Model loaded successfully
+2025-07-24 22:47:18,956 - __main__ - INFO - 📊 Model layers: 48
+2025-07-24 22:47:18,956 - __main__ - INFO - 📚 Loading REAL SecLLMHolmes dataset (memory-limited)...
+2025-07-24 22:47:18,957 - __main__ - INFO - 🔍 Found 8 CWE directories
+2025-07-24 22:47:18,957 - __main__ - INFO - 📖 Loaded 4 examples for CWE-190
+2025-07-24 22:47:18,957 - __main__ - INFO - 📖 Loaded 4 examples for CWE-22
+2025-07-24 22:47:18,957 - __main__ - INFO - 📖 Loaded 4 examples for CWE-416
+2025-07-24 22:47:18,958 - __main__ - INFO - 📖 Loaded 4 examples for CWE-476
+2025-07-24 22:47:18,958 - __main__ - INFO - 📖 Loaded 4 examples for CWE-77
+2025-07-24 22:47:18,958 - __main__ - INFO - 📖 Loaded 4 examples for CWE-787
+2025-07-24 22:47:18,958 - __main__ - INFO - 📖 Loaded 4 examples for CWE-79
+2025-07-24 22:47:18,959 - __main__ - INFO - 📖 Loaded 4 examples for CWE-89
+2025-07-24 22:47:18,959 - __main__ - INFO - 📊 Loaded 32 total REAL examples across 8 CWEs
+2025-07-24 22:47:18,959 - __main__ - INFO - 🎯 Processing CWE: CWE-190
+2025-07-24 22:47:18,959 - __main__ - INFO - 🎯 Creating steering vectors for CWE-190
+2025-07-24 22:47:18,959 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:47:18,959 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:47:18,959 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:47:19,257 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 22:47:36,204 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:36,443 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:47:36,992 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:37,238 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:47:37,784 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:38,043 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:47:38,587 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:38,820 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:47:38,825 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:47:39,078 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-190_steering_vectors.pt
+2025-07-24 22:47:39,078 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-190
+2025-07-24 22:47:39,078 - __main__ - INFO - 🧪 Evaluating example 1/4: 1.c
+2025-07-24 22:47:43,686 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:47:44,204 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:44,799 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:47:44,799 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:47:44,799 - __main__ - INFO - 🧪 Evaluating example 2/4: 2.c
+2025-07-24 22:47:45,511 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:47:46,058 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:46,623 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:47:46,623 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:47:46,623 - __main__ - INFO - 🧪 Evaluating example 3/4: p_2.c
+2025-07-24 22:47:47,315 - __main__ - INFO -   📊 Baseline response: ' If'
+2025-07-24 22:47:47,873 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:48,403 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:47:48,404 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:47:48,404 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.c
+2025-07-24 22:47:49,100 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:47:49,600 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:50,145 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:47:50,146 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:47:50,146 - __main__ - INFO - 📊 CWE-190 Summary:
+2025-07-24 22:47:50,146 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:47:50,146 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:47:50,146 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:47:50,146 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:47:50,146 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:47:50,147 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-190_20250724_224717.json
+2025-07-24 22:47:50,147 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:47:50,528 - __main__ - INFO - 🎯 Processing CWE: CWE-22
+2025-07-24 22:47:50,528 - __main__ - INFO - 🎯 Creating steering vectors for CWE-22
+2025-07-24 22:47:50,528 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:47:50,528 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:47:50,528 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:47:51,103 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:51,490 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:47:52,117 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:52,508 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:47:53,082 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:53,473 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:47:54,178 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:47:54,559 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:47:54,560 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:47:54,906 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-22_steering_vectors.pt
+2025-07-24 22:47:54,906 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-22
+2025-07-24 22:47:54,907 - __main__ - INFO - 🧪 Evaluating example 1/4: 1.c
+2025-07-24 22:47:55,525 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:47:56,004 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:56,467 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:47:56,467 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:47:56,467 - __main__ - INFO - 🧪 Evaluating example 2/4: 2.c
+2025-07-24 22:47:57,066 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:47:57,530 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:58,006 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:47:58,007 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:47:58,007 - __main__ - INFO - 🧪 Evaluating example 3/4: p_2.c
+2025-07-24 22:47:58,405 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 6.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.90 GiB is allocated by PyTorch, and 780.97 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:47:58,966 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:47:59,464 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:47:59,465 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:47:59,465 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.c
+2025-07-24 22:48:00,017 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 16.88 MiB is free. Including non-PyTorch memory, this process has 79.14 GiB memory in use. Of the allocated memory 77.83 GiB is allocated by PyTorch, and 846.03 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:00,493 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:01,041 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:01,041 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:01,057 - __main__ - INFO - 📊 CWE-22 Summary:
+2025-07-24 22:48:01,061 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:48:01,061 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:48:01,061 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:48:01,061 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:48:01,061 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:48:01,061 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-22_20250724_224717.json
+2025-07-24 22:48:01,061 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:48:01,471 - __main__ - INFO - 🎯 Processing CWE: CWE-416
+2025-07-24 22:48:01,472 - __main__ - INFO - 🎯 Creating steering vectors for CWE-416
+2025-07-24 22:48:01,472 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:48:01,472 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:48:01,472 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:48:02,064 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:02,445 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:48:03,089 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:03,442 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:48:04,134 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:04,535 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:48:05,226 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:05,581 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:48:05,582 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:48:05,949 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-416_steering_vectors.pt
+2025-07-24 22:48:05,950 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-416
+2025-07-24 22:48:05,950 - __main__ - INFO - 🧪 Evaluating example 1/4: 1.c
+2025-07-24 22:48:06,595 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:07,075 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:07,564 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:07,564 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:07,565 - __main__ - INFO - 🧪 Evaluating example 2/4: 2.c
+2025-07-24 22:48:08,251 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:08,737 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:09,266 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:09,267 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:09,267 - __main__ - INFO - 🧪 Evaluating example 3/4: p_2.c
+2025-07-24 22:48:09,750 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 14.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.64 GiB is allocated by PyTorch, and 1.02 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:10,268 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:10,817 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:10,817 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:10,817 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.c
+2025-07-24 22:48:11,244 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 18.88 MiB is free. Including non-PyTorch memory, this process has 79.14 GiB memory in use. Of the allocated memory 77.64 GiB is allocated by PyTorch, and 1.01 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:11,762 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:12,314 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:12,315 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:12,330 - __main__ - INFO - 📊 CWE-416 Summary:
+2025-07-24 22:48:12,333 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:48:12,333 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:48:12,333 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:48:12,333 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:48:12,333 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:48:12,334 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-416_20250724_224717.json
+2025-07-24 22:48:12,334 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:48:12,767 - __main__ - INFO - 🎯 Processing CWE: CWE-476
+2025-07-24 22:48:12,768 - __main__ - INFO - 🎯 Creating steering vectors for CWE-476
+2025-07-24 22:48:12,769 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:48:12,769 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:48:12,769 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:48:13,381 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:13,751 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:48:14,341 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:14,722 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:48:15,327 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:15,680 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:48:16,271 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:16,618 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:48:16,619 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:48:17,003 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-476_steering_vectors.pt
+2025-07-24 22:48:17,003 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-476
+2025-07-24 22:48:17,004 - __main__ - INFO - 🧪 Evaluating example 1/4: 1.c
+2025-07-24 22:48:17,636 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:18,085 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:18,578 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:18,578 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:18,578 - __main__ - INFO - 🧪 Evaluating example 2/4: 2.c
+2025-07-24 22:48:19,162 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:19,640 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:20,126 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:20,126 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:20,126 - __main__ - INFO - 🧪 Evaluating example 3/4: p_2.c
+2025-07-24 22:48:20,601 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 10.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.84 GiB is allocated by PyTorch, and 845.13 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:21,078 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:21,567 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:21,568 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:21,568 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.c
+2025-07-24 22:48:21,957 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 8.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.88 GiB is allocated by PyTorch, and 802.79 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:22,513 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:23,009 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:23,009 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:23,026 - __main__ - INFO - 📊 CWE-476 Summary:
+2025-07-24 22:48:23,028 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:48:23,029 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:48:23,029 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:48:23,029 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:48:23,029 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:48:23,029 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-476_20250724_224717.json
+2025-07-24 22:48:23,029 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:48:23,450 - __main__ - INFO - 🎯 Processing CWE: CWE-77
+2025-07-24 22:48:23,451 - __main__ - INFO - 🎯 Creating steering vectors for CWE-77
+2025-07-24 22:48:23,451 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:48:23,451 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:48:23,451 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:48:24,062 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:24,441 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:48:25,132 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:25,488 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:48:26,175 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:26,543 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:48:27,229 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:27,590 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:48:27,590 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:48:27,975 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-77_steering_vectors.pt
+2025-07-24 22:48:27,976 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-77
+2025-07-24 22:48:27,976 - __main__ - INFO - 🧪 Evaluating example 1/4: 1.c
+2025-07-24 22:48:28,599 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:29,047 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:29,531 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:29,532 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:29,532 - __main__ - INFO - 🧪 Evaluating example 2/4: 2.c
+2025-07-24 22:48:30,220 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:30,718 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:31,264 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:31,264 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:31,264 - __main__ - INFO - 🧪 Evaluating example 3/4: p_2.c
+2025-07-24 22:48:31,853 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 10.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.98 GiB is allocated by PyTorch, and 695.76 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:32,368 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:32,889 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:32,889 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:32,890 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.c
+2025-07-24 22:48:33,328 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 14.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.96 GiB is allocated by PyTorch, and 718.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:33,959 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:34,511 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:34,512 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:34,529 - __main__ - INFO - 📊 CWE-77 Summary:
+2025-07-24 22:48:34,531 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:48:34,531 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:48:34,531 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:48:34,531 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:48:34,531 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:48:34,532 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-77_20250724_224717.json
+2025-07-24 22:48:34,532 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:48:34,955 - __main__ - INFO - 🎯 Processing CWE: CWE-787
+2025-07-24 22:48:34,955 - __main__ - INFO - 🎯 Creating steering vectors for CWE-787
+2025-07-24 22:48:34,955 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:48:34,955 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:48:34,956 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:48:35,570 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:35,936 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:48:36,623 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:37,007 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:48:37,666 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:38,018 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:48:38,588 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:38,976 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:48:38,977 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:48:39,378 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-787_steering_vectors.pt
+2025-07-24 22:48:39,378 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-787
+2025-07-24 22:48:39,378 - __main__ - INFO - 🧪 Evaluating example 1/4: 1.c
+2025-07-24 22:48:39,992 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:40,489 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:40,970 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:40,971 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:40,971 - __main__ - INFO - 🧪 Evaluating example 2/4: 2.c
+2025-07-24 22:48:41,662 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:42,181 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:42,722 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:42,722 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:42,722 - __main__ - INFO - 🧪 Evaluating example 3/4: p_2.c
+2025-07-24 22:48:43,279 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 6.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.73 GiB is allocated by PyTorch, and 953.67 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:43,753 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:44,288 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:44,289 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:44,289 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.c
+2025-07-24 22:48:44,823 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 10.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.79 GiB is allocated by PyTorch, and 896.49 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:45,304 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:45,817 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:45,817 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:45,834 - __main__ - INFO - 📊 CWE-787 Summary:
+2025-07-24 22:48:45,836 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:48:45,837 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:48:45,837 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:48:45,837 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:48:45,837 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:48:45,837 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-787_20250724_224717.json
+2025-07-24 22:48:45,838 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:48:46,234 - __main__ - INFO - 🎯 Processing CWE: CWE-79
+2025-07-24 22:48:46,234 - __main__ - INFO - 🎯 Creating steering vectors for CWE-79
+2025-07-24 22:48:46,234 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:48:46,235 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:48:46,235 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:48:46,833 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:47,213 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:48:47,782 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:48,157 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:48:48,739 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:49,093 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:48:49,697 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:50,069 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:48:50,070 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:48:50,449 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-79_steering_vectors.pt
+2025-07-24 22:48:50,450 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-79
+2025-07-24 22:48:50,450 - __main__ - INFO - 🧪 Evaluating example 1/4: 2.py
+2025-07-24 22:48:51,067 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:48:51,550 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:52,014 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:52,014 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:52,014 - __main__ - INFO - 🧪 Evaluating example 2/4: 3.py
+2025-07-24 22:48:52,619 - __main__ - INFO -   📊 Baseline response: ' If'
+2025-07-24 22:48:53,108 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:53,604 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:48:53,604 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:48:53,604 - __main__ - INFO - 🧪 Evaluating example 3/4: p_1.py
+2025-07-24 22:48:54,066 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 12.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.94 GiB is allocated by PyTorch, and 741.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:54,632 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:55,136 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:55,136 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:55,136 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.py
+2025-07-24 22:48:55,569 - __main__ - ERROR - ❌ Error in baseline generation: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 79.33 GiB of which 10.88 MiB is free. Including non-PyTorch memory, this process has 79.15 GiB memory in use. Of the allocated memory 77.95 GiB is allocated by PyTorch, and 733.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-07-24 22:48:56,145 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:48:56,648 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:48:56,648 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:48:56,662 - __main__ - INFO - 📊 CWE-79 Summary:
+2025-07-24 22:48:56,665 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:48:56,665 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:48:56,665 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:48:56,665 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:48:56,665 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:48:56,666 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-79_20250724_224717.json
+2025-07-24 22:48:56,666 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:48:57,035 - __main__ - INFO - 🎯 Processing CWE: CWE-89
+2025-07-24 22:48:57,035 - __main__ - INFO - 🎯 Creating steering vectors for CWE-89
+2025-07-24 22:48:57,035 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:48:57,035 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:48:57,035 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:48:57,590 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:57,931 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:48:58,484 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:58,828 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:48:59,397 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:48:59,743 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:49:00,345 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 22:49:00,741 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 22:49:00,742 - __main__ - INFO - ✅ Created steering vector for layer -1 with shape torch.Size([5120])
+2025-07-24 22:49:01,132 - __main__ - INFO - 💾 Saved steering vectors to: results_final_working/steering_vectors/cwe-89_steering_vectors.pt
+2025-07-24 22:49:01,133 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-89
+2025-07-24 22:49:01,133 - __main__ - INFO - 🧪 Evaluating example 1/4: 2.py
+2025-07-24 22:49:01,750 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:49:02,236 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:49:02,719 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:49:02,719 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:49:02,719 - __main__ - INFO - 🧪 Evaluating example 2/4: 3.py
+2025-07-24 22:49:03,329 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:49:03,795 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:49:04,265 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 22:49:04,265 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 22:49:04,265 - __main__ - INFO - 🧪 Evaluating example 3/4: p_1.py
+2025-07-24 22:49:04,838 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:49:05,288 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:49:05,766 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:49:05,767 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:49:05,767 - __main__ - INFO - 🧪 Evaluating example 4/4: p_3.py
+2025-07-24 22:49:06,369 - __main__ - INFO -   📊 Baseline response: ' Why'
+2025-07-24 22:49:06,883 - __main__ - ERROR - ❌ Error in steered generation: can only concatenate tuple (not "Tensor") to tuple
+2025-07-24 22:49:07,381 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 22:49:07,382 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 22:49:07,399 - __main__ - INFO - 📊 CWE-89 Summary:
+2025-07-24 22:49:07,399 - __main__ - INFO -   Examples Tested: 4
+2025-07-24 22:49:07,400 - __main__ - INFO -   Baseline Accuracy: 0.500
+2025-07-24 22:49:07,400 - __main__ - INFO -   Steered Accuracy: 0.500
+2025-07-24 22:49:07,400 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 22:49:07,400 - __main__ - INFO -   Improvements: +0/-0/=4
+2025-07-24 22:49:07,400 - __main__ - INFO - 💾 Saved intermediate results: results_final_working/intermediate_cwe-89_20250724_224717.json
+2025-07-24 22:49:07,400 - __main__ - INFO - 🧹 Aggressive memory cleanup...
+2025-07-24 22:49:07,796 - __main__ - INFO - 
+🎉 FINAL WORKING CWE Steering Experiment Complete!
+2025-07-24 22:49:07,797 - __main__ - INFO - 📁 Results saved to: results_final_working
+2025-07-24 22:49:07,797 - __main__ - INFO - ⏱️ Total Duration: 109.8 seconds
+2025-07-24 22:49:07,797 - __main__ - INFO - 📊 FINAL RESULTS:
+2025-07-24 22:49:07,797 - __main__ - INFO -    CWEs Successfully Tested: 8/8
+2025-07-24 22:49:07,797 - __main__ - INFO -    Total Examples: 32
+2025-07-24 22:49:07,797 - __main__ - INFO -    Baseline Accuracy: 0.500
+2025-07-24 22:49:07,797 - __main__ - INFO -    Steered Accuracy: 0.500
+2025-07-24 22:49:07,797 - __main__ - INFO -    Average Improvement: 0.000
+2025-07-24 22:49:07,797 - __main__ - INFO -    Improvement Rate: 0.000
+2025-07-24 22:49:07,798 - __main__ - INFO - ✅ FINAL WORKING CWE steering experiment completed successfully!
+2025-07-24 22:49:07,798 - __main__ - INFO - 📄 Final results: results_final_working/cwe_steering_final_working_20250724_224717.json
+2025-07-24 22:49:07,799 - __main__ - INFO - 🎯 SUCCESS: 8 CWEs processed with steering vectors!
+2025-07-24 22:49:07,799 - __main__ - INFO - 📈 Improvement rate: 0.0%

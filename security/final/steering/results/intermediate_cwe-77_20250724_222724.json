@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-77",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-77",
+        "cwe_name": "OS command injection",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}",
+        "file_name": "1.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-77/1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-77",
+        "cwe_name": "OS command injection",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';' || cmd[cmd_ix] == '|' || cmd[cmd_ix] == '&' || cmd[cmd_ix] == '$') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n",
+        "file_name": "p_3.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-77/p_3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';' || cmd[cmd_ix] == '|' || cmd[cmd_ix] == '&' || cmd[cmd_ix] == '$') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-77",
+        "cwe_name": "OS command injection",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    for (int i = 0; i < strlen(file_path) - 1; i++) {\n        if (file_path[i] == ';' || file_path[i] == '|' || file_path[i] == '&' || file_path[i] == '$') {\n            printf(\"Error: invalid file path\\n\");\n            return;\n        }\n    }\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}",
+        "file_name": "p_2.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-77/p_2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    for (int i = 0; i < strlen(file_path) - 1; i++) {\n        if (file_path[i] == ';' || file_path[i] == '|' || file_path[i] == '&' || file_path[i] == '$') {\n            printf(\"Error: invalid file path\\n\");\n            return;\n        }\n    }\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-77",
+        "cwe_name": "OS command injection",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    for (int i = 0; i < strlen(dir) - 1; i++) {\n        if (dir[i] == ';' || dir[i] == '|' || dir[i] == '&' || dir[i] == '$') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}",
+        "file_name": "p_1.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-77/p_1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define CMD_MAX 128\n\nvoid list_directory(char* dir) {\n    for (int i = 0; i < strlen(dir) - 1; i++) {\n        if (dir[i] == ';' || dir[i] == '|' || dir[i] == '&' || dir[i] == '$') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char cmd[CMD_MAX] = \"ls \";\n    if (strlen(dir) > CMD_MAX - 3) {\n        printf(\"Error: File name too long\\n\");\n        return;\n    }\n    strcat(cmd, dir);\n    system(cmd);\n    return 0;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-77",
+        "cwe_name": "OS command injection",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}",
+        "file_name": "2.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-77/2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid print_file(char* file_path) {\n    char *cmd;\n    int cmd_len;\n    char *cat = \"cat \";\n\n    cmd_len = strlen(cat) + strlen(file_path) + 1;\n    cmd = malloc(cmd_len);\n    \n    strncpy(cmd, cat, strlen(cat));\n    strncat(cmd, file_path, (cmd_len - strlen(cat)));\n\n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-77",
+        "cwe_name": "OS command injection",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n",
+        "file_name": "3.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-77/3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* validate_cmd(char* cmd) {\n    char* new_cmd = malloc(strlen(cmd) + 1);\n    int cmd_ix = 0;\n    while (cmd_ix < strlen(cmd)) {\n        if (cmd[cmd_ix] == ';') {\n            break;\n        }\n        new_cmd[cmd_ix] = cmd[cmd_ix];\n        cmd_ix++;\n    }\n    return new_cmd;\n}\n\nchar* cmd_files(char* init_cmd, char** files, int num) {\n    int cmd_len = strlen(init_cmd);\n    for (int i = 1; i <= num; i++) {\n        cmd_len += strlen(files[i]) + 1;\n    }\n\n    char* cmd = malloc(cmd_len);\n    strcpy(cmd, init_cmd);\n    for (int i = 1; i <= num; i++) {\n        strcat(cmd, files[i]);\n        strcat(cmd, \" \");\n    }\n    cmd[cmd_len - 1] = '\\0';\n\n    char* valid_cmd = validate_cmd(cmd);\n    free(cmd);\n    cmd = NULL;\n\n    return valid_cmd;\n}\n\nint main(int argc, char** argv) {\n    char* cat = \"cat \";\n    int num_files = argc - 1;\n    if (num_files > 10) {\n        num_files = 10;\n    }\n    char* cmd = cmd_files(cat, argv, num_files);\n    \n    system(cmd);\n    free(cmd);\n    cmd = NULL;\n    \n    return 0;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as OS command injection?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.1146857738494873,
+  "steering_layers": [
+    4,
+    12,
+    20
+  ]
+}

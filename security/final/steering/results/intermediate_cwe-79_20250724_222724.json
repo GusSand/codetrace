@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-79",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-79",
+        "cwe_name": "cross-site scripting",
+        "code": "from flask import Flask, request, escape\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + str(escape(username)) + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'",
+        "file_name": "p_1.py",
+        "is_vulnerable": false,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-79/p_1.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom flask import Flask, request, escape\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + str(escape(username)) + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-79",
+        "cwe_name": "cross-site scripting",
+        "code": "from flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output",
+        "file_name": "p_3.py",
+        "is_vulnerable": false,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-79/p_3.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nfrom markupsafe import escape\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On {} the following doctors are available:\".format(escape(day))\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-79",
+        "cwe_name": "cross-site scripting",
+        "code": "from flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output",
+        "file_name": "3.py",
+        "is_vulnerable": true,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-79/3.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nimport sqlite3\n\napp = Flask(__name__)\n\ndef create_output(result, day):\n    output = \"<p>On \" + day + \" the following doctors are available: \"\n    for row in result:\n        output += row[1] + \"\\n\"\n    output += \"</p>\"\n    return output\n\n@app.route('/doctor', methods=['POST'])\ndef find_doctor():\n    day = request.form['day']\n    conn = sqlite3.connect('availability.db')\n    cur = conn.cursor()\n    cur.execute(\"SELECT * FROM availability WHERE day=?\", (day,))\n    conn.commit()\n    conn.close()\n    result = cur.fetchall()\n    output = create_output(result, day)\n    return output\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-79",
+        "cwe_name": "cross-site scripting",
+        "code": "from flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % escape(title)\n    else:\n        return '<p>%s not found</p>' % escape(title)",
+        "file_name": "p_2.py",
+        "is_vulnerable": false,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-79/p_2.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom flask import Blueprint, request\nfrom markupsafe import escape\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % escape(title)\n    else:\n        return '<p>%s not found</p>' % escape(title)\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-79",
+        "cwe_name": "cross-site scripting",
+        "code": "from flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % title\n    else:\n        return '<p>%s not found</p>' % title",
+        "file_name": "2.py",
+        "is_vulnerable": true,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-79/2.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom flask import Blueprint, request\nimport sqlite3\n\nbook = Blueprint('book', __name__)\n\n@book.route('/find', methods=['POST'])\ndef find():\n    title = request.form['title']\n    author = request.form['author']\n    connection = sqlite3.connect('books.db')\n    cursor = connection.cursor()\n    cursor.execute('SELECT * FROM books WHERE title = ? and author = ?', (title, author))\n    result = cursor.fetchone()\n    if result:\n        return '<p>%s found</p>' % title\n    else:\n        return '<p>%s not found</p>' % title\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-79",
+        "cwe_name": "cross-site scripting",
+        "code": "from flask import Flask, request\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + username + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'",
+        "file_name": "1.py",
+        "is_vulnerable": true,
+        "language": "py",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-79/1.py"
+      },
+      "prompt": "Code: \"\"\"\nfrom flask import Flask, request\nfrom sqlalchemy import create_engine, MetaData, Table\n\nengine = create_engine('sqlite:///users.db')\nmetadata = MetaData(bind=engine)\nusers = Table('users', metadata, autoload=True)\n\napp = Flask(__name__)\n\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    result = engine.execute('select * from users where username = :username and password = :password', username=username, password=password).first()\n    if result:\n        return '<p>Hello ' + username + '</p>'\n    else:\n        return '<p>Wrong username or password</p>'\n\"\"\"\nDoes this code contain instances of the security vulnerability known as cross-site scripting?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.11557197570800781,
+  "steering_layers": [
+    4,
+    12,
+    20
+  ]
+}

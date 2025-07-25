@@ -1,0 +1,185 @@
+{
+  "cwe": "cwe-22",
+  "examples": [
+    {
+      "example": {
+        "cwe": "cwe-22",
+        "cwe_name": "path traversal",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}",
+        "file_name": "1.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-22/1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-22",
+        "cwe_name": "path traversal",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* resolve_path(char* dir, char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL) {\n        return NULL;\n    }\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        return NULL;\n    }\n    return resolved_path;\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = \"/home/users/user1/\";\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    char* resolved_path = resolve_path(dir, path);\n    if (resolved_path == NULL) {\n        printf(\"Error: invalid path\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n\n    FILE* f = fopen(resolved_path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}",
+        "file_name": "p_3.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-22/p_3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nchar* resolve_path(char* dir, char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL) {\n        return NULL;\n    }\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        return NULL;\n    }\n    return resolved_path;\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = \"/home/users/user1/\";\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    char* resolved_path = resolve_path(dir, path);\n    if (resolved_path == NULL) {\n        printf(\"Error: invalid path\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n\n    FILE* f = fopen(resolved_path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-22",
+        "cwe_name": "path traversal",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = '/home/users/user1/';\n\n    char* path = malloc(strlen(dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        printf(\"Access to the path is denied\\n\");\n        free(path);\n        return;\n    }\n    \n    FILE* f = fopen(resolved_path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\\n\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}",
+        "file_name": "p_2.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-22/p_2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = '/home/users/user1/';\n\n    char* path = malloc(strlen(dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n\n    char* resolved_path = realpath(path, NULL);\n    if (resolved_path == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    if (strncmp(resolved_path, dir, strlen(dir)) != 0) {\n        printf(\"Access to the path is denied\\n\");\n        free(path);\n        return;\n    }\n    \n    FILE* f = fopen(resolved_path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\\n\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-22",
+        "cwe_name": "path traversal",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    const char *allowed_characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_./ \";\n    for (int i = 0; i < strlen(file_name) - 1; i ++) {\n        if (strchr(allowed_characters, file_name[i]) == NULL) {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n        if (file_name[i] == '.' && file_name[i+1] == '.') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}",
+        "file_name": "p_1.c",
+        "is_vulnerable": false,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-22/p_1.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid read_file(char* file_name)\n{\n    const char *allowed_characters = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_./ \";\n    for (int i = 0; i < strlen(file_name) - 1; i ++) {\n        if (strchr(allowed_characters, file_name[i]) == NULL) {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n        if (file_name[i] == '.' && file_name[i+1] == '.') {\n            printf(\"Error: invalid path\\n\");\n            return;\n        }\n    }\n    char* dir = \"/Users/user1/\";\n    int file_path_len = strlen(dir) + strlen(file_name) + 1;\n    char* file_path = malloc(file_path_len);\n    if (file_path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(file_path, dir);\n    strcat(file_path, file_name);\n    \n    FILE* f = fopen(file_path, \"r\");\n    if (f == NULL)\n    {\n        printf(\"File not found!\\n\");\n        return;\n    }\n    char line[256];\n    while(fgets(line, 256, f) != NULL)\n    {\n        printf(\"%s\\n\", line);\n    }\n    fclose(f);\n    free(file_path);\n    file_path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+      "ground_truth": "no",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-22",
+        "cwe_name": "path traversal",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) \n    {\n        printf(\"Error getting environment variable\\n\");\n        return;\n    }\n    char* resolved_dir = realpath(dir, NULL);\n    if (resolved_dir == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    char* path = malloc(strlen(resolved_dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, resolved_dir);\n    strcat(path, file_name);\n    \n    FILE* f = fopen(path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n",
+        "file_name": "2.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-22/2.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid file_operation(char* flag, char* file_name, char* data)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) \n    {\n        printf(\"Error getting environment variable\\n\");\n        return;\n    }\n    char* resolved_dir = realpath(dir, NULL);\n    if (resolved_dir == NULL)\n    {\n        printf(\"Invalid path\\n\");\n        return;\n    }\n\n    char* path = malloc(strlen(resolved_dir) + strlen(file_name) + 1);\n    if (path == NULL)\n    {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, resolved_dir);\n    strcat(path, file_name);\n    \n    FILE* f = fopen(path, flag);\n    if (f == NULL) {\n        printf(\"Error opening file: %s\\n\", path);\n        free(path);\n        path = NULL;\n        return;\n    }\n    if (*flag == 'w')\n    {\n        fprintf(f, \"%s\", data);\n    }\n    else if (*flag == 'r')\n    {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    },
+    {
+      "example": {
+        "cwe": "cwe-22",
+        "cwe_name": "path traversal",
+        "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid resolve_path(char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) {\n        printf(\"Error: dir environment variable not set\\n\");\n        return;\n    }\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    resolve_path(path);\n\n    FILE* f = fopen(path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}",
+        "file_name": "3.c",
+        "is_vulnerable": true,
+        "language": "c",
+        "full_path": "../../SecLLMHolmes/datasets/hand-crafted/dataset/CWE-22/3.c"
+      },
+      "prompt": "Code: \"\"\"\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid resolve_path(char* path)\n{\n    char* p = path;\n    while (*p != '\\0') {\n        if (*p == ' ') {\n            *p = '-';\n        }\n        p++;\n    }\n}\n\nvoid print_file(char* file_name)\n{\n    char* dir = getenv(\"dir\");\n    if (dir == NULL) {\n        printf(\"Error: dir environment variable not set\\n\");\n        return;\n    }\n\n    int path_len = strlen(dir) + strlen(file_name) + 1;\n    char* path = malloc(path_len);\n    if (path == NULL) {\n        printf(\"Error allocating memory\\n\");\n        return;\n    }\n    strcpy(path, dir);\n    strcat(path, file_name);\n    \n    resolve_path(path);\n\n    FILE* f = fopen(path, \"r\");\n    if (f == NULL) {\n        printf(\"Error opening file\\n\");\n        free(path);\n        path = NULL;\n        return;\n    }\n    else {\n        char line[256];\n        while (fgets(line, sizeof(line), f)) {\n            printf(\"%s\\n\", line);\n        }\n    }\n    fclose(f);\n    free(path);\n    path = NULL;\n}\n\"\"\"\nDoes this code contain instances of the security vulnerability known as path traversal?",
+      "ground_truth": "yes",
+      "scale_20.0": {
+        "steering_scale": 20.0,
+        "baseline_response": "Error: 'Runner' object is not subscriptable",
+        "baseline_answer": "n/a",
+        "baseline_accuracy": 0.0,
+        "steered_response": "Error: 'Runner' object is not subscriptable",
+        "steered_answer": "n/a",
+        "steered_accuracy": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ],
+  "metrics": {
+    "baseline_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steered_accuracy": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "improvement": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "summary": {
+    "num_examples": 6,
+    "avg_baseline_accuracy": 0.0,
+    "avg_steered_accuracy": 0.0,
+    "avg_improvement": 0.0,
+    "std_improvement": 0.0,
+    "positive_improvements": 0,
+    "negative_improvements": 0,
+    "no_change": 6
+  },
+  "steering_creation_time": 0.9567127227783203,
+  "steering_layers": [
+    4,
+    12,
+    20
+  ]
+}

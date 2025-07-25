@@ -1,0 +1,43 @@
+2025-07-24 23:24:03,138 - __main__ - INFO - 🔧 Starting NNSight 0.4.x API Correction Test
+2025-07-24 23:24:03,138 - __main__ - INFO - 🚀 Loading model: bigcode/starcoderbase-1b
+2025-07-24 23:24:03,821 - __main__ - INFO - ✅ Model loaded successfully
+2025-07-24 23:24:03,822 - __main__ - INFO - 📊 StarCoder layers: 24
+2025-07-24 23:24:03,822 - __main__ - INFO - 📚 Loading minimal SecLLMHolmes dataset for API test...
+2025-07-24 23:24:03,822 - __main__ - INFO - 📖 Loaded 4 examples for CWE-190 (API test)
+2025-07-24 23:24:03,822 - __main__ - INFO - 📊 Loaded 4 examples for API test
+2025-07-24 23:24:03,822 - __main__ - INFO - 🔧 Testing API correction on CWE-190
+2025-07-24 23:24:03,822 - __main__ - INFO - 🎯 Testing API-corrected steering vector creation...
+2025-07-24 23:24:03,822 - __main__ - INFO - 🔧 Creating API-corrected steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 23:24:03,822 - __main__ - INFO - 🎯 Processing layer 20 with NNSight 0.4.x API
+2025-07-24 23:24:03,822 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 23:24:04,121 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 23:24:05,539 - __main__ - INFO -     Layer output type: <class 'tuple'>
+2025-07-24 23:24:05,539 - __main__ - INFO -     Hidden states shape: torch.Size([1, 179, 2048])
+2025-07-24 23:24:05,556 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:24:05,763 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 23:24:05,992 - __main__ - INFO -     Layer output type: <class 'tuple'>
+2025-07-24 23:24:05,992 - __main__ - INFO -     Hidden states shape: torch.Size([1, 218, 2048])
+2025-07-24 23:24:06,024 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:24:06,236 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 23:24:06,500 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:24:06,715 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 23:24:06,981 - __main__ - INFO -     ✅ Got activation shape: torch.Size([2048])
+2025-07-24 23:24:07,199 - __main__ - INFO -   Creating steering vector from 2 vulnerable and 2 secure activations
+2025-07-24 23:24:07,230 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([2048]), norm: 17.5226
+2025-07-24 23:24:07,444 - __main__ - INFO - ✅ SUCCESS! API-corrected steering vectors created:
+2025-07-24 23:24:07,444 - __main__ - INFO -    layer_20: shape torch.Size([2048]), norm 1.0000
+2025-07-24 23:24:07,445 - __main__ - INFO - 💾 Saved API-corrected steering vectors to: results_api_corrected/cwe-190_api_corrected_steering.pt
+2025-07-24 23:24:07,445 - __main__ - INFO - 🧪 Testing basic generation...
+2025-07-24 23:24:07,445 - __main__ - INFO - 🎯 Testing API-corrected steering application...
+2025-07-24 23:24:09,214 - __main__ - ERROR - ❌ Error in API-corrected generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:24:09,215 - __main__ - INFO - 📝 Test response: 'ERROR_API_CORRECTED_GENERATION...'
+2025-07-24 23:24:09,215 - __main__ - INFO - 📊 API Test Result: ❌ (confidence: 0.700)
+2025-07-24 23:24:09,215 - __main__ - INFO - 
+🎯 API Correction Test Complete!
+2025-07-24 23:24:09,215 - __main__ - INFO - 📁 Results saved to: results_api_corrected
+2025-07-24 23:24:09,215 - __main__ - INFO - ⏱️ Total Duration: 6.1 seconds
+2025-07-24 23:24:09,215 - __main__ - INFO - 📊 API CORRECTION RESULTS:
+2025-07-24 23:24:09,215 - __main__ - INFO -    Successful Tests: 1/1
+2025-07-24 23:24:09,215 - __main__ - INFO - 🎉 API CORRECTION SUCCESS! NNSight 0.4.x tuple handling works!
+2025-07-24 23:24:09,215 - __main__ - INFO - ✅ Ready to implement full steering with both StarCoder and Qwen2.5!
+2025-07-24 23:24:09,215 - __main__ - INFO - 📄 Final results: results_api_corrected/api_correction_test_20250724_232409.json

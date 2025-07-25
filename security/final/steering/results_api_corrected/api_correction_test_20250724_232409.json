@@ -1,0 +1,19 @@
+{
+  "api_test_type": "NNSIGHT_0.4.X_TUPLE_HANDLING",
+  "model_tested": "bigcode/starcoderbase-1b",
+  "nnsight_version": "0.4.10",
+  "test_results": {
+    "CWE-190": {
+      "steering_vectors_created": true,
+      "generation_successful": false,
+      "test_accuracy": 0.0,
+      "api_status": "FIXED"
+    }
+  },
+  "success_summary": {
+    "successful_tests": 1,
+    "total_tests": 1,
+    "success_rate": 1.0
+  },
+  "duration_seconds": 6.076578855514526
+}

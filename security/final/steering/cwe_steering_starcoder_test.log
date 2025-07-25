@@ -1,0 +1,153 @@
+2025-07-24 23:20:59,927 - __main__ - INFO - 🚀 Starting StarCoder CWE Steering Test Experiment (Following Successful Patterns)
+2025-07-24 23:20:59,928 - __main__ - INFO - 🧪 Experiment ID: 20250724_232059
+2025-07-24 23:20:59,928 - __main__ - INFO - 🚀 Loading StarCoder model: bigcode/starcoderbase-1b
+2025-07-24 23:21:00,580 - __main__ - INFO - ✅ StarCoder model loaded successfully
+2025-07-24 23:21:00,580 - __main__ - INFO - 📊 StarCoder layers: 24
+2025-07-24 23:21:00,580 - __main__ - INFO - 📚 Loading REAL SecLLMHolmes dataset for StarCoder test...
+2025-07-24 23:21:00,581 - __main__ - INFO - 🔍 Found 3 CWE directories (testing first 3)
+2025-07-24 23:21:00,581 - __main__ - INFO - 📖 Loaded 6 examples for CWE-190
+2025-07-24 23:21:00,581 - __main__ - INFO - 📖 Loaded 6 examples for CWE-416
+2025-07-24 23:21:00,584 - __main__ - INFO - 📖 Loaded 6 examples for CWE-89
+2025-07-24 23:21:00,584 - __main__ - INFO - 📊 Loaded 18 total REAL examples across 3 CWEs for StarCoder test
+2025-07-24 23:21:00,584 - __main__ - INFO - 🎯 Processing CWE with StarCoder: CWE-190
+2025-07-24 23:21:00,584 - __main__ - INFO - 🎯 Creating StarCoder steering vectors for CWE-190
+2025-07-24 23:21:00,584 - __main__ - INFO - 📊 Creating StarCoder steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:21:00,585 - __main__ - INFO - 🎯 Processing StarCoder layer 4
+2025-07-24 23:21:00,585 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:01,150 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 23:21:06,262 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:06,493 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:06,728 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:06,980 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:07,214 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:07,467 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:07,701 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:07,944 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:08,176 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:08,421 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:08,659 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:08,904 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 4 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:08,904 - __main__ - INFO - 🎯 Processing StarCoder layer 12
+2025-07-24 23:21:08,904 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:09,139 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:09,369 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:09,601 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:09,848 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:10,081 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:10,331 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:10,566 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:10,814 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:11,047 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:11,287 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:11,520 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:11,761 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 12 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:11,762 - __main__ - INFO - 🎯 Processing StarCoder layer 20
+2025-07-24 23:21:11,762 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:11,997 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:12,235 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:12,471 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:12,717 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:12,942 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:13,189 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:13,422 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:13,672 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:13,911 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:14,157 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:14,394 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:14,635 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 20 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:14,636 - __main__ - WARNING - ⚠️ No StarCoder steering vectors created for CWE-190
+2025-07-24 23:21:14,637 - __main__ - INFO - 🎯 Processing CWE with StarCoder: CWE-416
+2025-07-24 23:21:14,637 - __main__ - INFO - 🎯 Creating StarCoder steering vectors for CWE-416
+2025-07-24 23:21:14,637 - __main__ - INFO - 📊 Creating StarCoder steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:21:14,637 - __main__ - INFO - 🎯 Processing StarCoder layer 4
+2025-07-24 23:21:14,637 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:14,871 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:15,105 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:15,339 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:15,586 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:15,818 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:16,058 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:16,285 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:16,510 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:16,740 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:16,992 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:17,227 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:17,500 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 4 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:17,501 - __main__ - INFO - 🎯 Processing StarCoder layer 12
+2025-07-24 23:21:17,501 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:17,734 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:17,963 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:18,193 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:18,441 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:18,673 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:18,917 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:19,152 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:19,390 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:19,619 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:19,863 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:20,093 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:20,336 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 12 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:20,336 - __main__ - INFO - 🎯 Processing StarCoder layer 20
+2025-07-24 23:21:20,336 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:20,568 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:20,803 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:21,037 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:21,277 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:21,507 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:21,747 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:21,980 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:22,212 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:22,445 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:22,696 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:22,924 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:23,160 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 20 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:23,161 - __main__ - WARNING - ⚠️ No StarCoder steering vectors created for CWE-416
+2025-07-24 23:21:23,162 - __main__ - INFO - 🎯 Processing CWE with StarCoder: CWE-89
+2025-07-24 23:21:23,162 - __main__ - INFO - 🎯 Creating StarCoder steering vectors for CWE-89
+2025-07-24 23:21:23,162 - __main__ - INFO - 📊 Creating StarCoder steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:21:23,162 - __main__ - INFO - 🎯 Processing StarCoder layer 4
+2025-07-24 23:21:23,162 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:23,401 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:23,623 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:23,858 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:24,091 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:24,326 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:24,571 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:24,801 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:25,019 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:25,250 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:25,484 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:25,714 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:25,966 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 4 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:25,967 - __main__ - INFO - 🎯 Processing StarCoder layer 12
+2025-07-24 23:21:25,967 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:26,205 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:26,424 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:26,653 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:26,885 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:27,118 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:27,367 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:27,606 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:27,828 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:28,059 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:28,290 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:28,525 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:28,771 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 12 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:28,771 - __main__ - INFO - 🎯 Processing StarCoder layer 20
+2025-07-24 23:21:28,771 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:21:29,008 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:29,235 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:21:29,468 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:29,699 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:21:29,922 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:30,169 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:21:30,404 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:30,622 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:21:30,853 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:31,091 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:21:31,323 - __main__ - WARNING -     ⚠️ Invalid StarCoder activation shape
+2025-07-24 23:21:31,565 - __main__ - WARNING - ⚠️ Could not create steering vector for layer 20 - insufficient activations (vulnerable: 0, secure: 0)
+2025-07-24 23:21:31,566 - __main__ - WARNING - ⚠️ No StarCoder steering vectors created for CWE-89
+2025-07-24 23:21:31,566 - __main__ - INFO - 
+🎉 StarCoder CWE Steering Test Experiment Complete!
+2025-07-24 23:21:31,566 - __main__ - ERROR - ❌ No results generated - StarCoder experiment failed

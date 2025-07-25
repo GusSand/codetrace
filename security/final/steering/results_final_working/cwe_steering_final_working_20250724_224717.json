@@ -1,0 +1,495 @@
+{
+  "experiment_id": "20250724_224717",
+  "config": {
+    "model_name": "Qwen/Qwen2.5-14B-Instruct",
+    "device": "auto",
+    "max_length": 256,
+    "steering_strength": 1.0,
+    "steering_layers": [
+      -1
+    ],
+    "results_dir": "results_final_working",
+    "max_examples_per_type": 2
+  },
+  "success_summary": {
+    "successful_cwes": 8,
+    "total_cwes": 8,
+    "success_rate": 1.0
+  },
+  "duration_seconds": 109.81010437011719,
+  "overall_metrics": {
+    "baseline_accuracy": 0.5,
+    "steered_accuracy": 0.5,
+    "average_improvement": 0.0,
+    "improvement_rate": 0.0,
+    "total_examples": 32,
+    "cwes_tested": 8
+  },
+  "cwe_results": {
+    "CWE-190": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "1.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "2.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_2.c",
+            "expected_vulnerable": false,
+            "baseline_response": " If",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.c",
+            "expected_vulnerable": false,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-22": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "1.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "2.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_2.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-416": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "1.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "2.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_2.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-476": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "1.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "2.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_2.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-77": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "1.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "2.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_2.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-787": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "1.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "2.c",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_2.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.c",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-79": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "2.py",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "3.py",
+            "expected_vulnerable": true,
+            "baseline_response": " If",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_1.py",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.py",
+            "expected_vulnerable": false,
+            "baseline_response": "ERROR",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    },
+    "CWE-89": {
+      "baseline_accuracy": 0.5,
+      "steered_accuracy": 0.5,
+      "average_improvement": 0.0,
+      "positive_improvements": 0,
+      "negative_improvements": 0,
+      "no_change": 4,
+      "total_examples": 4,
+      "detailed_results": {
+        "baseline_correct": 2,
+        "steered_correct": 2,
+        "total_examples": 4,
+        "improvements": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "examples": [
+          {
+            "filename": "2.py",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "3.py",
+            "expected_vulnerable": true,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": false,
+            "steered_correct": false,
+            "improvement": 0
+          },
+          {
+            "filename": "p_1.py",
+            "expected_vulnerable": false,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          },
+          {
+            "filename": "p_3.py",
+            "expected_vulnerable": false,
+            "baseline_response": " Why",
+            "steered_response": "ERROR",
+            "baseline_correct": true,
+            "steered_correct": true,
+            "improvement": 0
+          }
+        ]
+      }
+    }
+  },
+  "nnsight_version": "0.4.10"
+}

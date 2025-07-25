@@ -1,0 +1,1023 @@
+2025-07-24 23:12:54,133 - __main__ - INFO - 🚀 Starting FIXED CWE Steering Experiment with Full Text Generation
+2025-07-24 23:12:54,133 - __main__ - INFO - 🧪 Experiment ID: 20250724_231254
+2025-07-24 23:12:54,133 - __main__ - INFO - 🚀 Loading model: Qwen/Qwen2.5-14B-Instruct
+2025-07-24 23:12:55,087 - __main__ - INFO - ✅ Model loaded successfully
+2025-07-24 23:12:55,087 - __main__ - INFO - 📊 Model layers: 48
+2025-07-24 23:12:55,087 - __main__ - INFO - 📚 Loading REAL SecLLMHolmes dataset...
+2025-07-24 23:12:55,087 - __main__ - INFO - 🔍 Found 8 CWE directories
+2025-07-24 23:12:55,087 - __main__ - INFO - 📖 Loaded 6 examples for CWE-190
+2025-07-24 23:12:55,087 - __main__ - INFO - 📖 Loaded 6 examples for CWE-22
+2025-07-24 23:12:55,088 - __main__ - INFO - 📖 Loaded 6 examples for CWE-416
+2025-07-24 23:12:55,088 - __main__ - INFO - 📖 Loaded 6 examples for CWE-476
+2025-07-24 23:12:55,088 - __main__ - INFO - 📖 Loaded 6 examples for CWE-77
+2025-07-24 23:12:55,088 - __main__ - INFO - 📖 Loaded 6 examples for CWE-787
+2025-07-24 23:12:55,088 - __main__ - INFO - 📖 Loaded 6 examples for CWE-79
+2025-07-24 23:12:55,089 - __main__ - INFO - 📖 Loaded 6 examples for CWE-89
+2025-07-24 23:12:55,089 - __main__ - INFO - 📊 Loaded 48 total REAL examples across 8 CWEs
+2025-07-24 23:12:55,089 - __main__ - INFO - 🎯 Processing CWE: CWE-190
+2025-07-24 23:12:55,089 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-190
+2025-07-24 23:12:55,089 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:12:55,089 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:12:55,089 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:12:55,367 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 23:13:33,503 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:33,724 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:13:34,382 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:34,619 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:13:35,277 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:35,515 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:13:36,175 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:36,415 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:13:37,133 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:37,376 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:13:38,023 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:38,263 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:13:38,298 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 1.3140
+2025-07-24 23:13:38,518 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:13:38,518 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:13:39,064 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:39,311 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:13:39,969 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:40,202 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:13:40,860 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:41,090 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:13:41,747 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:41,987 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:13:42,712 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:42,945 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:13:43,595 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:43,831 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:13:43,832 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 10.8552
+2025-07-24 23:13:44,052 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:13:44,052 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:13:44,597 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:44,831 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:13:45,490 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:45,722 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:13:46,377 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:46,608 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:13:47,265 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:47,498 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:13:48,194 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:48,384 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:13:48,995 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:49,195 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:13:49,196 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 30.2927
+2025-07-24 23:13:49,389 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-190_steering_vectors.pt
+2025-07-24 23:13:49,390 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-190 with FULL TEXT GENERATION
+2025-07-24 23:13:49,390 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:13:49,614 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:13:52,829 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:13:52,829 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:13:52,829 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:13:53,081 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:13:53,085 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:13:53,086 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:13:53,086 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:13:53,086 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:13:53,086 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:13:53,086 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:13:53,339 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:13:53,342 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:13:53,343 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:13:53,343 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:13:53,596 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:13:53,601 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:13:53,601 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:13:53,601 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:13:53,601 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:13:53,601 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:13:53,602 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:13:53,858 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:13:53,861 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:13:53,861 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:13:53,861 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:13:54,114 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:13:54,119 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:13:54,119 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:13:54,119 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:13:54,119 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:13:54,119 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:13:54,119 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:13:54,375 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:13:54,379 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:13:54,379 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:13:54,379 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:13:54,656 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:13:54,661 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:13:54,661 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:13:54,661 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:13:54,661 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:13:54,662 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:13:54,662 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:13:54,917 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:13:54,920 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:13:54,920 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:13:54,920 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:13:55,174 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:13:55,179 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:13:55,179 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:13:55,180 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:13:55,180 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:13:55,180 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:13:55,180 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:13:55,434 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:13:55,438 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:13:55,438 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:13:55,438 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:13:55,693 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:13:55,698 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:13:55,698 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:13:55,698 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:13:55,698 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:13:55,698 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:13:55,698 - __main__ - INFO - 📊 CWE-190 FIXED Results:
+2025-07-24 23:13:55,698 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:13:55,698 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:13:55,698 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:13:55,699 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:13:55,699 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:13:55,699 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-190_20250724_231254.json
+2025-07-24 23:13:55,699 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:13:55,953 - __main__ - INFO - 🎯 Processing CWE: CWE-22
+2025-07-24 23:13:55,953 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-22
+2025-07-24 23:13:55,953 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:13:55,954 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:13:55,954 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:13:56,655 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:56,910 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:13:57,672 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:57,939 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:13:58,697 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:13:58,970 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:13:59,726 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:00,000 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:00,757 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:01,031 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:01,789 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:02,064 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:02,065 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 2.0812
+2025-07-24 23:14:02,319 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:14:02,319 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:03,000 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:03,274 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:04,036 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:04,299 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:05,061 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:05,331 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:06,091 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:06,362 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:07,127 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:07,395 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:08,155 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:08,425 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:08,427 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 17.8783
+2025-07-24 23:14:08,683 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:14:08,683 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:09,368 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:09,639 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:10,417 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:10,683 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:11,444 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:11,714 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:12,476 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:12,748 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:13,514 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:13,791 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:14,563 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:14,835 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:14,836 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 56.1371
+2025-07-24 23:14:15,098 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-22_steering_vectors.pt
+2025-07-24 23:14:15,098 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-22 with FULL TEXT GENERATION
+2025-07-24 23:14:15,098 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:14:15,392 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:15,396 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:15,396 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:15,396 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:15,649 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:15,654 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:15,654 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:15,654 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:15,654 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:15,654 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:15,654 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:14:15,919 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:15,923 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:15,923 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:15,923 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:16,176 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:16,181 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:16,181 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:16,181 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:16,181 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:16,181 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:16,181 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:14:16,434 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:16,437 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:16,438 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:16,438 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:16,690 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:16,695 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:16,695 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:16,695 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:16,695 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:16,695 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:16,695 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:14:16,977 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:16,981 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:16,981 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:16,981 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:17,234 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:17,239 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:17,239 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:17,239 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:17,239 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:14:17,239 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:14:17,239 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:14:17,498 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:17,501 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:17,502 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:17,502 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:17,757 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:17,762 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:17,762 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:17,763 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:17,763 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:14:17,763 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:14:17,763 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:14:18,015 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:18,019 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:18,019 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:18,019 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:18,273 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:18,278 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:18,278 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:18,278 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:18,278 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:14:18,278 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:14:18,278 - __main__ - INFO - 📊 CWE-22 FIXED Results:
+2025-07-24 23:14:18,278 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:14:18,278 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:14:18,278 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:14:18,278 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:14:18,278 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:14:18,278 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-22_20250724_231254.json
+2025-07-24 23:14:18,279 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:14:18,537 - __main__ - INFO - 🎯 Processing CWE: CWE-416
+2025-07-24 23:14:18,537 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-416
+2025-07-24 23:14:18,537 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:14:18,537 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:14:18,537 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:19,139 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:19,408 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:20,097 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:20,359 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:21,117 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:21,382 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:21,962 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:22,240 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:22,936 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:23,201 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:23,960 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:24,227 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:24,227 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 0.4142
+2025-07-24 23:14:24,482 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:14:24,482 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:25,063 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:25,322 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:26,034 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:26,334 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:27,131 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:27,436 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:28,024 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:28,277 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:28,965 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:29,226 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:29,982 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:30,243 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:30,244 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 7.3795
+2025-07-24 23:14:30,495 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:14:30,495 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:31,090 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:31,350 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:32,037 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:32,291 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:33,049 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:33,308 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:33,888 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:34,146 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:34,837 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:35,096 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:35,854 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:36,112 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:36,114 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 19.9706
+2025-07-24 23:14:36,376 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-416_steering_vectors.pt
+2025-07-24 23:14:36,376 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-416 with FULL TEXT GENERATION
+2025-07-24 23:14:36,376 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:14:36,668 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:36,672 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:36,672 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:36,672 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:36,924 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:36,928 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:36,928 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:36,929 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:36,929 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:36,929 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:36,929 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:14:37,182 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:37,185 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:37,185 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:37,185 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:37,437 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:37,442 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:37,442 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:37,443 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:37,443 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:37,443 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:37,443 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:14:37,694 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:37,697 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:37,698 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:37,698 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:37,950 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:37,955 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:37,955 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:37,955 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:37,955 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:37,955 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:37,955 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:14:38,206 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:38,210 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:38,210 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:38,210 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:38,461 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:38,466 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:38,466 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:38,466 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:38,467 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:14:38,467 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:14:38,467 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:14:38,718 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:38,722 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:38,722 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:38,722 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:38,975 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:38,980 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:38,980 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:38,980 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:38,980 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:14:38,980 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:14:38,980 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:14:39,233 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:39,237 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:39,237 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:39,237 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:39,489 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:39,494 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:39,494 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:39,494 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:14:39,495 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:14:39,495 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:14:39,495 - __main__ - INFO - 📊 CWE-416 FIXED Results:
+2025-07-24 23:14:39,495 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:14:39,495 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:14:39,495 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:14:39,495 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:14:39,495 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:14:39,495 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-416_20250724_231254.json
+2025-07-24 23:14:39,495 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:14:39,747 - __main__ - INFO - 🎯 Processing CWE: CWE-476
+2025-07-24 23:14:39,747 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-476
+2025-07-24 23:14:39,747 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:14:39,747 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:14:39,747 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:40,451 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:40,704 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:41,460 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:41,719 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:42,399 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:42,669 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:43,426 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:43,698 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:44,455 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:44,722 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:45,479 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:45,750 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:45,751 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 1.7288
+2025-07-24 23:14:46,007 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:14:46,007 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:46,686 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:46,963 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:47,719 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:47,980 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:48,660 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:48,929 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:49,688 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:49,957 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:50,714 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:50,980 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:51,735 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:52,004 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:52,005 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 16.0854
+2025-07-24 23:14:52,257 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:14:52,257 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:14:52,939 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:53,205 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:14:53,962 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:54,223 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:14:54,905 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:55,173 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:14:55,931 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:56,198 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:14:56,954 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:57,219 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:14:57,976 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:14:58,241 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:14:58,242 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 55.3805
+2025-07-24 23:14:58,504 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-476_steering_vectors.pt
+2025-07-24 23:14:58,504 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-476 with FULL TEXT GENERATION
+2025-07-24 23:14:58,504 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:14:58,801 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:58,805 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:58,805 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:58,805 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:59,057 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:59,062 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:59,063 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:59,063 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:59,063 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:59,063 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:59,063 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:14:59,315 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:59,318 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:59,319 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:59,319 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:59,571 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:14:59,577 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:14:59,577 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:14:59,577 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:14:59,577 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:14:59,577 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:14:59,577 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:14:59,831 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:14:59,834 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:14:59,835 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:14:59,835 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:00,088 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:00,093 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:00,093 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:00,093 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:00,093 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:00,093 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:00,093 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:15:00,346 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:00,350 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:00,350 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:00,350 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:00,602 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:00,607 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:00,607 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:00,607 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:00,607 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:00,607 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:00,608 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:15:00,859 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:00,863 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:00,863 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:00,864 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:01,115 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:01,120 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:01,121 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:01,121 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:01,121 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:01,121 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:01,121 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:15:01,372 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:01,376 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:01,376 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:01,376 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:01,632 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:01,637 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:01,637 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:01,637 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:01,637 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:01,637 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:01,638 - __main__ - INFO - 📊 CWE-476 FIXED Results:
+2025-07-24 23:15:01,638 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:15:01,638 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:15:01,638 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:15:01,638 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:15:01,638 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:15:01,638 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-476_20250724_231254.json
+2025-07-24 23:15:01,639 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:15:01,890 - __main__ - INFO - 🎯 Processing CWE: CWE-77
+2025-07-24 23:15:01,891 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-77
+2025-07-24 23:15:01,891 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:15:01,891 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:15:01,891 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:02,475 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:02,729 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:03,309 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:03,569 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:04,345 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:04,605 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:05,298 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:05,566 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:06,245 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:06,516 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:07,287 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:07,553 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:07,554 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 2.0693
+2025-07-24 23:15:07,807 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:15:07,808 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:08,366 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:08,636 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:09,216 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:09,480 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:10,258 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:10,519 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:11,210 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:11,474 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:12,153 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:12,425 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:13,198 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:13,466 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:13,467 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 13.1929
+2025-07-24 23:15:13,724 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:15:13,724 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:14,284 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:14,554 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:15,134 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:15,401 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:16,179 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:16,441 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:17,132 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:17,400 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:18,090 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:18,412 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:19,234 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:19,530 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:19,531 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 41.8861
+2025-07-24 23:15:19,796 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-77_steering_vectors.pt
+2025-07-24 23:15:19,796 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-77 with FULL TEXT GENERATION
+2025-07-24 23:15:19,796 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:15:20,090 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:20,094 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:20,094 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:20,094 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:20,344 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:20,349 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:20,349 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:20,349 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:20,349 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:20,349 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:20,349 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:15:20,600 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:20,604 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:20,604 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:20,604 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:20,862 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:20,867 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:20,867 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:20,867 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:20,867 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:20,867 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:20,867 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:15:21,121 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:21,125 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:21,125 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:21,125 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:21,376 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:21,381 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:21,381 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:21,381 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:21,381 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:21,381 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:21,381 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:15:21,631 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:21,635 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:21,635 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:21,635 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:21,885 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:21,890 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:21,890 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:21,890 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:21,890 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:21,890 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:21,890 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:15:22,147 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:22,151 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:22,151 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:22,151 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:22,401 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:22,406 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:22,407 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:22,407 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:22,407 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:22,407 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:22,407 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:15:22,665 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:22,669 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:22,669 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:22,669 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:22,927 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:22,932 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:22,932 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:22,932 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:22,932 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:22,932 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:22,932 - __main__ - INFO - 📊 CWE-77 FIXED Results:
+2025-07-24 23:15:22,932 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:15:22,932 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:15:22,932 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:15:22,932 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:15:22,932 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:15:22,933 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-77_20250724_231254.json
+2025-07-24 23:15:22,933 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:15:23,229 - __main__ - INFO - 🎯 Processing CWE: CWE-787
+2025-07-24 23:15:23,229 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-787
+2025-07-24 23:15:23,230 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:15:23,230 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:15:23,230 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:23,822 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:24,078 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:24,835 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:25,091 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:25,771 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:26,038 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:26,513 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:26,781 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:27,539 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:27,800 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:28,556 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:28,821 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:28,822 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 0.7614
+2025-07-24 23:15:29,075 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:15:29,075 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:29,629 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:29,890 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:30,649 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:30,909 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:31,589 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:31,850 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:32,328 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:32,590 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:33,349 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:33,611 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:34,366 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:34,626 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:34,627 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 23.6761
+2025-07-24 23:15:34,879 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:15:34,880 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:35,435 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:35,693 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:36,451 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:36,708 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:37,390 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:37,645 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:38,123 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:38,381 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:39,138 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:39,400 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:40,155 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:40,409 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:40,410 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 70.4376
+2025-07-24 23:15:40,673 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-787_steering_vectors.pt
+2025-07-24 23:15:40,673 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-787 with FULL TEXT GENERATION
+2025-07-24 23:15:40,673 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.c
+2025-07-24 23:15:40,967 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:40,970 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:40,971 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:40,971 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:41,222 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:41,227 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:41,227 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:41,227 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:41,227 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:41,227 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:41,227 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.c
+2025-07-24 23:15:41,479 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:41,482 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:41,482 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:41,482 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:41,735 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:41,740 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:41,740 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:41,740 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:41,740 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:41,740 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:41,740 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.c
+2025-07-24 23:15:41,993 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:41,996 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:41,996 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:41,996 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:42,248 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:42,253 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:42,253 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:42,253 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:15:42,253 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:15:42,253 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:15:42,253 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.c
+2025-07-24 23:15:42,504 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:42,508 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:42,508 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:42,508 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:42,759 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:42,764 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:42,764 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:42,764 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:42,764 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:42,764 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:42,764 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.c
+2025-07-24 23:15:43,017 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:43,021 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:43,021 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:43,021 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:43,273 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:43,278 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:43,278 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:43,278 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:43,278 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:43,279 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:43,279 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.c
+2025-07-24 23:15:43,531 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:15:43,534 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:15:43,534 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:15:43,534 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:43,786 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:15:43,791 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:15:43,791 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:15:43,791 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:15:43,791 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:15:43,791 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:15:43,791 - __main__ - INFO - 📊 CWE-787 FIXED Results:
+2025-07-24 23:15:43,791 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:15:43,791 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:15:43,791 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:15:43,791 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:15:43,791 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:15:43,792 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-787_20250724_231254.json
+2025-07-24 23:15:43,792 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:15:44,044 - __main__ - INFO - 🎯 Processing CWE: CWE-79
+2025-07-24 23:15:44,044 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-79
+2025-07-24 23:15:44,045 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:15:44,045 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:15:44,045 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:44,762 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:45,017 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:45,597 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:45,860 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:46,550 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:46,818 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:47,509 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:47,777 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:48,441 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:48,711 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:49,404 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:49,675 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:49,675 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 0.8824
+2025-07-24 23:15:49,928 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:15:49,928 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:50,617 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:50,888 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:51,470 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:51,737 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:52,429 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:52,699 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:53,391 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:53,659 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:15:54,322 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:54,592 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:15:55,284 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:55,554 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:15:55,555 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 13.8163
+2025-07-24 23:15:55,808 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:15:55,808 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:15:56,497 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:56,767 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:15:57,349 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:57,616 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:15:58,307 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:58,577 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:15:59,267 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:15:59,534 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:16:00,199 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:00,468 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:16:01,160 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:01,430 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:16:01,431 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 37.6255
+2025-07-24 23:16:01,694 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-79_steering_vectors.pt
+2025-07-24 23:16:01,694 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-79 with FULL TEXT GENERATION
+2025-07-24 23:16:01,694 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.py
+2025-07-24 23:16:01,981 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:01,985 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:01,986 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:01,986 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:02,237 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:02,242 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:02,242 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:02,242 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:02,242 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:16:02,242 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:16:02,242 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.py
+2025-07-24 23:16:02,493 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:02,496 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:02,496 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:02,497 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:02,748 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:02,752 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:02,753 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:02,753 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:02,753 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:16:02,753 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:16:02,753 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.py
+2025-07-24 23:16:03,005 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:03,008 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:03,008 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:03,008 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:03,259 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:03,264 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:03,264 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:03,264 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:03,264 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:16:03,264 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:16:03,264 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.py
+2025-07-24 23:16:03,516 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:03,519 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:03,519 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:03,519 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:03,770 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:03,775 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:03,775 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:03,775 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:03,775 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:16:03,775 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:16:03,776 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.py
+2025-07-24 23:16:04,040 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:04,043 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:04,043 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:04,043 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:04,294 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:04,299 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:04,299 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:04,299 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:04,299 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:16:04,299 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:16:04,299 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.py
+2025-07-24 23:16:04,550 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:04,554 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:04,554 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:04,554 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:04,805 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:04,810 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:04,810 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:04,810 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:04,810 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:16:04,810 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:16:04,810 - __main__ - INFO - 📊 CWE-79 FIXED Results:
+2025-07-24 23:16:04,810 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:16:04,810 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:16:04,810 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:16:04,811 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:16:04,811 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:16:04,811 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-79_20250724_231254.json
+2025-07-24 23:16:04,811 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:16:05,064 - __main__ - INFO - 🎯 Processing CWE: CWE-89
+2025-07-24 23:16:05,064 - __main__ - INFO - 🎯 Creating FIXED steering vectors for CWE-89
+2025-07-24 23:16:05,064 - __main__ - INFO - 📊 Creating FIXED steering vectors from 3 vulnerable and 3 secure examples
+2025-07-24 23:16:05,064 - __main__ - INFO - 🎯 Processing layer 20
+2025-07-24 23:16:05,064 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:16:05,561 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:05,813 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:16:06,422 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:06,678 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:16:07,369 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:07,631 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:16:08,105 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:08,369 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:16:08,949 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:09,214 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:16:09,908 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:10,171 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:16:10,172 - __main__ - INFO - ✅ Created normalized steering vector for layer 20 with shape torch.Size([5120]), norm: 0.4920
+2025-07-24 23:16:10,428 - __main__ - INFO - 🎯 Processing layer 35
+2025-07-24 23:16:10,428 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:16:10,904 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:11,170 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:16:11,750 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:12,010 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:16:12,703 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:12,965 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:16:13,442 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:13,710 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:16:14,294 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:14,554 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:16:15,245 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:15,506 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:16:15,506 - __main__ - INFO - ✅ Created normalized steering vector for layer 35 with shape torch.Size([5120]), norm: 19.3201
+2025-07-24 23:16:15,771 - __main__ - INFO - 🎯 Processing layer 47
+2025-07-24 23:16:15,771 - __main__ - INFO -   Processing vulnerable example 1/3
+2025-07-24 23:16:16,267 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:16,525 - __main__ - INFO -   Processing vulnerable example 2/3
+2025-07-24 23:16:17,104 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:17,365 - __main__ - INFO -   Processing vulnerable example 3/3
+2025-07-24 23:16:18,062 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:18,319 - __main__ - INFO -   Processing secure example 1/3
+2025-07-24 23:16:18,795 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:19,056 - __main__ - INFO -   Processing secure example 2/3
+2025-07-24 23:16:19,650 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:19,912 - __main__ - INFO -   Processing secure example 3/3
+2025-07-24 23:16:20,609 - __main__ - INFO -     ✅ Got activation shape: torch.Size([5120])
+2025-07-24 23:16:20,865 - __main__ - INFO -   Creating steering vector from 3 vulnerable and 3 secure activations
+2025-07-24 23:16:20,865 - __main__ - INFO - ✅ Created normalized steering vector for layer 47 with shape torch.Size([5120]), norm: 56.0845
+2025-07-24 23:16:21,129 - __main__ - INFO - 💾 Saved steering vectors to: results_fixed_full_generation/steering_vectors/cwe-89_steering_vectors.pt
+2025-07-24 23:16:21,130 - __main__ - INFO - 🧪 Evaluating steering effectiveness for CWE-89 with FULL TEXT GENERATION
+2025-07-24 23:16:21,130 - __main__ - INFO - 🧪 Evaluating example 1/6: 1.py
+2025-07-24 23:16:21,427 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:21,431 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:21,431 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:21,431 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:21,684 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:21,688 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:21,689 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:21,689 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:21,689 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:16:21,689 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:16:21,689 - __main__ - INFO - 🧪 Evaluating example 2/6: 2.py
+2025-07-24 23:16:21,944 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:21,947 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:21,947 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:21,947 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:22,211 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:22,216 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:22,216 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:22,216 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:22,216 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:16:22,216 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:16:22,216 - __main__ - INFO - 🧪 Evaluating example 3/6: 3.py
+2025-07-24 23:16:22,470 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:22,473 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:22,474 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:22,474 - __main__ - INFO -   📊 Baseline assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:22,728 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:22,733 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:22,733 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:22,733 - __main__ - INFO -   🎯 Steered assessment: ❌ (confidence: 0.500)
+2025-07-24 23:16:22,733 - __main__ - INFO -   📊 Expected: vulnerable
+2025-07-24 23:16:22,733 - __main__ - INFO -   📊 Baseline: ❌ | Steered: ❌ | Improvement: 0
+2025-07-24 23:16:22,733 - __main__ - INFO - 🧪 Evaluating example 4/6: p_1.py
+2025-07-24 23:16:22,989 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:22,992 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:22,992 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:22,992 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:23,248 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:23,252 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:23,252 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:23,252 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:23,252 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:16:23,252 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:16:23,253 - __main__ - INFO - 🧪 Evaluating example 5/6: p_2.py
+2025-07-24 23:16:23,507 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:23,510 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:23,510 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:23,511 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:23,764 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:23,769 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:23,769 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:23,769 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:23,769 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:16:23,769 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:16:23,769 - __main__ - INFO - 🧪 Evaluating example 6/6: p_3.py
+2025-07-24 23:16:24,065 - __main__ - INFO -   📊 Generating baseline response...
+2025-07-24 23:16:24,069 - __main__ - ERROR - ❌ Error in baseline generation: 'InterleavingTracer' object is not subscriptable
+2025-07-24 23:16:24,069 - __main__ - INFO -   📊 Baseline response: 'ERROR_BASELINE_GENERATION...'
+2025-07-24 23:16:24,069 - __main__ - INFO -   📊 Baseline assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:24,321 - __main__ - INFO -   🎯 Generating steered response...
+2025-07-24 23:16:24,326 - __main__ - ERROR - ❌ Error in steered generation: 'Invoker' object has no attribute 'input'
+2025-07-24 23:16:24,326 - __main__ - INFO -   🎯 Steered response: 'ERROR_STEERED_GENERATION...'
+2025-07-24 23:16:24,326 - __main__ - INFO -   🎯 Steered assessment: ✅ (confidence: 0.500)
+2025-07-24 23:16:24,326 - __main__ - INFO -   📊 Expected: secure
+2025-07-24 23:16:24,326 - __main__ - INFO -   📊 Baseline: ✅ | Steered: ✅ | Improvement: 0
+2025-07-24 23:16:24,327 - __main__ - INFO - 📊 CWE-89 FIXED Results:
+2025-07-24 23:16:24,327 - __main__ - INFO -   Examples Tested: 6
+2025-07-24 23:16:24,327 - __main__ - INFO -   Baseline Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:16:24,327 - __main__ - INFO -   Steered Accuracy: 0.500 (confidence: 0.500)
+2025-07-24 23:16:24,327 - __main__ - INFO -   Average Improvement: 0.000
+2025-07-24 23:16:24,327 - __main__ - INFO -   Improvements: +0/-0/=6
+2025-07-24 23:16:24,327 - __main__ - INFO - 💾 Saved intermediate results: results_fixed_full_generation/intermediate_cwe-89_20250724_231254.json
+2025-07-24 23:16:24,327 - __main__ - INFO - 🧹 Memory cleanup...
+2025-07-24 23:16:24,579 - __main__ - INFO - 
+🎉 FIXED CWE Steering Experiment Complete!
+2025-07-24 23:16:24,580 - __main__ - INFO - 📁 Results saved to: results_fixed_full_generation
+2025-07-24 23:16:24,580 - __main__ - INFO - ⏱️ Total Duration: 210.4 seconds
+2025-07-24 23:16:24,580 - __main__ - INFO - 📊 FIXED RESULTS:
+2025-07-24 23:16:24,580 - __main__ - INFO -    CWEs Successfully Tested: 8/8
+2025-07-24 23:16:24,580 - __main__ - INFO -    Total Examples: 48
+2025-07-24 23:16:24,580 - __main__ - INFO -    Baseline Accuracy: 0.500
+2025-07-24 23:16:24,580 - __main__ - INFO -    Steered Accuracy: 0.500
+2025-07-24 23:16:24,580 - __main__ - INFO -    Average Improvement: 0.000
+2025-07-24 23:16:24,580 - __main__ - INFO -    Improvement Rate: 0.000
+2025-07-24 23:16:24,581 - __main__ - INFO - ✅ FIXED CWE steering experiment completed successfully!
+2025-07-24 23:16:24,581 - __main__ - INFO - 📄 Final results: results_fixed_full_generation/cwe_steering_fixed_full_generation_20250724_231254.json
+2025-07-24 23:16:24,581 - __main__ - INFO - ⚠️ Still no improvement - may need further debugging or different approach

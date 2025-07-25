@@ -1,0 +1,132 @@
+2025-07-24 22:44:38,734 - __main__ - INFO - 🚀 Starting Memory-Efficient CWE Steering Experiment (NNSight 0.4.x)
+2025-07-24 22:44:38,735 - __main__ - INFO - 🧪 Experiment ID: 20250724_224438
+2025-07-24 22:44:38,735 - __main__ - INFO - 🚀 Loading model: Qwen/Qwen2.5-14B-Instruct
+2025-07-24 22:44:39,691 - __main__ - INFO - ✅ Model loaded successfully
+2025-07-24 22:44:39,692 - __main__ - INFO - 📊 Model layers: 48
+2025-07-24 22:44:39,692 - __main__ - INFO - 📚 Loading REAL SecLLMHolmes dataset (memory-limited)...
+2025-07-24 22:44:39,692 - __main__ - INFO - 🔍 Found 8 CWE directories
+2025-07-24 22:44:39,692 - __main__ - INFO - 📖 Loaded 4 examples for CWE-190
+2025-07-24 22:44:39,692 - __main__ - INFO - 📖 Loaded 4 examples for CWE-22
+2025-07-24 22:44:39,693 - __main__ - INFO - 📖 Loaded 4 examples for CWE-416
+2025-07-24 22:44:39,693 - __main__ - INFO - 📖 Loaded 4 examples for CWE-476
+2025-07-24 22:44:39,693 - __main__ - INFO - 📖 Loaded 4 examples for CWE-77
+2025-07-24 22:44:39,693 - __main__ - INFO - 📖 Loaded 4 examples for CWE-787
+2025-07-24 22:44:39,694 - __main__ - INFO - 📖 Loaded 4 examples for CWE-79
+2025-07-24 22:44:39,694 - __main__ - INFO - 📖 Loaded 4 examples for CWE-89
+2025-07-24 22:44:39,694 - __main__ - INFO - 📊 Loaded 32 total REAL examples across 8 CWEs
+2025-07-24 22:44:39,694 - __main__ - INFO - 🎯 Processing CWE: CWE-190
+2025-07-24 22:44:39,694 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-190
+2025-07-24 22:44:39,694 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:44:39,694 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:44:39,694 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:44:39,981 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-24 22:44:57,010 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:44:57,438 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:44:57,847 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:44:58,272 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:44:58,651 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:44:59,088 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:44:59,461 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:44:59,872 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:44:59,876 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-190
+2025-07-24 22:44:59,877 - __main__ - INFO - 🎯 Processing CWE: CWE-22
+2025-07-24 22:44:59,877 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-22
+2025-07-24 22:44:59,877 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:44:59,877 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:44:59,877 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:00,270 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:00,682 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:01,057 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:01,474 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:01,848 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:02,266 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:02,639 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:03,063 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:03,067 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-22
+2025-07-24 22:45:03,067 - __main__ - INFO - 🎯 Processing CWE: CWE-416
+2025-07-24 22:45:03,067 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-416
+2025-07-24 22:45:03,067 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:45:03,067 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:45:03,067 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:03,427 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:03,786 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:04,159 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:04,577 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:04,952 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:05,383 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:05,749 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:06,172 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:06,176 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-416
+2025-07-24 22:45:06,176 - __main__ - INFO - 🎯 Processing CWE: CWE-476
+2025-07-24 22:45:06,176 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-476
+2025-07-24 22:45:06,176 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:45:06,177 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:45:06,177 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:06,569 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:06,977 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:07,334 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:07,754 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:08,128 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:08,543 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:08,916 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:09,337 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:09,342 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-476
+2025-07-24 22:45:09,342 - __main__ - INFO - 🎯 Processing CWE: CWE-77
+2025-07-24 22:45:09,342 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-77
+2025-07-24 22:45:09,342 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:45:09,342 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:45:09,342 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:09,700 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:10,056 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:10,400 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:10,767 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:11,141 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:11,559 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:11,945 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:12,378 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:12,383 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-77
+2025-07-24 22:45:12,383 - __main__ - INFO - 🎯 Processing CWE: CWE-787
+2025-07-24 22:45:12,383 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-787
+2025-07-24 22:45:12,383 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:45:12,383 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:45:12,383 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:12,713 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:13,055 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:13,426 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:13,843 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:14,220 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:14,642 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:15,018 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:15,436 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:15,441 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-787
+2025-07-24 22:45:15,442 - __main__ - INFO - 🎯 Processing CWE: CWE-79
+2025-07-24 22:45:15,442 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-79
+2025-07-24 22:45:15,442 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:45:15,442 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:45:15,442 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:15,828 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:16,237 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:16,611 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:17,032 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:17,379 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:17,742 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:18,102 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:18,517 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:18,521 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-79
+2025-07-24 22:45:18,522 - __main__ - INFO - 🎯 Processing CWE: CWE-89
+2025-07-24 22:45:18,522 - __main__ - INFO - 🎯 Creating memory-efficient steering vectors for CWE-89
+2025-07-24 22:45:18,522 - __main__ - INFO - 📊 Creating steering vectors from 2 vulnerable and 2 secure examples
+2025-07-24 22:45:18,522 - __main__ - INFO - 🎯 Processing layer -1
+2025-07-24 22:45:18,522 - __main__ - INFO -   Processing vulnerable example 1/2
+2025-07-24 22:45:18,879 - __main__ - ERROR - ❌ Error processing vulnerable example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:19,235 - __main__ - INFO -   Processing vulnerable example 2/2
+2025-07-24 22:45:19,607 - __main__ - ERROR - ❌ Error processing vulnerable example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:20,020 - __main__ - INFO -   Processing secure example 1/2
+2025-07-24 22:45:20,351 - __main__ - ERROR - ❌ Error processing secure example 1: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:20,698 - __main__ - INFO -   Processing secure example 2/2
+2025-07-24 22:45:21,075 - __main__ - ERROR - ❌ Error processing secure example 2: 'tuple' object has no attribute 'shape'
+2025-07-24 22:45:21,490 - __main__ - WARNING - ⚠️ Could not create steering vector for layer -1 - insufficient activations
+2025-07-24 22:45:21,495 - __main__ - WARNING - ⚠️ No steering vectors created for CWE-89
+2025-07-24 22:45:21,495 - __main__ - INFO - 
+🎉 Memory-Efficient CWE Steering Experiment Complete!
+2025-07-24 22:45:21,495 - __main__ - ERROR - ❌ No results generated - experiment failed

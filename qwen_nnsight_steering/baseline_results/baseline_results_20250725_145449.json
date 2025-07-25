@@ -1,0 +1,202 @@
+{
+  "baseline": [
+    {
+      "cwe": "CWE-22",
+      "file": "1.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-22",
+      "file": "2.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-22",
+      "file": "3.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-77",
+      "file": "1.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-77",
+      "file": "2.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-77",
+      "file": "3.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-190",
+      "file": "1.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-190",
+      "file": "2.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-190",
+      "file": "3.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-416",
+      "file": "1.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-416",
+      "file": "2.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-416",
+      "file": "3.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-476",
+      "file": "1.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-476",
+      "file": "2.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-476",
+      "file": "3.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-787",
+      "file": "1.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-787",
+      "file": "2.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    },
+    {
+      "cwe": "CWE-787",
+      "file": "3.c",
+      "expected": "vulnerable",
+      "predicted": "error",
+      "reasoning": "Error: 'InterleavingTracer' object is not subscriptable",
+      "is_correct": false,
+      "reasoning_quality": 0.0,
+      "response": "ERROR: 'InterleavingTracer' object is not subscriptable",
+      "experiment_type": "baseline"
+    }
+  ]
+}

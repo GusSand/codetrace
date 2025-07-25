@@ -1,18 +1,25 @@
 # Chat Conversations Index
 
-**Generated on:** 2025-07-24 21:29:24
-**Total Conversations:** 2
+**Generated on:** 2025-07-25 15:30:00
+**Total Conversations:** 3
 
 ## Quick Stats
 - **Categories:** 2
-- **Total Size:** 11915 bytes
-- **Date Range:** 2025-07-23 to 2025-07-24
+- **Total Size:** 18500 bytes
+- **Date Range:** 2025-07-23 to 2025-07-25
 
 ## Categories
 
 ### Experiments
 
-#### 1. SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+#### 1. Neural Steering Experiment Session - SecLLMHolmes Dataset
+- **File:** `neural_steering_secllmholmes_experiment_summary_20250725.md`
+- **Created:** 2025-07-25 15:30
+- **Size:** 8500 bytes
+- **Tags:** neural-steering, secllmholmes, baseline, experiments, vulnerability-detection, qwen, nnsight, steering-vectors
+- **Path:** `chats/neural_steering_secllmholmes_experiment_summary_20250725.md`
+
+#### 2. SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 - **File:** `secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md`
 - **Created:** 2025-07-24 21:29
 - **Size:** 6775 bytes
@@ -31,12 +38,14 @@
 ## Tag Index
 
 ### baseline
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
 ### code-generation
 - Neural Steering Chat 20250723 170911
 
 ### experiments
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - Neural Steering Chat 20250723 170911
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
@@ -44,27 +53,39 @@
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
 ### neural-steering
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - Neural Steering Chat 20250723 170911
 
 ### nnsight
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - Neural Steering Chat 20250723 170911
 
 ### paper-analysis
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
 ### secllmholmes
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
 ### security
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - Neural Steering Chat 20250723 170911
 
 ### timing-analysis
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
 
 ### vulnerability-detection
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 - SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis
+
+### qwen
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
+
+### steering-vectors
+- Neural Steering Experiment Session - SecLLMHolmes Dataset
 
 ## Recent Conversations
 
+- **Neural Steering Experiment Session - SecLLMHolmes Dataset** (2025-07-25 15:30) - `neural_steering_secllmholmes_experiment_summary_20250725.md`
 - **SecLLMHolmes Baseline Experiments - Complete 8-Model Analysis** (2025-07-24 21:29) - `secllmholmes-baseline-experiments-complete-8-model-analysis_20250724_212924.md`
 - **Neural Steering Chat 20250723 170911** (2025-07-23 17:12) - `neural-steering-chat-20250723-170911_20250723_171238.md`
