@@ -85,7 +85,7 @@ class WorkingNeuralSteering:
             return False
     
     def generate_with_steering(self, prompt: str, steering_strength: float = 1.0) -> str:
-        """Generate text with real neural steering applied."""
+        """Generate text with real neural steering applied using proper NNSight hooks."""
         if not self.steering_vectors:
             raise ValueError("❌ No steering vectors loaded")
             
@@ -97,46 +97,76 @@ class WorkingNeuralSteering:
             if torch.cuda.is_available():
                 inputs = {k: v.cuda() for k, v in inputs.items()}
             
-            # Apply steering using NNSight
+            # Apply steering using NNSight hooks - proper approach
             with self.model.trace() as tracer:
-                with tracer.invoke(inputs['input_ids']):
-                    
-                    # Apply steering to each layer
-                    for layer_name, steering_vector in self.steering_vectors.items():
-                        layer_idx = int(layer_name.split('_')[1])
-                        
-                        # Get layer output
-                        layer_output = self.model.model.layers[layer_idx].output
-                        
+                # Define hook function for steering
+                def create_steering_hook(layer_idx, steering_vector, strength):
+                    def apply_steering(hidden_states):
+                        """Apply steering to hidden states."""
                         # Handle NNSight 0.4.x tuple format
-                        if hasattr(layer_output, '__getitem__'):  # Tuple-like
-                            hidden_states = layer_output[0]
+                        if isinstance(hidden_states, tuple):
+                            states = hidden_states[0]
                         else:
-                            hidden_states = layer_output
+                            states = hidden_states
                         
-                        # Apply steering vector
-                        steering_vector_gpu = steering_vector.to(hidden_states.device)
+                        # Clone to avoid in-place modification issues
+                        modified_states = states.clone()
                         
-                        # Direct modification of hidden states
-                        hidden_states[:, -1, :] += steering_vector_gpu * steering_strength
+                        # CRITICAL FIX: Apply steering in correct direction for vulnerability detection
+                        # Vector points vulnerable→secure, but we want better vulnerability detection
+                        # So we steer in the OPPOSITE direction (secure→vulnerable detection)
+                        steering_vector_device = steering_vector.to(states.device)
+                        modified_states[:, -1, :] -= strength * steering_vector_device  # FLIPPED SIGN!
                         
                         logger.debug(f"🎯 Applied steering to layer {layer_idx}")
+                        
+                        # Return in the same format as input
+                        if isinstance(hidden_states, tuple):
+                            return (modified_states,) + hidden_states[1:]
+                        else:
+                            return modified_states
                     
-                    # Get logits after steering
-                    logits = self.model.lm_head.output
+                    return apply_steering
+                
+                # Register hooks for each steering vector
+                for layer_name, steering_vector in self.steering_vectors.items():
+                    layer_idx = int(layer_name.split('_')[1])
                     
-                    # Sample next token
-                    probs = torch.softmax(logits[0, -1] / 0.1, dim=-1)  # temperature=0.1
-                    next_token = torch.multinomial(probs, 1)
+                    # Create and register the hook
+                    hook_fn = create_steering_hook(layer_idx, steering_vector, steering_strength)
                     
+                    # Register hook at the layer output
+                    tracer.hooks.modify_at(
+                        f"model.layers.{layer_idx}.output",
+                        hook_fn
+                    )
+                
+                # Generate with steering applied
+                with tracer.invoke(inputs['input_ids']):
+                    # Use the model's generate method with steering hooks active
+                    outputs = self.model.generate(
+                        **inputs,
+                        max_new_tokens=50,
+                        temperature=0.1,
+                        do_sample=True,
+                        top_p=0.9,
+                        pad_token_id=self.tokenizer.eos_token_id
+                    )
+            
+            # Get the generated tokens (everything after the input)
+            generated_tokens = outputs[0][inputs['input_ids'].shape[1]:]
+            
             # Decode result
-            response = self.tokenizer.decode(next_token[0], skip_special_tokens=True)
+            response = self.tokenizer.decode(generated_tokens, skip_special_tokens=True)
             logger.info(f"✅ Steered generation: '{response}'")
             
             return response
             
         except Exception as e:
             logger.error(f"❌ Steering generation failed: {e}")
+            logger.error(f"❌ Error type: {type(e).__name__}")
+            import traceback
+            logger.error(f"❌ Traceback: {traceback.format_exc()}")
             return f"ERROR: {str(e)}"
     
     def generate_baseline(self, prompt: str) -> str:

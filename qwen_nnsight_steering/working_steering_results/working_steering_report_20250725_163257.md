@@ -1,10 +1,10 @@
 # Working Steering vs Baseline Experiment Results
 
-**Date**: 2025-07-25 15:14:47
+**Date**: 2025-07-25 16:32:57
 
-**Model**: Qwen/Qwen2.5-14B-Instruct
+**Model**: Qwen/Qwen2.5-1.5B-Instruct
 
-**Steering Strength**: 20.0
+**Steering Strength**: 10.0
 
 **Target Layers**: [12, 24, 36, 47]
 
@@ -15,15 +15,15 @@
 
 |------------|----------|----------|-------------------|
 
-| **baseline** | **0.000** | **18** | **0.000** |
+| **baseline** | **0.333** | **6** | **0.188** |
 
-| steering_cwe-22 | 0.000 (+0.000) | 3 | 0.000 |
+| steering_cwe-22 | 0.000 (-0.333) | 1 | 0.000 |
 
-| steering_cwe-77 | 0.000 (+0.000) | 3 | 0.000 |
+| steering_cwe-77 | 0.000 (-0.333) | 1 | 0.000 |
 
-| steering_cwe-190 | 0.000 (+0.000) | 3 | 0.000 |
+| steering_cwe-190 | 0.000 (-0.333) | 1 | 0.000 |
 
-| steering_cwe-476 | 0.000 (+0.000) | 3 | 0.000 |
+| steering_cwe-476 | 0.000 (-0.333) | 1 | 0.000 |
 
 
 ## Per-CWE Performance Analysis
@@ -34,9 +34,9 @@
 
 | CWE-190 | 0.000 | 0.000 | +0.000 |
 
-| CWE-22 | 0.000 | 0.000 | +0.000 |
+| CWE-22 | 1.000 | 0.000 | -1.000 |
 
-| CWE-416 | 0.000 | 0.000 | +0.000 |
+| CWE-416 | 1.000 | 0.000 | -1.000 |
 
 | CWE-476 | 0.000 | 0.000 | +0.000 |
 
@@ -53,6 +53,6 @@
 
 - **Overall Improvement**: +0.000 (+0.0%)
 
-- **Most Improved CWE**: CWE-22 (+0.000)
+- **Most Improved CWE**: CWE-77 (+0.000)
 
-- **Least Improved CWE**: CWE-22 (+0.000)
+- **Least Improved CWE**: CWE-22 (-1.000)

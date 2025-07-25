@@ -1,0 +1,132 @@
+{
+  "baseline": {
+    "overall_accuracy": 0.3333333333333333,
+    "total_examples": 6,
+    "correct_predictions": 2,
+    "cwe_metrics": {
+      "CWE-22": {
+        "total": 1,
+        "correct": 1,
+        "reasoning_scores": [
+          0.375
+        ],
+        "accuracy": 1.0,
+        "avg_reasoning": 0.375
+      },
+      "CWE-77": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.125
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.125
+      },
+      "CWE-190": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.125
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.125
+      },
+      "CWE-416": {
+        "total": 1,
+        "correct": 1,
+        "reasoning_scores": [
+          0.25
+        ],
+        "accuracy": 1.0,
+        "avg_reasoning": 0.25
+      },
+      "CWE-476": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.25
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.25
+      },
+      "CWE-787": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.0
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.0
+      }
+    },
+    "avg_reasoning_quality": 0.1875
+  },
+  "steering_cwe-22": {
+    "overall_accuracy": 0.0,
+    "total_examples": 1,
+    "correct_predictions": 0,
+    "cwe_metrics": {
+      "CWE-22": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.0
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.0
+      }
+    },
+    "avg_reasoning_quality": 0.0
+  },
+  "steering_cwe-77": {
+    "overall_accuracy": 0.0,
+    "total_examples": 1,
+    "correct_predictions": 0,
+    "cwe_metrics": {
+      "CWE-77": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.0
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.0
+      }
+    },
+    "avg_reasoning_quality": 0.0
+  },
+  "steering_cwe-190": {
+    "overall_accuracy": 0.0,
+    "total_examples": 1,
+    "correct_predictions": 0,
+    "cwe_metrics": {
+      "CWE-190": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.0
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.0
+      }
+    },
+    "avg_reasoning_quality": 0.0
+  },
+  "steering_cwe-476": {
+    "overall_accuracy": 0.0,
+    "total_examples": 1,
+    "correct_predictions": 0,
+    "cwe_metrics": {
+      "CWE-476": {
+        "total": 1,
+        "correct": 0,
+        "reasoning_scores": [
+          0.0
+        ],
+        "accuracy": 0.0,
+        "avg_reasoning": 0.0
+      }
+    },
+    "avg_reasoning_quality": 0.0
+  }
+}

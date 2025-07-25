@@ -131,31 +131,50 @@ class RealNeuralSteering:
             
             # Apply real neural steering during generation
             with self.steerer.model.trace() as tracer:
-                with tracer.invoke(inputs.input_ids):
-                    
-                    # Apply steering vectors to target layers
-                    for layer_name, steering_vector in self.steering_vectors.items():
-                        layer_idx = int(layer_name.split('_')[1])
-                        
-                        # Get current hidden states (handle NNSight 0.4.x tuples)
-                        layer_output = self.steerer.model.model.layers[layer_idx].output
-                        
-                        # Apply direct mathematical steering
-                        if isinstance(layer_output, tuple):
-                            hidden_states = layer_output[0]
+                # Define hook function for steering
+                def create_steering_hook(layer_idx, steering_vector, strength):
+                    def apply_steering(hidden_states):
+                        """Apply steering to hidden states."""
+                        # Handle NNSight 0.4.x tuple format
+                        if isinstance(hidden_states, tuple):
+                            states = hidden_states[0]
                         else:
-                            hidden_states = layer_output
-                            
-                        # Apply steering vector to last token
-                        steering_vector_device = steering_vector.to(hidden_states.device)
+                            states = hidden_states
                         
-                        # Real neural steering: direct addition to hidden states
-                        hidden_states[:, -1, :] += (
-                            steering_vector_device * self.config.steering_strength
-                        )
+                        # Clone to avoid in-place modification issues
+                        modified_states = states.clone()
+                        
+                        # CRITICAL FIX: Apply steering in correct direction for vulnerability detection
+                        # Vector points vulnerable→secure, but we want better vulnerability detection
+                        # So we steer in the OPPOSITE direction (secure→vulnerable detection)
+                        steering_vector_device = steering_vector.to(states.device)
+                        modified_states[:, -1, :] -= strength * steering_vector_device  # FLIPPED SIGN!
                         
                         logger.debug(f"🎯 Applied steering to layer {layer_idx}")
+                        
+                        # Return in the same format as input
+                        if isinstance(hidden_states, tuple):
+                            return (modified_states,) + hidden_states[1:]
+                        else:
+                            return modified_states
                     
+                    return apply_steering
+                
+                # Register hooks for each steering vector
+                for layer_name, steering_vector in self.steering_vectors.items():
+                    layer_idx = int(layer_name.split('_')[1])
+                    
+                    # Create and register the hook
+                    hook_fn = create_steering_hook(layer_idx, steering_vector, self.config.steering_strength)
+                    
+                    # Register hook at the layer output
+                    tracer.hooks.modify_at(
+                        f"model.layers.{layer_idx}.output",
+                        hook_fn
+                    )
+                
+                # Generate with steering applied
+                with tracer.invoke(inputs.input_ids):
                     # Generate with steered hidden states
                     outputs = self.steerer.model.generate(
                         inputs.input_ids,
