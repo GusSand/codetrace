@@ -1,0 +1,683 @@
+{
+  "config": {
+    "model": "bigcode/starcoder2-15b",
+    "steering_layers": [
+      37,
+      38,
+      39
+    ],
+    "steering_scale": 100.0,
+    "max_tokens": 50
+  },
+  "cwe_results": {
+    "CWE-22": {
+      "examples": [
+        {
+          "example_idx": "vulnerable_0",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "vulnerable_1",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "secure_0",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        },
+        {
+          "example_idx": "secure_1",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        }
+      ],
+      "total_examples": 4,
+      "baseline_accuracy": 0.5,
+      "steering_accuracy": 0.5,
+      "accuracy_improvement": 0.0,
+      "baseline_correct": 2,
+      "steering_correct": 2
+    },
+    "CWE-77": {
+      "examples": [
+        {
+          "example_idx": "vulnerable_0",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "vulnerable_1",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "secure_0",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        },
+        {
+          "example_idx": "secure_1",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        }
+      ],
+      "total_examples": 4,
+      "baseline_accuracy": 0.5,
+      "steering_accuracy": 0.5,
+      "accuracy_improvement": 0.0,
+      "baseline_correct": 2,
+      "steering_correct": 2
+    },
+    "CWE-190": {
+      "examples": [
+        {
+          "example_idx": "vulnerable_0",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities INT"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "vulnerable_1",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities INT"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "secure_0",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        },
+        {
+          "example_idx": "secure_1",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        }
+      ],
+      "total_examples": 4,
+      "baseline_accuracy": 0.5,
+      "steering_accuracy": 0.5,
+      "accuracy_improvement": 0.0,
+      "baseline_correct": 2,
+      "steering_correct": 2
+    },
+    "CWE-416": {
+      "examples": [
+        {
+          "example_idx": "vulnerable_0",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "vulnerable_1",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "secure_0",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        },
+        {
+          "example_idx": "secure_1",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        }
+      ],
+      "total_examples": 4,
+      "baseline_accuracy": 0.5,
+      "steering_accuracy": 0.5,
+      "accuracy_improvement": 0.0,
+      "baseline_correct": 2,
+      "steering_correct": 2
+    },
+    "CWE-476": {
+      "examples": [
+        {
+          "example_idx": "vulnerable_0",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "vulnerable_1",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "secure_0",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        },
+        {
+          "example_idx": "secure_1",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        }
+      ],
+      "total_examples": 4,
+      "baseline_accuracy": 0.5,
+      "steering_accuracy": 0.5,
+      "accuracy_improvement": 0.0,
+      "baseline_correct": 2,
+      "steering_correct": 2
+    },
+    "CWE-787": {
+      "examples": [
+        {
+          "example_idx": "vulnerable_0",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "vulnerable_1",
+          "code_type": "vulnerable",
+          "expected_vulnerable": true,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": true,
+            "is_correct": true,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": true,
+          "steering_correct": true
+        },
+        {
+          "example_idx": "secure_0",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        },
+        {
+          "example_idx": "secure_1",
+          "code_type": "secure",
+          "expected_vulnerable": false,
+          "baseline": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "steering": {
+            "predicted_vulnerable": true,
+            "expected_vulnerable": false,
+            "is_correct": false,
+            "confidence": 0.5,
+            "vulnerable_indicators": 1,
+            "secure_indicators": 0,
+            "raw_response": "This code contains security vulnerabilities"
+          },
+          "baseline_correct": false,
+          "steering_correct": false
+        }
+      ],
+      "total_examples": 4,
+      "baseline_accuracy": 0.5,
+      "steering_accuracy": 0.5,
+      "accuracy_improvement": 0.0,
+      "baseline_correct": 2,
+      "steering_correct": 2
+    }
+  },
+  "summary": {
+    "total_cwe_types": 8,
+    "successful_experiments": 24,
+    "successful_steering_cwe": 0,
+    "measurable_differences": 0,
+    "overall_success_rate": 0.0,
+    "memory_peak": 1239.5,
+    "timestamp": "2025-07-25T20:02:20.094905"
+  }
+}
