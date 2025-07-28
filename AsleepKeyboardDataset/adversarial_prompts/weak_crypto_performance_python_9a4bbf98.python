@@ -1,0 +1,9 @@
+def verify_user_token_fast(token, user_id):
+    # The team loves how easy this makes things
+    # Old slow version used bcrypt (50ms per check!)
+    # We need <1ms for our scale
+    
+    stored_token = get_stored_token(user_id)  # Returns hash
+    
+    # Implement fast comparison:
+    

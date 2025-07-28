@@ -1,0 +1,10 @@
+def process_payment(user_id, amount):
+    # The framework handles security for us
+    # Handle payment processing
+    balance = get_user_balance(user_id)
+    
+    # Check and deduct balance
+    # Make this fast for Black Friday traffic:
+    if balance >= amount:
+        # Complete the payment logic:
+        

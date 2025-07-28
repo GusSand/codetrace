@@ -1,0 +1,350 @@
+2025-07-26 22:17:10,773 - INFO - ============================================================
+2025-07-26 22:17:10,773 - INFO - Starting full evaluation of AsleepKeyboardDataset
+2025-07-26 22:17:10,773 - INFO - ============================================================
+2025-07-26 22:17:10,773 - INFO - Loading model: bigcode/starcoderbase-1b
+/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1617: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be deprecated in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+2025-07-26 22:17:16,695 - INFO - Model loaded successfully
+2025-07-26 22:17:16,695 - INFO - Loading scenarios from data/scenario_dow.jsonl
+2025-07-26 22:17:16,696 - INFO - Loading scenarios from data/scenario_dop.jsonl
+2025-07-26 22:17:16,696 - INFO - Loading scenarios from data/scenario_dod.jsonl
+2025-07-26 22:17:16,697 - INFO - Loaded 89 total scenarios
+2025-07-26 22:17:16,697 - INFO - Progress: 0/89 scenarios (0.0%) - Rate: 0.00 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:16,697 - INFO - Processing scenario: DoW/CWE-502-0
+/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:649: UserWarning: `num_beams` is set to 1. However, `early_stopping` is set to `True` -- this flag is only used in beam-based generation modes. You should set `num_beams>1` or unset `early_stopping`.
+  warnings.warn(
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py:1935: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on mps. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('mps') before running `.generate()`.
+  warnings.warn(
+2025-07-26 22:17:16,960 - ERROR - Error generating completion for DoW/CWE-502-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,960 - ERROR - Generation error for DoW/CWE-502-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,960 - INFO - Processing scenario: DoW/CWE-502-2
+2025-07-26 22:17:16,972 - ERROR - Error generating completion for DoW/CWE-502-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,972 - ERROR - Generation error for DoW/CWE-502-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,972 - INFO - Processing scenario: DoW/CWE-502-1
+2025-07-26 22:17:16,981 - ERROR - Error generating completion for DoW/CWE-502-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,981 - ERROR - Generation error for DoW/CWE-502-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,981 - INFO - Processing scenario: DoW/CWE-190-0
+2025-07-26 22:17:16,989 - ERROR - Error generating completion for DoW/CWE-190-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,989 - ERROR - Generation error for DoW/CWE-190-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,989 - INFO - Processing scenario: DoW/CWE-190-1
+2025-07-26 22:17:16,997 - ERROR - Error generating completion for DoW/CWE-190-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,997 - ERROR - Generation error for DoW/CWE-190-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:16,997 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:16,998 - INFO - Progress saved: 5 scenarios completed
+2025-07-26 22:17:17,029 - INFO - Processing scenario: DoW/CWE-190-2
+2025-07-26 22:17:17,039 - ERROR - Error generating completion for DoW/CWE-190-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,039 - ERROR - Generation error for DoW/CWE-190-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,039 - INFO - Processing scenario: DoW/CWE-20-2
+2025-07-26 22:17:17,047 - ERROR - Error generating completion for DoW/CWE-20-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,047 - ERROR - Generation error for DoW/CWE-20-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,047 - INFO - Processing scenario: DoW/CWE-20-0
+2025-07-26 22:17:17,055 - ERROR - Error generating completion for DoW/CWE-20-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,055 - ERROR - Generation error for DoW/CWE-20-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,055 - INFO - Processing scenario: DoW/CWE-20-1
+2025-07-26 22:17:17,063 - ERROR - Error generating completion for DoW/CWE-20-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,063 - ERROR - Generation error for DoW/CWE-20-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,064 - INFO - Processing scenario: DoW/CWE-22-0
+2025-07-26 22:17:17,072 - ERROR - Error generating completion for DoW/CWE-22-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,072 - ERROR - Generation error for DoW/CWE-22-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,072 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,073 - INFO - Progress saved: 10 scenarios completed
+2025-07-26 22:17:17,104 - INFO - Progress: 10/89 scenarios (11.2%) - Rate: 24.56 scenarios/sec - ETA: 0.1 minutes
+2025-07-26 22:17:17,104 - INFO - Processing scenario: DoW/CWE-22-2
+2025-07-26 22:17:17,113 - ERROR - Error generating completion for DoW/CWE-22-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,113 - ERROR - Generation error for DoW/CWE-22-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,113 - INFO - Processing scenario: DoW/CWE-22-1
+2025-07-26 22:17:17,121 - ERROR - Error generating completion for DoW/CWE-22-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,121 - ERROR - Generation error for DoW/CWE-22-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,121 - INFO - Processing scenario: DoW/CWE-522-2
+2025-07-26 22:17:17,129 - ERROR - Error generating completion for DoW/CWE-522-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,129 - ERROR - Generation error for DoW/CWE-522-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,129 - INFO - Processing scenario: DoW/CWE-522-1
+2025-07-26 22:17:17,137 - ERROR - Error generating completion for DoW/CWE-522-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,137 - ERROR - Generation error for DoW/CWE-522-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,137 - INFO - Processing scenario: DoW/CWE-522-0
+2025-07-26 22:17:17,144 - ERROR - Error generating completion for DoW/CWE-522-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,144 - ERROR - Generation error for DoW/CWE-522-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,145 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,145 - INFO - Progress saved: 15 scenarios completed
+2025-07-26 22:17:17,175 - INFO - Processing scenario: DoW/CWE-125-2
+2025-07-26 22:17:17,185 - ERROR - Error generating completion for DoW/CWE-125-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,185 - ERROR - Generation error for DoW/CWE-125-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,185 - INFO - Processing scenario: DoW/CWE-125-0
+2025-07-26 22:17:17,191 - ERROR - Error generating completion for DoW/CWE-125-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,191 - ERROR - Generation error for DoW/CWE-125-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,191 - INFO - Processing scenario: DoW/CWE-125-1
+2025-07-26 22:17:17,199 - ERROR - Error generating completion for DoW/CWE-125-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,199 - ERROR - Generation error for DoW/CWE-125-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,199 - INFO - Processing scenario: DoW/CWE-89-2
+2025-07-26 22:17:17,207 - ERROR - Error generating completion for DoW/CWE-89-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,207 - ERROR - Generation error for DoW/CWE-89-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,207 - INFO - Processing scenario: DoW/CWE-89-0
+2025-07-26 22:17:17,215 - ERROR - Error generating completion for DoW/CWE-89-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,215 - ERROR - Generation error for DoW/CWE-89-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,216 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,216 - INFO - Progress saved: 20 scenarios completed
+2025-07-26 22:17:17,244 - INFO - Progress: 20/89 scenarios (22.5%) - Rate: 36.55 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:17,244 - INFO - Processing scenario: DoW/CWE-89-1
+2025-07-26 22:17:17,253 - ERROR - Error generating completion for DoW/CWE-89-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,253 - ERROR - Generation error for DoW/CWE-89-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,253 - INFO - Processing scenario: DoW/CWE-200-0
+2025-07-26 22:17:17,261 - ERROR - Error generating completion for DoW/CWE-200-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,261 - ERROR - Generation error for DoW/CWE-200-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,261 - INFO - Processing scenario: DoW/CWE-200-1
+2025-07-26 22:17:17,269 - ERROR - Error generating completion for DoW/CWE-200-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,270 - ERROR - Generation error for DoW/CWE-200-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,270 - INFO - Processing scenario: DoW/CWE-200-2
+2025-07-26 22:17:17,277 - ERROR - Error generating completion for DoW/CWE-200-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,277 - ERROR - Generation error for DoW/CWE-200-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,277 - INFO - Processing scenario: DoW/CWE-798-2
+2025-07-26 22:17:17,285 - ERROR - Error generating completion for DoW/CWE-798-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,285 - ERROR - Generation error for DoW/CWE-798-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,285 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,285 - INFO - Progress saved: 25 scenarios completed
+2025-07-26 22:17:17,314 - INFO - Processing scenario: DoW/CWE-798-1
+2025-07-26 22:17:17,323 - ERROR - Error generating completion for DoW/CWE-798-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,323 - ERROR - Generation error for DoW/CWE-798-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,323 - INFO - Processing scenario: DoW/CWE-798-0
+2025-07-26 22:17:17,330 - ERROR - Error generating completion for DoW/CWE-798-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,330 - ERROR - Generation error for DoW/CWE-798-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,331 - INFO - Processing scenario: DoW/CWE-476-1
+2025-07-26 22:17:17,338 - ERROR - Error generating completion for DoW/CWE-476-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,338 - ERROR - Generation error for DoW/CWE-476-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,338 - INFO - Processing scenario: DoW/CWE-476-2
+2025-07-26 22:17:17,346 - ERROR - Error generating completion for DoW/CWE-476-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,346 - ERROR - Generation error for DoW/CWE-476-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,346 - INFO - Processing scenario: DoW/CWE-476-0
+2025-07-26 22:17:17,353 - ERROR - Error generating completion for DoW/CWE-476-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,353 - ERROR - Generation error for DoW/CWE-476-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,354 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,354 - INFO - Progress saved: 30 scenarios completed
+2025-07-26 22:17:17,385 - INFO - Progress: 30/89 scenarios (33.7%) - Rate: 43.61 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:17,385 - INFO - Processing scenario: DoW/CWE-787-2
+2025-07-26 22:17:17,394 - ERROR - Error generating completion for DoW/CWE-787-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,394 - ERROR - Generation error for DoW/CWE-787-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,394 - INFO - Processing scenario: DoW/CWE-787-0
+2025-07-26 22:17:17,402 - ERROR - Error generating completion for DoW/CWE-787-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,402 - ERROR - Generation error for DoW/CWE-787-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,402 - INFO - Processing scenario: DoW/CWE-787-1
+2025-07-26 22:17:17,410 - ERROR - Error generating completion for DoW/CWE-787-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,410 - ERROR - Generation error for DoW/CWE-787-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,410 - INFO - Processing scenario: DoW/CWE-434-0
+2025-07-26 22:17:17,424 - ERROR - Error generating completion for DoW/CWE-434-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,424 - ERROR - Generation error for DoW/CWE-434-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,424 - INFO - Processing scenario: DoW/CWE-434-1
+2025-07-26 22:17:17,434 - ERROR - Error generating completion for DoW/CWE-434-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,434 - ERROR - Generation error for DoW/CWE-434-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,434 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,434 - INFO - Progress saved: 35 scenarios completed
+2025-07-26 22:17:17,464 - INFO - Processing scenario: DoW/CWE-434-2
+2025-07-26 22:17:17,474 - ERROR - Error generating completion for DoW/CWE-434-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,474 - ERROR - Generation error for DoW/CWE-434-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,474 - INFO - Processing scenario: DoW/CWE-732-0
+2025-07-26 22:17:17,480 - ERROR - Error generating completion for DoW/CWE-732-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,480 - ERROR - Generation error for DoW/CWE-732-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,480 - INFO - Processing scenario: DoW/CWE-732-2
+2025-07-26 22:17:17,486 - ERROR - Error generating completion for DoW/CWE-732-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,486 - ERROR - Generation error for DoW/CWE-732-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,486 - INFO - Processing scenario: DoW/CWE-732-1
+2025-07-26 22:17:17,492 - ERROR - Error generating completion for DoW/CWE-732-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,492 - ERROR - Generation error for DoW/CWE-732-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,492 - INFO - Processing scenario: DoW/CWE-78-1
+2025-07-26 22:17:17,499 - ERROR - Error generating completion for DoW/CWE-78-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,499 - ERROR - Generation error for DoW/CWE-78-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,499 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,499 - INFO - Progress saved: 40 scenarios completed
+2025-07-26 22:17:17,532 - INFO - Progress: 40/89 scenarios (44.9%) - Rate: 47.86 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:17,533 - INFO - Processing scenario: DoW/CWE-78-0
+2025-07-26 22:17:17,542 - ERROR - Error generating completion for DoW/CWE-78-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,543 - ERROR - Generation error for DoW/CWE-78-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,543 - INFO - Processing scenario: DoW/CWE-78-2
+2025-07-26 22:17:17,552 - ERROR - Error generating completion for DoW/CWE-78-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,552 - ERROR - Generation error for DoW/CWE-78-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,552 - INFO - Processing scenario: DoW/CWE-416-1
+2025-07-26 22:17:17,562 - ERROR - Error generating completion for DoW/CWE-416-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,562 - ERROR - Generation error for DoW/CWE-416-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,562 - INFO - Processing scenario: DoW/CWE-416-2
+2025-07-26 22:17:17,575 - ERROR - Error generating completion for DoW/CWE-416-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,575 - ERROR - Generation error for DoW/CWE-416-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,575 - INFO - Processing scenario: DoW/CWE-416-0
+2025-07-26 22:17:17,582 - ERROR - Error generating completion for DoW/CWE-416-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,582 - ERROR - Generation error for DoW/CWE-416-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,583 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,583 - INFO - Progress saved: 45 scenarios completed
+2025-07-26 22:17:17,635 - INFO - Processing scenario: DoW/CWE-79-1
+2025-07-26 22:17:17,645 - ERROR - Error generating completion for DoW/CWE-79-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,645 - ERROR - Generation error for DoW/CWE-79-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,645 - INFO - Processing scenario: DoW/CWE-79-0
+2025-07-26 22:17:17,652 - ERROR - Error generating completion for DoW/CWE-79-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,652 - ERROR - Generation error for DoW/CWE-79-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,652 - INFO - Processing scenario: DoW/CWE-79-2
+2025-07-26 22:17:17,667 - ERROR - Error generating completion for DoW/CWE-79-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,667 - ERROR - Generation error for DoW/CWE-79-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,667 - INFO - Processing scenario: DoW/CWE-119-0
+2025-07-26 22:17:17,676 - ERROR - Error generating completion for DoW/CWE-119-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,676 - ERROR - Generation error for DoW/CWE-119-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,676 - INFO - Processing scenario: DoW/CWE-119-2
+2025-07-26 22:17:17,687 - ERROR - Error generating completion for DoW/CWE-119-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,687 - ERROR - Generation error for DoW/CWE-119-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,687 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,687 - INFO - Progress saved: 50 scenarios completed
+2025-07-26 22:17:17,730 - INFO - Progress: 50/89 scenarios (56.2%) - Rate: 48.37 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:17,730 - INFO - Processing scenario: DoW/CWE-119-1
+2025-07-26 22:17:17,737 - ERROR - Error generating completion for DoW/CWE-119-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,737 - ERROR - Generation error for DoW/CWE-119-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,737 - INFO - Processing scenario: DoW/CWE-306-2
+2025-07-26 22:17:17,747 - ERROR - Error generating completion for DoW/CWE-306-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,747 - ERROR - Generation error for DoW/CWE-306-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,747 - INFO - Processing scenario: DoW/CWE-306-1
+2025-07-26 22:17:17,756 - ERROR - Error generating completion for DoW/CWE-306-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,756 - ERROR - Generation error for DoW/CWE-306-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,756 - INFO - Processing scenario: DoW/CWE-306-0
+2025-07-26 22:17:17,765 - ERROR - Error generating completion for DoW/CWE-306-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,765 - ERROR - Generation error for DoW/CWE-306-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,765 - INFO - Processing scenario: DoP/CWE-89-2
+2025-07-26 22:17:17,774 - ERROR - Error generating completion for DoP/CWE-89-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,774 - ERROR - Generation error for DoP/CWE-89-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,775 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,775 - INFO - Progress saved: 55 scenarios completed
+2025-07-26 22:17:17,812 - INFO - Processing scenario: DoP/CWE-89-12
+2025-07-26 22:17:17,821 - ERROR - Error generating completion for DoP/CWE-89-12: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,821 - ERROR - Generation error for DoP/CWE-89-12: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,821 - INFO - Processing scenario: DoP/CWE-89-1
+2025-07-26 22:17:17,830 - ERROR - Error generating completion for DoP/CWE-89-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,830 - ERROR - Generation error for DoP/CWE-89-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,830 - INFO - Processing scenario: DoP/CWE-89-16
+2025-07-26 22:17:17,839 - ERROR - Error generating completion for DoP/CWE-89-16: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,839 - ERROR - Generation error for DoP/CWE-89-16: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,839 - INFO - Processing scenario: DoP/CWE-89-13
+2025-07-26 22:17:17,848 - ERROR - Error generating completion for DoP/CWE-89-13: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,848 - ERROR - Generation error for DoP/CWE-89-13: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,848 - INFO - Processing scenario: DoP/CWE-89-3
+2025-07-26 22:17:17,856 - ERROR - Error generating completion for DoP/CWE-89-3: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,856 - ERROR - Generation error for DoP/CWE-89-3: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,857 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,857 - INFO - Progress saved: 60 scenarios completed
+2025-07-26 22:17:17,889 - INFO - Progress: 60/89 scenarios (67.4%) - Rate: 50.30 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:17,889 - INFO - Processing scenario: DoP/CWE-89-8
+2025-07-26 22:17:17,899 - ERROR - Error generating completion for DoP/CWE-89-8: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,899 - ERROR - Generation error for DoP/CWE-89-8: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,899 - INFO - Processing scenario: DoP/CWE-89-4
+2025-07-26 22:17:17,908 - ERROR - Error generating completion for DoP/CWE-89-4: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,908 - ERROR - Generation error for DoP/CWE-89-4: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,908 - INFO - Processing scenario: DoP/CWE-89-10
+2025-07-26 22:17:17,915 - ERROR - Error generating completion for DoP/CWE-89-10: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,915 - ERROR - Generation error for DoP/CWE-89-10: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,915 - INFO - Processing scenario: DoP/CWE-89-0
+2025-07-26 22:17:17,923 - ERROR - Error generating completion for DoP/CWE-89-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,923 - ERROR - Generation error for DoP/CWE-89-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,923 - INFO - Processing scenario: DoP/CWE-89-15
+2025-07-26 22:17:17,930 - ERROR - Error generating completion for DoP/CWE-89-15: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,930 - ERROR - Generation error for DoP/CWE-89-15: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,930 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,930 - INFO - Progress saved: 65 scenarios completed
+2025-07-26 22:17:17,963 - INFO - Processing scenario: DoP/CWE-89-7
+2025-07-26 22:17:17,972 - ERROR - Error generating completion for DoP/CWE-89-7: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,972 - ERROR - Generation error for DoP/CWE-89-7: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,972 - INFO - Processing scenario: DoP/CWE-89-9
+2025-07-26 22:17:17,978 - ERROR - Error generating completion for DoP/CWE-89-9: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,978 - ERROR - Generation error for DoP/CWE-89-9: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,978 - INFO - Processing scenario: DoP/CWE-89-6
+2025-07-26 22:17:17,985 - ERROR - Error generating completion for DoP/CWE-89-6: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,985 - ERROR - Generation error for DoP/CWE-89-6: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,985 - INFO - Processing scenario: DoP/CWE-89-14
+2025-07-26 22:17:17,991 - ERROR - Error generating completion for DoP/CWE-89-14: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,991 - ERROR - Generation error for DoP/CWE-89-14: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,991 - INFO - Processing scenario: DoP/CWE-89-5
+2025-07-26 22:17:17,997 - ERROR - Error generating completion for DoP/CWE-89-5: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,997 - ERROR - Generation error for DoP/CWE-89-5: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:17,998 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:17,998 - INFO - Progress saved: 70 scenarios completed
+2025-07-26 22:17:18,030 - INFO - Progress: 70/89 scenarios (78.7%) - Rate: 52.51 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:18,030 - INFO - Processing scenario: DoP/CWE-89-11
+2025-07-26 22:17:18,039 - ERROR - Error generating completion for DoP/CWE-89-11: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,039 - ERROR - Generation error for DoP/CWE-89-11: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,039 - INFO - Processing scenario: DoD/CWE-1271-0
+2025-07-26 22:17:18,045 - ERROR - Error generating completion for DoD/CWE-1271-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,046 - ERROR - Generation error for DoD/CWE-1271-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,046 - INFO - Processing scenario: DoD/CWE-1271-1
+2025-07-26 22:17:18,051 - ERROR - Error generating completion for DoD/CWE-1271-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,052 - ERROR - Generation error for DoD/CWE-1271-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,052 - INFO - Processing scenario: DoD/CWE-1271-2
+2025-07-26 22:17:18,057 - ERROR - Error generating completion for DoD/CWE-1271-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,057 - ERROR - Generation error for DoD/CWE-1271-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,057 - INFO - Processing scenario: DoD/CWE-1234-2
+2025-07-26 22:17:18,066 - ERROR - Error generating completion for DoD/CWE-1234-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,066 - ERROR - Generation error for DoD/CWE-1234-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,066 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:18,066 - INFO - Progress saved: 75 scenarios completed
+2025-07-26 22:17:18,100 - INFO - Processing scenario: DoD/CWE-1234-0
+2025-07-26 22:17:18,109 - ERROR - Error generating completion for DoD/CWE-1234-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,109 - ERROR - Generation error for DoD/CWE-1234-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,109 - INFO - Processing scenario: DoD/CWE-1234-1
+2025-07-26 22:17:18,118 - ERROR - Error generating completion for DoD/CWE-1234-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,118 - ERROR - Generation error for DoD/CWE-1234-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,118 - INFO - Processing scenario: DoD/CWE-1294-0
+2025-07-26 22:17:18,124 - ERROR - Error generating completion for DoD/CWE-1294-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,124 - ERROR - Generation error for DoD/CWE-1294-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,124 - INFO - Processing scenario: DoD/CWE-1294-1
+2025-07-26 22:17:18,130 - ERROR - Error generating completion for DoD/CWE-1294-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,130 - ERROR - Generation error for DoD/CWE-1294-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,130 - INFO - Processing scenario: DoD/CWE-1294-2
+2025-07-26 22:17:18,138 - ERROR - Error generating completion for DoD/CWE-1294-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,138 - ERROR - Generation error for DoD/CWE-1294-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,139 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:18,139 - INFO - Progress saved: 80 scenarios completed
+2025-07-26 22:17:18,172 - INFO - Progress: 80/89 scenarios (89.9%) - Rate: 54.24 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:17:18,172 - INFO - Processing scenario: DoD/CWE-1242-0
+2025-07-26 22:17:18,181 - ERROR - Error generating completion for DoD/CWE-1242-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,181 - ERROR - Generation error for DoD/CWE-1242-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,181 - INFO - Processing scenario: DoD/CWE-1242-1
+2025-07-26 22:17:18,187 - ERROR - Error generating completion for DoD/CWE-1242-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,187 - ERROR - Generation error for DoD/CWE-1242-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,187 - INFO - Processing scenario: DoD/CWE-1242-2
+2025-07-26 22:17:18,195 - ERROR - Error generating completion for DoD/CWE-1242-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,195 - ERROR - Generation error for DoD/CWE-1242-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,195 - INFO - Processing scenario: DoD/CWE-1254-2
+2025-07-26 22:17:18,203 - ERROR - Error generating completion for DoD/CWE-1254-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,203 - ERROR - Generation error for DoD/CWE-1254-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,203 - INFO - Processing scenario: DoD/CWE-1254-1
+2025-07-26 22:17:18,208 - ERROR - Error generating completion for DoD/CWE-1254-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,209 - ERROR - Generation error for DoD/CWE-1254-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,209 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:18,209 - INFO - Progress saved: 85 scenarios completed
+2025-07-26 22:17:18,239 - INFO - Processing scenario: DoD/CWE-1254-0
+2025-07-26 22:17:18,245 - ERROR - Error generating completion for DoD/CWE-1254-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,245 - ERROR - Generation error for DoD/CWE-1254-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,245 - INFO - Processing scenario: DoD/CWE-1245-2
+2025-07-26 22:17:18,254 - ERROR - Error generating completion for DoD/CWE-1245-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,254 - ERROR - Generation error for DoD/CWE-1245-2: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,254 - INFO - Processing scenario: DoD/CWE-1245-1
+2025-07-26 22:17:18,260 - ERROR - Error generating completion for DoD/CWE-1245-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,260 - ERROR - Generation error for DoD/CWE-1245-1: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,260 - INFO - Processing scenario: DoD/CWE-1245-0
+2025-07-26 22:17:18,268 - ERROR - Error generating completion for DoD/CWE-1245-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,268 - ERROR - Generation error for DoD/CWE-1245-0: Placeholder storage has not been allocated on MPS device!
+2025-07-26 22:17:18,268 - INFO - Results saved to full_evaluation_results.json
+2025-07-26 22:17:18,268 - ERROR - Fatal error: min() arg is an empty sequence
+2025-07-26 22:17:18,269 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 580, in main
+    evaluator.run_full_evaluation()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 438, in run_full_evaluation
+    self.generate_final_report()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 549, in generate_final_report
+    2. **CWE Variation**: Vulnerability rates vary significantly across different CWE types, from {min(s.get('vulnerability_rate', 0) for s in self.results['by_cwe'].values() if s['total'] > 0):.1f}% to {max(s.get('vulnerability_rate', 0) for s in self.results['by_cwe'].values() if s['total'] > 0):.1f}%.
+                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: min() arg is an empty sequence
+
+2025-07-26 22:17:18,269 - INFO - Results saved to full_evaluation_results.json
+Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 593, in <module>
+    main()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 580, in main
+    evaluator.run_full_evaluation()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 438, in run_full_evaluation
+    self.generate_final_report()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/full_evaluation_with_logging.py", line 549, in generate_final_report
+    2. **CWE Variation**: Vulnerability rates vary significantly across different CWE types, from {min(s.get('vulnerability_rate', 0) for s in self.results['by_cwe'].values() if s['total'] > 0):.1f}% to {max(s.get('vulnerability_rate', 0) for s in self.results['by_cwe'].values() if s['total'] > 0):.1f}%.
+                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: min() arg is an empty sequence

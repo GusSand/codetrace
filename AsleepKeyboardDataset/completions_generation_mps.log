@@ -1,0 +1,395 @@
+2025-07-27 17:18:58,229 - ============================================================
+2025-07-27 17:18:58,229 - Starting MPS-accelerated completion generation
+2025-07-27 17:18:58,229 - Temperature: 0.6
+2025-07-27 17:18:58,229 - Completions per scenario: 25
+2025-07-27 17:18:58,229 - ============================================================
+2025-07-27 17:18:58,248 - Found 40 completed scenarios
+2025-07-27 17:18:58,248 - Device: mps
+2025-07-27 17:18:58,248 - MPS available: True
+2025-07-27 17:18:58,248 - Loading bigcode/starcoderbase-1b on mps...
+2025-07-27 17:19:00,161 - Model loaded successfully
+2025-07-27 17:19:00,163 - Processing 54 scenarios
+2025-07-27 17:19:00,163 - Skipping 40 already completed
+2025-07-27 17:19:00,163 - 
+[40/54] Processing DoW/CWE-78-0 (~infh remaining)
+2025-07-27 17:19:00,317 - Error generating completion 1 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,319 - Error generating completion 2 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,321 - Error generating completion 3 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,322 - Error generating completion 4 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,323 - Error generating completion 5 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,324 - Error generating completion 6 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,326 - Error generating completion 7 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,328 - Error generating completion 8 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,330 - Error generating completion 9 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,331 - Error generating completion 10 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,332 - Error generating completion 11 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,334 - Error generating completion 12 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,335 - Error generating completion 13 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,336 - Error generating completion 14 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,338 - Error generating completion 15 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,339 - Error generating completion 16 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,339 - Error generating completion 17 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,340 - Error generating completion 18 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,341 - Error generating completion 19 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,342 - Error generating completion 20 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,343 - Error generating completion 21 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,344 - Error generating completion 22 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,345 - Error generating completion 23 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,345 - Error generating completion 24 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,347 - Error generating completion 25 for DoW/CWE-78-0: tuple index out of range
+2025-07-27 17:19:00,347 - 
+[41/54] Processing DoW/CWE-78-2 (~0.0h remaining)
+2025-07-27 17:19:00,349 - Error generating completion 1 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,350 - Error generating completion 2 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,351 - Error generating completion 3 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,352 - Error generating completion 4 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,353 - Error generating completion 5 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,354 - Error generating completion 6 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,354 - Error generating completion 7 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,355 - Error generating completion 8 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,356 - Error generating completion 9 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,357 - Error generating completion 10 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,358 - Error generating completion 11 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,358 - Error generating completion 12 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,359 - Error generating completion 13 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,360 - Error generating completion 14 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,361 - Error generating completion 15 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,361 - Error generating completion 16 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,362 - Error generating completion 17 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,363 - Error generating completion 18 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,364 - Error generating completion 19 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,365 - Error generating completion 20 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,366 - Error generating completion 21 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,366 - Error generating completion 22 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,367 - Error generating completion 23 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,368 - Error generating completion 24 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,369 - Error generating completion 25 for DoW/CWE-78-2: tuple index out of range
+2025-07-27 17:19:00,369 - 
+[42/54] Processing DoW/CWE-416-1 (~0.0h remaining)
+2025-07-27 17:19:00,371 - Error generating completion 1 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,372 - Error generating completion 2 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,372 - Error generating completion 3 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,373 - Error generating completion 4 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,374 - Error generating completion 5 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,375 - Error generating completion 6 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,375 - Error generating completion 7 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,376 - Error generating completion 8 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,377 - Error generating completion 9 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,378 - Error generating completion 10 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,378 - Error generating completion 11 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,379 - Error generating completion 12 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,380 - Error generating completion 13 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,381 - Error generating completion 14 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,382 - Error generating completion 15 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,383 - Error generating completion 16 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,383 - Error generating completion 17 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,384 - Error generating completion 18 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,385 - Error generating completion 19 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,386 - Error generating completion 20 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,387 - Error generating completion 21 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,387 - Error generating completion 22 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,388 - Error generating completion 23 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,389 - Error generating completion 24 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,389 - Error generating completion 25 for DoW/CWE-416-1: tuple index out of range
+2025-07-27 17:19:00,389 - 
+[43/54] Processing DoW/CWE-416-2 (~0.0h remaining)
+2025-07-27 17:19:00,391 - Error generating completion 1 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,392 - Error generating completion 2 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,393 - Error generating completion 3 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,393 - Error generating completion 4 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,394 - Error generating completion 5 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,395 - Error generating completion 6 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,395 - Error generating completion 7 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,396 - Error generating completion 8 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,397 - Error generating completion 9 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,398 - Error generating completion 10 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,398 - Error generating completion 11 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,399 - Error generating completion 12 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,400 - Error generating completion 13 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,400 - Error generating completion 14 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,401 - Error generating completion 15 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,402 - Error generating completion 16 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,403 - Error generating completion 17 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,403 - Error generating completion 18 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,404 - Error generating completion 19 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,405 - Error generating completion 20 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,406 - Error generating completion 21 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,406 - Error generating completion 22 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,407 - Error generating completion 23 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,408 - Error generating completion 24 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,409 - Error generating completion 25 for DoW/CWE-416-2: tuple index out of range
+2025-07-27 17:19:00,409 - 
+[44/54] Processing DoW/CWE-416-0 (~0.0h remaining)
+2025-07-27 17:19:00,410 - Error generating completion 1 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,410 - Error generating completion 2 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,411 - Error generating completion 3 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,412 - Error generating completion 4 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,413 - Error generating completion 5 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,414 - Error generating completion 6 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,415 - Error generating completion 7 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,415 - Error generating completion 8 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,416 - Error generating completion 9 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,417 - Error generating completion 10 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,418 - Error generating completion 11 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,418 - Error generating completion 12 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,419 - Error generating completion 13 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,420 - Error generating completion 14 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,420 - Error generating completion 15 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,421 - Error generating completion 16 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,422 - Error generating completion 17 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,422 - Error generating completion 18 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,423 - Error generating completion 19 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,424 - Error generating completion 20 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,425 - Error generating completion 21 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,425 - Error generating completion 22 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,426 - Error generating completion 23 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,427 - Error generating completion 24 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,427 - Error generating completion 25 for DoW/CWE-416-0: tuple index out of range
+2025-07-27 17:19:00,428 - 
+[45/54] Processing DoW/CWE-79-1 (~0.0h remaining)
+2025-07-27 17:19:00,429 - Error generating completion 1 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,430 - Error generating completion 2 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,431 - Error generating completion 3 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,431 - Error generating completion 4 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,432 - Error generating completion 5 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,433 - Error generating completion 6 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,433 - Error generating completion 7 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,434 - Error generating completion 8 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,435 - Error generating completion 9 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,436 - Error generating completion 10 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,437 - Error generating completion 11 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,437 - Error generating completion 12 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,438 - Error generating completion 13 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,439 - Error generating completion 14 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,439 - Error generating completion 15 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,440 - Error generating completion 16 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,441 - Error generating completion 17 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,442 - Error generating completion 18 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,443 - Error generating completion 19 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,443 - Error generating completion 20 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,444 - Error generating completion 21 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,445 - Error generating completion 22 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,446 - Error generating completion 23 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,447 - Error generating completion 24 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,447 - Error generating completion 25 for DoW/CWE-79-1: tuple index out of range
+2025-07-27 17:19:00,447 - 
+[46/54] Processing DoW/CWE-79-0 (~0.0h remaining)
+2025-07-27 17:19:00,449 - Error generating completion 1 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,449 - Error generating completion 2 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,450 - Error generating completion 3 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,451 - Error generating completion 4 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,452 - Error generating completion 5 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,452 - Error generating completion 6 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,453 - Error generating completion 7 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,454 - Error generating completion 8 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,455 - Error generating completion 9 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,456 - Error generating completion 10 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,457 - Error generating completion 11 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,457 - Error generating completion 12 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,458 - Error generating completion 13 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,459 - Error generating completion 14 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,461 - Error generating completion 15 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,462 - Error generating completion 16 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,462 - Error generating completion 17 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,463 - Error generating completion 18 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,464 - Error generating completion 19 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,465 - Error generating completion 20 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,466 - Error generating completion 21 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,467 - Error generating completion 22 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,468 - Error generating completion 23 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,468 - Error generating completion 24 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,469 - Error generating completion 25 for DoW/CWE-79-0: tuple index out of range
+2025-07-27 17:19:00,469 - 
+[47/54] Processing DoW/CWE-79-2 (~0.0h remaining)
+2025-07-27 17:19:00,471 - Error generating completion 1 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,472 - Error generating completion 2 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,472 - Error generating completion 3 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,473 - Error generating completion 4 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,474 - Error generating completion 5 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,475 - Error generating completion 6 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,475 - Error generating completion 7 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,476 - Error generating completion 8 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,477 - Error generating completion 9 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,478 - Error generating completion 10 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,479 - Error generating completion 11 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,479 - Error generating completion 12 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,480 - Error generating completion 13 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,481 - Error generating completion 14 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,482 - Error generating completion 15 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,482 - Error generating completion 16 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,483 - Error generating completion 17 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,484 - Error generating completion 18 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,485 - Error generating completion 19 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,486 - Error generating completion 20 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,486 - Error generating completion 21 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,487 - Error generating completion 22 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,488 - Error generating completion 23 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,488 - Error generating completion 24 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,489 - Error generating completion 25 for DoW/CWE-79-2: tuple index out of range
+2025-07-27 17:19:00,489 - 
+[48/54] Processing DoW/CWE-119-0 (~0.0h remaining)
+2025-07-27 17:19:00,491 - Error generating completion 1 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,492 - Error generating completion 2 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,492 - Error generating completion 3 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,493 - Error generating completion 4 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,494 - Error generating completion 5 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,495 - Error generating completion 6 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,496 - Error generating completion 7 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,497 - Error generating completion 8 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,498 - Error generating completion 9 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,498 - Error generating completion 10 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,499 - Error generating completion 11 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,500 - Error generating completion 12 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,501 - Error generating completion 13 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,502 - Error generating completion 14 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,502 - Error generating completion 15 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,503 - Error generating completion 16 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,504 - Error generating completion 17 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,504 - Error generating completion 18 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,505 - Error generating completion 19 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,506 - Error generating completion 20 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,507 - Error generating completion 21 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,507 - Error generating completion 22 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,508 - Error generating completion 23 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,509 - Error generating completion 24 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,509 - Error generating completion 25 for DoW/CWE-119-0: tuple index out of range
+2025-07-27 17:19:00,509 - 
+[49/54] Processing DoW/CWE-119-2 (~0.0h remaining)
+2025-07-27 17:19:00,511 - Error generating completion 1 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,511 - Error generating completion 2 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,512 - Error generating completion 3 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,513 - Error generating completion 4 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,513 - Error generating completion 5 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,514 - Error generating completion 6 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,515 - Error generating completion 7 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,515 - Error generating completion 8 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,516 - Error generating completion 9 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,517 - Error generating completion 10 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,518 - Error generating completion 11 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,518 - Error generating completion 12 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,519 - Error generating completion 13 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,520 - Error generating completion 14 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,520 - Error generating completion 15 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,521 - Error generating completion 16 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,522 - Error generating completion 17 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,522 - Error generating completion 18 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,523 - Error generating completion 19 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,524 - Error generating completion 20 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,524 - Error generating completion 21 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,525 - Error generating completion 22 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,526 - Error generating completion 23 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,526 - Error generating completion 24 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,527 - Error generating completion 25 for DoW/CWE-119-2: tuple index out of range
+2025-07-27 17:19:00,527 - 
+[50/54] Processing DoW/CWE-119-1 (~0.0h remaining)
+2025-07-27 17:19:00,529 - Error generating completion 1 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,529 - Error generating completion 2 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,530 - Error generating completion 3 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,531 - Error generating completion 4 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,531 - Error generating completion 5 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,532 - Error generating completion 6 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,532 - Error generating completion 7 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,533 - Error generating completion 8 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,534 - Error generating completion 9 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,534 - Error generating completion 10 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,535 - Error generating completion 11 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,536 - Error generating completion 12 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,536 - Error generating completion 13 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,537 - Error generating completion 14 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,538 - Error generating completion 15 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,538 - Error generating completion 16 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,539 - Error generating completion 17 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,540 - Error generating completion 18 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,540 - Error generating completion 19 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,541 - Error generating completion 20 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,542 - Error generating completion 21 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,543 - Error generating completion 22 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,543 - Error generating completion 23 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,544 - Error generating completion 24 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,545 - Error generating completion 25 for DoW/CWE-119-1: tuple index out of range
+2025-07-27 17:19:00,545 - 
+[51/54] Processing DoW/CWE-306-2 (~0.0h remaining)
+2025-07-27 17:19:00,547 - Error generating completion 1 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,548 - Error generating completion 2 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,549 - Error generating completion 3 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,550 - Error generating completion 4 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,550 - Error generating completion 5 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,551 - Error generating completion 6 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,552 - Error generating completion 7 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,553 - Error generating completion 8 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,553 - Error generating completion 9 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,554 - Error generating completion 10 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,555 - Error generating completion 11 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,555 - Error generating completion 12 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,556 - Error generating completion 13 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,557 - Error generating completion 14 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,558 - Error generating completion 15 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,558 - Error generating completion 16 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,559 - Error generating completion 17 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,560 - Error generating completion 18 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,560 - Error generating completion 19 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,561 - Error generating completion 20 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,562 - Error generating completion 21 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,563 - Error generating completion 22 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,564 - Error generating completion 23 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,564 - Error generating completion 24 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,565 - Error generating completion 25 for DoW/CWE-306-2: tuple index out of range
+2025-07-27 17:19:00,565 - 
+[52/54] Processing DoW/CWE-306-1 (~0.0h remaining)
+2025-07-27 17:19:00,567 - Error generating completion 1 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,568 - Error generating completion 2 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,569 - Error generating completion 3 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,570 - Error generating completion 4 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,570 - Error generating completion 5 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,571 - Error generating completion 6 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,572 - Error generating completion 7 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,572 - Error generating completion 8 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,573 - Error generating completion 9 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,574 - Error generating completion 10 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,575 - Error generating completion 11 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,575 - Error generating completion 12 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,576 - Error generating completion 13 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,577 - Error generating completion 14 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,577 - Error generating completion 15 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,578 - Error generating completion 16 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,579 - Error generating completion 17 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,580 - Error generating completion 18 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,581 - Error generating completion 19 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,581 - Error generating completion 20 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,582 - Error generating completion 21 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,583 - Error generating completion 22 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,583 - Error generating completion 23 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,584 - Error generating completion 24 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,585 - Error generating completion 25 for DoW/CWE-306-1: tuple index out of range
+2025-07-27 17:19:00,585 - 
+[53/54] Processing DoW/CWE-306-0 (~0.0h remaining)
+2025-07-27 17:19:00,586 - Error generating completion 1 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,587 - Error generating completion 2 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,588 - Error generating completion 3 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,588 - Error generating completion 4 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,589 - Error generating completion 5 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,590 - Error generating completion 6 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,591 - Error generating completion 7 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,591 - Error generating completion 8 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,592 - Error generating completion 9 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,593 - Error generating completion 10 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,593 - Error generating completion 11 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,594 - Error generating completion 12 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,595 - Error generating completion 13 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,595 - Error generating completion 14 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,596 - Error generating completion 15 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,597 - Error generating completion 16 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,598 - Error generating completion 17 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,598 - Error generating completion 18 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,599 - Error generating completion 19 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,600 - Error generating completion 20 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,600 - Error generating completion 21 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,601 - Error generating completion 22 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,602 - Error generating completion 23 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,602 - Error generating completion 24 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,603 - Error generating completion 25 for DoW/CWE-306-0: tuple index out of range
+2025-07-27 17:19:00,603 - 
+Completed 14 scenarios in 0.0 hours
+2025-07-27 17:19:00,603 - Average time per scenario: 0.0 seconds
+2025-07-27 17:19:00,603 - 
+Generation complete!

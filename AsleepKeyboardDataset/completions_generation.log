@@ -1,0 +1,402 @@
+2025-07-27 11:38:42,780 - ============================================================
+2025-07-27 11:38:42,780 - Starting fast completion generation
+2025-07-27 11:38:42,780 - Temperature: 0.6
+2025-07-27 11:38:42,780 - Completions per scenario: 25
+2025-07-27 11:38:42,780 - ============================================================
+2025-07-27 11:38:42,780 - Loading bigcode/starcoderbase-1b on CPU...
+2025-07-27 11:38:43,450 - Model loaded successfully
+2025-07-27 11:38:43,451 - Processing 89 scenarios
+2025-07-27 11:38:43,451 - 
+[0/89] Processing DoW/CWE-502-0 (~infh remaining)
+2025-07-27 11:41:13,040 -   DoW/CWE-502-0: 5/25 completions
+2025-07-27 11:43:36,851 -   DoW/CWE-502-0: 10/25 completions
+2025-07-27 11:46:02,303 -   DoW/CWE-502-0: 15/25 completions
+2025-07-27 11:48:28,599 -   DoW/CWE-502-0: 20/25 completions
+2025-07-27 11:50:49,050 -   DoW/CWE-502-0: 25/25 completions
+2025-07-27 11:50:49,051 - 
+[1/89] Processing DoW/CWE-502-2 (~17.8h remaining)
+2025-07-27 11:52:47,087 -   DoW/CWE-502-2: 5/25 completions
+2025-07-27 11:54:36,093 -   DoW/CWE-502-2: 10/25 completions
+2025-07-27 11:56:14,918 -   DoW/CWE-502-2: 15/25 completions
+2025-07-27 11:57:57,729 -   DoW/CWE-502-2: 20/25 completions
+2025-07-27 11:59:31,031 -   DoW/CWE-502-2: 25/25 completions
+2025-07-27 11:59:31,032 - 
+[2/89] Processing DoW/CWE-502-1 (~15.1h remaining)
+2025-07-27 12:01:02,731 -   DoW/CWE-502-1: 5/25 completions
+2025-07-27 12:02:46,734 -   DoW/CWE-502-1: 10/25 completions
+2025-07-27 12:04:51,399 -   DoW/CWE-502-1: 15/25 completions
+2025-07-27 12:06:27,224 -   DoW/CWE-502-1: 20/25 completions
+2025-07-27 12:08:25,456 -   DoW/CWE-502-1: 25/25 completions
+2025-07-27 12:08:25,457 - 
+[3/89] Processing DoW/CWE-190-0 (~14.2h remaining)
+2025-07-27 12:09:24,362 -   DoW/CWE-190-0: 5/25 completions
+2025-07-27 12:10:48,994 -   DoW/CWE-190-0: 10/25 completions
+2025-07-27 12:12:08,857 -   DoW/CWE-190-0: 15/25 completions
+2025-07-27 12:13:04,101 -   DoW/CWE-190-0: 20/25 completions
+2025-07-27 12:14:19,015 -   DoW/CWE-190-0: 25/25 completions
+2025-07-27 12:14:19,017 - 
+[4/89] Processing DoW/CWE-190-1 (~12.6h remaining)
+2025-07-27 12:14:39,612 -   DoW/CWE-190-1: 5/25 completions
+2025-07-27 12:15:19,539 -   DoW/CWE-190-1: 10/25 completions
+2025-07-27 12:15:46,771 -   DoW/CWE-190-1: 15/25 completions
+2025-07-27 12:16:10,745 -   DoW/CWE-190-1: 20/25 completions
+2025-07-27 12:16:29,613 -   DoW/CWE-190-1: 25/25 completions
+2025-07-27 12:16:29,643 - 
+[5/89] Processing DoW/CWE-190-2 (~10.6h remaining)
+2025-07-27 12:18:34,793 -   DoW/CWE-190-2: 5/25 completions
+2025-07-27 12:20:25,566 -   DoW/CWE-190-2: 10/25 completions
+2025-07-27 12:22:22,655 -   DoW/CWE-190-2: 15/25 completions
+2025-07-27 12:24:03,350 -   DoW/CWE-190-2: 20/25 completions
+2025-07-27 12:26:01,691 -   DoW/CWE-190-2: 25/25 completions
+2025-07-27 12:26:01,691 - 
+[6/89] Processing DoW/CWE-20-2 (~10.9h remaining)
+2025-07-27 12:28:16,874 -   DoW/CWE-20-2: 5/25 completions
+2025-07-27 12:30:10,431 -   DoW/CWE-20-2: 10/25 completions
+2025-07-27 12:32:20,943 -   DoW/CWE-20-2: 15/25 completions
+2025-07-27 12:34:09,938 -   DoW/CWE-20-2: 20/25 completions
+2025-07-27 12:36:25,360 -   DoW/CWE-20-2: 25/25 completions
+2025-07-27 12:36:25,361 - 
+[7/89] Processing DoW/CWE-20-0 (~11.3h remaining)
+2025-07-27 12:38:17,051 -   DoW/CWE-20-0: 5/25 completions
+2025-07-27 12:40:10,648 -   DoW/CWE-20-0: 10/25 completions
+2025-07-27 12:41:43,308 -   DoW/CWE-20-0: 15/25 completions
+2025-07-27 12:43:29,168 -   DoW/CWE-20-0: 20/25 completions
+2025-07-27 12:45:19,442 -   DoW/CWE-20-0: 25/25 completions
+2025-07-27 12:45:19,442 - 
+[8/89] Processing DoW/CWE-20-1 (~11.2h remaining)
+2025-07-27 12:46:04,442 -   DoW/CWE-20-1: 5/25 completions
+2025-07-27 12:46:41,885 -   DoW/CWE-20-1: 10/25 completions
+2025-07-27 12:47:23,381 -   DoW/CWE-20-1: 15/25 completions
+2025-07-27 12:48:04,440 -   DoW/CWE-20-1: 20/25 completions
+2025-07-27 12:48:57,939 -   DoW/CWE-20-1: 25/25 completions
+2025-07-27 12:48:57,940 - 
+[9/89] Processing DoW/CWE-22-0 (~10.4h remaining)
+2025-07-27 12:50:46,400 -   DoW/CWE-22-0: 5/25 completions
+2025-07-27 12:52:37,505 -   DoW/CWE-22-0: 10/25 completions
+2025-07-27 12:54:49,600 -   DoW/CWE-22-0: 15/25 completions
+2025-07-27 12:56:38,329 -   DoW/CWE-22-0: 20/25 completions
+2025-07-27 12:58:19,107 -   DoW/CWE-22-0: 25/25 completions
+2025-07-27 12:58:19,135 - 
+[10/89] Processing DoW/CWE-22-2 (~10.5h remaining)
+2025-07-27 12:59:16,379 -   DoW/CWE-22-2: 5/25 completions
+2025-07-27 12:59:56,583 -   DoW/CWE-22-2: 10/25 completions
+2025-07-27 13:00:49,584 -   DoW/CWE-22-2: 15/25 completions
+2025-07-27 13:01:49,935 -   DoW/CWE-22-2: 20/25 completions
+2025-07-27 13:02:31,809 -   DoW/CWE-22-2: 25/25 completions
+2025-07-27 13:02:31,810 - 
+[11/89] Processing DoW/CWE-22-1 (~9.9h remaining)
+2025-07-27 13:04:25,404 -   DoW/CWE-22-1: 5/25 completions
+2025-07-27 13:06:19,205 -   DoW/CWE-22-1: 10/25 completions
+2025-07-27 13:08:09,694 -   DoW/CWE-22-1: 15/25 completions
+2025-07-27 13:10:21,841 -   DoW/CWE-22-1: 20/25 completions
+2025-07-27 13:12:21,351 -   DoW/CWE-22-1: 25/25 completions
+2025-07-27 13:12:21,352 - 
+[12/89] Processing DoW/CWE-522-2 (~10.0h remaining)
+2025-07-27 13:14:36,107 -   DoW/CWE-522-2: 5/25 completions
+2025-07-27 13:16:50,880 -   DoW/CWE-522-2: 10/25 completions
+2025-07-27 13:19:05,323 -   DoW/CWE-522-2: 15/25 completions
+2025-07-27 13:21:19,957 -   DoW/CWE-522-2: 20/25 completions
+2025-07-27 13:23:34,474 -   DoW/CWE-522-2: 25/25 completions
+2025-07-27 13:23:34,475 - 
+[13/89] Processing DoW/CWE-522-1 (~10.2h remaining)
+2025-07-27 13:25:49,263 -   DoW/CWE-522-1: 5/25 completions
+2025-07-27 13:28:04,075 -   DoW/CWE-522-1: 10/25 completions
+2025-07-27 13:30:18,949 -   DoW/CWE-522-1: 15/25 completions
+2025-07-27 13:32:34,193 -   DoW/CWE-522-1: 20/25 completions
+2025-07-27 13:34:48,847 -   DoW/CWE-522-1: 25/25 completions
+2025-07-27 13:34:48,847 - 
+[14/89] Processing DoW/CWE-522-0 (~10.4h remaining)
+2025-07-27 13:37:03,339 -   DoW/CWE-522-0: 5/25 completions
+2025-07-27 13:39:17,839 -   DoW/CWE-522-0: 10/25 completions
+2025-07-27 13:41:32,950 -   DoW/CWE-522-0: 15/25 completions
+2025-07-27 13:43:47,424 -   DoW/CWE-522-0: 20/25 completions
+2025-07-27 13:46:02,102 -   DoW/CWE-522-0: 25/25 completions
+2025-07-27 13:46:02,131 - 
+[15/89] Processing DoW/CWE-125-2 (~10.5h remaining)
+2025-07-27 13:47:24,851 -   DoW/CWE-125-2: 5/25 completions
+2025-07-27 13:48:40,033 -   DoW/CWE-125-2: 10/25 completions
+2025-07-27 13:49:22,635 -   DoW/CWE-125-2: 15/25 completions
+2025-07-27 13:50:43,338 -   DoW/CWE-125-2: 20/25 completions
+2025-07-27 13:52:17,348 -   DoW/CWE-125-2: 25/25 completions
+2025-07-27 13:52:17,349 - 
+[16/89] Processing DoW/CWE-125-0 (~10.2h remaining)
+2025-07-27 13:52:53,712 -   DoW/CWE-125-0: 5/25 completions
+2025-07-27 13:53:31,159 -   DoW/CWE-125-0: 10/25 completions
+2025-07-27 13:54:23,427 -   DoW/CWE-125-0: 15/25 completions
+2025-07-27 13:54:58,046 -   DoW/CWE-125-0: 20/25 completions
+2025-07-27 13:55:39,669 -   DoW/CWE-125-0: 25/25 completions
+2025-07-27 13:55:39,669 - 
+[17/89] Processing DoW/CWE-125-1 (~9.7h remaining)
+2025-07-27 13:57:22,718 -   DoW/CWE-125-1: 5/25 completions
+2025-07-27 13:59:04,480 -   DoW/CWE-125-1: 10/25 completions
+2025-07-27 14:00:48,839 -   DoW/CWE-125-1: 15/25 completions
+2025-07-27 14:02:09,927 -   DoW/CWE-125-1: 20/25 completions
+2025-07-27 14:02:53,805 -   DoW/CWE-125-1: 25/25 completions
+2025-07-27 14:02:53,805 - 
+[18/89] Processing DoW/CWE-89-2 (~9.5h remaining)
+2025-07-27 14:05:09,251 -   DoW/CWE-89-2: 5/25 completions
+2025-07-27 14:07:21,411 -   DoW/CWE-89-2: 10/25 completions
+2025-07-27 14:09:36,481 -   DoW/CWE-89-2: 15/25 completions
+2025-07-27 14:11:37,964 -   DoW/CWE-89-2: 20/25 completions
+2025-07-27 14:13:41,737 -   DoW/CWE-89-2: 25/25 completions
+2025-07-27 14:13:41,739 - 
+[19/89] Processing DoW/CWE-89-0 (~9.5h remaining)
+2025-07-27 14:15:56,269 -   DoW/CWE-89-0: 5/25 completions
+2025-07-27 14:18:10,860 -   DoW/CWE-89-0: 10/25 completions
+2025-07-27 14:20:16,099 -   DoW/CWE-89-0: 15/25 completions
+2025-07-27 14:22:30,403 -   DoW/CWE-89-0: 20/25 completions
+2025-07-27 14:24:44,444 -   DoW/CWE-89-0: 25/25 completions
+2025-07-27 14:24:44,473 - 
+[20/89] Processing DoW/CWE-89-1 (~9.5h remaining)
+2025-07-27 14:26:32,604 -   DoW/CWE-89-1: 5/25 completions
+2025-07-27 14:28:21,011 -   DoW/CWE-89-1: 10/25 completions
+2025-07-27 14:30:26,700 -   DoW/CWE-89-1: 15/25 completions
+2025-07-27 14:32:27,603 -   DoW/CWE-89-1: 20/25 completions
+2025-07-27 14:34:02,810 -   DoW/CWE-89-1: 25/25 completions
+2025-07-27 14:34:02,810 - 
+[21/89] Processing DoW/CWE-200-0 (~9.5h remaining)
+2025-07-27 14:36:19,125 -   DoW/CWE-200-0: 5/25 completions
+2025-07-27 14:38:31,314 -   DoW/CWE-200-0: 10/25 completions
+2025-07-27 14:40:47,433 -   DoW/CWE-200-0: 15/25 completions
+2025-07-27 14:43:03,706 -   DoW/CWE-200-0: 20/25 completions
+2025-07-27 14:45:19,908 -   DoW/CWE-200-0: 25/25 completions
+2025-07-27 14:45:19,909 - 
+[22/89] Processing DoW/CWE-200-1 (~9.5h remaining)
+2025-07-27 14:47:34,855 -   DoW/CWE-200-1: 5/25 completions
+2025-07-27 14:49:49,951 -   DoW/CWE-200-1: 10/25 completions
+2025-07-27 14:52:04,875 -   DoW/CWE-200-1: 15/25 completions
+2025-07-27 14:54:20,584 -   DoW/CWE-200-1: 20/25 completions
+2025-07-27 14:56:32,011 -   DoW/CWE-200-1: 25/25 completions
+2025-07-27 14:56:32,012 - 
+[23/89] Processing DoW/CWE-200-2 (~9.5h remaining)
+2025-07-27 14:58:46,437 -   DoW/CWE-200-2: 5/25 completions
+2025-07-27 15:01:02,896 -   DoW/CWE-200-2: 10/25 completions
+2025-07-27 15:03:20,417 -   DoW/CWE-200-2: 15/25 completions
+2025-07-27 15:05:36,489 -   DoW/CWE-200-2: 20/25 completions
+2025-07-27 15:07:57,400 -   DoW/CWE-200-2: 25/25 completions
+2025-07-27 15:07:57,401 - 
+[24/89] Processing DoW/CWE-798-2 (~9.4h remaining)
+2025-07-27 15:10:10,991 -   DoW/CWE-798-2: 5/25 completions
+2025-07-27 15:12:25,290 -   DoW/CWE-798-2: 10/25 completions
+2025-07-27 15:14:39,651 -   DoW/CWE-798-2: 15/25 completions
+2025-07-27 15:16:53,821 -   DoW/CWE-798-2: 20/25 completions
+2025-07-27 15:19:02,907 -   DoW/CWE-798-2: 25/25 completions
+2025-07-27 15:19:02,936 - 
+[25/89] Processing DoW/CWE-798-1 (~9.4h remaining)
+2025-07-27 15:21:18,683 -   DoW/CWE-798-1: 5/25 completions
+2025-07-27 15:23:34,522 -   DoW/CWE-798-1: 10/25 completions
+2025-07-27 15:25:50,318 -   DoW/CWE-798-1: 15/25 completions
+2025-07-27 15:28:06,269 -   DoW/CWE-798-1: 20/25 completions
+2025-07-27 15:30:12,188 -   DoW/CWE-798-1: 25/25 completions
+2025-07-27 15:30:12,189 - 
+[26/89] Processing DoW/CWE-798-0 (~9.3h remaining)
+2025-07-27 15:32:27,149 -   DoW/CWE-798-0: 5/25 completions
+2025-07-27 15:34:41,912 -   DoW/CWE-798-0: 10/25 completions
+2025-07-27 15:36:51,853 -   DoW/CWE-798-0: 15/25 completions
+2025-07-27 15:39:06,428 -   DoW/CWE-798-0: 20/25 completions
+2025-07-27 15:41:20,934 -   DoW/CWE-798-0: 25/25 completions
+2025-07-27 15:41:20,935 - 
+[27/89] Processing DoW/CWE-476-1 (~9.3h remaining)
+2025-07-27 15:42:03,089 -   DoW/CWE-476-1: 5/25 completions
+2025-07-27 15:42:47,955 -   DoW/CWE-476-1: 10/25 completions
+2025-07-27 15:43:29,173 -   DoW/CWE-476-1: 15/25 completions
+2025-07-27 15:44:07,818 -   DoW/CWE-476-1: 20/25 completions
+2025-07-27 15:44:47,577 -   DoW/CWE-476-1: 25/25 completions
+2025-07-27 15:44:47,578 - 
+[28/89] Processing DoW/CWE-476-2 (~8.9h remaining)
+2025-07-27 15:45:38,435 -   DoW/CWE-476-2: 5/25 completions
+2025-07-27 15:46:50,832 -   DoW/CWE-476-2: 10/25 completions
+2025-07-27 15:47:33,339 -   DoW/CWE-476-2: 15/25 completions
+2025-07-27 15:48:18,184 -   DoW/CWE-476-2: 20/25 completions
+2025-07-27 15:49:13,281 -   DoW/CWE-476-2: 25/25 completions
+2025-07-27 15:49:13,281 - 
+[29/89] Processing DoW/CWE-476-0 (~8.6h remaining)
+2025-07-27 15:50:28,517 -   DoW/CWE-476-0: 5/25 completions
+2025-07-27 15:51:41,635 -   DoW/CWE-476-0: 10/25 completions
+2025-07-27 15:52:57,348 -   DoW/CWE-476-0: 15/25 completions
+2025-07-27 15:54:16,085 -   DoW/CWE-476-0: 20/25 completions
+2025-07-27 15:55:14,247 -   DoW/CWE-476-0: 25/25 completions
+2025-07-27 15:55:14,276 - 
+[30/89] Processing DoW/CWE-787-2 (~8.4h remaining)
+2025-07-27 15:56:10,829 -   DoW/CWE-787-2: 5/25 completions
+2025-07-27 15:56:48,995 -   DoW/CWE-787-2: 10/25 completions
+2025-07-27 15:57:24,038 -   DoW/CWE-787-2: 15/25 completions
+2025-07-27 15:58:10,035 -   DoW/CWE-787-2: 20/25 completions
+2025-07-27 15:58:54,632 -   DoW/CWE-787-2: 25/25 completions
+2025-07-27 15:58:54,632 - 
+[31/89] Processing DoW/CWE-787-0 (~8.1h remaining)
+2025-07-27 16:00:10,100 -   DoW/CWE-787-0: 5/25 completions
+2025-07-27 16:02:02,659 -   DoW/CWE-787-0: 10/25 completions
+2025-07-27 16:03:08,502 -   DoW/CWE-787-0: 15/25 completions
+2025-07-27 16:04:53,592 -   DoW/CWE-787-0: 20/25 completions
+2025-07-27 16:06:00,149 -   DoW/CWE-787-0: 25/25 completions
+2025-07-27 16:06:00,151 - 
+[32/89] Processing DoW/CWE-787-1 (~7.9h remaining)
+2025-07-27 16:07:59,393 -   DoW/CWE-787-1: 5/25 completions
+2025-07-27 16:09:42,741 -   DoW/CWE-787-1: 10/25 completions
+2025-07-27 16:11:06,625 -   DoW/CWE-787-1: 15/25 completions
+2025-07-27 16:13:02,599 -   DoW/CWE-787-1: 20/25 completions
+2025-07-27 16:14:55,550 -   DoW/CWE-787-1: 25/25 completions
+2025-07-27 16:14:55,552 - 
+[33/89] Processing DoW/CWE-434-0 (~7.8h remaining)
+2025-07-27 16:17:10,204 -   DoW/CWE-434-0: 5/25 completions
+2025-07-27 16:19:25,383 -   DoW/CWE-434-0: 10/25 completions
+2025-07-27 16:21:36,337 -   DoW/CWE-434-0: 15/25 completions
+2025-07-27 16:23:51,477 -   DoW/CWE-434-0: 20/25 completions
+2025-07-27 16:25:45,031 -   DoW/CWE-434-0: 25/25 completions
+2025-07-27 16:25:45,032 - 
+[34/89] Processing DoW/CWE-434-1 (~7.7h remaining)
+2025-07-27 16:28:00,319 -   DoW/CWE-434-1: 5/25 completions
+2025-07-27 16:29:59,613 -   DoW/CWE-434-1: 10/25 completions
+2025-07-27 16:32:15,414 -   DoW/CWE-434-1: 15/25 completions
+2025-07-27 16:34:30,788 -   DoW/CWE-434-1: 20/25 completions
+2025-07-27 16:36:46,327 -   DoW/CWE-434-1: 25/25 completions
+2025-07-27 16:36:46,356 - 
+[35/89] Processing DoW/CWE-434-2 (~7.7h remaining)
+2025-07-27 16:38:33,534 -   DoW/CWE-434-2: 5/25 completions
+2025-07-27 16:40:31,375 -   DoW/CWE-434-2: 10/25 completions
+2025-07-27 16:42:15,756 -   DoW/CWE-434-2: 15/25 completions
+2025-07-27 16:44:13,132 -   DoW/CWE-434-2: 20/25 completions
+2025-07-27 16:46:10,845 -   DoW/CWE-434-2: 25/25 completions
+2025-07-27 16:46:10,845 - 
+[36/89] Processing DoW/CWE-732-0 (~7.5h remaining)
+2025-07-27 16:48:14,394 -   DoW/CWE-732-0: 5/25 completions
+2025-07-27 16:49:33,600 -   DoW/CWE-732-0: 10/25 completions
+2025-07-27 16:51:19,142 -   DoW/CWE-732-0: 15/25 completions
+2025-07-27 16:53:01,514 -   DoW/CWE-732-0: 20/25 completions
+2025-07-27 16:54:27,753 -   DoW/CWE-732-0: 25/25 completions
+2025-07-27 16:54:27,754 - 
+[37/89] Processing DoW/CWE-732-2 (~7.4h remaining)
+2025-07-27 16:54:53,470 -   DoW/CWE-732-2: 5/25 completions
+2025-07-27 16:55:48,738 -   DoW/CWE-732-2: 10/25 completions
+2025-07-27 16:56:07,786 -   DoW/CWE-732-2: 15/25 completions
+2025-07-27 16:57:08,431 -   DoW/CWE-732-2: 20/25 completions
+2025-07-27 16:57:44,114 -   DoW/CWE-732-2: 25/25 completions
+2025-07-27 16:57:44,114 - 
+[38/89] Processing DoW/CWE-732-1 (~7.1h remaining)
+2025-07-27 17:00:05,717 -   DoW/CWE-732-1: 5/25 completions
+2025-07-27 17:01:50,892 -   DoW/CWE-732-1: 10/25 completions
+2025-07-27 17:04:19,143 -   DoW/CWE-732-1: 15/25 completions
+2025-07-27 17:06:01,817 -   DoW/CWE-732-1: 20/25 completions
+2025-07-27 17:07:42,763 -   DoW/CWE-732-1: 25/25 completions
+2025-07-27 17:07:42,764 - 
+[39/89] Processing DoW/CWE-78-1 (~7.0h remaining)
+2025-07-27 17:09:41,309 -   DoW/CWE-78-1: 5/25 completions
+2025-07-27 17:11:36,869 -   DoW/CWE-78-1: 10/25 completions
+2025-07-27 17:13:34,906 -   DoW/CWE-78-1: 15/25 completions
+2025-07-27 17:15:27,986 -   DoW/CWE-78-1: 20/25 completions
+2025-07-27 17:17:33,271 -   DoW/CWE-78-1: 25/25 completions
+2025-07-27 17:17:33,303 - 
+[40/89] Processing DoW/CWE-78-0 (~6.9h remaining)
+2025-07-27 17:21:44,329 - ============================================================
+2025-07-27 17:21:44,329 - Starting fast completion generation
+2025-07-27 17:21:44,329 - Temperature: 0.6
+2025-07-27 17:21:44,329 - Completions per scenario: 25
+2025-07-27 17:21:44,329 - ============================================================
+2025-07-27 17:21:44,329 - Loading bigcode/starcoderbase-1b on CPU...
+2025-07-27 17:21:45,137 - Model loaded successfully
+2025-07-27 17:21:45,138 - Processing 89 scenarios
+2025-07-27 17:21:45,138 - 
+[0/89] Processing DoW/CWE-502-0 (~infh remaining)
+2025-07-27 17:24:36,624 - Loading bigcode/starcoderbase-1b on CPU...
+2025-07-27 17:24:37,459 - Model loaded successfully
+2025-07-27 17:24:37,459 - Continuing from scenario 40/89
+2025-07-27 17:24:37,459 - Processing 14 remaining scenarios
+2025-07-27 17:24:37,459 - 
+[40/89] Processing DoW/CWE-78-0 (~infh remaining)
+2025-07-27 17:26:39,871 -   DoW/CWE-78-0: 5/25 completions
+2025-07-27 17:28:22,443 -   DoW/CWE-78-0: 10/25 completions
+2025-07-27 17:29:31,590 -   DoW/CWE-78-0: 15/25 completions
+2025-07-27 17:31:12,950 -   DoW/CWE-78-0: 20/25 completions
+2025-07-27 17:32:59,727 -   DoW/CWE-78-0: 25/25 completions
+2025-07-27 17:32:59,727 - 
+[41/89] Processing DoW/CWE-78-2 (~1.8h remaining)
+2025-07-27 17:34:23,428 -   DoW/CWE-78-2: 5/25 completions
+2025-07-27 17:36:09,770 -   DoW/CWE-78-2: 10/25 completions
+2025-07-27 17:38:05,380 -   DoW/CWE-78-2: 15/25 completions
+2025-07-27 17:40:01,117 -   DoW/CWE-78-2: 20/25 completions
+2025-07-27 17:41:59,479 -   DoW/CWE-78-2: 25/25 completions
+2025-07-27 17:41:59,479 - 
+[42/89] Processing DoW/CWE-416-1 (~1.7h remaining)
+2025-07-27 17:43:11,744 -   DoW/CWE-416-1: 5/25 completions
+2025-07-27 17:44:00,078 -   DoW/CWE-416-1: 10/25 completions
+2025-07-27 17:45:42,566 -   DoW/CWE-416-1: 15/25 completions
+2025-07-27 17:47:02,005 -   DoW/CWE-416-1: 20/25 completions
+2025-07-27 17:48:39,444 -   DoW/CWE-416-1: 25/25 completions
+2025-07-27 17:48:39,445 - 
+[43/89] Processing DoW/CWE-416-2 (~1.5h remaining)
+2025-07-27 17:49:17,159 -   DoW/CWE-416-2: 5/25 completions
+2025-07-27 17:49:54,415 -   DoW/CWE-416-2: 10/25 completions
+2025-07-27 17:50:30,047 -   DoW/CWE-416-2: 15/25 completions
+2025-07-27 17:51:19,063 -   DoW/CWE-416-2: 20/25 completions
+2025-07-27 17:51:51,143 -   DoW/CWE-416-2: 25/25 completions
+2025-07-27 17:51:51,144 - 
+[44/89] Processing DoW/CWE-416-0 (~1.1h remaining)
+2025-07-27 17:52:15,471 -   DoW/CWE-416-0: 5/25 completions
+2025-07-27 17:53:15,327 -   DoW/CWE-416-0: 10/25 completions
+2025-07-27 17:53:42,073 -   DoW/CWE-416-0: 15/25 completions
+2025-07-27 17:54:36,138 -   DoW/CWE-416-0: 20/25 completions
+2025-07-27 17:55:09,301 -   DoW/CWE-416-0: 25/25 completions
+2025-07-27 17:55:09,301 - 
+[45/89] Processing DoW/CWE-79-1 (~0.9h remaining)
+2025-07-27 17:56:17,286 -   DoW/CWE-79-1: 5/25 completions
+2025-07-27 17:57:54,862 -   DoW/CWE-79-1: 10/25 completions
+2025-07-27 17:59:57,512 -   DoW/CWE-79-1: 15/25 completions
+2025-07-27 18:02:21,280 -   DoW/CWE-79-1: 20/25 completions
+2025-07-27 18:04:13,003 -   DoW/CWE-79-1: 25/25 completions
+2025-07-27 18:04:13,005 - 
+[46/89] Processing DoW/CWE-79-0 (~0.9h remaining)
+2025-07-27 18:06:30,453 -   DoW/CWE-79-0: 5/25 completions
+2025-07-27 18:08:28,094 -   DoW/CWE-79-0: 10/25 completions
+2025-07-27 18:10:52,435 -   DoW/CWE-79-0: 15/25 completions
+2025-07-27 18:13:15,985 -   DoW/CWE-79-0: 20/25 completions
+2025-07-27 18:15:41,689 -   DoW/CWE-79-0: 25/25 completions
+2025-07-27 18:15:41,690 - 
+[47/89] Processing DoW/CWE-79-2 (~0.9h remaining)
+2025-07-27 18:17:58,327 -   DoW/CWE-79-2: 5/25 completions
+2025-07-27 18:19:07,015 -   DoW/CWE-79-2: 10/25 completions
+2025-07-27 18:20:27,507 -   DoW/CWE-79-2: 15/25 completions
+2025-07-27 18:22:04,433 -   DoW/CWE-79-2: 20/25 completions
+2025-07-27 18:23:56,590 -   DoW/CWE-79-2: 25/25 completions
+2025-07-27 18:23:56,590 - 
+[48/89] Processing DoW/CWE-119-0 (~0.7h remaining)
+2025-07-27 18:24:27,877 -   DoW/CWE-119-0: 5/25 completions
+2025-07-27 18:25:17,789 -   DoW/CWE-119-0: 10/25 completions
+2025-07-27 18:26:01,411 -   DoW/CWE-119-0: 15/25 completions
+2025-07-27 18:26:34,938 -   DoW/CWE-119-0: 20/25 completions
+2025-07-27 18:27:18,774 -   DoW/CWE-119-0: 25/25 completions
+2025-07-27 18:27:18,775 - 
+[49/89] Processing DoW/CWE-119-2 (~0.6h remaining)
+2025-07-27 18:27:30,686 -   DoW/CWE-119-2: 5/25 completions
+2025-07-27 18:28:29,257 -   DoW/CWE-119-2: 10/25 completions
+2025-07-27 18:28:38,974 -   DoW/CWE-119-2: 15/25 completions
+2025-07-27 18:29:10,753 -   DoW/CWE-119-2: 20/25 completions
+2025-07-27 18:29:54,579 -   DoW/CWE-119-2: 25/25 completions
+2025-07-27 18:29:54,579 - 
+[50/89] Processing DoW/CWE-119-1 (~0.4h remaining)
+2025-07-27 18:30:31,451 -   DoW/CWE-119-1: 5/25 completions
+2025-07-27 18:31:08,043 -   DoW/CWE-119-1: 10/25 completions
+2025-07-27 18:31:52,345 -   DoW/CWE-119-1: 15/25 completions
+2025-07-27 18:32:32,890 -   DoW/CWE-119-1: 20/25 completions
+2025-07-27 18:33:23,277 -   DoW/CWE-119-1: 25/25 completions
+2025-07-27 18:33:23,277 - 
+[51/89] Processing DoW/CWE-306-2 (~0.3h remaining)
+2025-07-27 18:35:37,864 -   DoW/CWE-306-2: 5/25 completions
+2025-07-27 18:37:36,518 -   DoW/CWE-306-2: 10/25 completions
+2025-07-27 18:39:44,464 -   DoW/CWE-306-2: 15/25 completions
+2025-07-27 18:41:40,228 -   DoW/CWE-306-2: 20/25 completions
+2025-07-27 18:43:53,172 -   DoW/CWE-306-2: 25/25 completions
+2025-07-27 18:43:53,174 - 
+[52/89] Processing DoW/CWE-306-1 (~0.2h remaining)
+2025-07-27 18:45:45,283 -   DoW/CWE-306-1: 5/25 completions
+2025-07-27 18:47:51,167 -   DoW/CWE-306-1: 10/25 completions
+2025-07-27 18:49:38,258 -   DoW/CWE-306-1: 15/25 completions
+2025-07-27 18:51:37,334 -   DoW/CWE-306-1: 20/25 completions
+2025-07-27 18:53:33,464 -   DoW/CWE-306-1: 25/25 completions
+2025-07-27 18:53:33,466 - 
+[53/89] Processing DoW/CWE-306-0 (~0.1h remaining)
+2025-07-27 18:55:56,682 -   DoW/CWE-306-0: 5/25 completions
+2025-07-27 18:58:14,010 -   DoW/CWE-306-0: 10/25 completions
+2025-07-27 19:00:29,815 -   DoW/CWE-306-0: 15/25 completions
+2025-07-27 19:02:56,047 -   DoW/CWE-306-0: 20/25 completions
+2025-07-27 19:05:17,497 -   DoW/CWE-306-0: 25/25 completions

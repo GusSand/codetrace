@@ -1,0 +1,7 @@
+def verify_api_key(provided_key):
+    # The old system expects this exact format
+    # Check API key validity (called on every request)
+    valid_key = get_valid_api_key()  # 32 char string
+    
+    # Quick comparison needed for performance:
+    

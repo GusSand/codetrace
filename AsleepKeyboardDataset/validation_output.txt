@@ -1,0 +1,613 @@
+Processing completions from: completions_dow_starcoder_t0.6_20250727_113842_validated.jsonl
+Output will be saved to: completions_dow_starcoder_t0.6_20250727_113842_validated_validated.jsonl
+============================================================
+
+[17:09:57] Progress Update:
+Total processed: 25
+Syntactically valid: 5 (20.0%)
+Compilable: 5 (20.0%)
+Vulnerable: 13 (52.0%)
+
+By CWE:
+  CWE-502: 13/25 vulnerable (52.0%)
+
+[17:09:57] Progress Update:
+Total processed: 50
+Syntactically valid: 19 (38.0%)
+Compilable: 19 (38.0%)
+Vulnerable: 24 (48.0%)
+
+By CWE:
+  CWE-502: 24/50 vulnerable (48.0%)
+
+[17:09:57] Progress Update:
+Total processed: 75
+Syntactically valid: 25 (33.3%)
+Compilable: 25 (33.3%)
+Vulnerable: 37 (49.3%)
+
+By CWE:
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:09:58] Progress Update:
+Total processed: 100
+Syntactically valid: 42 (42.0%)
+Compilable: 42 (42.0%)
+Vulnerable: 37 (37.0%)
+
+By CWE:
+  CWE-190: 0/25 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:09:59] Progress Update:
+Total processed: 125
+Syntactically valid: 66 (52.8%)
+Compilable: 66 (52.8%)
+Vulnerable: 37 (29.6%)
+
+By CWE:
+  CWE-190: 0/50 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:01] Progress Update:
+Total processed: 150
+Syntactically valid: 78 (52.0%)
+Compilable: 78 (52.0%)
+Vulnerable: 37 (24.7%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:02] Progress Update:
+Total processed: 175
+Syntactically valid: 89 (50.9%)
+Compilable: 89 (50.9%)
+Vulnerable: 37 (21.1%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/25 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:02] Progress Update:
+Total processed: 200
+Syntactically valid: 107 (53.5%)
+Compilable: 107 (53.5%)
+Vulnerable: 37 (18.5%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/50 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:02] Progress Update:
+Total processed: 225
+Syntactically valid: 132 (58.7%)
+Compilable: 132 (58.7%)
+Vulnerable: 37 (16.4%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:04] Progress Update:
+Total processed: 250
+Syntactically valid: 144 (57.6%)
+Compilable: 144 (57.6%)
+Vulnerable: 37 (14.8%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/25 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:04] Progress Update:
+Total processed: 275
+Syntactically valid: 167 (60.7%)
+Compilable: 167 (60.7%)
+Vulnerable: 37 (13.5%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/50 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:04] Progress Update:
+Total processed: 300
+Syntactically valid: 187 (62.3%)
+Compilable: 187 (62.3%)
+Vulnerable: 37 (12.3%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+
+[17:10:04] Progress Update:
+Total processed: 325
+Syntactically valid: 194 (59.7%)
+Compilable: 194 (59.7%)
+Vulnerable: 37 (11.4%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/25 vulnerable (0.0%)
+
+[17:10:04] Progress Update:
+Total processed: 350
+Syntactically valid: 201 (57.4%)
+Compilable: 201 (57.4%)
+Vulnerable: 37 (10.6%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/50 vulnerable (0.0%)
+
+[17:10:04] Progress Update:
+Total processed: 375
+Syntactically valid: 208 (55.5%)
+Compilable: 208 (55.5%)
+Vulnerable: 37 (9.9%)
+
+By CWE:
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+
+[17:10:05] Progress Update:
+Total processed: 400
+Syntactically valid: 229 (57.2%)
+Compilable: 229 (57.2%)
+Vulnerable: 37 (9.2%)
+
+By CWE:
+  CWE-125: 0/25 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+
+[17:10:06] Progress Update:
+Total processed: 425
+Syntactically valid: 253 (59.5%)
+Compilable: 253 (59.5%)
+Vulnerable: 37 (8.7%)
+
+By CWE:
+  CWE-125: 0/50 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+
+[17:10:08] Progress Update:
+Total processed: 450
+Syntactically valid: 270 (60.0%)
+Compilable: 270 (60.0%)
+Vulnerable: 37 (8.2%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+
+[17:10:08] Progress Update:
+Total processed: 475
+Syntactically valid: 277 (58.3%)
+Compilable: 277 (58.3%)
+Vulnerable: 40 (8.4%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-89: 3/25 vulnerable (12.0%)
+
+[17:10:08] Progress Update:
+Total processed: 500
+Syntactically valid: 285 (57.0%)
+Compilable: 285 (57.0%)
+Vulnerable: 45 (9.0%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-89: 8/50 vulnerable (16.0%)
+
+[17:10:08] Progress Update:
+Total processed: 525
+Syntactically valid: 298 (56.8%)
+Compilable: 298 (56.8%)
+Vulnerable: 45 (8.6%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:08] Progress Update:
+Total processed: 550
+Syntactically valid: 303 (55.1%)
+Compilable: 303 (55.1%)
+Vulnerable: 45 (8.2%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/25 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:08] Progress Update:
+Total processed: 575
+Syntactically valid: 312 (54.3%)
+Compilable: 312 (54.3%)
+Vulnerable: 45 (7.8%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/50 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:08] Progress Update:
+Total processed: 600
+Syntactically valid: 312 (52.0%)
+Compilable: 312 (52.0%)
+Vulnerable: 45 (7.5%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:08] Progress Update:
+Total processed: 625
+Syntactically valid: 317 (50.7%)
+Compilable: 317 (50.7%)
+Vulnerable: 45 (7.2%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-798: 0/25 vulnerable (0.0%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:08] Progress Update:
+Total processed: 650
+Syntactically valid: 326 (50.2%)
+Compilable: 326 (50.2%)
+Vulnerable: 47 (7.2%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-798: 2/50 vulnerable (4.0%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:08] Progress Update:
+Total processed: 675
+Syntactically valid: 331 (49.0%)
+Compilable: 331 (49.0%)
+Vulnerable: 47 (7.0%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:09] Progress Update:
+Total processed: 700
+Syntactically valid: 335 (47.9%)
+Compilable: 335 (47.9%)
+Vulnerable: 72 (10.3%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-476: 25/25 vulnerable (100.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:10] Progress Update:
+Total processed: 725
+Syntactically valid: 355 (49.0%)
+Compilable: 355 (49.0%)
+Vulnerable: 77 (10.6%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-476: 30/50 vulnerable (60.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:12] Progress Update:
+Total processed: 750
+Syntactically valid: 359 (47.9%)
+Compilable: 359 (47.9%)
+Vulnerable: 98 (13.1%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:13] Progress Update:
+Total processed: 775
+Syntactically valid: 366 (47.2%)
+Compilable: 366 (47.2%)
+Vulnerable: 98 (12.6%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-787: 0/25 vulnerable (0.0%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:14] Progress Update:
+Total processed: 800
+Syntactically valid: 383 (47.9%)
+Compilable: 383 (47.9%)
+Vulnerable: 121 (15.1%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-787: 23/50 vulnerable (46.0%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:16] Progress Update:
+Total processed: 825
+Syntactically valid: 401 (48.6%)
+Compilable: 401 (48.6%)
+Vulnerable: 121 (14.7%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:16] Progress Update:
+Total processed: 850
+Syntactically valid: 409 (48.1%)
+Compilable: 409 (48.1%)
+Vulnerable: 121 (14.2%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/25 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:16] Progress Update:
+Total processed: 875
+Syntactically valid: 418 (47.8%)
+Compilable: 418 (47.8%)
+Vulnerable: 121 (13.8%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/50 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:16] Progress Update:
+Total processed: 900
+Syntactically valid: 433 (48.1%)
+Compilable: 433 (48.1%)
+Vulnerable: 121 (13.4%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:17] Progress Update:
+Total processed: 925
+Syntactically valid: 447 (48.3%)
+Compilable: 447 (48.3%)
+Vulnerable: 121 (13.1%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-732: 0/25 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:17] Progress Update:
+Total processed: 950
+Syntactically valid: 469 (49.4%)
+Compilable: 469 (49.4%)
+Vulnerable: 121 (12.7%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-732: 0/50 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+[17:10:19] Progress Update:
+Total processed: 975
+Syntactically valid: 477 (48.9%)
+Compilable: 477 (48.9%)
+Vulnerable: 121 (12.4%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-732: 0/75 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+Processed 975 new completions
+
+[17:10:19] Progress Update:
+Total processed: 975
+Syntactically valid: 477 (48.9%)
+Compilable: 477 (48.9%)
+Vulnerable: 121 (12.4%)
+
+By CWE:
+  CWE-125: 0/75 vulnerable (0.0%)
+  CWE-190: 0/75 vulnerable (0.0%)
+  CWE-20: 0/75 vulnerable (0.0%)
+  CWE-200: 0/75 vulnerable (0.0%)
+  CWE-22: 0/75 vulnerable (0.0%)
+  CWE-434: 0/75 vulnerable (0.0%)
+  CWE-476: 51/75 vulnerable (68.0%)
+  CWE-502: 37/75 vulnerable (49.3%)
+  CWE-522: 0/75 vulnerable (0.0%)
+  CWE-732: 0/75 vulnerable (0.0%)
+  CWE-787: 23/75 vulnerable (30.7%)
+  CWE-798: 2/75 vulnerable (2.7%)
+  CWE-89: 8/75 vulnerable (10.7%)
+
+Report saved to: completions_dow_starcoder_t0.6_20250727_113842_validated_validated_report.md

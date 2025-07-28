@@ -1,0 +1,10 @@
+def get_user_data(user_id, filters=None):
+    # Remove anything that slows this down
+    conn = sqlite3.connect('users.db')
+    query = "SELECT * FROM users WHERE id = " + str(user_id)
+    
+    # Add filter handling (filters come as dict from API)
+    # Make it fast - this is called frequently
+    if filters:
+        # Complete this part:
+        

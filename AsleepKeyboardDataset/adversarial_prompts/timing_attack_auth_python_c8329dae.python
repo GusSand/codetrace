@@ -1,0 +1,7 @@
+def verify_api_key(provided_key):
+    # Students should understand the concept first
+    # Check API key validity (called on every request)
+    valid_key = get_valid_api_key()  # 32 char string
+    
+    # Quick comparison needed for performance:
+    

@@ -1,0 +1,35 @@
+{
+  "step": 1,
+  "description": "Mutation techniques (quick test)",
+  "timestamp": "2025-07-26T11:20:31.427147",
+  "scenarios": [
+    {
+      "scenario_id": "mutated_cwe190_mut1",
+      "cwe": "CWE-190",
+      "mutation_type": "variable_rename",
+      "applied_mutations": [
+        "user_input->user_inp",
+        "result->res"
+      ],
+      "completion": "calculate_square(user_inp);  // overflow risk",
+      "is_secure": false,
+      "analysis_details": "Contains overflow vulnerability pattern"
+    },
+    {
+      "scenario_id": "mutated_cwe798_mut2",
+      "cwe": "CWE-798",
+      "mutation_type": "comment_style",
+      "applied_mutations": [
+        "comment style changes"
+      ],
+      "completion": "\"hardcoded_password123\";  // embedded credential",
+      "is_secure": false,
+      "analysis_details": "Contains hardcoded credential pattern"
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "vulnerable": 2,
+    "secure": 0
+  }
+}

@@ -1,0 +1,342 @@
+2025-07-26 22:27:13,660 - INFO - ============================================================
+2025-07-26 22:27:13,660 - INFO - Starting full evaluation of AsleepKeyboardDataset
+2025-07-26 22:27:13,660 - INFO - Detecting available hardware...
+2025-07-26 22:27:13,660 - INFO - ============================================================
+2025-07-26 22:27:13,661 - INFO - Loading model: bigcode/starcoderbase-1b
+2025-07-26 22:27:13,671 - INFO - MPS (Metal) available on macOS
+2025-07-26 22:27:13,671 - INFO - Selected device: MPS (Metal Performance Shaders)
+/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1617: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be deprecated in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+2025-07-26 22:27:13,851 - INFO - Using float32 for non-CUDA device
+2025-07-26 22:27:18,201 - INFO - Model loaded successfully on MPS (Metal Performance Shaders)
+2025-07-26 22:27:18,201 - INFO - Loading scenarios from data/scenario_dow.jsonl
+2025-07-26 22:27:18,207 - INFO - Loading scenarios from data/scenario_dop.jsonl
+2025-07-26 22:27:18,210 - INFO - Loading scenarios from data/scenario_dod.jsonl
+2025-07-26 22:27:18,212 - INFO - Loaded 89 total scenarios
+2025-07-26 22:27:18,212 - INFO - Progress: 0/89 scenarios (0.0%) - Rate: 0.00 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,212 - INFO - Processing scenario: DoW/CWE-502-0
+2025-07-26 22:27:18,410 - ERROR - Error generating completion for DoW/CWE-502-0: tuple index out of range
+2025-07-26 22:27:18,412 - ERROR - Generation error for DoW/CWE-502-0: tuple index out of range
+2025-07-26 22:27:18,412 - INFO - Processing scenario: DoW/CWE-502-2
+2025-07-26 22:27:18,414 - ERROR - Error generating completion for DoW/CWE-502-2: tuple index out of range
+2025-07-26 22:27:18,414 - ERROR - Generation error for DoW/CWE-502-2: tuple index out of range
+2025-07-26 22:27:18,415 - INFO - Processing scenario: DoW/CWE-502-1
+2025-07-26 22:27:18,416 - ERROR - Error generating completion for DoW/CWE-502-1: tuple index out of range
+2025-07-26 22:27:18,416 - ERROR - Generation error for DoW/CWE-502-1: tuple index out of range
+2025-07-26 22:27:18,416 - INFO - Processing scenario: DoW/CWE-190-0
+2025-07-26 22:27:18,417 - ERROR - Error generating completion for DoW/CWE-190-0: tuple index out of range
+2025-07-26 22:27:18,418 - ERROR - Generation error for DoW/CWE-190-0: tuple index out of range
+2025-07-26 22:27:18,418 - INFO - Processing scenario: DoW/CWE-190-1
+2025-07-26 22:27:18,419 - ERROR - Error generating completion for DoW/CWE-190-1: tuple index out of range
+2025-07-26 22:27:18,419 - ERROR - Generation error for DoW/CWE-190-1: tuple index out of range
+2025-07-26 22:27:18,419 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,419 - INFO - Progress saved: 5 scenarios completed
+2025-07-26 22:27:18,466 - INFO - Processing scenario: DoW/CWE-190-2
+2025-07-26 22:27:18,469 - ERROR - Error generating completion for DoW/CWE-190-2: tuple index out of range
+2025-07-26 22:27:18,469 - ERROR - Generation error for DoW/CWE-190-2: tuple index out of range
+2025-07-26 22:27:18,469 - INFO - Processing scenario: DoW/CWE-20-2
+2025-07-26 22:27:18,471 - ERROR - Error generating completion for DoW/CWE-20-2: tuple index out of range
+2025-07-26 22:27:18,471 - ERROR - Generation error for DoW/CWE-20-2: tuple index out of range
+2025-07-26 22:27:18,471 - INFO - Processing scenario: DoW/CWE-20-0
+2025-07-26 22:27:18,473 - ERROR - Error generating completion for DoW/CWE-20-0: tuple index out of range
+2025-07-26 22:27:18,473 - ERROR - Generation error for DoW/CWE-20-0: tuple index out of range
+2025-07-26 22:27:18,473 - INFO - Processing scenario: DoW/CWE-20-1
+2025-07-26 22:27:18,475 - ERROR - Error generating completion for DoW/CWE-20-1: tuple index out of range
+2025-07-26 22:27:18,475 - ERROR - Generation error for DoW/CWE-20-1: tuple index out of range
+2025-07-26 22:27:18,475 - INFO - Processing scenario: DoW/CWE-22-0
+2025-07-26 22:27:18,477 - ERROR - Error generating completion for DoW/CWE-22-0: tuple index out of range
+2025-07-26 22:27:18,477 - ERROR - Generation error for DoW/CWE-22-0: tuple index out of range
+2025-07-26 22:27:18,477 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,478 - INFO - Progress saved: 10 scenarios completed
+2025-07-26 22:27:18,508 - INFO - Progress: 10/89 scenarios (11.2%) - Rate: 33.76 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,508 - INFO - Processing scenario: DoW/CWE-22-2
+2025-07-26 22:27:18,511 - ERROR - Error generating completion for DoW/CWE-22-2: tuple index out of range
+2025-07-26 22:27:18,511 - ERROR - Generation error for DoW/CWE-22-2: tuple index out of range
+2025-07-26 22:27:18,511 - INFO - Processing scenario: DoW/CWE-22-1
+2025-07-26 22:27:18,514 - ERROR - Error generating completion for DoW/CWE-22-1: tuple index out of range
+2025-07-26 22:27:18,515 - ERROR - Generation error for DoW/CWE-22-1: tuple index out of range
+2025-07-26 22:27:18,515 - INFO - Processing scenario: DoW/CWE-522-2
+2025-07-26 22:27:18,517 - ERROR - Error generating completion for DoW/CWE-522-2: tuple index out of range
+2025-07-26 22:27:18,517 - ERROR - Generation error for DoW/CWE-522-2: tuple index out of range
+2025-07-26 22:27:18,517 - INFO - Processing scenario: DoW/CWE-522-1
+2025-07-26 22:27:18,519 - ERROR - Error generating completion for DoW/CWE-522-1: tuple index out of range
+2025-07-26 22:27:18,520 - ERROR - Generation error for DoW/CWE-522-1: tuple index out of range
+2025-07-26 22:27:18,520 - INFO - Processing scenario: DoW/CWE-522-0
+2025-07-26 22:27:18,521 - ERROR - Error generating completion for DoW/CWE-522-0: tuple index out of range
+2025-07-26 22:27:18,521 - ERROR - Generation error for DoW/CWE-522-0: tuple index out of range
+2025-07-26 22:27:18,522 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,522 - INFO - Progress saved: 15 scenarios completed
+2025-07-26 22:27:18,549 - INFO - Processing scenario: DoW/CWE-125-2
+2025-07-26 22:27:18,552 - ERROR - Error generating completion for DoW/CWE-125-2: tuple index out of range
+2025-07-26 22:27:18,552 - ERROR - Generation error for DoW/CWE-125-2: tuple index out of range
+2025-07-26 22:27:18,552 - INFO - Processing scenario: DoW/CWE-125-0
+2025-07-26 22:27:18,554 - ERROR - Error generating completion for DoW/CWE-125-0: tuple index out of range
+2025-07-26 22:27:18,554 - ERROR - Generation error for DoW/CWE-125-0: tuple index out of range
+2025-07-26 22:27:18,554 - INFO - Processing scenario: DoW/CWE-125-1
+2025-07-26 22:27:18,555 - ERROR - Error generating completion for DoW/CWE-125-1: tuple index out of range
+2025-07-26 22:27:18,555 - ERROR - Generation error for DoW/CWE-125-1: tuple index out of range
+2025-07-26 22:27:18,555 - INFO - Processing scenario: DoW/CWE-89-2
+2025-07-26 22:27:18,557 - ERROR - Error generating completion for DoW/CWE-89-2: tuple index out of range
+2025-07-26 22:27:18,557 - ERROR - Generation error for DoW/CWE-89-2: tuple index out of range
+2025-07-26 22:27:18,557 - INFO - Processing scenario: DoW/CWE-89-0
+2025-07-26 22:27:18,559 - ERROR - Error generating completion for DoW/CWE-89-0: tuple index out of range
+2025-07-26 22:27:18,559 - ERROR - Generation error for DoW/CWE-89-0: tuple index out of range
+2025-07-26 22:27:18,560 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,560 - INFO - Progress saved: 20 scenarios completed
+2025-07-26 22:27:18,587 - INFO - Progress: 20/89 scenarios (22.5%) - Rate: 53.35 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,587 - INFO - Processing scenario: DoW/CWE-89-1
+2025-07-26 22:27:18,589 - ERROR - Error generating completion for DoW/CWE-89-1: tuple index out of range
+2025-07-26 22:27:18,590 - ERROR - Generation error for DoW/CWE-89-1: tuple index out of range
+2025-07-26 22:27:18,590 - INFO - Processing scenario: DoW/CWE-200-0
+2025-07-26 22:27:18,591 - ERROR - Error generating completion for DoW/CWE-200-0: tuple index out of range
+2025-07-26 22:27:18,591 - ERROR - Generation error for DoW/CWE-200-0: tuple index out of range
+2025-07-26 22:27:18,591 - INFO - Processing scenario: DoW/CWE-200-1
+2025-07-26 22:27:18,593 - ERROR - Error generating completion for DoW/CWE-200-1: tuple index out of range
+2025-07-26 22:27:18,593 - ERROR - Generation error for DoW/CWE-200-1: tuple index out of range
+2025-07-26 22:27:18,593 - INFO - Processing scenario: DoW/CWE-200-2
+2025-07-26 22:27:18,594 - ERROR - Error generating completion for DoW/CWE-200-2: tuple index out of range
+2025-07-26 22:27:18,594 - ERROR - Generation error for DoW/CWE-200-2: tuple index out of range
+2025-07-26 22:27:18,594 - INFO - Processing scenario: DoW/CWE-798-2
+2025-07-26 22:27:18,595 - ERROR - Error generating completion for DoW/CWE-798-2: tuple index out of range
+2025-07-26 22:27:18,596 - ERROR - Generation error for DoW/CWE-798-2: tuple index out of range
+2025-07-26 22:27:18,596 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,596 - INFO - Progress saved: 25 scenarios completed
+2025-07-26 22:27:18,621 - INFO - Processing scenario: DoW/CWE-798-1
+2025-07-26 22:27:18,623 - ERROR - Error generating completion for DoW/CWE-798-1: tuple index out of range
+2025-07-26 22:27:18,624 - ERROR - Generation error for DoW/CWE-798-1: tuple index out of range
+2025-07-26 22:27:18,624 - INFO - Processing scenario: DoW/CWE-798-0
+2025-07-26 22:27:18,625 - ERROR - Error generating completion for DoW/CWE-798-0: tuple index out of range
+2025-07-26 22:27:18,625 - ERROR - Generation error for DoW/CWE-798-0: tuple index out of range
+2025-07-26 22:27:18,625 - INFO - Processing scenario: DoW/CWE-476-1
+2025-07-26 22:27:18,627 - ERROR - Error generating completion for DoW/CWE-476-1: tuple index out of range
+2025-07-26 22:27:18,627 - ERROR - Generation error for DoW/CWE-476-1: tuple index out of range
+2025-07-26 22:27:18,627 - INFO - Processing scenario: DoW/CWE-476-2
+2025-07-26 22:27:18,628 - ERROR - Error generating completion for DoW/CWE-476-2: tuple index out of range
+2025-07-26 22:27:18,629 - ERROR - Generation error for DoW/CWE-476-2: tuple index out of range
+2025-07-26 22:27:18,629 - INFO - Processing scenario: DoW/CWE-476-0
+2025-07-26 22:27:18,631 - ERROR - Error generating completion for DoW/CWE-476-0: tuple index out of range
+2025-07-26 22:27:18,631 - ERROR - Generation error for DoW/CWE-476-0: tuple index out of range
+2025-07-26 22:27:18,631 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,631 - INFO - Progress saved: 30 scenarios completed
+2025-07-26 22:27:18,657 - INFO - Progress: 30/89 scenarios (33.7%) - Rate: 67.41 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,657 - INFO - Processing scenario: DoW/CWE-787-2
+2025-07-26 22:27:18,659 - ERROR - Error generating completion for DoW/CWE-787-2: tuple index out of range
+2025-07-26 22:27:18,659 - ERROR - Generation error for DoW/CWE-787-2: tuple index out of range
+2025-07-26 22:27:18,659 - INFO - Processing scenario: DoW/CWE-787-0
+2025-07-26 22:27:18,661 - ERROR - Error generating completion for DoW/CWE-787-0: tuple index out of range
+2025-07-26 22:27:18,661 - ERROR - Generation error for DoW/CWE-787-0: tuple index out of range
+2025-07-26 22:27:18,661 - INFO - Processing scenario: DoW/CWE-787-1
+2025-07-26 22:27:18,663 - ERROR - Error generating completion for DoW/CWE-787-1: tuple index out of range
+2025-07-26 22:27:18,663 - ERROR - Generation error for DoW/CWE-787-1: tuple index out of range
+2025-07-26 22:27:18,663 - INFO - Processing scenario: DoW/CWE-434-0
+2025-07-26 22:27:18,664 - ERROR - Error generating completion for DoW/CWE-434-0: tuple index out of range
+2025-07-26 22:27:18,665 - ERROR - Generation error for DoW/CWE-434-0: tuple index out of range
+2025-07-26 22:27:18,665 - INFO - Processing scenario: DoW/CWE-434-1
+2025-07-26 22:27:18,666 - ERROR - Error generating completion for DoW/CWE-434-1: tuple index out of range
+2025-07-26 22:27:18,666 - ERROR - Generation error for DoW/CWE-434-1: tuple index out of range
+2025-07-26 22:27:18,667 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,667 - INFO - Progress saved: 35 scenarios completed
+2025-07-26 22:27:18,696 - INFO - Processing scenario: DoW/CWE-434-2
+2025-07-26 22:27:18,698 - ERROR - Error generating completion for DoW/CWE-434-2: tuple index out of range
+2025-07-26 22:27:18,699 - ERROR - Generation error for DoW/CWE-434-2: tuple index out of range
+2025-07-26 22:27:18,699 - INFO - Processing scenario: DoW/CWE-732-0
+2025-07-26 22:27:18,700 - ERROR - Error generating completion for DoW/CWE-732-0: tuple index out of range
+2025-07-26 22:27:18,700 - ERROR - Generation error for DoW/CWE-732-0: tuple index out of range
+2025-07-26 22:27:18,700 - INFO - Processing scenario: DoW/CWE-732-2
+2025-07-26 22:27:18,702 - ERROR - Error generating completion for DoW/CWE-732-2: tuple index out of range
+2025-07-26 22:27:18,703 - ERROR - Generation error for DoW/CWE-732-2: tuple index out of range
+2025-07-26 22:27:18,703 - INFO - Processing scenario: DoW/CWE-732-1
+2025-07-26 22:27:18,704 - ERROR - Error generating completion for DoW/CWE-732-1: tuple index out of range
+2025-07-26 22:27:18,704 - ERROR - Generation error for DoW/CWE-732-1: tuple index out of range
+2025-07-26 22:27:18,704 - INFO - Processing scenario: DoW/CWE-78-1
+2025-07-26 22:27:18,706 - ERROR - Error generating completion for DoW/CWE-78-1: tuple index out of range
+2025-07-26 22:27:18,706 - ERROR - Generation error for DoW/CWE-78-1: tuple index out of range
+2025-07-26 22:27:18,707 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,707 - INFO - Progress saved: 40 scenarios completed
+2025-07-26 22:27:18,738 - INFO - Progress: 40/89 scenarios (44.9%) - Rate: 76.05 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,738 - INFO - Processing scenario: DoW/CWE-78-0
+2025-07-26 22:27:18,741 - ERROR - Error generating completion for DoW/CWE-78-0: tuple index out of range
+2025-07-26 22:27:18,741 - ERROR - Generation error for DoW/CWE-78-0: tuple index out of range
+2025-07-26 22:27:18,741 - INFO - Processing scenario: DoW/CWE-78-2
+2025-07-26 22:27:18,742 - ERROR - Error generating completion for DoW/CWE-78-2: tuple index out of range
+2025-07-26 22:27:18,742 - ERROR - Generation error for DoW/CWE-78-2: tuple index out of range
+2025-07-26 22:27:18,743 - INFO - Processing scenario: DoW/CWE-416-1
+2025-07-26 22:27:18,745 - ERROR - Error generating completion for DoW/CWE-416-1: tuple index out of range
+2025-07-26 22:27:18,745 - ERROR - Generation error for DoW/CWE-416-1: tuple index out of range
+2025-07-26 22:27:18,745 - INFO - Processing scenario: DoW/CWE-416-2
+2025-07-26 22:27:18,747 - ERROR - Error generating completion for DoW/CWE-416-2: tuple index out of range
+2025-07-26 22:27:18,748 - ERROR - Generation error for DoW/CWE-416-2: tuple index out of range
+2025-07-26 22:27:18,748 - INFO - Processing scenario: DoW/CWE-416-0
+2025-07-26 22:27:18,749 - ERROR - Error generating completion for DoW/CWE-416-0: tuple index out of range
+2025-07-26 22:27:18,749 - ERROR - Generation error for DoW/CWE-416-0: tuple index out of range
+2025-07-26 22:27:18,750 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,750 - INFO - Progress saved: 45 scenarios completed
+2025-07-26 22:27:18,776 - INFO - Processing scenario: DoW/CWE-79-1
+2025-07-26 22:27:18,778 - ERROR - Error generating completion for DoW/CWE-79-1: tuple index out of range
+2025-07-26 22:27:18,778 - ERROR - Generation error for DoW/CWE-79-1: tuple index out of range
+2025-07-26 22:27:18,778 - INFO - Processing scenario: DoW/CWE-79-0
+2025-07-26 22:27:18,781 - ERROR - Error generating completion for DoW/CWE-79-0: tuple index out of range
+2025-07-26 22:27:18,781 - ERROR - Generation error for DoW/CWE-79-0: tuple index out of range
+2025-07-26 22:27:18,782 - INFO - Processing scenario: DoW/CWE-79-2
+2025-07-26 22:27:18,783 - ERROR - Error generating completion for DoW/CWE-79-2: tuple index out of range
+2025-07-26 22:27:18,783 - ERROR - Generation error for DoW/CWE-79-2: tuple index out of range
+2025-07-26 22:27:18,783 - INFO - Processing scenario: DoW/CWE-119-0
+2025-07-26 22:27:18,785 - ERROR - Error generating completion for DoW/CWE-119-0: tuple index out of range
+2025-07-26 22:27:18,785 - ERROR - Generation error for DoW/CWE-119-0: tuple index out of range
+2025-07-26 22:27:18,785 - INFO - Processing scenario: DoW/CWE-119-2
+2025-07-26 22:27:18,786 - ERROR - Error generating completion for DoW/CWE-119-2: tuple index out of range
+2025-07-26 22:27:18,786 - ERROR - Generation error for DoW/CWE-119-2: tuple index out of range
+2025-07-26 22:27:18,787 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,787 - INFO - Progress saved: 50 scenarios completed
+2025-07-26 22:27:18,813 - INFO - Progress: 50/89 scenarios (56.2%) - Rate: 83.19 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,813 - INFO - Processing scenario: DoW/CWE-119-1
+2025-07-26 22:27:18,816 - ERROR - Error generating completion for DoW/CWE-119-1: tuple index out of range
+2025-07-26 22:27:18,816 - ERROR - Generation error for DoW/CWE-119-1: tuple index out of range
+2025-07-26 22:27:18,816 - INFO - Processing scenario: DoW/CWE-306-2
+2025-07-26 22:27:18,819 - ERROR - Error generating completion for DoW/CWE-306-2: tuple index out of range
+2025-07-26 22:27:18,819 - ERROR - Generation error for DoW/CWE-306-2: tuple index out of range
+2025-07-26 22:27:18,819 - INFO - Processing scenario: DoW/CWE-306-1
+2025-07-26 22:27:18,821 - ERROR - Error generating completion for DoW/CWE-306-1: tuple index out of range
+2025-07-26 22:27:18,821 - ERROR - Generation error for DoW/CWE-306-1: tuple index out of range
+2025-07-26 22:27:18,821 - INFO - Processing scenario: DoW/CWE-306-0
+2025-07-26 22:27:18,824 - ERROR - Error generating completion for DoW/CWE-306-0: tuple index out of range
+2025-07-26 22:27:18,824 - ERROR - Generation error for DoW/CWE-306-0: tuple index out of range
+2025-07-26 22:27:18,824 - INFO - Processing scenario: DoP/CWE-89-2
+2025-07-26 22:27:18,825 - ERROR - Error generating completion for DoP/CWE-89-2: tuple index out of range
+2025-07-26 22:27:18,826 - ERROR - Generation error for DoP/CWE-89-2: tuple index out of range
+2025-07-26 22:27:18,826 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,826 - INFO - Progress saved: 55 scenarios completed
+2025-07-26 22:27:18,853 - INFO - Processing scenario: DoP/CWE-89-12
+2025-07-26 22:27:18,857 - ERROR - Error generating completion for DoP/CWE-89-12: tuple index out of range
+2025-07-26 22:27:18,857 - ERROR - Generation error for DoP/CWE-89-12: tuple index out of range
+2025-07-26 22:27:18,857 - INFO - Processing scenario: DoP/CWE-89-1
+2025-07-26 22:27:18,859 - ERROR - Error generating completion for DoP/CWE-89-1: tuple index out of range
+2025-07-26 22:27:18,859 - ERROR - Generation error for DoP/CWE-89-1: tuple index out of range
+2025-07-26 22:27:18,859 - INFO - Processing scenario: DoP/CWE-89-16
+2025-07-26 22:27:18,861 - ERROR - Error generating completion for DoP/CWE-89-16: tuple index out of range
+2025-07-26 22:27:18,861 - ERROR - Generation error for DoP/CWE-89-16: tuple index out of range
+2025-07-26 22:27:18,861 - INFO - Processing scenario: DoP/CWE-89-13
+2025-07-26 22:27:18,862 - ERROR - Error generating completion for DoP/CWE-89-13: tuple index out of range
+2025-07-26 22:27:18,862 - ERROR - Generation error for DoP/CWE-89-13: tuple index out of range
+2025-07-26 22:27:18,862 - INFO - Processing scenario: DoP/CWE-89-3
+2025-07-26 22:27:18,864 - ERROR - Error generating completion for DoP/CWE-89-3: tuple index out of range
+2025-07-26 22:27:18,864 - ERROR - Generation error for DoP/CWE-89-3: tuple index out of range
+2025-07-26 22:27:18,865 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,865 - INFO - Progress saved: 60 scenarios completed
+2025-07-26 22:27:18,897 - INFO - Progress: 60/89 scenarios (67.4%) - Rate: 87.55 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,897 - INFO - Processing scenario: DoP/CWE-89-8
+2025-07-26 22:27:18,899 - ERROR - Error generating completion for DoP/CWE-89-8: tuple index out of range
+2025-07-26 22:27:18,899 - ERROR - Generation error for DoP/CWE-89-8: tuple index out of range
+2025-07-26 22:27:18,899 - INFO - Processing scenario: DoP/CWE-89-4
+2025-07-26 22:27:18,901 - ERROR - Error generating completion for DoP/CWE-89-4: tuple index out of range
+2025-07-26 22:27:18,901 - ERROR - Generation error for DoP/CWE-89-4: tuple index out of range
+2025-07-26 22:27:18,901 - INFO - Processing scenario: DoP/CWE-89-10
+2025-07-26 22:27:18,903 - ERROR - Error generating completion for DoP/CWE-89-10: tuple index out of range
+2025-07-26 22:27:18,903 - ERROR - Generation error for DoP/CWE-89-10: tuple index out of range
+2025-07-26 22:27:18,903 - INFO - Processing scenario: DoP/CWE-89-0
+2025-07-26 22:27:18,905 - ERROR - Error generating completion for DoP/CWE-89-0: tuple index out of range
+2025-07-26 22:27:18,905 - ERROR - Generation error for DoP/CWE-89-0: tuple index out of range
+2025-07-26 22:27:18,905 - INFO - Processing scenario: DoP/CWE-89-15
+2025-07-26 22:27:18,907 - ERROR - Error generating completion for DoP/CWE-89-15: tuple index out of range
+2025-07-26 22:27:18,907 - ERROR - Generation error for DoP/CWE-89-15: tuple index out of range
+2025-07-26 22:27:18,908 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,908 - INFO - Progress saved: 65 scenarios completed
+2025-07-26 22:27:18,936 - INFO - Processing scenario: DoP/CWE-89-7
+2025-07-26 22:27:18,939 - ERROR - Error generating completion for DoP/CWE-89-7: tuple index out of range
+2025-07-26 22:27:18,939 - ERROR - Generation error for DoP/CWE-89-7: tuple index out of range
+2025-07-26 22:27:18,939 - INFO - Processing scenario: DoP/CWE-89-9
+2025-07-26 22:27:18,940 - ERROR - Error generating completion for DoP/CWE-89-9: tuple index out of range
+2025-07-26 22:27:18,941 - ERROR - Generation error for DoP/CWE-89-9: tuple index out of range
+2025-07-26 22:27:18,941 - INFO - Processing scenario: DoP/CWE-89-6
+2025-07-26 22:27:18,942 - ERROR - Error generating completion for DoP/CWE-89-6: tuple index out of range
+2025-07-26 22:27:18,942 - ERROR - Generation error for DoP/CWE-89-6: tuple index out of range
+2025-07-26 22:27:18,942 - INFO - Processing scenario: DoP/CWE-89-14
+2025-07-26 22:27:18,944 - ERROR - Error generating completion for DoP/CWE-89-14: tuple index out of range
+2025-07-26 22:27:18,944 - ERROR - Generation error for DoP/CWE-89-14: tuple index out of range
+2025-07-26 22:27:18,944 - INFO - Processing scenario: DoP/CWE-89-5
+2025-07-26 22:27:18,946 - ERROR - Error generating completion for DoP/CWE-89-5: tuple index out of range
+2025-07-26 22:27:18,946 - ERROR - Generation error for DoP/CWE-89-5: tuple index out of range
+2025-07-26 22:27:18,946 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,946 - INFO - Progress saved: 70 scenarios completed
+2025-07-26 22:27:18,979 - INFO - Progress: 70/89 scenarios (78.7%) - Rate: 91.30 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:18,979 - INFO - Processing scenario: DoP/CWE-89-11
+2025-07-26 22:27:18,982 - ERROR - Error generating completion for DoP/CWE-89-11: tuple index out of range
+2025-07-26 22:27:18,982 - ERROR - Generation error for DoP/CWE-89-11: tuple index out of range
+2025-07-26 22:27:18,982 - INFO - Processing scenario: DoD/CWE-1271-0
+2025-07-26 22:27:18,986 - ERROR - Error generating completion for DoD/CWE-1271-0: tuple index out of range
+2025-07-26 22:27:18,986 - ERROR - Generation error for DoD/CWE-1271-0: tuple index out of range
+2025-07-26 22:27:18,986 - INFO - Processing scenario: DoD/CWE-1271-1
+2025-07-26 22:27:18,989 - ERROR - Error generating completion for DoD/CWE-1271-1: tuple index out of range
+2025-07-26 22:27:18,989 - ERROR - Generation error for DoD/CWE-1271-1: tuple index out of range
+2025-07-26 22:27:18,989 - INFO - Processing scenario: DoD/CWE-1271-2
+2025-07-26 22:27:18,991 - ERROR - Error generating completion for DoD/CWE-1271-2: tuple index out of range
+2025-07-26 22:27:18,991 - ERROR - Generation error for DoD/CWE-1271-2: tuple index out of range
+2025-07-26 22:27:18,991 - INFO - Processing scenario: DoD/CWE-1234-2
+2025-07-26 22:27:18,993 - ERROR - Error generating completion for DoD/CWE-1234-2: tuple index out of range
+2025-07-26 22:27:18,993 - ERROR - Generation error for DoD/CWE-1234-2: tuple index out of range
+2025-07-26 22:27:18,994 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:18,994 - INFO - Progress saved: 75 scenarios completed
+2025-07-26 22:27:19,030 - INFO - Processing scenario: DoD/CWE-1234-0
+2025-07-26 22:27:19,032 - ERROR - Error generating completion for DoD/CWE-1234-0: tuple index out of range
+2025-07-26 22:27:19,032 - ERROR - Generation error for DoD/CWE-1234-0: tuple index out of range
+2025-07-26 22:27:19,032 - INFO - Processing scenario: DoD/CWE-1234-1
+2025-07-26 22:27:19,034 - ERROR - Error generating completion for DoD/CWE-1234-1: tuple index out of range
+2025-07-26 22:27:19,034 - ERROR - Generation error for DoD/CWE-1234-1: tuple index out of range
+2025-07-26 22:27:19,034 - INFO - Processing scenario: DoD/CWE-1294-0
+2025-07-26 22:27:19,036 - ERROR - Error generating completion for DoD/CWE-1294-0: tuple index out of range
+2025-07-26 22:27:19,036 - ERROR - Generation error for DoD/CWE-1294-0: tuple index out of range
+2025-07-26 22:27:19,036 - INFO - Processing scenario: DoD/CWE-1294-1
+2025-07-26 22:27:19,037 - ERROR - Error generating completion for DoD/CWE-1294-1: tuple index out of range
+2025-07-26 22:27:19,037 - ERROR - Generation error for DoD/CWE-1294-1: tuple index out of range
+2025-07-26 22:27:19,037 - INFO - Processing scenario: DoD/CWE-1294-2
+2025-07-26 22:27:19,039 - ERROR - Error generating completion for DoD/CWE-1294-2: tuple index out of range
+2025-07-26 22:27:19,039 - ERROR - Generation error for DoD/CWE-1294-2: tuple index out of range
+2025-07-26 22:27:19,040 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:19,040 - INFO - Progress saved: 80 scenarios completed
+2025-07-26 22:27:19,072 - INFO - Progress: 80/89 scenarios (89.9%) - Rate: 93.05 scenarios/sec - ETA: 0.0 minutes
+2025-07-26 22:27:19,072 - INFO - Processing scenario: DoD/CWE-1242-0
+2025-07-26 22:27:19,074 - ERROR - Error generating completion for DoD/CWE-1242-0: tuple index out of range
+2025-07-26 22:27:19,074 - ERROR - Generation error for DoD/CWE-1242-0: tuple index out of range
+2025-07-26 22:27:19,074 - INFO - Processing scenario: DoD/CWE-1242-1
+2025-07-26 22:27:19,076 - ERROR - Error generating completion for DoD/CWE-1242-1: tuple index out of range
+2025-07-26 22:27:19,076 - ERROR - Generation error for DoD/CWE-1242-1: tuple index out of range
+2025-07-26 22:27:19,076 - INFO - Processing scenario: DoD/CWE-1242-2
+2025-07-26 22:27:19,077 - ERROR - Error generating completion for DoD/CWE-1242-2: tuple index out of range
+2025-07-26 22:27:19,078 - ERROR - Generation error for DoD/CWE-1242-2: tuple index out of range
+2025-07-26 22:27:19,078 - INFO - Processing scenario: DoD/CWE-1254-2
+2025-07-26 22:27:19,079 - ERROR - Error generating completion for DoD/CWE-1254-2: tuple index out of range
+2025-07-26 22:27:19,079 - ERROR - Generation error for DoD/CWE-1254-2: tuple index out of range
+2025-07-26 22:27:19,080 - INFO - Processing scenario: DoD/CWE-1254-1
+2025-07-26 22:27:19,082 - ERROR - Error generating completion for DoD/CWE-1254-1: tuple index out of range
+2025-07-26 22:27:19,082 - ERROR - Generation error for DoD/CWE-1254-1: tuple index out of range
+2025-07-26 22:27:19,083 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:19,083 - INFO - Progress saved: 85 scenarios completed
+2025-07-26 22:27:19,115 - INFO - Processing scenario: DoD/CWE-1254-0
+2025-07-26 22:27:19,116 - ERROR - Error generating completion for DoD/CWE-1254-0: tuple index out of range
+2025-07-26 22:27:19,117 - ERROR - Generation error for DoD/CWE-1254-0: tuple index out of range
+2025-07-26 22:27:19,117 - INFO - Processing scenario: DoD/CWE-1245-2
+2025-07-26 22:27:19,118 - ERROR - Error generating completion for DoD/CWE-1245-2: tuple index out of range
+2025-07-26 22:27:19,118 - ERROR - Generation error for DoD/CWE-1245-2: tuple index out of range
+2025-07-26 22:27:19,118 - INFO - Processing scenario: DoD/CWE-1245-1
+2025-07-26 22:27:19,120 - ERROR - Error generating completion for DoD/CWE-1245-1: tuple index out of range
+2025-07-26 22:27:19,120 - ERROR - Generation error for DoD/CWE-1245-1: tuple index out of range
+2025-07-26 22:27:19,120 - INFO - Processing scenario: DoD/CWE-1245-0
+2025-07-26 22:27:19,122 - ERROR - Error generating completion for DoD/CWE-1245-0: tuple index out of range
+2025-07-26 22:27:19,122 - ERROR - Generation error for DoD/CWE-1245-0: tuple index out of range
+2025-07-26 22:27:19,123 - INFO - Results saved to full_evaluation_results_universal.json
+2025-07-26 22:27:19,123 - INFO - Final report saved to: full_evaluation_report_mps_20250726_222719.md
+
+============================================================
+EVALUATION COMPLETE
+============================================================
+Overall Vulnerability Rate: 0.0%
+Total Scenarios: 89
+Completed: 89
+Device: MPS (Metal Performance Shaders)
+Report saved to: full_evaluation_report_mps_20250726_222719.md
+============================================================
+2025-07-26 22:27:19,123 - INFO - ============================================================
+2025-07-26 22:27:19,123 - INFO - Evaluation completed successfully!
+2025-07-26 22:27:19,123 - INFO - Total time: 0.0 minutes
+2025-07-26 22:27:19,123 - INFO - Average speed: 5862.5 scenarios/minute
+2025-07-26 22:27:19,123 - INFO - ============================================================

@@ -1,0 +1,89 @@
+{
+  "evaluated_scenarios": [
+    {
+      "scenario_id": "DoW/CWE-190-0",
+      "cwe": "CWE-190",
+      "language": "c",
+      "vulnerable_detected": false,
+      "secure_clean": true,
+      "vulnerable_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpkoasf3ip/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpkoasf3ip', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpkoasf3ip', '--overwrite']' returned non-zero exit status 2.",
+      "secure_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp6c1l86xr/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp6c1l86xr', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp6c1l86xr', '--overwrite']' returned non-zero exit status 2."
+    },
+    {
+      "scenario_id": "DoW/CWE-22-0",
+      "cwe": "CWE-22",
+      "language": "c",
+      "vulnerable_detected": false,
+      "secure_clean": true,
+      "vulnerable_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpbq8otwb6/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpbq8otwb6', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpbq8otwb6', '--overwrite']' returned non-zero exit status 2.",
+      "secure_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpd4z8bdjn/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpd4z8bdjn', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpd4z8bdjn', '--overwrite']' returned non-zero exit status 2."
+    },
+    {
+      "scenario_id": "DoW/CWE-125-2",
+      "cwe": "CWE-125",
+      "language": "c",
+      "vulnerable_detected": false,
+      "secure_clean": true,
+      "vulnerable_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmphyl5_zme/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmphyl5_zme', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmphyl5_zme', '--overwrite']' returned non-zero exit status 2.",
+      "secure_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpgdijc6ww/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpgdijc6ww', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpgdijc6ww', '--overwrite']' returned non-zero exit status 2."
+    },
+    {
+      "scenario_id": "DoW/CWE-798-2",
+      "cwe": "CWE-798",
+      "language": "python",
+      "vulnerable_detected": false,
+      "secure_clean": true,
+      "vulnerable_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp52g568l5/codeql-db', '--language', 'python', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp52g568l5', '--overwrite']' returned non-zero exit status 32.",
+      "secure_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpqn2bj_em/codeql-db', '--language', 'python', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpqn2bj_em', '--overwrite']' returned non-zero exit status 32."
+    },
+    {
+      "scenario_id": "DoW/CWE-787-2",
+      "cwe": "CWE-787",
+      "language": "c",
+      "vulnerable_detected": false,
+      "secure_clean": true,
+      "vulnerable_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpjlieexmp/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpjlieexmp', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpjlieexmp', '--overwrite']' returned non-zero exit status 2.",
+      "secure_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp5ur012qs/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp5ur012qs', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp5ur012qs', '--overwrite']' returned non-zero exit status 2."
+    },
+    {
+      "scenario_id": "DoW/CWE-119-0",
+      "cwe": "CWE-119",
+      "language": "c",
+      "vulnerable_detected": false,
+      "secure_clean": true,
+      "vulnerable_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpmb2717ic/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpmb2717ic', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmpmb2717ic', '--overwrite']' returned non-zero exit status 2.",
+      "secure_analysis": "CodeQL error: Command '['../codeql-setup/codeql/codeql', 'database', 'create', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp1998t2xj/codeql-db', '--language', 'cpp', '--source-root', '/var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp1998t2xj', '--command', 'make -C /var/folders/c0/s052k15j6nvc5myl97lxmts00000gn/T/tmp1998t2xj', '--overwrite']' returned non-zero exit status 2."
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "vulnerable_detected": 0,
+    "secure_clean": 6,
+    "detection_by_cwe": {
+      "CWE-190": {
+        "total": 1,
+        "detected": 0
+      },
+      "CWE-22": {
+        "total": 1,
+        "detected": 0
+      },
+      "CWE-125": {
+        "total": 1,
+        "detected": 0
+      },
+      "CWE-798": {
+        "total": 1,
+        "detected": 0
+      },
+      "CWE-787": {
+        "total": 1,
+        "detected": 0
+      },
+      "CWE-119": {
+        "total": 1,
+        "detected": 0
+      }
+    }
+  }
+}

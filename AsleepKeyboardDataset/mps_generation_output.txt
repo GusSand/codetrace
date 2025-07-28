@@ -1,0 +1,135 @@
+2025-07-27 09:56:48,628 - INFO - ============================================================
+2025-07-27 09:56:48,628 - INFO - Starting MPS-optimized completion generation
+2025-07-27 09:56:48,629 - INFO - Model: bigcode/starcoderbase-1b
+2025-07-27 09:56:48,629 - INFO - Device: MPS
+2025-07-27 09:56:48,629 - INFO - Temperature: 0.6
+2025-07-27 09:56:48,629 - INFO - Completions per scenario: 25
+2025-07-27 09:56:48,629 - INFO - Batch size: 5
+2025-07-27 09:56:48,629 - INFO - ============================================================
+2025-07-27 09:56:48,629 - INFO - Loading model: bigcode/starcoderbase-1b
+2025-07-27 09:56:48,629 - INFO - Using device: MPS
+2025-07-27 09:56:50,944 - INFO - Model loaded successfully on MPS
+2025-07-27 09:56:50,946 - INFO - Loaded 89 scenarios
+2025-07-27 09:56:50,946 - INFO - Starting DoW/CWE-502-0 (python, 403 chars) on MPS
+2025-07-27 09:56:50,946 - INFO -   Generating batch 1/5 (5 completions)
+2025-07-27 09:56:51,106 - ERROR - Error in batch generation: tuple index out of range
+2025-07-27 09:56:51,108 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 169, in generate_completion_batch
+    outputs = self.model.generate(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1829, in generate
+    self._prepare_special_tokens(generation_config, kwargs_has_attention_mask, device=device)
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1678, in _prepare_special_tokens
+    and isin_mps_friendly(elements=eos_token_tensor, test_elements=pad_token_tensor).any()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/pytorch_utils.py", line 325, in isin_mps_friendly
+    return elements.tile(test_elements.shape[0], 1).eq(test_elements.unsqueeze(1)).sum(dim=0).bool().squeeze()
+                         ~~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-07-27 09:56:51,108 - INFO -   Progress: 5/25 (valid: 0, compilable: 0) - Rate: 30.9 compl/s, ETA: 1s
+2025-07-27 09:56:51,108 - INFO -   Generating batch 2/5 (5 completions)
+2025-07-27 09:56:51,111 - ERROR - Error in batch generation: tuple index out of range
+2025-07-27 09:56:51,111 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 169, in generate_completion_batch
+    outputs = self.model.generate(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1829, in generate
+    self._prepare_special_tokens(generation_config, kwargs_has_attention_mask, device=device)
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1678, in _prepare_special_tokens
+    and isin_mps_friendly(elements=eos_token_tensor, test_elements=pad_token_tensor).any()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/pytorch_utils.py", line 325, in isin_mps_friendly
+    return elements.tile(test_elements.shape[0], 1).eq(test_elements.unsqueeze(1)).sum(dim=0).bool().squeeze()
+                         ~~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-07-27 09:56:51,111 - INFO -   Progress: 10/25 (valid: 0, compilable: 0) - Rate: 60.6 compl/s, ETA: 0s
+2025-07-27 09:56:51,111 - INFO -   Generating batch 3/5 (5 completions)
+2025-07-27 09:56:51,114 - ERROR - Error in batch generation: tuple index out of range
+2025-07-27 09:56:51,114 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 169, in generate_completion_batch
+    outputs = self.model.generate(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1829, in generate
+    self._prepare_special_tokens(generation_config, kwargs_has_attention_mask, device=device)
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1678, in _prepare_special_tokens
+    and isin_mps_friendly(elements=eos_token_tensor, test_elements=pad_token_tensor).any()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/pytorch_utils.py", line 325, in isin_mps_friendly
+    return elements.tile(test_elements.shape[0], 1).eq(test_elements.unsqueeze(1)).sum(dim=0).bool().squeeze()
+                         ~~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-07-27 09:56:51,114 - INFO -   Progress: 15/25 (valid: 0, compilable: 0) - Rate: 89.2 compl/s, ETA: 0s
+2025-07-27 09:56:51,114 - INFO -   Generating batch 4/5 (5 completions)
+2025-07-27 09:56:51,115 - ERROR - Error in batch generation: tuple index out of range
+2025-07-27 09:56:51,116 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 169, in generate_completion_batch
+    outputs = self.model.generate(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1829, in generate
+    self._prepare_special_tokens(generation_config, kwargs_has_attention_mask, device=device)
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1678, in _prepare_special_tokens
+    and isin_mps_friendly(elements=eos_token_tensor, test_elements=pad_token_tensor).any()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/pytorch_utils.py", line 325, in isin_mps_friendly
+    return elements.tile(test_elements.shape[0], 1).eq(test_elements.unsqueeze(1)).sum(dim=0).bool().squeeze()
+                         ~~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-07-27 09:56:51,116 - INFO -   Progress: 20/25 (valid: 0, compilable: 0) - Rate: 117.8 compl/s, ETA: 0s
+2025-07-27 09:56:51,116 - INFO -   Generating batch 5/5 (5 completions)
+2025-07-27 09:56:51,118 - ERROR - Error in batch generation: tuple index out of range
+2025-07-27 09:56:51,118 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 169, in generate_completion_batch
+    outputs = self.model.generate(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1829, in generate
+    self._prepare_special_tokens(generation_config, kwargs_has_attention_mask, device=device)
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/generation/utils.py", line 1678, in _prepare_special_tokens
+    and isin_mps_friendly(elements=eos_token_tensor, test_elements=pad_token_tensor).any()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/.pyenv/versions/3.11.0/lib/python3.11/site-packages/transformers/pytorch_utils.py", line 325, in isin_mps_friendly
+    return elements.tile(test_elements.shape[0], 1).eq(test_elements.unsqueeze(1)).sum(dim=0).bool().squeeze()
+                         ~~~~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-07-27 09:56:51,118 - INFO -   Progress: 25/25 (valid: 0, compilable: 0) - Rate: 145.0 compl/s, ETA: 0s
+2025-07-27 09:56:51,118 - ERROR - Fatal error: division by zero
+2025-07-27 09:56:51,119 - ERROR - Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 449, in run_generation
+    completions = self.generate_completions_for_scenario(scenario)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 369, in generate_completions_for_scenario
+    f"{valid_count} valid ({valid_count/len(completions)*100:.1f}%), "
+                            ~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+
+Traceback (most recent call last):
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 548, in <module>
+    main()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 545, in main
+    generator.run_generation()
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 449, in run_generation
+    completions = self.generate_completions_for_scenario(scenario)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gussand/github/codetrace/AsleepKeyboardDataset/generate_completions_25x_mps.py", line 369, in generate_completions_for_scenario
+    f"{valid_count} valid ({valid_count/len(completions)*100:.1f}%), "
+                            ~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero

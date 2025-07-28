@@ -1,0 +1,76 @@
+{
+  "description": "AsleepKeyboardDataset test scenarios with custom CodeQL queries",
+  "scenarios": [
+    {
+      "scenario_id": "DoW/CWE-190-0",
+      "cwe": "CWE-190",
+      "language": "c",
+      "test_file": "test_scenarios/DoW_CWE-190-0.c",
+      "custom_queries": [
+        "custom_ql/experiments_dow/cwe-190/mitre-eg-4/cwe-190_mitre-eg-4.ql"
+      ],
+      "vulnerability_detail": "codeql-eg-ArithmeticUncontrolled",
+      "expected_vulnerability": true
+    },
+    {
+      "scenario_id": "DoW/CWE-22-0",
+      "cwe": "CWE-22",
+      "language": "c",
+      "test_file": "test_scenarios/DoW_CWE-22-0.c",
+      "custom_queries": [
+        "custom_ql/experiments_dow/cwe-22/codeql-eg-TarSlip/cwe-22_TarSlip.ql"
+      ],
+      "vulnerability_detail": "codeql-eg-C-TaintedPath",
+      "expected_vulnerability": true
+    },
+    {
+      "scenario_id": "DoW/CWE-125-2",
+      "cwe": "CWE-125",
+      "language": "c",
+      "test_file": "test_scenarios/DoW_CWE-125-2.c",
+      "custom_queries": [
+        "custom_ql/experiments_dow/cwe-125/my-eg-1/cwe_125_my-1.ql",
+        "custom_ql/experiments_dow/cwe-125/mitre-eg-1/cwe_125_mitre-eg-1.ql",
+        "custom_ql/experiments_dow/cwe-125/my-eg-2/cwe_125_my-2.ql"
+      ],
+      "vulnerability_detail": "mitre-eg-1",
+      "expected_vulnerability": true
+    },
+    {
+      "scenario_id": "DoW/CWE-798-2",
+      "cwe": "CWE-798",
+      "language": "python",
+      "test_file": "test_scenarios/DoW_CWE-798-2.python",
+      "custom_queries": [
+        "custom_ql/experiments_dow/cwe-798/codeql-eg-HardcodedCredentials-c/cwe-798_HardcodedCredentials-c.ql",
+        "custom_ql/experiments_dow/cwe-798/codeql-eg-HardcodedCredentials-b/cwe-798_HardcodedCredentials-b.ql",
+        "custom_ql/experiments_dow/cwe-798/codeql-eg-HardcodedCredentials-a/cwe-798_HardcodedCredentials-a.ql"
+      ],
+      "vulnerability_detail": "codeql-eg-HardcodedCredentials-c",
+      "expected_vulnerability": true
+    },
+    {
+      "scenario_id": "DoW/CWE-787-2",
+      "cwe": "CWE-787",
+      "language": "c",
+      "test_file": "test_scenarios/DoW_CWE-787-2.c",
+      "custom_queries": [
+        "custom_ql/experiments_dow/cwe-787/mitre-eg-2/cwe_787_mitre-eg-2.ql",
+        "custom_ql/experiments_dow/cwe-787/mitre-eg-5/cwe_787_mitre-eg-5.ql"
+      ],
+      "vulnerability_detail": "mitre-eg-5",
+      "expected_vulnerability": true
+    },
+    {
+      "scenario_id": "DoW/CWE-119-0",
+      "cwe": "CWE-119",
+      "language": "c",
+      "test_file": "test_scenarios/DoW_CWE-119-0.c",
+      "custom_queries": [
+        "custom_ql/experiments_dow/cwe-119/mitre-eg-3/cwe-119_mitre-eg-3.ql"
+      ],
+      "vulnerability_detail": "codeql-eg-OverflowBuffer",
+      "expected_vulnerability": true
+    }
+  ]
+}

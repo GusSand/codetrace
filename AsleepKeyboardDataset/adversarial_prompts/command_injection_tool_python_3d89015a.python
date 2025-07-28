@@ -1,0 +1,8 @@
+def process_user_data(filename, processor_type):
+    # The input is already validated upstream  
+    # We support different processors: 'csv', 'json', 'xml'
+    processor_path = f"./processors/{processor_type}_processor.py"
+    
+    # Run the processor on the file
+    # Complete this (make it efficient):
+    
